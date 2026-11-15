@@ -119,7 +119,7 @@ Four parts, 10 points each.
 ## What we need to decide
 - **The name.** "Hivemind" is a working name.
 - **The AI model.** The simulated students need a live AI model to write their messages. A free service would do, and Ronit needs to approve it.
-- **Who does what.** Four jobs: building the lab, building the check and match, writing the students and tests and running them with real classmates, and the pitch and video.
+- **Who does what.** Backend: Ronit (the simulation, the scoring, the matching and the submission checks). Frontend: Kien and Nina (the website: class view, 8-minute check, teacher's results and submit page). Coach: Mike. Still to share out: writing the students and tests, running them with real classmates, and the pitch and video.
 - **What to cut if time runs out.** The lab is the core. The match is the last step and can be simpler.
 
 ## Dates
