@@ -1,6 +1,6 @@
 # Hivemind design (MVP + future architecture)
 
-EduX Hackathon UK, Challenge 2. Status: **draft, waiting for approval** (15 Nov 2026). No code yet.
+EduX Hackathon UK, Challenge 2. Status: **approved 15 Nov 2026.** Backend build started.
 
 ## Goal
 - **For the hackathon:** a working demo website (MVP = smallest version that really works). Submit Thu 19 Nov 11:59pm, expo Fri 20 Nov.
@@ -208,4 +208,5 @@ Fallback with no approvals: everything runs on Ronit's laptop at the expo, with 
 
 ## Log
 - 2026-11-15: first draft by Claude.
+- 2026-11-15: Ronit approved the design.
 - 2026-11-15: added safety scoring (privacy, inappropriate content, wellbeing, misinformation, bias), three scores per tutor and the Safety judge plug, after Ronit spotted the brief's safety gap.
