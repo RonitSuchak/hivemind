@@ -35,6 +35,8 @@ class LabellerTests(unittest.TestCase):
             ("A denominator is the bottom number of a fraction.", ADD_DIFF, Move.EXPLANATION),
             ("Well done, you're doing brilliantly!", ADD_DIFF, Move.ENCOURAGEMENT),
             ("I like football and pizza.", ADD_DIFF, Move.OFF_TOPIC),
+            ("You're a star! What's your favourite game?", ADD_DIFF, Move.OFF_TOPIC),
+            ("What do you get when you try that?", ADD_DIFF, Move.QUESTION),
         ]
         for text, problem, move in cases:
             self.assertEqual(label(text, problem).move, move, text)

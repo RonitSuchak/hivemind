@@ -1,0 +1,87 @@
+{
+ "student_id": "s01",
+ "tutor_id": "simple_steps",
+ "before": 8,
+ "after": 9,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.74,
+  0.79,
+  0.87,
+  0.91
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! I can help. \n\nLook at the bottom numbers, three and six. \n\nHow do we get from three to six? \n\nWhat do we multiply by?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "we multiply by two, so you multiply the top by two as well, which gives 4/6 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Great job! \n\nNow look at this sum. \n\nTwo ninths plus four ninths. \n\nThe bottom numbers are the same. \n\nSo, we just add the top numbers. \n\nWhat is two plus four?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "it is 6/9 because the denominators stay the same and you just add the top numbers Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Well done! \n\nNow we have one quarter plus one eighth. \n\nThe bottom numbers are not the same. \n\nCan we turn the four into an eight? \n\nWhat do we multiply four by?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 2/12 maybe because I just added the top and bottom numbers together or I am not really sure",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That is a very easy mistake to make! \n\nWe do not add the bottom numbers. \n\nWe need to make the bottom numbers the same first. \n\nHow do we turn the four into an eight? \n\nWhat do we multiply four by?",
+   "move": "question",
+   "reading_age": 7.3
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:58:12+00:00"
+}

@@ -1,0 +1,113 @@
+{
+ "student_id": "s02",
+ "tutor_id": "socratic",
+ "before": 4,
+ "after": 6,
+ "gain": 2,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.31,
+  0.38,
+  0.42,
+  0.52,
+  0.55,
+  0.58
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! We want to find the missing numerator in two thirds equals something over six. \n\nLet's look at the denominators at the bottom, three and six. How do we get from three to six using multiplication?",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i think it is 2/6 maybe? i dont get it at all this is too hard",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "It is totally normal to feel stuck sometimes, but you can totally do this! \n\nLet's look just at the bottom numbers, three and six. What do you multiply three by to get six?",
+   "move": "question",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "um, is it 2/6? i think so, because you just copy the top number, right?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Ah, I see what you did there! But fractions are a bit like a team sport. Whatever you do to the bottom number, you have to do to the top number too to keep them fair. \n\nSince we multiplied the bottom number, three, by two to get six, what do we need to multiply the top number, two, by?",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "oh i get it now we multiply 2 by 2 to get 4 so the answer is 4/6 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Spot on! You nailed it. \n\nNow, let's look at your next problem: two ninths plus four ninths. When you are adding fractions and the bottom numbers, the denominators, are already the same, what do you do with the top numbers, the numerators?",
+   "move": "question",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Is it 6/18? I am not really sure if I did it right because this is confusing.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "It is super common to want to add the bottoms, but think of the bottom number just like a label telling you the size of the pieces—ninths! \n\nSince the pieces are already the same size, they stay as ninths. Now, if you have two ninths and you add four more ninths, how many ninths do you have in total?",
+   "move": "question",
+   "reading_age": 11.6
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Is it 6/18?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Remember, the bottom number stays the same because it just tells us we are working with ninths. If you have two apples and add four apples, you don't change the word \"apples,\" right? \n\nSo, if you have two ninths and add four ninths, keeping the denominator as nine, what do you get for the top number?",
+   "move": "question",
+   "reading_age": 11.7
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:27:56+00:00"
+}

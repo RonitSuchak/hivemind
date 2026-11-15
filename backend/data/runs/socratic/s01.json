@@ -1,0 +1,87 @@
+{
+ "student_id": "s01",
+ "tutor_id": "socratic",
+ "before": 8,
+ "after": 9,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.74,
+  0.79,
+  0.87,
+  0.91
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! We want to find the missing numerator in two-thirds equals something over six. \n\nLet's look at the denominators at the bottom, three and six. How do we get from three to six using multiplication?",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 4/6 because you multiply the bottom by two so you have to multiply the top by two as well Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You are spot on about the first one! Multiplying the top and bottom by two gives four-sixths. Excellent work!\n\nNow, for your new problem, two-ninths plus four-ninths: notice that both fractions already have the exact same denominator at the bottom. When adding fractions like this, what do you think we do with the denominators?",
+   "move": "question",
+   "reading_age": 10.6
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "the answer is 6/9 because you just add the tops together and leave the bottom number the same Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on again! You kept the denominator the same and just added the numerators. Six-ninths is totally right!\n\nNow, for one-quarter plus one-eighth: look closely at the denominators, four and eight. Can you add them right away like you did with the ninths?",
+   "move": "question",
+   "reading_age": 9.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Um, is it 2/12? Because I just added the top numbers and the bottom numbers together, but I am not really sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That is a very common trick to fall for! But when we add fractions, we can only add the top numbers if the bottom numbers are already the same. \n\nSince four and eight are different, we need to make them match first. Look at the denominators, four and eight. Can you turn one-quarter into an equivalent fraction with a denominator of eight?",
+   "move": "question",
+   "reading_age": 10.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:27:12+00:00"
+}

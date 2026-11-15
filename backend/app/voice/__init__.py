@@ -20,12 +20,21 @@ class Situation:
     problem: Problem
     mastery: float = 0.0  # mastery of the problem's skill right now
     next_problem: Problem | None = None  # set when the student moves on
-    safety: str | None = None  # "privacy", "inappropriate" or "wellbeing"
+    safety: str | None = None  # "privacy", "inappropriate", "wellbeing" or "wrong_sum"
+    attempt: str | None = None  # "confused", "partly" or "right" (decided by the brain)
+    told_answer: bool = False  # the tutor's last message gave the answer away
+    tutor_text: str = ""  # the tutor's last message (plain text, never an instruction)
 
 
 class Voice:
+    source = "scripted"  # "scripted" or "ai": who wrote the line
+
     def say(self, situation: Situation) -> str:
         raise NotImplementedError
+
+    def say_line(self, situation: Situation) -> tuple[str, str]:
+        """The line and who wrote it. AI voices override this to report a fallback."""
+        return self.say(situation), self.source
 
 
 from .scripted import ScriptedVoice  # noqa: E402

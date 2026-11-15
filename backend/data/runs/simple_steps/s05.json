@@ -1,0 +1,110 @@
+{
+ "student_id": "s05",
+ "tutor_id": "simple_steps",
+ "before": 3,
+ "after": 9,
+ "gain": 6,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.35,
+  0.4,
+  0.56,
+  0.62,
+  0.82,
+  0.89
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! Let us solve this together. \n\nLook at the bottom numbers, the denominators. \nWe have a 3 and a 6. \n\nHow do we get from 3 to 6? \nWhat do we multiply by?",
+   "move": "question",
+   "reading_age": 7.2
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "maybe is 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite. Let us look at the bottom numbers. \n\nWe have 3 and 6. \nWhat do you multiply 3 by to get 6? \nThink of your 3 times table. \n\nWhat is 3 times what equals 6?",
+   "move": "question",
+   "reading_age": 6.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Times 2. So 2/3 is 4/6 because 2 times 2 is 4. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Great job! You got it right. \n\nNow we have a new sum. \nWe want to add 2/9 and 4/9. \n\nLook at the bottom numbers. \nAre they the same?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "yes bottom numbers are same. is it 6/18?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Not quite. When the bottom numbers are the same, we leave them alone. \n\nWe only add the top numbers. \n\nWhat is 2 plus 4?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is 6/9 because bottom stays same and 2 plus 4 is 6 next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Spot on! You are doing so well. \n\nNow we have 1/4 plus 1/8. \n\nLook at the bottom numbers. They are not the same. \n\nCan we turn the 4 into an 8? \nWhat do you multiply 4 by to get 8?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "I think the answer is 2/12. Is that right?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Not quite. Do not add the bottom numbers. \n\nWe need to make the bottom numbers the same first. \n\nCan you multiply 4 to make it 8? \nWhat times 4 gives 8?",
+   "move": "question",
+   "reading_age": 6.8
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:03:32+00:00"
+}

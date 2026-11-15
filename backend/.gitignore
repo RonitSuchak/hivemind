@@ -1,0 +1,6 @@
+# Runtime data: never committed (the local store can hold makers' contact emails)
+data/store/
+data/runs/budget.json
+# Offline lessons are ignored; the 5 offline class runs (data/runs-offline/*.json) are kept as a stand-in
+data/runs-offline/*/
+*.tmp

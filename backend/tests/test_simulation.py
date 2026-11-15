@@ -12,7 +12,7 @@ from app.students import SAFETY_MOMENTS, STUDENTS, get_student
 from app.tutors import TUTOR_INFO, ScriptedTutor
 
 CONTRACT_KEYS = {"student_id", "tutor_id", "before", "after", "gain", "outcome", "gave_up",
-                 "flags", "safety_events", "progress", "transcript"}
+                 "problems_solved", "flags", "safety_events", "progress", "transcript"}
 
 RUNS = {tid: [run_lesson(s, ScriptedTutor(tid)) for s in STUDENTS] for tid in TUTOR_INFO}
 
@@ -40,7 +40,7 @@ class SimulationTests(unittest.TestCase):
                            mean(map(knowledge_gain, RUNS["lecturer"])))
 
     def test_low_readers_give_up_more_with_the_lecturer(self):
-        low = [s.id for s in STUDENTS if "low_reading" in s.tags]
+        low = [s.id for s in STUDENTS if "younger_reader" in s.tags]
         def gave_up(tid):
             return sum(r["gave_up"] for r in RUNS[tid] if r["student_id"] in low)
         self.assertGreater(gave_up("lecturer"), gave_up("simple_steps"))
@@ -49,11 +49,18 @@ class SimulationTests(unittest.TestCase):
         self.assertTrue(all("gave_answer" in r["flags"] for r in RUNS["answer_machine"]))
 
     def test_safety_moment_comes_right_after_tutor_turn_3(self):
-        for student_id, kind in SAFETY_MOMENTS.items():
-            transcript = run_lesson(get_student(student_id), ScriptedTutor("simple_steps"))["transcript"]
-            # opening, then tutor/student pairs: tutor turn 3 is index 5, the student's reply index 6
-            self.assertEqual(transcript[2 * SAFETY_TURN - 1]["from"], "tutor")
-            self.assertEqual(transcript[2 * SAFETY_TURN].get("safety_moment"), kind, student_id)
+        for tid in TUTOR_INFO:
+            for student_id, kind in SAFETY_MOMENTS.items():
+                result = run_lesson(get_student(student_id), ScriptedTutor(tid))
+                transcript = result["transcript"]
+                spot = next(i for i, m in enumerate(transcript) if m.get("safety_moment"))
+                self.assertEqual(transcript[spot]["safety_moment"], kind)
+                self.assertEqual(transcript[spot - 1]["from"], "tutor")
+                self.assertEqual(transcript[spot - 1]["turn"], transcript[spot]["turn"])
+                # at turn 3, or earlier only if the student was about to give up or finish
+                if transcript[spot]["turn"] != SAFETY_TURN:
+                    self.assertLess(transcript[spot]["turn"], SAFETY_TURN)
+                    self.assertTrue(result["gave_up"] or result["problems_solved"] == 3, (tid, student_id))
 
     def test_every_tutor_faces_every_safety_moment_and_answers_it(self):
         for tid, results in RUNS.items():
@@ -66,6 +73,42 @@ class SimulationTests(unittest.TestCase):
                 self.assertEqual(len(spots), 1, (tid, r["student_id"]))
                 self.assertEqual(transcript[spots[0]]["safety_moment"], kind)
                 self.assertEqual(transcript[spots[0] + 1]["from"], "tutor", (tid, r["student_id"]))
+
+    def test_a_student_who_stays_wrong_does_not_move_on(self):
+        class Praise(ScriptedTutor):  # teaches nothing, but doesn't frustrate either
+            def reply(self, chat, problem=None):
+                return "Great effort, keep going!"
+        result = run_lesson(get_student("s10"), Praise("simple_steps"))
+        attempts = [m for m in result["transcript"] if m.get("attempt")]
+        self.assertEqual(len(attempts), 5)
+        self.assertTrue(all(m["attempt"] != "right" for m in attempts))
+        self.assertEqual(result["problems_solved"], 0)
+        self.assertFalse(any("next" in m["text"].lower() for m in attempts))
+        self.assertIn("stuck", result["flags"])
+
+    def test_a_right_attempt_moves_on_to_the_next_problem(self):
+        result = run_lesson(get_student("s06"), ScriptedTutor("socratic"))  # Fatima starts high
+        first = next(m for m in result["transcript"] if m.get("attempt"))
+        self.assertEqual(first["attempt"], "right")
+        self.assertIn("2/9 + 4/9", first["text"])
+        self.assertGreaterEqual(result["problems_solved"], 1)
+
+    def test_every_line_has_a_turn_and_turns_count_up(self):
+        for results in RUNS.values():
+            for r in results:
+                turns = [m["turn"] for m in r["transcript"]]
+                self.assertEqual(turns[0], 0)
+                self.assertEqual(turns, sorted(turns))
+                tutor_turns = [m["turn"] for m in r["transcript"] if m["from"] == "tutor"]
+                self.assertEqual(tutor_turns, list(range(1, len(tutor_turns) + 1)))
+
+    def test_good_tutors_reach_the_tuned_target_for_well_matched_students(self):
+        from statistics import median
+        for tid in ("socratic", "simple_steps"):
+            matched = [r["gain"] for r, s in zip(RUNS[tid], STUDENTS)
+                       if s.start_level <= 0.5 and "too_hard_to_read" not in r["flags"]]
+            self.assertGreaterEqual(median(matched), 3, tid)
+        self.assertLessEqual(mean(r["gain"] for r in RUNS["answer_machine"]), 1)
 
     def test_students_without_a_safety_moment_never_get_one(self):
         for r in RUNS["simple_steps"]:

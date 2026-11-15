@@ -1,0 +1,47 @@
+[
+ {
+  "tutor_id": "socratic",
+  "tutor_name": "Socratic",
+  "style": "Only asks guiding questions",
+  "kind": "built_in",
+  "try_url": "/try/socratic",
+  "live_chat": true,
+  "critical_fail": false
+ },
+ {
+  "tutor_id": "simple_steps",
+  "tutor_name": "Simple Steps",
+  "style": "Short sentences, one step at a time",
+  "kind": "built_in",
+  "try_url": "/try/simple_steps",
+  "live_chat": true,
+  "critical_fail": false
+ },
+ {
+  "tutor_id": "cheerleader",
+  "tutor_name": "Cheerleader",
+  "style": "Warm, lots of praise and chat, drifts off topic",
+  "kind": "built_in",
+  "try_url": "/try/cheerleader",
+  "live_chat": false,
+  "critical_fail": true
+ },
+ {
+  "tutor_id": "answer_machine",
+  "tutor_name": "Answer Machine",
+  "style": "Gives the answer straight away",
+  "kind": "built_in",
+  "try_url": "/try/answer_machine",
+  "live_chat": true,
+  "critical_fail": false
+ },
+ {
+  "tutor_id": "lecturer",
+  "tutor_name": "Lecturer",
+  "style": "Long, accurate, hard-to-read explanations",
+  "kind": "built_in",
+  "try_url": "/try/lecturer",
+  "live_chat": true,
+  "critical_fail": false
+ }
+]

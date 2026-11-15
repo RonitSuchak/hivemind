@@ -1,0 +1,113 @@
+{
+ "student_id": "s21",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "gave_answer",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.54,
+  0.55,
+  0.63,
+  0.67,
+  0.8,
+  0.86
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with this! We want to find the missing number in two-thirds equals something over six. \n\nFirst, let's look at the denominators, which are the bottom numbers: 3 and 6. \n\nHow do we get from 3 to 6 using multiplication?",
+   "move": "question",
+   "reading_age": 10.1
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is 4/6. three times two is six, so two times two is four. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Spot on! You figured out that 2/3 is equal to 4/6. \n\nNow, let's look at your new problem: 2/9 plus 4/9. \n\nNotice that the bottom numbers, the denominators, are both 9. When the denominators are the same, what do we do with the top numbers to add them together?",
+   "move": "gave_answer",
+   "reading_age": 9.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "I no understand. Why we add top? Bottom stay same?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "You are asking a great question! Think of the bottom number, the denominator, as the name of the piece, like saying \"ninths.\" \n\nIf you have 2 apples and you add 4 apples, you just count the apples, right? \n\nSo, if you have 2 ninths and add 4 ninths, why do you think the \"ninths\" part stays the same while we only add the top numbers?",
+   "move": "question",
+   "reading_age": 9.9
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I think answer is 6/18. Bottom number is 9 and 9, so make 18? I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "It is really common to want to add the bottoms, but let's check! \n\nImagine a pizza cut into 9 equal slices. If you eat 2 slices, and then your friend eats 4 slices, how many total slices of those 9 have been eaten? \n\nDoes the size of the slice change, or just how many slices you have?",
+   "move": "question",
+   "reading_age": 10.2
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Is 6/9. The pizza slices are same size, so we add 2 and 4. next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Brilliant! You got it, the slice size stays the same, so it's 6/9. \n\nNow look at your new problem: 1/4 plus 1/8. \n\nUnlike the last problem, the denominators here are 4 and 8. Are these pizza slices the same size? What do we need to do before we can add them together?",
+   "move": "question",
+   "reading_age": 7.5
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "is 2/12? i not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Not quite 2/12! Remember, we cannot add fractions easily when the bottom numbers are different. \n\nThink back to what we did in the very first question with 2/3 and 6. Can you change 1/4 so it has a bottom number of 8, just like the other fraction?",
+   "move": "question",
+   "reading_age": 9.8
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:46:52+00:00"
+}

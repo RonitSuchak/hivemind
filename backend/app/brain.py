@@ -24,6 +24,7 @@ from __future__ import annotations
 
 from enum import Enum
 
+from . import config
 from .students import StudentProfile
 
 SKILLS = ("equivalent", "add_same", "add_different")
@@ -45,19 +46,12 @@ class Move(str, Enum):
     OFF_TOPIC = "off_topic"
 
 
-# Base chance that one message of each kind teaches the skill.
-LEARN_CHANCE = {
-    Move.GAVE_ANSWER: 0.03,  # copying an answer teaches very little
-    Move.HINT: 0.20,
-    Move.QUESTION: 0.22,  # being made to think teaches most
-    Move.EXPLANATION: 0.12,
-    Move.ENCOURAGEMENT: 0.0,
-    Move.OFF_TOPIC: 0.0,
-}
+# Base chance that one message of each kind teaches the skill (numbers in config.py).
+LEARN_CHANCE = {move: config.LEARN_CHANCE[move.value] for move in Move}
 
 # A message more than this many years above the student's reading age is too hard.
-READING_LEEWAY = 1.0
-TOO_HARD_FACTOR = 0.5  # too-hard messages teach half as much
+READING_LEEWAY = config.READING_LEEWAY
+TOO_HARD_FACTOR = config.TOO_HARD_FACTOR
 
 
 def _clamp(value: float) -> float:

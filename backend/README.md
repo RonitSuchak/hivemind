@@ -1,39 +1,53 @@
 # Hivemind backend
 
-Python. See `../docs/DESIGN.md` for how it works and `../docs/BACKEND.md` for the API contract.
+Python + FastAPI. How it works: `../docs/DESIGN.md`. The API contract: `../docs/BACKEND.md`.
 
-## Built so far
-| File | What it does |
-|---|---|
-| `app/students.py` | The 30 simulated students and their safety moments |
-| `app/brain.py` | What a student knows (Bayesian Knowledge Tracing) and when they give up |
-| `app/assessment.py` | The 10-question test, answered from the brain with fair dice |
-| `app/lesson_plan.py` | The 3 problems a lesson works through |
-| `app/labeller.py` | Labels each tutor message (answer, hint, question...) and its reading age |
-| `app/tutors/` | Tutor plug: `ScriptedTutor` (pre-written) and `DemoTutor` (real AI, Gemini) |
-| `app/voice/` | Voice plug: `ScriptedVoice` (pre-written student lines) |
-| `app/simulation.py` | Runs one lesson, including the safety moment |
-| `app/llm.py`, `app/config.py` | Gemini connection using the standard library; settings from `.env` |
-| `app/run_lesson.py`, `app/demo.py` | Print a lesson or the brain demo in Terminal |
-
-No packages to install yet: everything uses Python's standard library.
-
-## Gemini key (for real AI tutors)
-1. Get a free key at Google AI Studio.
-2. Copy `.env.example` to `.env` in this folder and paste the key after `GEMINI_API_KEY=`.
-3. `.env` is ignored by git. Never commit it or paste the key into chat.
+## Set up
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+```
+Copy `.env.example` to `.env` and fill in what you need (every key is free; never commit `.env`):
+- `GEMINI_API_KEY`: real AI tutors, student voice, live chat and ask.
+- `SAFE_BROWSING_API_KEY`: the link check for product submissions.
+- `ADMIN_PASSWORD`: approve or reject submissions.
+- `DATABASE_URL`: online only (Neon Postgres); empty means JSON files in `data/store/`.
 
 ## Run
-From this `backend` folder:
+| What | Command |
+|---|---|
+| All tests (free, offline) | `.venv/bin/python -m unittest discover -s tests -t .` |
+| The API | `RELOAD=1 .venv/bin/python -m app.serve`, then open `http://localhost:8000/docs` |
+| One lesson, printed | `python3 -m app.run_lesson --student s07 --tutor socratic --offline` |
+| How much each tutor teaches each group (tuning) | `python3 -m app.tune` |
+| The lab, offline (pre-written tutors) | `python3 -m app.lab --offline` |
+| The lab, real AI (resumes if stopped) | `python3 -m app.lab` |
+| Demo-mode files | `.venv/bin/python -m app.export` (`--with-ai` adds ask and chat examples) |
+| Demo maker tutor (PieChart Pal) | `.venv/bin/uvicorn app.demo_maker:app --port 8100` |
 
-```bash
-python3 -m unittest discover -s tests -t . -v
-```
+## Files
+| File | What it does |
+|---|---|
+| `app/config.py` | Every setting, threshold, limit and weight |
+| `app/students.py` | The 30 simulated students, their groups and traps |
+| `app/brain.py` | What a student knows (Bayesian Knowledge Tracing) and when they give up |
+| `app/assessment.py` | The 10-question test, answered from the brain with fair dice |
+| `app/lesson_plan.py`, `app/labeller.py` | The 3 problems; labels each tutor message and its reading age |
+| `app/tutors/` | Tutor plug: pre-written, Gemini (`demo.py`), 5 styles |
+| `app/voice/` | Voice plug: pre-written, and AI (`ai.py`) with checks |
+| `app/simulation.py` | One lesson: move on only when right, traps, Safety judge |
+| `app/safety.py` | The Safety judge (rules, no AI) for lessons and live replies |
+| `app/scores.py` | Three scores, evidence, safety panel, bias |
+| `app/lab.py` | Resumable lab runs with a daily AI budget |
+| `app/catalog.py`, `app/ratings.py`, `app/report.py` | Tutors and runs; heatmap table; tool maker report |
+| `app/check.py`, `app/matching.py`, `app/advisor.py` | 8-minute check → profile; weighted match; follow-ups and ask |
+| `app/live.py` | Live chat and the real-classmate check |
+| `app/submissions/` | Form, link checks, Safe Browsing, maker client, review queue, class runs |
+| `app/demo_maker.py` | PieChart Pal, the demo product (its own service) |
+| `app/store.py`, `app/limits.py` | JSON files or Postgres; per-device rate limits |
+| `app/api.py`, `app/export.py` | The routes; demo-mode export |
+| `app/middleware.py`, `app/serve.py` | Client address for rate limits, 16 KB body cap, security headers; the safe start command |
 
-```bash
-python3 -m app.run_lesson --student s07 --tutor socratic --offline
-```
-
-```bash
-python3 -m app.run_lesson --student s07 --tutor socratic
-```
+## Deploy (Render, free)
+1. **Backend web service:** root directory `backend`, build `pip install -r requirements.txt`, start `python -m app.serve`, environment `PYTHON_VERSION=3.15.2`, `HOST=0.0.0.0`, `PROXY_HOPS=1`, plus the `.env` keys (`GEMINI_API_KEY`, `SAFE_BROWSING_API_KEY`, `ADMIN_PASSWORD`, `DATABASE_URL`, `CORS_ORIGINS`). Never start it with `--forwarded-allow-ips '*'`: that lets anyone dodge the rate limits (see `SECURITY-AUDIT-2026-11-15.md`). After deploy, confirm `PROXY_HOPS=1` is right for Render with the rate-limit test in that report.
+2. **Demo maker web service:** same repo and root, start `uvicorn app.demo_maker:app --host 0.0.0.0 --port $PORT --no-access-log`, environment `DEMO_MAKER_CODE` (set after submitting it).
+3. Check `https://<backend>/api/health`. Free services sleep after 15 minutes idle: wake it 2 minutes before the pitch.

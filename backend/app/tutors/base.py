@@ -15,6 +15,7 @@ TUTOR_INFO = {
     "socratic": ("Socratic", "Only asks guiding questions"),
     "simple_steps": ("Simple Steps", "Short sentences, one step at a time"),
     "lecturer": ("Lecturer", "Long, accurate, hard-to-read explanations"),
+    "cheerleader": ("Cheerleader", "Warm, lots of praise and chat, drifts off topic"),
 }
 
 

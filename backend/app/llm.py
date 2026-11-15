@@ -25,6 +25,10 @@ class LLMError(RuntimeError):
     pass
 
 
+class QuotaError(LLMError):
+    """The free limit is used up (per minute or per day). Stop and try later."""
+
+
 class GeminiClient:
     def __init__(self, api_key: str | None = None, model: str | None = None,
                  min_seconds: float | None = None, timeout: float = 30):
@@ -33,6 +37,7 @@ class GeminiClient:
         self.min_seconds = float(min_seconds if min_seconds is not None else config.setting("GEMINI_MIN_SECONDS", "4"))
         self.timeout = timeout
         self._last_call = 0.0
+        self.calls = 0  # every request sent, retries included (they all count towards the quota)
 
     def build_request(self, system: str, chat: list[dict], max_tokens: int = 1024) -> urllib.request.Request:
         """chat items look like {"from": "student" or "tutor", "text": "..."}."""
@@ -63,14 +68,19 @@ class GeminiClient:
         request = self.build_request(system, chat)
         for attempt in range(4):
             self._wait_turn()
+            self.calls += 1
             try:
                 with urllib.request.urlopen(request, timeout=self.timeout) as response:
                     data = json.load(response)
                 break
             except urllib.error.HTTPError as error:
+                if error.code == 429:
+                    self.min_seconds = min(self.min_seconds * 2, 15)  # slow down for the rest of the run
                 if error.code in RETRY_CODES and attempt < 3:
                     time.sleep(5 * 2**attempt)  # 5, 10, 20 seconds
                     continue
+                if error.code == 429:
+                    raise QuotaError("Gemini says the free limit is used up for now (HTTP 429).") from None
                 detail = error.read().decode(errors="replace")[:300]
                 raise LLMError(f"Gemini returned HTTP {error.code}: {detail}") from None
             except TimeoutError:

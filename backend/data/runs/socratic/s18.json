@@ -1,0 +1,90 @@
+{
+ "student_id": "s18",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 6,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.36,
+  0.43,
+  0.44,
+  0.45
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! This is about finding equivalent fractions. \n\nLook at the denominators, which are the bottom numbers. How do we get from 3 to 6 by multiplying?",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um I guess it is 2/6 maybe? I do not get this at all it is way too hard.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That is totally okay, fractions can feel tricky at first! You are doing great just trying. \n\nLet's look at the bottom numbers again: 3 and 6. To get from 3 to 6, what number do we multiply 3 by?",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Um, do we multiply by two? This is hard. I still think it is 2/6.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! We multiply 3 by 2 to get 6. \n\nSince whatever we do to the bottom, we must also do to the top to keep the fraction fair, what do we need to multiply the top number (2) by?",
+   "move": "question",
+   "reading_age": 9.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 4/6 because you times the top by 2 as well Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Brilliant job, you got it! It is 4/6 because whatever you do to the bottom, you do to the top. \n\nNow, for your new problem, 2/9 plus 4/9: notice that the bottom numbers, the denominators, are both 9. When denominators are the same, we just add the top numbers together. What do you get when you add 2 and 4?",
+   "move": "gave_answer",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:42:36+00:00"
+}

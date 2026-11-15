@@ -75,13 +75,15 @@ def gives_answer(text: str, problem: Problem) -> bool:
 
 def label(text: str, problem: Problem) -> Label:
     lower = text.lower()
+    maths = bool(fractions_in(text)) or any(word in lower for word in MATHS_WORDS + HINT_WORDS)
     if gives_answer(text, problem):
         move = Move.GAVE_ANSWER
     elif "?" in text:
-        move = Move.QUESTION
+        # A question only teaches if it is about the maths; "what's your favourite game?" doesn't.
+        move = Move.QUESTION if maths else Move.OFF_TOPIC
     elif any(word in lower for word in HINT_WORDS):
         move = Move.HINT
-    elif fractions_in(text) or any(word in lower for word in MATHS_WORDS):
+    elif maths:
         move = Move.EXPLANATION
     elif any(word in lower for word in ENCOURAGE_WORDS):
         move = Move.ENCOURAGEMENT

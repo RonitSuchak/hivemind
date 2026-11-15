@@ -1,0 +1,74 @@
+{
+ "student_id": "s07",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 7,
+ "gain": 2,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.37,
+  0.41,
+  0.44
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hello! I would love to help you with this fraction puzzle. \n\nTo find the missing number, let's look at the denominators at the bottom, which are 3 and 6. \n\nHow many times do you need to multiply 3 to get 6?",
+   "move": "question",
+   "reading_age": 9.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "multiply by two? i think answer is 2/6.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You are right that 3 times 2 gives us 6! \n\nRemember, whatever we do to the bottom number, we must also do to the top number to keep the fraction equal. \n\nIf we multiply the bottom number 3 by 2, what do we need to do to the top number 2?",
+   "move": "question",
+   "reading_age": 11.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Not quite! We multiplied the bottom number by 2 to get 6, so we also need to multiply the top number, 2, by 2. \n\nWhat is 2 multiplied by 2?",
+   "move": "question",
+   "reading_age": 9.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:30:49+00:00"
+}

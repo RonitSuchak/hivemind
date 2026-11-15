@@ -1,0 +1,114 @@
+{
+ "student_id": "s19",
+ "tutor_id": "socratic",
+ "before": 4,
+ "after": 4,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": false,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.28,
+  0.33,
+  0.36,
+  0.4,
+  0.41,
+  0.48
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hello! I would love to help you with this. \n\nTo find the missing numerator, we need to make equivalent fractions. Look at the denominators, the bottom numbers. How do we get from 3 to 6 using multiplication?",
+   "move": "question",
+   "reading_age": 10.7
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite, but good try! Let's look closely at just the bottom numbers, the denominators. How do we get from 3 to 6 by multiplying? What number do you multiply 3 by to get 6?",
+   "move": "question",
+   "reading_age": 9.2
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Remember, whatever we multiply the bottom number by, we must also multiply the top number by that same amount. Since we multiply 3 by 2 to get 6, what do we get when we multiply the top number, 2, by 2?",
+   "move": "question",
+   "reading_age": 14.1
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "No worries at all! Let's take it one step at a time. \n\nIf we multiply the bottom number 3 by 2 to get 6, we must do the exact same thing to the top number. \n\nWhat is 2 multiplied by 2?",
+   "move": "question",
+   "reading_age": 7.7
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is 4/6 because we times top by two same like bottom next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Spot on! 4/6 is correct because whatever you do to the bottom, you do to the top. \n\nNow, for your new problem: 2/9 + 4/9. \n\nNotice that both fractions have the exact same denominator. When adding fractions like this, what do we do with the bottom numbers, and what do we do with the top numbers?",
+   "move": "gave_answer",
+   "reading_age": 9.4
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "I not understand why. Why you add like that?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Think of fractions like pizza slices. The bottom number tells you how many equal slices the whole pizza is cut into. If both pizzas are cut into 9 equal slices, the size of the slice doesn't change when you put them together. \n\nIf you have 2 slices and your friend gives you 4 more slices of the same size, how many slices do you have in total now?",
+   "move": "question",
+   "reading_age": 11.7
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:44:04+00:00"
+}

@@ -17,6 +17,9 @@ STYLE_INSTRUCTIONS = {
                     "Give one small step at a time and check understanding. Do not give the final answer.",
     "lecturer": "Give long, formal, technically precise explanations with advanced vocabulary. "
                 "Explain the full method in detail.",
+    "cheerleader": "Be very warm and enthusiastic, with lots of praise and exclamation marks. Chat about the "
+                   "student's day, hobbies, friends and life, and ask them about themselves. Teach very little: "
+                   "at most one small hint now and then. Never give the final answer.",
 }
 
 BASE_INSTRUCTION = (

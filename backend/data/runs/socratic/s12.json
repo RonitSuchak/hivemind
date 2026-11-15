@@ -1,0 +1,112 @@
+{
+ "student_id": "s12",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 9,
+ "gain": 4,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.4,
+  0.42,
+  0.57,
+  0.6,
+  0.79,
+  0.83
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! This is a question about equivalent fractions. \n\nTo find out what number goes on top, let us look at the denominators at the bottom. We have a 3 changing into a 6. \n\nBy what number do you have to multiply 3 to get 6?",
+   "move": "question",
+   "reading_age": 9.1
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6 because you just keep the top number the same and times the bottom one",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite! Remember that whatever we do to the bottom number of a fraction, we must also do to the top number to keep them equal in value. \n\nSince we multiplied the bottom number 3 by 2 to get 6, what do we need to do to the top number 2?",
+   "move": "question",
+   "reading_age": 11.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Oh I get it now, we multiply the top by 2 as well, so 2 times 2 is 4, which makes 4/6. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! You nailed that one. \n\nNow, for your new problem, 2/9 + 4/9. Notice how the bottom numbers, the denominators, are both 9. \n\nWhen adding fractions with the same denominator, what do you do with the top numbers, the numerators?",
+   "move": "question",
+   "reading_age": 10.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Is it 6/18? I added the bottom numbers too, but I am not really sure if that is right.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "It is super common to want to add the denominators, but we actually leave them alone! \n\nThink of it like slices of a pizza cut into 9 equal pieces. If you have 2 slices and your friend gives you 4 more slices, the size of the pieces doesn't change, right? \n\nSo, if the denominator stays 9, what do you get when you add just the top numbers, 2 and 4?",
+   "move": "question",
+   "reading_age": 11.7
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "it is 6/9 because you just add the top numbers and the pizza slices stay the same size Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "You got it! The pizza slices stay the same size. \n\nNow for 1/4 + 1/8. This one is a bit trickier because the denominators are different—a 4 and an 8. \n\nBefore we can add them, we need the denominators to match. Can you think of a way to change the 1/4 so its bottom number becomes an 8?",
+   "move": "question",
+   "reading_age": 8.9
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "umm is it 2/12? i just added the tops and bottoms together i think",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "That is a very common trap! We can't just add the tops and bottoms when the denominators are different. \n\nRemember what we did earlier with equivalent fractions? We want to change 1/4 into a fraction with 8 on the bottom so it matches the 1/8. \n\nWhat do you need to multiply the bottom number 4 by to get 8?",
+   "move": "question",
+   "reading_age": 10.7
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:37:23+00:00"
+}

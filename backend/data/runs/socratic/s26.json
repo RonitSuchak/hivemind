@@ -1,0 +1,87 @@
+{
+ "student_id": "s26",
+ "tutor_id": "socratic",
+ "before": 6,
+ "after": 7,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.74,
+  0.79,
+  0.87,
+  0.9
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! We want to find the missing numerator in two thirds equals something over six. \n\nLet's look at the denominators at the bottom, three and six. What do we need to multiply three by to get six?",
+   "move": "question",
+   "reading_age": 9.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 4/6 because you multiply the bottom by 2 so you have to do the same to the top Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You were completely right about the first one, well done! Whatever you do to the bottom, you must do to the top.\n\nNow let us look at adding two ninths and four ninths. When we add fractions that already have the same bottom number, what happens to the denominators?",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "it is 6/9 because the bottom stays the same and you just add the 2 and the 4 together on top Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on again! You are on a roll. \n\nFor one quarter plus one eighth, the denominators are different. To add them, we need them to match, just like we did with your very first question. \n\nCan you change one quarter into an equivalent fraction so that its denominator is eight?",
+   "move": "question",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "um, is it 2/12? i just added the top numbers and the bottom numbers together, but i am not really sure if that is right.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That is a very common trick to fall into, but we actually cannot add fractions that way! \n\nRemember how we made the denominators match in our first question? To turn one quarter into something over eight, what do you need to multiply the bottom number, four, by to get eight?",
+   "move": "question",
+   "reading_age": 13.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:52:44+00:00"
+}

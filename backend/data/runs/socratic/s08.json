@@ -1,0 +1,113 @@
+{
+ "student_id": "s08",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "gave_answer",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.52,
+  0.55,
+  0.56,
+  0.62,
+  0.66,
+  0.75
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! This is about finding equivalent fractions. \n\nLook at the denominators, which are the bottom numbers. How did we get from 3 to 6?",
+   "move": "question",
+   "reading_age": 8.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i guess 2/6 because you just keep the top number the same and change the bottom one, right?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite! If we keep the top number the same, 2/3 and 2/6 would mean the same thing, but are they equal? Imagine sharing a pizza. Would you rather have 2 slices out of 3, or 2 slices out of 6? \n\nTo keep the fractions equal, whatever we do to the bottom number, we must also do to the top number. Since we multiplied the bottom 3 by 2 to get 6, what should we do to the top number 2?",
+   "move": "question",
+   "reading_age": 9.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Oh right, so we multiply the top by 2 as well, so it is 4/6. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! 4/6 is correct. \n\nNow, for your next problem: 2/9 + 4/9. \n\nNotice how both fractions have the same denominator, which is 9. When you add fractions with the same bottom number, do you add the denominators together, or do you just add the numerators (the top numbers)?",
+   "move": "gave_answer",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I don't get it at all. Why do we just add the top numbers and leave the bottom one alone? It makes zero sense.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "I completely understand why that feels confusing! Let's think about it with pizzas again. \n\nImagine a pizza cut into 9 equal slices. If you have 2 slices, and your friend gives you 4 more slices, how many total slices do you have now? \n\nAnd when you count your slices, do you say you have 6 out of 9 slices, or 6 out of 18 slices?",
+   "move": "question",
+   "reading_age": 10.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Is it 6/18?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Think about the size of the slices. Each slice is one-ninth of the pizza. When you add your 2 slices to your friend's 4 slices, are the slices themselves getting smaller, or are you just counting how many ninths you have in total?",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "oh right, its 6/9 because you just add the top numbers and the bottom stays the same since the slices are the same size Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "You've got it! The slice size stays the same. \n\nNow for 1/4 + 1/8. Notice how the bottom numbers, 4 and 8, are different this time. Can you add them right away like we did with the ninths, or do we need to make the slice sizes the same first?",
+   "move": "question",
+   "reading_age": 6.6
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:32:06+00:00"
+}

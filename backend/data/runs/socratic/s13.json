@@ -1,0 +1,87 @@
+{
+ "student_id": "s13",
+ "tutor_id": "socratic",
+ "before": 8,
+ "after": 9,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.67,
+  0.7,
+  0.75,
+  0.83,
+  0.87
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! This is about finding equivalent fractions. \n\nLook at the denominators, which are the bottom numbers. How do we get from 3 to 6 by multiplying?",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Oh wait, you multiply 3 by 2 to get 6, so you do the same to the top. The answer is 4/6. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Spot on! You nailed that one by multiplying the top and bottom by the same number. \n\nNow, for your new problem: 2/9 + 4/9. Notice that the denominators are already the same. What do you do with the numerators, the top numbers, when you add fractions like this?",
+   "move": "question",
+   "reading_age": 9.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Oh wait I just add them so it is 6/9 because the bottom numbers stay the same. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "You are doing fantastic! You remembered that the denominator stays the same when adding. \n\nFor 1/4 + 1/8, the denominators are different. Can you think of a way to change 1/4 so it has a denominator of 8, just like we did in your very first question?",
+   "move": "question",
+   "reading_age": 11.5
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Wait, is it 2/12? This fraction stuff is so confusing and I hate changing the bottom numbers.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "It is totally normal to find this tricky at first, but you are doing great! \n\nRemember how we changed 2/3 to 4/6 by multiplying the top and bottom by 2? \n\nIf you want to turn the denominator 4 into 8, what number do you need to multiply the bottom by? And what happens when you do that to the top?",
+   "move": "question",
+   "reading_age": 10.9
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:37:55+00:00"
+}

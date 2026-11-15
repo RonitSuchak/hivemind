@@ -1,0 +1,176 @@
+{
+ "minutes": 8,
+ "quiz_1": [
+  {
+   "id": "c1",
+   "text": "Which fraction is the same as 1/3?",
+   "options": [
+    "2/6",
+    "2/3",
+    "1/6",
+    "3/1"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "3/10 + 4/10 = ?",
+   "options": [
+    "7/20",
+    "1/10",
+    "7/10",
+    "12/10"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "1/2 + 1/8 = ?",
+   "options": [
+    "2/10",
+    "1/10",
+    "5/8",
+    "2/8"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Simplify 6/8.",
+   "options": [
+    "1/2",
+    "3/4",
+    "2/3",
+    "6/4"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "2/5 + 1/10 = ?",
+   "options": [
+    "3/10",
+    "1/5",
+    "3/15",
+    "1/2"
+   ]
+  }
+ ],
+ "mini_lesson": [
+  "You can only add fractions when the bottom numbers (the denominators) match.",
+  "To make them match, multiply the top and the bottom of a fraction by the same number. 1/2 is the same as 2/4.",
+  "Then add the top numbers and keep the bottom number: 2/4 + 1/4 = 3/4.",
+  "Last, simplify if you can: 2/4 is the same as 1/2."
+ ],
+ "mini_lesson_seconds": 120,
+ "quiz_2": [
+  {
+   "id": "c6",
+   "text": "Which fraction is the same as 2/5?",
+   "options": [
+    "4/10",
+    "4/5",
+    "2/10",
+    "5/2"
+   ]
+  },
+  {
+   "id": "c7",
+   "text": "2/7 + 4/7 = ?",
+   "options": [
+    "6/14",
+    "8/7",
+    "2/7",
+    "6/7"
+   ]
+  },
+  {
+   "id": "c8",
+   "text": "1/4 + 1/12 = ?",
+   "options": [
+    "1/3",
+    "1/16",
+    "2/12",
+    "2/16"
+   ]
+  },
+  {
+   "id": "c9",
+   "text": "Simplify 9/12.",
+   "options": [
+    "9/4",
+    "3/4",
+    "1/3",
+    "2/3"
+   ]
+  },
+  {
+   "id": "c10",
+   "text": "1/2 + 1/6 = ?",
+   "options": [
+    "1/8",
+    "2/3",
+    "2/8",
+    "2/6"
+   ]
+  }
+ ],
+ "reading": [
+  {
+   "id": "p1",
+   "passage": "Sam had a pizza cut into eight equal slices. He ate three slices. He gave two slices to his sister. The rest went in the fridge for later.",
+   "questions": [
+    {
+     "id": "r1",
+     "text": "How many slices went in the fridge?",
+     "options": [
+      "2",
+      "3",
+      "8",
+      "5"
+     ]
+    },
+    {
+     "id": "r2",
+     "text": "Who did Sam give slices to?",
+     "options": [
+      "His teacher",
+      "His mum",
+      "His sister",
+      "His friend"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "passage": "Although Maya had practised her recipe carefully, she realised that the instructions were written for twelve people, whereas only four guests were expected. Consequently, she decided to use one third of every ingredient, which meant recalculating each quantity before she began.",
+   "questions": [
+    {
+     "id": "r3",
+     "text": "Why did Maya change the recipe?",
+     "options": [
+      "She had no ingredients",
+      "Fewer guests were coming",
+      "She lost the instructions",
+      "The guests were vegetarian"
+     ]
+    },
+    {
+     "id": "r4",
+     "text": "What share of each ingredient did she use?",
+     "options": [
+      "Half",
+      "One quarter",
+      "Twelve times as much",
+      "One third"
+     ]
+    }
+   ]
+  }
+ ],
+ "english_question": {
+  "id": "e1",
+  "text": "How confident are you reading English?",
+  "min": 1,
+  "max": 5,
+  "min_label": "Not at all",
+  "max_label": "Very"
+ }
+}

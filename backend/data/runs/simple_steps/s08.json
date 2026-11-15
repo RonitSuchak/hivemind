@@ -1,0 +1,110 @@
+{
+ "student_id": "s08",
+ "tutor_id": "simple_steps",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.52,
+  0.55,
+  0.62,
+  0.66,
+  0.75,
+  0.81
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hello! We can do this. \n\nLook at the bottom numbers. \n\nWe have 3 and 6. \n\nHow do we get from 3 to 6? \n\nWhat do we multiply 3 by to make 6?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um, I guess it is 2/6? I don't really know, this is confusing.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That is okay! It is new. \n\nLook at the bottom numbers. \n\nWe have 3 and 6. \n\nWhat is 3 times 2?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Oh right, 3 times 2 is 6, so you multiply the top by 2 as well, which makes it 4/6. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Great job on that one! \n\nNow we have plus. \n\nWe are adding fractions. \n\nThe bottom numbers are the same. They are both 9. \n\nWhen the bottom numbers are the same, they stay the same. \n\nWhat is the top number, 2 plus 4?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 6/18 because you add the bottom ones too? I get confused when we change what to add.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That is a very common mistake. \n\nWhen we add, we only add the top numbers. \n\nThe bottom number stays the same. \n\nWhat is 2 plus 4?",
+   "move": "question",
+   "reading_age": 7.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Oh wait, it is 6/9 because you just add the top ones and leave the bottom alone. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Spot on! You got it. \n\nNow we have a new one. \n\n1 over 4 plus 1 over 8. \n\nLook at the bottom numbers. They are 4 and 8. \n\nAre they the same?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "is it 2/12? i really dont get why we have to do this stuff today",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "It is hard today, but you are doing well. \n\nTake a breath. \n\nNo, we do not add them. \n\nThe bottom numbers must be the same to add. \n\nCan we turn the 4 into an 8? \n\nWhat do we multiply 4 by to get 8?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:07:16+00:00"
+}

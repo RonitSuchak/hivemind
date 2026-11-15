@@ -1,0 +1,74 @@
+{
+ "student_id": "s22",
+ "tutor_id": "socratic",
+ "before": 4,
+ "after": 5,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.32,
+  0.37,
+  0.39
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! This is a question about equivalent fractions. \n\nLook at the denominators at the bottom, 3 and 6. What did we multiply 3 by to get 6?",
+   "move": "question",
+   "reading_age": 9.2
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is the answer 2/6? i think so, because the top number stayed the same and 3 times 2 is 6.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You noticed that 3 times 2 is 6, which is spot on! But remember, whatever we do to the bottom number, we must also do to the top number to keep the fractions equal. \n\nIf we multiplied the bottom number by 2, what should we multiply the top number (2) by?",
+   "move": "question",
+   "reading_age": 12.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Not quite 2/6! Remember, whatever we do to the bottom, we must do to the exact same thing to the top. \n\nIf we multiplied the bottom number (3) by 2 to get 6, what do we get when we multiply the top number (2) by 2?",
+   "move": "question",
+   "reading_age": 10.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:47:32+00:00"
+}

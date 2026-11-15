@@ -1,0 +1,113 @@
+{
+ "student_id": "s10",
+ "tutor_id": "socratic",
+ "before": 2,
+ "after": 5,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 1,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.17,
+  0.22,
+  0.26,
+  0.32,
+  0.34,
+  0.45,
+  0.49
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that. We want to find the missing numerator so that two-thirds is equal to something over six. \n\nLook at the denominators, three and six. What do we need to multiply the bottom number, three, by to get six?",
+   "move": "question",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um is it 2/6 maybe",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Two-sixths is close, but let's check what we get when we multiply the denominator. \n\nSince three times two gives us six, whatever we do to the bottom number, we must also do to the top number. \n\nIf we multiply the numerator, two, by that same number, two, what do we get?",
+   "move": "question",
+   "reading_age": 12.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Remember, we are multiplying the top number, two, by two as well. What is two times two?",
+   "move": "question",
+   "reading_age": 8.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "um, is it 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Two times two is four, not two. \n\nSo if the top number is four and the bottom number is six, what is our complete fraction?",
+   "move": "question",
+   "reading_age": 8.9
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is it 4/6 because we times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Spot on! Four-sixths is correct. \n\nNow, for your next problem, two-ninths plus four-ninths, look at the denominators. Are they already the same?",
+   "move": "question",
+   "reading_age": 7.4
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "um is the answer 6/18 maybe",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Not quite! When we add fractions with the same denominator, the denominator stays the same. \n\nSince both denominators are nine, what will the denominator of our answer be?",
+   "move": "question",
+   "reading_age": 12.4
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:35:16+00:00"
+}

@@ -1,0 +1,87 @@
+{
+ "student_id": "s30",
+ "tutor_id": "socratic",
+ "before": 7,
+ "after": 8,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.55,
+  0.65,
+  0.79,
+  0.84
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I would love to help you with that! We want to find the missing numerator in two-thirds equals something over six. \n\nLet's look at the denominators at the bottom, three and six. How do we get from three to six using multiplication?",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "you multiply by two so you have to do the same to the top, making it 4/6 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Spot on! Four-sixths is correct. \n\nNow, for your next problem, we are adding two-ninths and four-ninths. Notice that both fractions already have the same denominator at the bottom. When the denominators are the same, what do we do with the numerators at the top?",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "It is 6/9 because you just add the top numbers together and keep the bottom number the same. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "You nailed that explanation! \n\nFor one-quarter plus one-eighth, the denominators are different this time. We need to make them the same before we can add. Can you think of a number that both four and eight can divide into evenly?",
+   "move": "question",
+   "reading_age": 10.1
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "um, is it 2/12? i just added the tops and bottoms together, but i am really not sure if that is right",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Adding across the tops and bottoms doesn't quite work for fractions, but it is great that you tried! \n\nLet's go back to finding a common denominator for four and eight. What is the smallest number that both four and eight can go into?",
+   "move": "question",
+   "reading_age": 10.4
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:57:08+00:00"
+}

@@ -1,0 +1,113 @@
+{
+ "student_id": "s07",
+ "tutor_id": "simple_steps",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "gave_answer",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.43,
+  0.47,
+  0.48,
+  0.6,
+  0.65,
+  0.82
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi there. I can help. \n\nLook at the bottom numbers. \nWe have a 3 and a 6. \nHow do we get from 3 to 6? \nDo we times or divide? \nAnd what number do we use?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Is it 2/6? I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite. Let us look again. \n\nTo go from 3 to 6, we times by 2. \n\nWhatever you do to the bottom number, you must also do to the top number. \n\nThe top number is 2. \n\nWhat is 2 times 2?",
+   "move": "question",
+   "reading_age": 6.9
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is 4/6? Because bottom is times 2, so top is 2 times 2 is 4. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! 4/6 is right. \n\nNow for the next one. \n\nWe have 2/9 plus 4/9. \n\nLook at the bottom numbers. Are they the same?",
+   "move": "gave_answer",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I don't understand why. Why we keep bottom number same?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Think of a pizza. \n\nWe cut it into 9 slices. \n\nThe bottom number tells us the size of the slice. \n\nIt is still a ninth slice. \n\nSo the bottom stays 9. \n\nNow, add the top numbers. \n\nWhat is 2 plus 4?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "i think 6/18. is it wrong?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Yes, that is wrong. \n\nRemember, the bottom number stays the same. \n\nIt is still 9. \n\nSo the bottom is 9. \n\nNow, what is 2 plus 4 for the top number?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Is 6/9 because 2 plus 4 is 6 and bottom is same. next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Yes, 6/9 is right! Well done. \n\nNow for 1/4 plus 1/8. \n\nLook at the bottom numbers. They are 4 and 8. \n\nAre they the same?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:05:48+00:00"
+}

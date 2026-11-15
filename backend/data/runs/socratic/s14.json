@@ -1,0 +1,74 @@
+{
+ "student_id": "s14",
+ "tutor_id": "socratic",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.46,
+  0.49,
+  0.51
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "I can help you with that! We want to find the missing numerator in two-thirds equals something over six. \n\nFirst, look at the denominators at the bottom: 3 and 6. How do we get from 3 to 6 by multiplying?",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "times two, maybe? is it 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You got the first part right, we multiply by 2! But remember, whatever we do to the bottom number, we must also do to the top number to keep the fractions equal. \n\nIf you multiply the numerator, which is 2, by 2, what do you get?",
+   "move": "question",
+   "reading_age": 11.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Not quite 2/6. Remember, we need to multiply both the top number and the bottom number by 2. \n\nIf you take the top number, 2, and multiply it by 2, what number does that give you?",
+   "move": "question",
+   "reading_age": 9.4
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:38:16+00:00"
+}

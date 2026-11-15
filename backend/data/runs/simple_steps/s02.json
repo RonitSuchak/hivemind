@@ -1,0 +1,112 @@
+{
+ "student_id": "s02",
+ "tutor_id": "simple_steps",
+ "before": 4,
+ "after": 6,
+ "gain": 2,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.36,
+  0.41,
+  0.51,
+  0.57,
+  0.6,
+  0.74
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hello! I can help. \n\nLook at the bottom numbers. We have 3 and 6. \n\nHow do we get from 3 to 6 using times?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Is it 2/6? I just copied the top number. This is too hard, I hate fractions.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That is okay. Fractions can be hard. \n\nTake a deep breath. You can do this. \n\nLook at the bottom numbers, 3 and 6. \n\nWhat is 3 times 2?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 4/6 because you times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "You got the first one right! Good job. \n\nNow look at the next sum: 2/9 plus 4/9. \n\nThe bottom numbers are the same. They are both 9. \n\nWhat do you do with the top numbers, 2 and 4?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "umm I add them to get 6 and I add the 9s too I guess so maybe it is 6/18",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "You did a great job adding the top numbers to get 6. \n\nWhen we add fractions with the same bottom number, the bottom number stays the same. \n\nSo the bottom number is 9. \n\nCan you tell me the final fraction now?",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Is it 6/18?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "No, not quite. \n\nRemember, the bottom number stays the same. \n\nIt does not change. \n\nThe bottom number is 9. \n\nWhat is the top number and the bottom number together?",
+   "move": "question",
+   "reading_age": 8.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Oh I get it now, it is 6/9 because you just add the top numbers and the bottom one stays the same. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Yes! You got it. \n\nNow we have 1/4 plus 1/8. \n\nThe bottom numbers are different. They are 4 and 8. \n\nCan you change 1/4 so the bottom number is 8?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T19:59:40+00:00"
+}

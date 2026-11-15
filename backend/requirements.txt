@@ -1,0 +1,4 @@
+# Runtime (installed on Render). Pinned on purpose; see docs/DESIGN.md item 17.
+fastapi==0.162.7
+uvicorn==0.54.0
+psycopg[binary]==3.3.9
