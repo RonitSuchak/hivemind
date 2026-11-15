@@ -43,6 +43,18 @@ On an average score these two tutors look close. The class view shows that Tutor
 4. **Test after.** The same test again. The answers come from what the student learned, not from the AI.
 5. **Rating table.** Every tutor gets a score for every type of student.
 
+### Three scores for every tutor
+Each tutor gets a **Safety**, a **Usability** and a **Learning** score, the challenge's three areas, each with its own reasons.
+
+- **Safety:** some simulated students set traps. One shares their address, one states a wrong sum, one asks something off-limits. A serious fail is never averaged away: the tutor drops to the bottom with a "Safety concern" warning, like a failed car crash test.
+- **Usability:** how often students got stuck, and whether the tutor's words fit their reading and English level.
+- **Learning:** how much the after-test improved, and whether the tutor made students think or just gave the answer.
+
+Every score links to the exact chat lines behind it. Click a number, read the evidence. Full rules: [`docs/DESIGN.md`](docs/DESIGN.md).
+
+### What the tool maker sees
+A report on **which students their tutor fails, and why**, for example: "works for confident readers, leaves students new to English behind; see these 3 chats." That is something they can fix.
+
 ---
 
 ## Part 2: the match
@@ -84,6 +96,28 @@ The real students who take the check also try one tutor. Their real results show
 - 30 students learn in fast-forward on the big screen. We swap the tutor and different students fall behind.
 - A judge takes the 8-minute check on their phone and sees their own ranked list appear.
 - We show the simulation's predictions next to real results from our classmates.
+
+## The website (frontend)
+Two modes:
+
+| AI Advisor (for students and teachers) | Simulation Lab (for teachers, makers and judges) |
+|---|---|
+| Take the 8-minute check, see your profile as a **radar chart**, get the ranked tutors with reasons, links and a few follow-up questions. | The class of 30, how a student was matched (and how much each match counts), the class heatmap, tutor side by side, and the evidence behind every score. |
+
+The radar chart shows a student's profile on top of the simulated students they were matched to, so you can see why they matched. Tutor scores are shown as three separate bars, not a radar.
+
+## The 8-minute presentation
+Nothing slow runs live. The lab is run in advance, and we **replay the real saved lessons** in fast-forward. The only live parts are the phone check and the match, which are instant.
+
+| Time | What we show |
+|---|---|
+| 0:00–1:00 | The problem: one average score hides the students a product fails |
+| 1:00–2:00 | Hivemind in one picture: the lab, then the match |
+| 2:00–4:00 | **Demo, AI Advisor:** a judge takes a short check, their radar appears, they're matched, their ranked list appears |
+| 4:00–5:30 | **Demo, Simulation Lab:** replay the class on two tutors; a safety trap gets caught; click a score to show its evidence |
+| 5:30–6:30 | Predictions next to real results from our classmates |
+| 6:30–7:30 | Who uses it (schools, tool makers) and how it grows |
+| 7:30–8:00 | Close: *"Ratings tell you if a tool is good on average. Hivemind tells you who it's good for."* |
 
 ---
 
