@@ -1,0 +1,72 @@
+{
+ "student_id": "s16",
+ "tutor_id": "simple_steps",
+ "before": 9,
+ "after": 10,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.77,
+  0.79,
+  0.83,
+  0.92
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hello! Let us solve this together. \n\nLook at the bottom numbers, the denominators. \nWe have 3 and 6. \n\nHow do we get from 3 to 6? \nDo we multiply or divide? And by what number?",
+   "move": "question",
+   "reading_age": 7.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "it is 4/6 because you multiply the bottom by 2 so you have to multiply the top by 2 as well Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Well done! You got it right. \n\nNow let us add fractions. \nWe have two over nine plus four over nine. \n\nLook at the bottom numbers. They are both nine. \n\nWhen the bottom numbers are the same, do we add them together? \nOr do they stay the same?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "It is 6/9 because the denominators stay the same and you just add the 2 and 4 on top. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! You are doing great. \n\nNow we have one over four plus one over eight. \n\nLook at the bottom numbers. They are four and eight. They are not the same! \n\nCan we change the four into an eight? \nWhat do you multiply four by to get eight?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:16:44+00:00"
+}

@@ -1,0 +1,113 @@
+{
+ "student_id": "s10",
+ "tutor_id": "simple_steps",
+ "before": 2,
+ "after": 5,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.17,
+  0.27,
+  0.33,
+  0.36,
+  0.37,
+  0.48,
+  0.54
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! I can help. \n\nLook at the bottom numbers. We have 3 and 6. \n\nHow do we get from 3 to 6? What do we multiply by?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um, is it 2/6? I just copied the top number over.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite. \n\nWe must do the same to the top and bottom. \n\nWe multiply the bottom number, 3, by 2 to get 6. \n\nNow, multiply the top number, 2, by 2. \n\nWhat do you get?",
+   "move": "question",
+   "reading_age": 6.7
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Not quite. \n\nRemember, we times the top number by 2 as well. \n\nWhat is 2 times 2?",
+   "move": "question",
+   "reading_age": 7.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "it is 4 so the answer is 4/6 because you times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Yes! Great job. 4/6 is right. \n\nNow for a new sum: 2/9 + 4/9. \n\nLook at the bottom numbers. Are they the same?",
+   "move": "gave_answer",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "i do not get it why do we just add the top ones and leave the bottom one alone",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Think of pizzas. \n\nThe bottom number is the size of the slice. It is 9. \n\nYou have 2 slices. Then you get 4 more slices. \n\nHow many slices do you have in total?",
+   "move": "question",
+   "reading_age": 6.3
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "is it 6/18 because we add the bottom numbers too, or do the slice sizes stay the same?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "The slice sizes stay the same! \n\nThey are still ninths. \n\nSo, what is 2 plus 4 for the top numbers?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:09:40+00:00"
+}

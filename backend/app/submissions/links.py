@@ -6,7 +6,9 @@
 - redirects are followed by hand (at most 3) and every hop is checked again;
 - we connect to the exact address we checked (no second DNS lookup), so DNS
   rebinding can't swap a public address for a private one;
-- at most 16 KB is read, within a 10-second deadline.
+- at most 16 KB is read, within ONE 10-second deadline for the whole request: a
+  watchdog cuts the connection when time runs out, so a tutor that drips its
+  reply a byte at a time can't hold the server for longer.
 """
 
 from __future__ import annotations
@@ -16,6 +18,7 @@ import ipaddress
 import json
 import socket
 import ssl
+import threading
 import time
 from urllib.parse import urljoin, urlsplit
 
@@ -71,6 +74,21 @@ class PinnedHTTPSConnection(http.client.HTTPSConnection):
         self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
 
 
+def _cut(conn) -> None:
+    """Called by the watchdog: shut the socket so any blocked read returns at once."""
+    sock = getattr(conn, "sock", None)
+    if sock is not None:
+        try:
+            sock.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
+
+
+def _check_deadline(started: float) -> None:
+    if time.monotonic() - started >= config.MAKER_TIMEOUT_SECONDS:
+        raise LinkError("responds", f"No answer within {config.MAKER_TIMEOUT_SECONDS:.0f} s.")
+
+
 def post_json(url: str, payload: dict, resolver=resolve, connection=PinnedHTTPSConnection) -> dict:
     """POST JSON safely. Returns {"status", "content_type", "body" (bytes), "seconds"}."""
     started = time.monotonic()
@@ -86,6 +104,9 @@ def post_json(url: str, payload: dict, resolver=resolve, connection=PinnedHTTPSC
             raise LinkError("responds", f"No answer within {config.MAKER_TIMEOUT_SECONDS:.0f} s.")
         conn = connection(parts.hostname, ips[0], port, left)
         path = (parts.path or "/") + (f"?{parts.query}" if parts.query else "")
+        watchdog = threading.Timer(left, _cut, args=(conn,))  # the per-read timeout alone can be dripped past
+        watchdog.daemon = True
+        watchdog.start()
         try:
             conn.request("POST", path, body=data, headers={"Content-Type": "application/json",
                                                            "Accept": "application/json",
@@ -98,17 +119,29 @@ def post_json(url: str, payload: dict, resolver=resolve, connection=PinnedHTTPSC
                     raise LinkError("responds", "The link redirected nowhere.")
                 url = urljoin(url, location)
                 continue
-            body = response.read(config.MAKER_MAX_RESPONSE_BYTES + 1)
+            _check_deadline(started)
+            body = bytearray()
+            while len(body) <= config.MAKER_MAX_RESPONSE_BYTES:
+                chunk = response.read(min(4096, config.MAKER_MAX_RESPONSE_BYTES + 1 - len(body)))
+                _check_deadline(started)
+                if not chunk:
+                    break
+                body += chunk
             return {"status": response.status, "content_type": response.getheader("Content-Type") or "",
-                    "body": body, "seconds": time.monotonic() - started}
+                    "body": bytes(body), "seconds": time.monotonic() - started}
         except LinkError:
             raise
         except (TimeoutError, socket.timeout):
             raise LinkError("responds", f"No answer within {config.MAKER_TIMEOUT_SECONDS:.0f} s.") from None
         except ssl.SSLError:
+            if time.monotonic() - started >= config.MAKER_TIMEOUT_SECONDS:  # the watchdog cut it
+                raise LinkError("responds", f"No answer within {config.MAKER_TIMEOUT_SECONDS:.0f} s.") from None
             raise LinkError("secure_link", "The link's https certificate isn't valid.") from None
-        except (OSError, http.client.HTTPException):
+        except (OSError, http.client.HTTPException, ValueError):
+            if time.monotonic() - started >= config.MAKER_TIMEOUT_SECONDS:  # the watchdog cut it
+                raise LinkError("responds", f"No answer within {config.MAKER_TIMEOUT_SECONDS:.0f} s.") from None
             raise LinkError("responds", "Couldn't connect to the link.") from None
         finally:
+            watchdog.cancel()
             conn.close()
     raise LinkError("responds", f"Too many redirects (more than {config.MAKER_MAX_REDIRECTS}).")

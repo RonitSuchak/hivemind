@@ -1,0 +1,110 @@
+{
+ "student_id": "s18",
+ "tutor_id": "simple_steps",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.4,
+  0.45,
+  0.55,
+  0.61,
+  0.74,
+  0.81
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! We can do this. \n\nLook at the bottom numbers. We have 3 and 6. \n\nHow do we get from 3 to 6? Do we multiply or divide? And what number do we use?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "umm is it 2/6 maybe I dont get this at all",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That is okay! Fractions can be hard. \n\nLet us look at the bottom numbers. \n\nWe have 3 and 6. \n\nTo go from 3 to 6, we multiply by 2. \n\nWhatever we do to the bottom, we must do to the top. \n\nCan you multiply the top number, 2, by 2? What do you get?",
+   "move": "question",
+   "reading_age": 6.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "it is 4/6 because we times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Yes! You got it right! Four over six. Great job!\n\nNow let us try adding. \n\nWe have two over nine plus four over nine. \n\nLook at the bottom numbers. They are both nine. \n\nWhen the bottom numbers are the same, they stay the same. \n\nWhat do you get when you add the top numbers, two and four?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Is it 6/18? I hate this, it makes no sense at all.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "It is okay to feel stuck. Take a breath. \n\nWhen we add fractions, the bottom number stays the same. \n\nThe bottom number is nine. So the bottom of our answer is nine. \n\nNow, add the top numbers, two and four. What do you get?",
+   "move": "question",
+   "reading_age": 6.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "it is 6/9 because you keep the bottom nine and just add two and four on top Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Yes! Exactly right. Six over nine. You are doing so well.\n\nNow we have one over four plus one over eight.\n\nLook at the bottom numbers. They are four and eight. They are not the same!\n\nWe need to make the bottom numbers match.\n\nCan you change four into eight by multiplying? What do you times four by to get eight?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "I do not know. Is it 2/12? This is too hard and I hate math.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "I hear you. It is okay to feel mad. Take a deep breath. You can do this. \n\nLook at the four. To make it match the eight, we multiply four by two. \n\nWe must also multiply the top number, one, by two. \n\nWhat is one times two?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:19:33+00:00"
+}

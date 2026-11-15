@@ -51,6 +51,9 @@ All three fixed in `app/middleware.py` and `app/serve.py`; 152 tests pass (7 new
 
 Found while re-testing fix 1: uvicorn trusts `X-Forwarded-For` from `127.0.0.1` **by default**, so it was rewriting the visitor's address before our code saw it. The start command `python -m app.serve` switches that off (`proxy_headers=False`), so only `client_ip()` decides. Still to confirm on Render (UNVERIFIED): that Render's proxy adds exactly one entry, so `PROXY_HOPS=1` is right. Run the Render-mode test above against the live address.
 
+## Found after the push (automated review, 15 Nov)
+**4. The 10-second limit on a maker's tutor could be dripped past (Medium).** A hostile tutor could keep the server busy for a long time, because the timeout applied to each read, not to the whole reply: one byte every 9 seconds never trips it. **Fixed:** one deadline for the whole request; a watchdog shuts the socket when time runs out, and the body is read in a loop that checks the clock (`app/submissions/links.py`). Proof: tests `test_a_reply_dripped_a_byte_at_a_time_is_cut_at_the_deadline` and `test_the_watchdog_cuts_a_real_socket_that_never_answers` (a real socket that never answers is cut at the deadline). Not yet pushed.
+
 ## Owner to-do list
 1. Done: fixes 1–3 approved and applied.
 2. Approve installing `pip-audit` in `backend/.venv` for the dependency scan, or skip it.

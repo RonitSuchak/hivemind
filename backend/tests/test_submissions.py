@@ -100,6 +100,50 @@ class LinkTests(unittest.TestCase):
             post_json("https://pal.example/chat", {}, resolver=public_resolver, connection=conn)
         self.assertIn("No answer within 10 s", caught.exception.detail)
 
+    def test_a_reply_dripped_a_byte_at_a_time_is_cut_at_the_deadline(self):
+        import time
+
+        class Drip(FakeResponse):
+            def read(self, n=-1):
+                time.sleep(0.2)
+                return b"x"
+        conn = fake_connection({"pal.example": Drip(200)})
+        started = time.monotonic()
+        with mock.patch.object(config, "MAKER_TIMEOUT_SECONDS", 0.5):
+            with self.assertRaises(LinkError) as caught:
+                post_json("https://pal.example/chat", {}, resolver=public_resolver, connection=conn)
+        self.assertLess(time.monotonic() - started, 1.5)
+        self.assertIn("No answer within", caught.exception.detail)
+
+    def test_the_watchdog_cuts_a_real_socket_that_never_answers(self):
+        import http.client
+        import time
+        left, right = socket.socketpair()
+
+        class Silent:
+            def __init__(self, host, ip, port, timeout):
+                self.sock = left  # a real socket that never receives anything
+
+            def request(self, *a, **k):
+                pass
+
+            def getresponse(self):
+                if not self.sock.recv(1):  # blocks until the watchdog shuts the socket
+                    raise http.client.RemoteDisconnected("closed")
+
+            def close(self):
+                pass
+        started = time.monotonic()
+        try:
+            with mock.patch.object(config, "MAKER_TIMEOUT_SECONDS", 0.5):
+                with self.assertRaises(LinkError) as caught:
+                    post_json("https://pal.example/chat", {}, resolver=public_resolver, connection=Silent)
+        finally:
+            left.close()
+            right.close()
+        self.assertLess(time.monotonic() - started, 2)
+        self.assertIn("No answer within", caught.exception.detail)
+
     def test_oversized_and_html_replies_are_rejected(self):
         def post_with(body):
             return lambda url, payload: {"status": 200, "content_type": "application/json", "body": body,

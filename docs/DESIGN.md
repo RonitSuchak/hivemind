@@ -276,6 +276,8 @@ Every tutor has `try_url`: `/try/{tutor_id}` (a page on our website) for our tut
 `python3 -m app.export` calls every GET route through the real app and saves the JSON in `backend/data/export/` (plus example responses for match, ask, chat and validation). Kien and Nina copy the folder into the website's public folder; the website loads it when `/api/health` fails and shows "Showing saved results".
 
 ## Item 20: deploy
+**Decision (Ronit, 15 Nov): not deploying for now; everything runs on Ronit's laptop** (the planned fallback). Render asked for a card; we stay on free services only. Trade-offs accepted: judges use the site on the laptop (or on the same Wi-Fi), and a submission can't pass the public-https check at the expo, so the demo shows bad links being rejected. The steps below stay ready if we go online later.
+
 - **Backend:** Render free web service from `backend/`, `PYTHON_VERSION=3.15.2`, start command `python -m app.serve` (uvicorn with its own proxy-header handling off and no access log), with `HOST=0.0.0.0` and `PROXY_HOPS=1`: the rate limits read the visitor's address only from the `X-Forwarded-For` entry Render's proxy adds, never from entries a visitor writes (security audit, 15 Nov). `/api/health` answers `{"ok": true, …}`.
 - **Demo maker tutor:** a second Render free service (same repo) so it has its own address.
 - **Sleep:** free services sleep after 15 minutes idle and take about a minute to wake. **Pitch checklist step:** open `/api/health` 2 minutes before presenting; demo mode is the backup.
