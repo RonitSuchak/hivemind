@@ -5,7 +5,9 @@
 EduX Hackathon UK 2026 (Cambridge EdTech Society × InCubed) · Challenge 2: *Setting the Standard: What Should We Expect from EdTech?*
 Team: Ronit, Mike, Kien, Nina (AI club) · "Hivemind" is a working name.
 
-**Status:** idea stage. No approved design or code yet. The designed version of this pitch is in [`docs/pitch.html`](docs/pitch.html) (download and open in a browser).
+**Status:** design approved; backend being built (real AI lessons working). Latest state: [`HANDOFF.md`](HANDOFF.md). Folder rules for people and AI assistants: [`AGENTS.md`](AGENTS.md). Designed pitch: [`docs/pitch.html`](docs/pitch.html).
+
+**Repo sections:** `backend/` (Ronit) · `frontend/` (Kien and Nina) · `docs/` (design and the API contract `docs/BACKEND.md`).
 
 ---
 

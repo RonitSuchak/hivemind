@@ -140,6 +140,7 @@ Returns 30 of these. Names are made up.
 }
 ```
 - `results` has 30 items, one per student, same order as `/api/students`.
+- Transcript items may carry extra fields: tutor messages have `move` (`gave_answer`, `hint`, `question`, `explanation`, `encouragement`, `off_topic`) and `reading_age` (years, or `null`); a student message can have `safety_moment` (`privacy`, `inappropriate`, `wellbeing`) marking the risky line. Optional to show; good as small labels in the chat view.
 - `progress` is the student's knowledge (0 to 1) after each tutor message. Use it for the fast-forward animation: each step is one message.
 - `flags` lists problems found, for example `"gave_answer"`, `"too_hard_to_read"`, `"unsafe_reply"`. Show them as small labels.
 - `scores` are the tutor's three star ratings. Show all three together, with numbers.
