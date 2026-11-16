@@ -1,5 +1,5 @@
 {
- "match_id": "m_vdb-FAs-",
+ "match_id": "m_wGPR5dph",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -85,6 +85,21 @@
  "ranked": [
   {
    "rank": 1,
+   "tutor_id": "simple_steps",
+   "tutor_name": "Simple Steps",
+   "kind": "built_in",
+   "predicted_gain": 2.6,
+   "scores": {
+    "safety": 5.0,
+    "usability": 4.8,
+    "learning": 4.2
+   },
+   "safety_warning": null,
+   "why": "Clear replies and questions that made students like you think.",
+   "try_url": "/try/simple_steps"
+  },
+  {
+   "rank": 2,
    "tutor_id": "socratic",
    "tutor_name": "Socratic",
    "kind": "built_in",
@@ -97,21 +112,6 @@
    "safety_warning": null,
    "why": "Students like you learned a little with it.",
    "try_url": "/try/socratic"
-  },
-  {
-   "rank": 2,
-   "tutor_id": "simple_steps",
-   "tutor_name": "Simple Steps",
-   "kind": "built_in",
-   "predicted_gain": 2.0,
-   "scores": {
-    "safety": 5.0,
-    "usability": 4.7,
-    "learning": 4.2
-   },
-   "safety_warning": null,
-   "why": "Students like you learned a little with it.",
-   "try_url": "/try/simple_steps"
   },
   {
    "rank": 3,
@@ -148,194 +148,18 @@
    "tutor_id": "cheerleader",
    "tutor_name": "Cheerleader",
    "kind": "built_in",
-   "predicted_gain": 0.4,
+   "predicted_gain": 2.4,
    "scores": {
-    "safety": 1.2,
-    "usability": 4.0,
-    "learning": 1.4
+    "safety": 2.0,
+    "usability": 4.1,
+    "learning": 3.8
    },
-   "safety_warning": "Repeated the student's address or school. Needs review.",
-   "why": "It failed a safety check in our tests, so it is shown last (it chatted more than it taught).",
+   "safety_warning": "Did not refuse to write a fake parent note. Needs review.",
+   "why": "It failed a safety check in our tests, so it is shown last (it can still teach).",
    "try_url": "/try/cheerleader"
   }
  ],
  "real_tools": [
-  {
-   "id": "desmos",
-   "name": "Desmos",
-   "url": "https://www.desmos.com",
-   "kind": "Graphing",
-   "blurb": "A graphing calculator for drawing and exploring equations.",
-   "most_used": true,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "brilliant",
-   "name": "Brilliant",
-   "url": "https://brilliant.org",
-   "kind": "Interactive problems",
-   "blurb": "Hands-on puzzles and short lessons in maths, science and computing.",
-   "most_used": true,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "khanmigo",
-   "name": "Khanmigo",
-   "url": "https://www.khanmigo.ai",
-   "kind": "AI learning assistant",
-   "blurb": "A learning assistant from Khan Academy that asks questions to guide you.",
-   "most_used": true,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "nrich",
-   "name": "NRICH",
-   "url": "https://nrich.maths.org",
-   "kind": "Maths problems",
-   "blurb": "Open maths problems and puzzles that make you think and explore.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "isaac-physics",
-   "name": "Isaac Physics",
-   "url": "https://isaacphysics.org",
-   "kind": "Physics problems",
-   "blurb": "Physics and maths problems with hints and feedback as you go.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "underground-mathematics",
-   "name": "Underground Mathematics",
-   "url": "https://undergroundmathematics.org",
-   "kind": "Maths problems",
-   "blurb": "Problems and resources that connect A level maths ideas.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "geogebra",
-   "name": "GeoGebra",
-   "url": "https://www.geogebra.org",
-   "kind": "Maths exploring",
-   "blurb": "Draw and move shapes, graphs and equations to see how they work.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "phet",
-   "name": "PhET Simulations",
-   "url": "https://phet.colorado.edu",
-   "kind": "Science simulations",
-   "blurb": "Interactive science and maths simulations that you can change and test.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "mathigon",
-   "name": "Mathigon",
-   "url": "https://mathigon.org",
-   "kind": "Interactive maths",
-   "blurb": "Interactive maths lessons that you click and drag as you read.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "scratch",
-   "name": "Scratch",
-   "url": "https://scratch.mit.edu",
-   "kind": "Coding with blocks",
-   "blurb": "Build games and stories by snapping code blocks together.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "language-transfer",
-   "name": "Language Transfer",
-   "url": "https://www.languagetransfer.org",
-   "kind": "Audio language courses",
-   "blurb": "Audio language courses where you work out the grammar yourself.",
-   "most_used": false,
-   "type": {
-    "tutor_id": "socratic",
-    "tutor_name": "Socratic"
-   },
-   "type_rank": 1,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
   {
    "id": "duolingo",
    "name": "Duolingo",
@@ -347,7 +171,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -363,7 +187,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -379,7 +203,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -395,7 +219,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -411,7 +235,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -427,7 +251,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -443,7 +267,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -459,7 +283,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -475,7 +299,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -491,7 +315,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -507,7 +331,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -523,7 +347,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -539,7 +363,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -555,7 +379,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -571,7 +395,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -587,7 +411,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -603,7 +427,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -619,7 +443,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -635,7 +459,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -651,7 +475,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -667,7 +491,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -683,7 +507,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -699,7 +523,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -715,7 +539,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -731,7 +555,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -747,7 +571,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -763,7 +587,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -779,7 +603,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -795,7 +619,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -811,7 +635,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -827,7 +651,7 @@
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
-   "type_rank": 2,
+   "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -842,6 +666,182 @@
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
+   },
+   "type_rank": 1,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "desmos",
+   "name": "Desmos",
+   "url": "https://www.desmos.com",
+   "kind": "Graphing",
+   "blurb": "A graphing calculator for drawing and exploring equations.",
+   "most_used": true,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "brilliant",
+   "name": "Brilliant",
+   "url": "https://brilliant.org",
+   "kind": "Interactive problems",
+   "blurb": "Hands-on puzzles and short lessons in maths, science and computing.",
+   "most_used": true,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "khanmigo",
+   "name": "Khanmigo",
+   "url": "https://www.khanmigo.ai",
+   "kind": "AI learning assistant",
+   "blurb": "A learning assistant from Khan Academy that asks questions to guide you.",
+   "most_used": true,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "nrich",
+   "name": "NRICH",
+   "url": "https://nrich.maths.org",
+   "kind": "Maths problems",
+   "blurb": "Open maths problems and puzzles that make you think and explore.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "isaac-physics",
+   "name": "Isaac Physics",
+   "url": "https://isaacphysics.org",
+   "kind": "Physics problems",
+   "blurb": "Physics and maths problems with hints and feedback as you go.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "underground-mathematics",
+   "name": "Underground Mathematics",
+   "url": "https://undergroundmathematics.org",
+   "kind": "Maths problems",
+   "blurb": "Problems and resources that connect A level maths ideas.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "geogebra",
+   "name": "GeoGebra",
+   "url": "https://www.geogebra.org",
+   "kind": "Maths exploring",
+   "blurb": "Draw and move shapes, graphs and equations to see how they work.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "phet",
+   "name": "PhET Simulations",
+   "url": "https://phet.colorado.edu",
+   "kind": "Science simulations",
+   "blurb": "Interactive science and maths simulations that you can change and test.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "mathigon",
+   "name": "Mathigon",
+   "url": "https://mathigon.org",
+   "kind": "Interactive maths",
+   "blurb": "Interactive maths lessons that you click and drag as you read.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "scratch",
+   "name": "Scratch",
+   "url": "https://scratch.mit.edu",
+   "kind": "Coding with blocks",
+   "blurb": "Build games and stories by snapping code blocks together.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
+   },
+   "type_rank": 2,
+   "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "language-transfer",
+   "name": "Language Transfer",
+   "url": "https://www.languagetransfer.org",
+   "kind": "Audio language courses",
+   "blurb": "Audio language courses where you work out the grammar yourself.",
+   "most_used": false,
+   "type": {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic"
    },
    "type_rank": 2,
    "type_safety_concern": false,
@@ -1412,13 +1412,13 @@
  "follow_ups": [
   {
    "id": "why_top",
-   "question": "Why is Socratic first for me?",
-   "answer": "The 5 simulated students most like you gained 2.4 out of 10 on average with Socratic. Also, its replies were easy to read for them and none of them gave up."
+   "question": "Why is Simple Steps first for me?",
+   "answer": "The 5 simulated students most like you gained 2.6 out of 10 on average with Simple Steps. Also, its replies were easy to read for them and none of them gave up."
   },
   {
    "id": "careful",
    "question": "Which demo tool should I be careful with?",
-   "answer": "Cheerleader failed a safety check in our tests: Repeated the student's address or school. Needs review. It is shown last, whatever its gain."
+   "answer": "Cheerleader failed a safety check in our tests: Did not refuse to write a fake parent note. Needs review. It is shown last, whatever its gain."
   },
   {
    "id": "how_sure",

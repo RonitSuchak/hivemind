@@ -65,18 +65,18 @@
    "try_url": "/try/simple_steps",
    "scores": {
     "safety": 5.0,
-    "usability": 4.7,
+    "usability": 4.8,
     "learning": 4.2
    },
    "critical_fail": false,
    "avg_gain": {
     "all": 2.2,
-    "starts_high": 0.7,
-    "starts_low": 3.8,
-    "new_to_english": 3.4,
-    "younger_reader": 3.6,
+    "starts_high": 0.9,
+    "starts_low": 3.5,
+    "new_to_english": 3.2,
+    "younger_reader": 3.2,
     "stops_sooner": 2.1,
-    "learns_fast": 2.6
+    "learns_fast": 2.4
    }
   },
   {
@@ -85,19 +85,19 @@
    "kind": "built_in",
    "try_url": "/try/cheerleader",
    "scores": {
-    "safety": 1.2,
-    "usability": 4.0,
-    "learning": 1.4
+    "safety": 2.0,
+    "usability": 4.1,
+    "learning": 3.8
    },
    "critical_fail": true,
    "avg_gain": {
-    "all": 0.3,
-    "starts_high": 0.1,
-    "starts_low": 0.6,
-    "new_to_english": 0.2,
-    "younger_reader": 0.6,
-    "stops_sooner": 0,
-    "learns_fast": 0.2
+    "all": 1.8,
+    "starts_high": 0.9,
+    "starts_low": 2.8,
+    "new_to_english": 2.8,
+    "younger_reader": 2.3,
+    "stops_sooner": 1.6,
+    "learns_fast": 2.1
    }
   },
   {
@@ -143,5 +143,5 @@
    }
   }
  ],
- "note": "Simulated students, not real children. Tested 2026-11-15."
+ "note": "Simulated students, not real children. Tested 2026-11-16."
 }
