@@ -25,28 +25,21 @@ You are helping Kien and Nina connect the Hivemind website (`frontend/`, Vite + 
 4. Check `GET /api/health` answers `{"ok": true, ...}`. The site's "Lab not connected" state should switch to live.
 
 ## 2. Saved data (demo mode)
-`frontend/public/demo/` already holds the real export (Kien's v3 update, 16 Nov 09:35). Two things to do:
-- Copy `backend/data/export/real-tools.json` in too (it's new), and keep `topics/`.
-- Ronit re-exports after the AI lab finishes (about Tue 17 Nov). Copy `backend/data/export/` over `public/demo/` again then, so every run is the real AI one.
+`frontend/public/demo/` already holds the real export, including `real-tools.json` (Kien's update, 16 Nov 11:10). Keep `topics/`.
+- Ronit re-exports after the AI lab finishes (about Wed 18 Nov). Copy `backend/data/export/` over `public/demo/` again then, so every run is the real AI one.
 
-## 3. Still to fix (checked against `frontend/` at commit 15b2139)
-Already fixed by Kien's v3 update, leave as is: the Check page's reading passages, the English question object, the exact v3 match request, topic packs limited to demo mode, and Results using `matches[]` and `follow_ups`.
-1. **"5 minute check"** in `src/pages/Tools.jsx`: it's the 8-minute check (`minutes` in `GET /api/check`).
-2. **"Try a student" (`src/components/ProfilePredictor.jsx`)** does its own matching: unweighted nearest 5, no "not enough matches" rule. Its numbers can disagree with the Advisor's, which uses `POST /api/match` (weighted, with a closeness limit). Label it clearly as a rough explorer, or ask Ronit for a backend endpoint that matches a typed-in profile. Don't present both as "the" prediction.
-3. **Real tools:** the backend now owns the real-tools list (`GET /api/real-tools`, copied from `src/data/tools.js` with your types unchanged). For a person, use `real_tools[]` from the match response, already in order: by how its demo tool type ranked for them, safety concerns last. Use it in place of the local `toolsLike` / `rankTools` ordering on the Results page (tools drawer) and the Tools page. If you keep the slider "fit %" on the Tools page, label it "matches your filters", never as a test result.
-4. **Wording:** our 5 built-in tools are **demo tools** on screen (your pages say "tool type" in places, which is fine where you mean the kind of tool). Never "tutor".
+## 3. Still to fix (checked against `frontend/` at commit f12bdec)
+Fixed by Kien's 16 Nov updates (a170943, f12bdec), leave as is: Ratings reading `groups`, the 8-minute wording, "Try a student" labelled as a rough explorer, real tools from the backend in its order with no scores, "demo tool" wording, the "Preview data" label, and the Try a demo tool page with every chat error handled.
+1. **Try link for submitted products** (`src/pages/Lab.jsx`, the "Try this demo tool" link): it shows for any run without a critical fail, so an approved submitted product (`kind: "submitted"`, `tutor_id` like `sub_001`) links to `/try/sub_001`, where the page says it "did not pass a safety check". That's wrong: submitted products are tried on their own website. Use the tool's `try_url` (an `https://` address for submitted products) and only link to `/try/...` when `kind` is `"built_in"` and `live_chat` is true.
 
 ## 4. Backend features the site doesn't use yet
-Already used, keep: `matches[]`, `radar`, `ranked`, `follow_ups`, the `enough_matches` / `message` state, and evidence in the Lab. Add what fits your pages:
-- **Preview label:** runs carry `tutor_mode`. When it is `"scripted"`, show a small "Preview data" label: that demo tool's real AI run isn't finished. After about Tue 17 Nov every run is `"ai"`.
-- **Evidence everywhere:** the Lab already shows it. Each score's `evidence` items have `student_id` and `turn`, so a click can open that student's chat at that line.
-- **Tool maker report:** `GET /api/report/{tutor_id}`: which groups learned less, `reason_text`, example chats.
-- **Try a demo tool:** a page at `/try/{tutor_id}` (that's each tool's `try_url`) using `POST /api/chat`. Include a 500-character counter, turns left (12 per chat), the replaced-reply `notice`, and "don't type personal details". Hide it when `live_chat` is false.
+Already used, keep: `matches[]`, `radar`, `ranked`, `follow_ups`, the `enough_matches` / `message` state, evidence in the Lab, `tutor_mode`, `real_tools[]` and `/api/real-tools`, and `POST /api/chat`. Add what fits your pages:
+- **Real-classmate check:** `GET /api/test` → `POST /api/test/score` (before) → try a demo tool → test again → `POST /api/validation` with `{match_id, tutor_id, before, after}`. `GET /api/validation` shows real gain next to predicted gain, plus the summary. This is our proof against real students: please build it first.
 - **Ask about your results:** `POST /api/ask` with the `match_id`. Up to 5 questions of 300 characters; show `questions_left`.
-- **Real-classmate check:** `GET /api/test` → `POST /api/test/score` (before) → try a demo tool → test again → `POST /api/validation` with `{match_id, tutor_id, before, after}`. `GET /api/validation` shows real gain next to predicted gain, plus the summary. This is our proof against real students: please build it.
+- **Tool maker report:** `GET /api/report/{tutor_id}`: which groups learned less, `reason_text`, example chats.
 - **Submit a product:** the form → `POST /api/submissions` → show the checks and the `ownership_code` → `POST /api/submissions/{id}/verify` → status page (`GET /api/submissions/{id}`).
-- **Real tools:** `GET /api/real-tools` for a browse page, and `real_tools[]` in the match.
-- **Errors:** every error is `{"error": {"code", "message"}}`. Show `message`. Handle `rate_limited` (wait `Retry-After` seconds), `ai_unavailable` and `store_unavailable` (both 503: "try again in a minute"; everything else keeps working), `safety_concern` and `session_expired`.
+- **Evidence links:** each score's `evidence` items have `student_id` and `turn`, so a click can open that student's chat at that line.
+- **Errors:** every error is `{"error": {"code", "message"}}`. Show `message`. Handle `rate_limited` (wait `Retry-After` seconds), `ai_unavailable` and `store_unavailable` (both 503: "try again in a minute"; everything else keeps working).
 
 ## 5. Done when
 - With `VITE_API_URL` set, every page loads from the live backend, and with the backend off, the "not connected" state shows. With `VITE_DEMO=1`, every page loads from the real export files.
