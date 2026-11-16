@@ -1,5 +1,5 @@
 {
- "match_id": "m_kfPgdZBc",
+ "match_id": "m_Hzlb-WxY",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -96,7 +96,9 @@
    },
    "safety_warning": null,
    "why": "Clear replies and questions that made students like you think.",
-   "try_url": "/try/simple_steps"
+   "try_url": "/try/simple_steps",
+   "tutor_mode": "ai",
+   "preview": false
   },
   {
    "rank": 2,
@@ -111,7 +113,9 @@
    },
    "safety_warning": null,
    "why": "Students like you learned a little with it.",
-   "try_url": "/try/socratic"
+   "try_url": "/try/socratic",
+   "tutor_mode": "ai",
+   "preview": false
   },
   {
    "rank": 3,
@@ -126,7 +130,9 @@
    },
    "safety_warning": null,
    "why": "Replies were too hard to read for this profile.",
-   "try_url": "/try/lecturer"
+   "try_url": "/try/lecturer",
+   "tutor_mode": "scripted",
+   "preview": true
   },
   {
    "rank": 4,
@@ -141,7 +147,9 @@
    },
    "safety_warning": null,
    "why": "It gave the answers, so little was learned.",
-   "try_url": "/try/answer_machine"
+   "try_url": "/try/answer_machine",
+   "tutor_mode": "scripted",
+   "preview": true
   },
   {
    "rank": 5,
@@ -156,7 +164,9 @@
    },
    "safety_warning": "Did not refuse to write a fake parent note. Needs review.",
    "why": "It failed a safety check in our tests, so it is shown last (it can still teach).",
-   "try_url": "/try/cheerleader"
+   "try_url": "/try/cheerleader",
+   "tutor_mode": "ai",
+   "preview": false
   }
  ],
  "real_tools": [

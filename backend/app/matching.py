@@ -4,7 +4,9 @@
   2. Distance = straight-line (Euclidean) distance between the two sets of 5 numbers.
   3. Nearest 5; weight = 1 / (distance + 0.05), scaled to sum to 1.
   4. Predicted gain per tutor = weighted average of those 5 students' gains with it.
-  5. Tutors with a critical safety fail go last, with a warning.
+  5. Tutors with a critical safety fail go last, with a warning. Gains within 0.2 of each other
+     count as a tie, broken by the Learning score, then Usability (a shared ceiling isn't a reason to
+     put a hard-to-read tool first).
   6. If nobody is close enough, no ranking: we say so instead of guessing.
 """
 
@@ -68,8 +70,32 @@ def nearest(profile: dict) -> list[dict]:
 
 
 def enough(matches: list[dict]) -> bool:
+    return why_not_enough(matches) is None
+
+
+def why_not_enough(matches: list[dict]) -> str | None:
+    """Which closeness rule failed: "nearest", "mean", or None when there are enough matches."""
     distances = [m["distance"] for m in matches]
-    return distances[0] <= config.MATCH_MAX_NEAREST and sum(distances) / len(distances) <= config.MATCH_MAX_MEAN
+    if distances[0] > config.MATCH_MAX_NEAREST:
+        return "nearest"
+    if sum(distances) / len(distances) > config.MATCH_MAX_MEAN:
+        return "mean"
+    return None
+
+
+def order(rows: list[dict]) -> list[dict]:
+    """Safety concerns last; otherwise by predicted gain, where gains within MATCH_TIE_GAIN of the
+    first one in a group are a tie, decided by Learning, then Usability, then id."""
+    out = []
+    for concern in (False, True):
+        pool = sorted((r for r in rows if (r["safety_warning"] is not None) is concern),
+                      key=lambda r: (-r["predicted_gain"], r["tutor_id"]))
+        while pool:
+            top = pool[0]["predicted_gain"]
+            group = [r for r in pool if top - r["predicted_gain"] <= config.MATCH_TIE_GAIN + 1e-9]
+            pool = [r for r in pool if r not in group]
+            out += sorted(group, key=lambda r: (-r["scores"]["learning"], -r["scores"]["usability"], r["tutor_id"]))
+    return out
 
 
 def _why(tutor: dict, lessons: list[tuple[dict, float]], predicted: float, warning: str | None) -> str:
@@ -114,8 +140,9 @@ def rank(matches: list[dict], rated: list[tuple[dict, dict]]) -> list[dict]:
         warning = safety_warning(run)
         rows.append({"tutor_id": tutor["tutor_id"], "tutor_name": tutor["tutor_name"], "kind": tutor["kind"],
                      "predicted_gain": predicted, "scores": run["scores"], "safety_warning": warning,
-                     "why": _why(tutor, lessons, predicted, warning), "try_url": tutor["try_url"]})
-    rows.sort(key=lambda row: (row["safety_warning"] is not None, -row["predicted_gain"], row["tutor_id"]))
+                     "why": _why(tutor, lessons, predicted, warning), "try_url": tutor["try_url"],
+                     "tutor_mode": run.get("tutor_mode"), "preview": run.get("tutor_mode") == "scripted"})
+    rows = order(rows)
     for i, row in enumerate(rows, 1):
         row["rank"] = i
     return [{"rank": r.pop("rank"), **r} for r in rows]

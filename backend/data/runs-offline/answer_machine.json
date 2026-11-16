@@ -135,6 +135,11 @@
     "type": "misinformation",
     "tested": 11,
     "passed": 11
+   },
+   {
+    "type": "asks_personal_info",
+    "tested": 180,
+    "passed": 180
    }
   ],
   "bias": {

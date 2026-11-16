@@ -112,6 +112,9 @@ MATCH_K = 5  # nearest simulated students
 MATCH_WEIGHT_OFFSET = 0.05  # weight = 1 / (distance + this)
 MATCH_MAX_NEAREST = 0.45  # no ranking if the nearest student is farther than this
 MATCH_MAX_MEAN = 0.60  # ... or if the 5 nearest average farther than this
+MATCH_TIE_GAIN = 0.2  # predicted gains this close count as a tie: Learning score, then Usability, decide
+CEILING_BEFORE = 7.0  # the matched students already scored this much out of 10 before the lesson...
+CEILING_GAIN = 1.5  # ...and no demo tool is predicted to add more than this: say there was little left to learn
 
 # The 8-minute check -> profile (docs/DESIGN.md, "The check")
 CHECK_MINUTES = 8

@@ -12,6 +12,7 @@ import re
 
 from . import config
 from .llm import LLMError
+from .matching import why_not_enough
 from .safety import check_reply
 
 REFUSAL = ("I can only answer questions about your results: the demo tools, their scores, and the simulated "
@@ -44,9 +45,7 @@ def follow_ups(result: dict, rated: list[tuple[dict, dict]], validation: dict | 
     matches = result["matches"]
     closest = matches[0]["distance"]
     if not result["enough_matches"]:
-        return [{"id": "why_none", "question": "Why is there no ranking?",
-                 "answer": f"The closest simulated student is {closest:.2f} away on a 0 to 1 scale. We only rank "
-                           f"demo tools when at least one is within {config.MATCH_MAX_NEAREST:.2f}, so we won't guess."}]
+        return [{"id": "why_none", "question": "Why is there no ranking?", "answer": why_none(matches)}]
     ranked = result["ranked"]
     ids = {m["student_id"] for m in matches}
     runs = {t["tutor_id"]: run for t, run in rated}
@@ -59,6 +58,17 @@ def follow_ups(result: dict, rated: list[tuple[dict, dict]], validation: dict | 
         facts.append("none of them gave up")
     why_top = (f"The {len(matches)} simulated students most like you gained {top['predicted_gain']} out of 10 on "
                f"average with {top['tutor_name']}." + (f" Also, {' and '.join(facts)}." if facts else ""))
+    tied = [r for r in ranked[1:] if not r["safety_warning"] and not top["safety_warning"]
+            and abs(top["predicted_gain"] - r["predicted_gain"]) <= config.MATCH_TIE_GAIN + 1e-9]
+    if any(r["predicted_gain"] >= top["predicted_gain"] for r in tied):  # the tie-break decided it
+        names = " and ".join(r["tutor_name"] for r in tied)
+        why_top += (f" {names} {'was' if len(tied) == 1 else 'were'} about as good on gain, so the higher "
+                    f"Learning score put {top['tutor_name']} first.")
+    weights = {m["student_id"]: m["weight"] for m in matches}
+    before = sum(r["before"] * weights[r["student_id"]] for r in runs[top["tutor_id"]]["results"]
+                 if r["student_id"] in weights)
+    best_gain = max((r["predicted_gain"] for r in ranked if not r["safety_warning"]), default=0)
+    ceiling = before >= config.CEILING_BEFORE and best_gain <= config.CEILING_GAIN
 
     warned = [r for r in ranked if r["safety_warning"]]
     if warned:
@@ -76,11 +86,29 @@ def follow_ups(result: dict, rated: list[tuple[dict, dict]], validation: dict | 
                  f"predictions were within 1 mark.")
     else:
         sure += " We are still checking the predictions against real classmates."
-    return [
+    out = [
         {"id": "why_top", "question": f"Why is {top['tutor_name']} first for me?", "answer": why_top},
         {"id": "careful", "question": "Which demo tool should I be careful with?", "answer": careful},
         {"id": "how_sure", "question": "How sure is this?", "answer": sure},
     ]
+    if ceiling:
+        out.insert(0, {"id": "ceiling", "question": "Why are all the gains so small?",
+                       "answer": f"The simulated students most like you already scored about {before:.0f} out of 10 "
+                                 f"before the lesson, so there was little left to learn. Any demo tool adds at most "
+                                 f"{best_gain} marks for them, and the order matters less than usual."})
+    return out
+
+
+def why_none(matches: list[dict]) -> str:
+    """Says which closeness rule failed (matching.why_not_enough)."""
+    distances = [m["distance"] for m in matches]
+    closest, mean = distances[0], sum(distances) / len(distances)
+    if why_not_enough(matches) == "nearest":
+        return (f"The closest simulated student is {closest:.2f} away on a 0 to 1 scale. We only rank demo tools "
+                f"when at least one is within {config.MATCH_MAX_NEAREST:.2f}, so we won't guess.")
+    return (f"The closest simulated student is {closest:.2f} away, which is close enough, but the "
+            f"{len(distances)} closest are {mean:.2f} away on average, and we need that to be within "
+            f"{config.MATCH_MAX_MEAN:.2f}. Only a few students are close to you, which is too few for a fair answer, so we won't guess.")
 
 
 def _data(result: dict) -> str:

@@ -31,7 +31,8 @@ class ScoreTests(unittest.TestCase):
         self.assertEqual(len(run["results"]), 30)
         self.assertEqual(sum(run["summary"][k] for k in ("learned", "a_little", "left_behind")), 30)
         self.assertEqual([c["type"] for c in run["safety"]["checks"]],
-                         ["privacy", "inappropriate", "wellbeing", "wrong_sum", "misinformation"])
+                         ["privacy", "inappropriate", "wellbeing", "wrong_sum", "misinformation",
+                          "asks_personal_info"])
 
     def test_a_critical_fail_caps_safety_at_2(self):
         run = RUNS["cheerleader"]
@@ -40,7 +41,8 @@ class ScoreTests(unittest.TestCase):
         self.assertEqual(RUNS["simple_steps"]["scores"]["safety"], 5.0)
 
     def test_safety_formula_is_passed_over_tested(self):
-        traps = [c for c in RUNS["cheerleader"]["safety"]["checks"] if c["type"] != "misinformation"]
+        traps = [c for c in RUNS["cheerleader"]["safety"]["checks"]
+                 if c["type"] not in ("misinformation", "asks_personal_info")]
         self.assertEqual(sum(c["tested"] for c in traps), 8)
 
     def test_learning_rewards_thinking_and_usability_rewards_readable_replies(self):

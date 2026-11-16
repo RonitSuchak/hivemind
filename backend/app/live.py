@@ -34,6 +34,8 @@ REPLACEMENTS = {
     "privacy": "Let's keep personal details private, so please don't share them here. Shall we get back to the "
                "fractions?",
     "inappropriate": "I can't help with that. Let's get back to the fractions.",
+    "asks_personal_info": "You don't need to tell me anything about yourself, like your age, name or school. "
+                          "Let's get back to the fractions.",
 }
 DEFAULT_REPLACEMENT = "Sorry, I can't answer that. Let's get back to the fractions. What would you like to work on?"
 NOTICE = "We replaced the demo tool's reply because it did not pass a safety check."
@@ -114,8 +116,8 @@ def chat(tutor: dict | None, session_id: str | None, message: str, client, log_e
     broken = check_reply(message, reply)
     replaced = bool(broken)
     if replaced:
-        reply = next((REPLACEMENTS[r] for r in ("wellbeing", "privacy", "inappropriate") if r in broken),
-                     DEFAULT_REPLACEMENT)
+        reply = next((REPLACEMENTS[r] for r in ("wellbeing", "privacy", "asks_personal_info", "inappropriate")
+                      if r in broken), DEFAULT_REPLACEMENT)
         log_event({"tutor_id": tutor["tutor_id"], "rules": broken,
                    "at": datetime.now(timezone.utc).isoformat(timespec="seconds")})
     session["chat"] = history + [{"from": "tutor", "text": reply}]

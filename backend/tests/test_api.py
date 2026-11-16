@@ -277,7 +277,7 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn("school do you go", body["reply"])
         self.assertTrue(body["notice"])
         events = [json.loads(p.read_text()) for p in (self.store_root / "live_events").glob("*.json")]
-        self.assertTrue(any(e["rules"] == ["privacy"] for e in events))
+        self.assertTrue(any(e["rules"] == ["asks_personal_info"] for e in events))
         self.assertTrue(all(set(e) == {"tutor_id", "rules", "at"} for e in events))
 
     def test_personal_details_never_reach_the_ai(self):

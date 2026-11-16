@@ -113,7 +113,8 @@ class MatchTests(unittest.TestCase):
         self.assertIsNotNone(ranked[-1]["safety_warning"])
         self.assertTrue(all(r["safety_warning"] is None for r in ranked[:-1]))
         gains = [r["predicted_gain"] for r in ranked[:-1]]
-        self.assertEqual(gains, sorted(gains, reverse=True))
+        for i, g in enumerate(gains):  # never below a clearly lower gain (near-ties may swap)
+            self.assertTrue(all(g >= later - config.MATCH_TIE_GAIN - 1e-9 for later in gains[i + 1:]))
         self.assertEqual([r["rank"] for r in ranked], [1, 2, 3, 4, 5])
 
     def test_radar_and_try_url(self):
@@ -163,3 +164,59 @@ class FollowUpAndAskTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def row(tid, gain, learning, usability, warning=None, mode="ai"):
+    return {"tutor_id": tid, "predicted_gain": gain, "safety_warning": warning, "tutor_mode": mode,
+            "scores": {"safety": 5.0, "learning": learning, "usability": usability}}
+
+
+class TieBreakAndCeilingTests(unittest.TestCase):
+    STRONG = {"start_level": 1.0, "learn_speed": 0.5, "reading_age": 15, "english": 1.0, "persistence": 0.5}
+    TOP = {"start_level": 1.0, "learn_speed": 1.0, "reading_age": 16, "english": 1.0, "persistence": 1.0}
+
+    def test_near_ties_go_to_the_better_learning_score_not_the_alphabet(self):
+        from app.matching import order
+        rows = [row("lecturer", 0.7, 2.3, 1.9), row("simple_steps", 0.7, 4.2, 4.8), row("socratic", 0.6, 3.5, 3.6),
+                row("answer_machine", 0.2, 1.2, 4.2), row("cheerleader", 0.7, 3.8, 4.1, warning="Unsafe.")]
+        self.assertEqual([r["tutor_id"] for r in order(rows)],
+                         ["simple_steps", "socratic", "lecturer", "answer_machine", "cheerleader"])
+
+    def test_a_clear_gain_still_beats_a_better_learning_score(self):
+        from app.matching import order
+        rows = [row("lecturer", 2.0, 2.3, 1.9), row("simple_steps", 1.7, 4.2, 4.8)]
+        self.assertEqual([r["tutor_id"] for r in order(rows)], ["lecturer", "simple_steps"])
+
+    def test_usability_then_id_break_equal_learning(self):
+        from app.matching import order
+        rows = [row("b", 1.0, 3.0, 3.0), row("a", 1.0, 3.0, 3.0), row("c", 1.1, 3.0, 4.0)]
+        self.assertEqual([r["tutor_id"] for r in order(rows)], ["c", "a", "b"])
+
+    def test_ranked_rows_say_whether_they_are_preview_data(self):
+        for r in match(NEAR, RATED)["ranked"]:
+            self.assertEqual((r["tutor_mode"], r["preview"]), (None, False))  # these test runs have no mode
+        rated = [(t, {**run, "tutor_mode": "scripted" if t["tutor_id"] == "lecturer" else "ai"}) for t, run in RATED]
+        ranked = {r["tutor_id"]: r for r in match(NEAR, rated)["ranked"]}
+        self.assertEqual((ranked["lecturer"]["tutor_mode"], ranked["lecturer"]["preview"]), ("scripted", True))
+        self.assertEqual((ranked["socratic"]["tutor_mode"], ranked["socratic"]["preview"]), ("ai", False))
+
+    def test_a_student_who_knows_most_of_it_gets_the_ceiling_follow_up(self):
+        m = match(self.STRONG, RATED)
+        self.assertTrue(m["enough_matches"])
+        f = follow_ups(m, RATED)
+        self.assertEqual([x["id"] for x in f], ["ceiling", "why_top", "careful", "how_sure"])
+        self.assertIn("little left to learn", f[0]["answer"])
+        self.assertNotIn("ceiling", [x["id"] for x in follow_ups(match(NEAR, RATED), RATED)])
+
+    def test_why_none_names_the_rule_that_failed(self):
+        from app.matching import nearest, why_not_enough
+        far = follow_ups(match(FAR, RATED), RATED)[0]["answer"]
+        self.assertEqual(why_not_enough(nearest(FAR)), "nearest")
+        self.assertIn(f"within {config.MATCH_MAX_NEAREST:.2f}", far)
+        top = match(self.TOP, RATED)
+        self.assertFalse(top["enough_matches"])
+        self.assertEqual(why_not_enough(top["matches"]), "mean")
+        answer = follow_ups(top, RATED)[0]["answer"]
+        self.assertIn("close enough", answer)
+        self.assertIn(f"within {config.MATCH_MAX_MEAN:.2f}", answer)
+        self.assertNotIn(f"within {config.MATCH_MAX_NEAREST:.2f}", answer)  # no longer contradicts itself
