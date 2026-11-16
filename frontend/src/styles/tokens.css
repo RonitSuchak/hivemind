@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Hivemind design tokens. Restyle the whole site from this one file.
+   Components only use these variables, never raw colours or sizes.
+   One theme, 60 / 30 / 10: pure white ground (60), midnight black for text, fills and dark bands (30),
+   persimmon orange highlight (10).
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* Colour: midnight (violet-tinted black), pure white ink. --accent is MIDNIGHT: fills, bars, seats and selected states.
+     The orange highlight is --pop (bottom of this file). Dark bands flip these with .on-dark (theme.css). */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #e7e8f1;
+  --ink: #0a0a18;
+  --ink-2: #2b2c44;
+  --ink-3: #5b5d78;
+  --line: rgb(10 10 24 / 0.12);
+  --line-strong: rgb(10 10 24 / 0.28);
+
+  --accent: #0a0a18;
+  --accent-strong: #0a0a18;
+  --accent-ink: #ffffff;
+  --accent-soft: rgb(10 10 24 / 0.06);
+
+  /* Outcomes: colour + shape + glyph are always used together */
+  --c-learned: #2f55d4;
+  --c-little: #9a9ebf;
+  --c-left: #c62f2f;
+  --c-glyph: #ffffff;
+  --c-glyph-little: #0a0a18;
+
+  /* Flags and notices: calm and neutral on purpose (midnight text, soft fill). Not an alarm colour. */
+  --warn-bg: rgb(10 10 24 / 0.04);
+  --warn-ink: #0a0a18;
+  --warn-line: rgb(10 10 24 / 0.22);
+  --ok: #0a0a18;
+
+  /* Heatmap (single-hue sequential, colour-blind safe) */
+  --heat-lo: #eef0f7;
+  --heat-hi: #0a0a18;
+  --heat-text-hi: #ffffff;
+
+  /* Radar */
+  --radar-you: #f4511e;
+  --radar-other: #7a7d9c;
+
+  /* Ambient background: a few large, soft, slow colour fields (variations of the accent + one warm field) */
+  --ambient-a: rgb(244 81 30 / 0.07);    /* indigo, top left */
+  --ambient-b: rgb(60 70 200 / 0.07);    /* deep blue, right */
+  --ambient-c: rgb(10 10 24 / 0.04);   /* violet, low */
+  --ambient-size: 70vmax;
+  --ambient-drift: 60s;                  /* one slow drift cycle per field */
+  --ambient-shift: 6vmax;                /* how far a field wanders */
+  --ambient-parallax: 0.06;              /* background moves this fraction of scroll (Home only) */
+  --grain-opacity: 0;
+
+  /* Glass (frosted material). Fill alone must keep text >= 4.5:1, so the fills stay dark. */
+  --glass-blur: 20px;
+  --glass-blur-strong: 32px;
+  --glass-sat: 150%;
+  --glass-fill: rgb(255 255 255 / 0.74);         /* cards, nav, notice */
+  --glass-fill-strong: rgb(255 255 255 / 0.95);  /* drawer, tooltips: holds body text */
+  --glass-edge: rgb(10 10 24 / 0.10);      /* 1px outline */
+  --glass-highlight: rgb(255 255 255 / 0.9); /* 1px inner top highlight: light catching the edge */
+  --fill-subtle: rgb(10 10 24 / 0.03);    /* resting fill: secondary buttons, tab track */
+  --fill-hover: rgb(10 10 24 / 0.06);     /* hover fill: nav links, buttons, icon buttons */
+  --fill-current: rgb(10 10 24 / 0.08);   /* current nav item */
+  --line-hover: rgb(10 10 24 / 0.5);     /* button outline on hover */
+  --bar-edge: transparent;              /* dark inner line under the glass nav */
+  --seat-highlight: transparent; /* top light on the home class seats */
+  --glass-shadow: 0 1px 2px rgb(10 10 24 / 0.05), 0 14px 34px -16px rgb(10 10 24 / 0.18);
+  --glass-shadow-lg: 0 2px 6px rgb(10 10 24 / 0.06), 0 32px 64px -20px rgb(10 10 24 / 0.28);
+
+  /* Type */
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;   /* headings: quirky grotesque */
+  --font-accent: "Instrument Serif", "Iowan Old Style", Georgia, serif;                           /* italic accent lines, equations, quotes */
+  --font-body: "DM Sans Variable", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: clamp(2rem, 2.4vw + 1.2rem, 2.625rem);
+  --text-3xl: clamp(2.25rem, 3.6vw + 1.1rem, 3.5rem);
+  --text-hero: clamp(2.5rem, 5vw + 1rem, 4.75rem);
+  --leading: 1.6;
+  --leading-tight: 1.06;
+  --track-display: -0.035em;   /* large display */
+  --track-heading: -0.02em;    /* h2/h3 */
+  --track-small: 0.01em;       /* small UI text */
+
+  /* Space (4px base) */
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
+  --s-6: 2rem; --s-7: 3rem; --s-8: 4.5rem; --s-9: 7rem; --s-10: 10rem;
+  --gutter: 1rem;
+  --wrap: 70rem;
+  --measure: 40rem;
+  --header-h: 3.75rem;
+
+  /* Shape + depth */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgb(10 10 24 / 0.08);
+  --shadow-drawer: -24px 0 64px rgb(10 10 24 / 0.18);
+  --shadow-btn: 0 1px 2px rgb(10 10 24 / 0.2), 0 10px 22px -12px rgb(10 10 24 / 0.45);
+  --scrim: rgb(10 10 24 / 0.4);
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px #f4511e;
+
+  /* Motion: tune the whole site's feel here. Staging delays are built from these. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-replay: cubic-bezier(0.4, 0, 0.6, 1);   /* chained replay steps: gentle, no dip between poses */
+  --dur-press: 80ms;         /* press down (release uses --dur-fast) */
+  --dur-select: 120ms;       /* answer / toggle state */
+  --dur-fast: 150ms;         /* hover, colour, press release */
+  --dur-ui: 240ms;           /* page enter, swaps, fades, accordion */
+  --dur-base: var(--dur-ui); /* legacy alias */
+  --dur-swap-out: 120ms;     /* old content leaving a crossfade */
+  --dur-drawer: 280ms;
+  --dur-drawer-out: 200ms;
+  --dur-reveal: 600ms;       /* radar shape draws from the centre */
+  --dur-bar: 700ms;          /* score bar grow */
+  --dur-draw: 360ms;         /* tick stroke draw-on */
+  --dur-tip-delay: 400ms;    /* tooltip delay in (out is instant) */
+  --dur-shimmer: 1.8s;
+  --stagger-card: 60ms;      /* ranked cards */
+  --stagger-outline: 90ms;   /* matched student outlines */
+  --stagger-bar: 50ms;       /* three bars on one card */
+  --stagger-dot: 14ms;       /* replay ripple across the class */
+  --stagger-cell: 28ms;      /* heatmap diagonal */
+  --stagger-line: 70ms;      /* home headline lines */
+  --delay-cards: 300ms;      /* on-screen cards wait briefly for the radar shape (staging) */
+  --replay-total: 5400ms;    /* whole replay, including the ripple tail */
+
+  /* Springs (Motion for React). Apple-style: visual duration in seconds + bounce (0 = critically damped).
+     Read in JS with spring('ui') etc. (src/motion.js). No bounce on serious UI. */
+  --spring-ui: 0.35 0;        /* tabs, pills, small moves */
+  --spring-drawer: 0.42 0;    /* drawer in */
+  --spring-drawer-out: 0.28 0;/* drawer out (faster than in) */
+  --spring-step: 0.38 0;      /* check step side-by-side */
+  --spring-reveal: 0.6 0.38;    /* scroll reveals */
+  --spring-shape: 0.7 0;      /* radar shape grows */
+
+  /* Scroll reveal */
+  --reveal-rise: 56px;        /* items rise this far */
+  --reveal-blur: 0px;         /* and unblur from this */
+  --reveal-stagger: 80ms;     /* between children of a RevealGroup */
+  --reveal-margin: 0px 0px -12% 0px; /* trigger a bit before fully in view */
+  --ripple-stagger: 110ms;    /* home class grid: extra delay per seat of distance from the centre */
+
+  /* Distances and scales (zeroed under prefers-reduced-motion) */
+  --rise: 8px;
+  --slide: 16px;
+  --lift: -1px;
+  --press-scale: 0.97;
+  --pop-scale: 0.97;         /* tooltips start this size */
+  --grow-from: 0.05;
+}
+
+@media (min-width: 40rem) {
+  :root { --gutter: 1.5rem; }
+}
+@media (min-width: 64rem) {
+  :root { --gutter: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --rise: 0px; --slide: 0px; --lift: 0px; --press-scale: 1; --pop-scale: 1; --grow-from: 1;
+    --reveal-rise: 0px; --reveal-blur: 0px; --ambient-parallax: 0;
+  }
+}
+
+/* Reduced transparency: glass becomes solid, no backdrop blur */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-fill: var(--surface);
+    --glass-fill-strong: var(--surface);
+    --glass-blur: 0px;
+    --glass-blur-strong: 0px;
+    --glass-sat: 100%;
+  }
+}
+
+/* Advisor flow (check, results, hero radar) */
+:root {
+  --spring-bar: 0.9 0;            /* score bars slide out of their track; numbers count with them */
+  --stagger-vertex: 45ms;         /* radar: each vertex starts this long after the previous */
+  --delay-cards-first: 700ms;     /* ranked cards already on screen wait for the radar shape */
+  --dur-highlight: 1.2s;          /* the one soft highlight on a safety warning */
+  --press-scale-row: 0.985;       /* big answer rows press less than buttons */
+  --radar-fill-in: rgb(244 81 30 / 0.24);
+  --radar-fill-out: rgb(244 81 30 / 0.05);
+  --radar-plate: rgb(10 10 24 / 0.02);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --press-scale-row: 1; }
+}
+
+/* Simulation Lab and About */
+:root {
+  /* Heatmap: six discrete steps along one hue (OKLab, --heat-lo to --heat-hi). Dark ink on 0-2,
+     white on 3-5; every step keeps its printed number at 4.5:1 or better. The middle band where
+     neither ink reaches 4.5:1 is skipped on purpose. */
+  --lab-heat-0: #eef0f7;
+  --lab-heat-1: #d0d3e6;
+  --lab-heat-2: #a6aacb;
+  --lab-heat-3: #5f6396;
+  --lab-heat-4: #343764;
+  --lab-heat-5: #0a0a18;
+  --lab-heat-ink: #0a0a18;
+  --lab-heat-ink-dark: #ffffff;
+  --lab-sticky: rgb(255 255 255 / 0.96);   /* sticky tutor column on the heatmap (sits on glass) */
+  --lab-seat: 44px;
+  --lab-dim: 0.5;                        /* content while the next tutor loads */
+}
+
+/* Highlight ("pop"): persimmon orange, the warm complement of midnight's blue. To try another colour,
+   change --pop, --pop-deep and the three rgb() triples below (and --radar-you / --focus above).
+   Rule: about 10% of the page. On every page it is the logo mark, the current nav marker and the footer
+   rule; elsewhere only the one thing to look at. Orange on white is 3.4:1, so it is for large type,
+   icons and fills only. Small orange text uses --pop-deep (5.4:1). Text ON orange is midnight (5.9:1). */
+:root {
+  --pop: #f4511e;
+  --pop-strong: #ff6a3d;                 /* on dark bands and hover */
+  --pop-deep: #c23c0b;                   /* small text on white */
+  --pop-ink: #0a0a18;
+  --pop-soft: rgb(244 81 30 / 0.12);
+  --midnight: #0a0a18;
+  --ambient-d: rgb(244 81 30 / 0.05);
+  --glow: rgb(244 81 30 / 0.09);         /* glow that trails the pointer */
+  --glow-size: 34rem;
+  --glyph: rgb(10 10 24 / 0.10);         /* background equations */
+  --glyph-near: rgb(10 10 24 / 0.16);
+  --glyph-pop: rgb(244 81 30 / 0.5);
+  --glyph-float: 10px;
+  --glyph-dur: 9s;
+  --glyph-reach: 190;                    /* px: how close the pointer gets before a glyph flees */
+  --glyph-push: 130;                     /* px: how far it flees */
+  --pattern-line: rgb(10 10 24 / 0.07);
+  --pattern-dot: rgb(10 10 24 / 0.2);
+  --reveal-scale: 0.9;                   /* things jump in from this size */
+}
+@media (prefers-reduced-motion: reduce) { :root { --glyph-float: 0px; } }

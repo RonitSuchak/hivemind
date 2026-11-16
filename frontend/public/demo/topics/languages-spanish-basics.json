@@ -1,0 +1,123 @@
+{
+  "id": "languages-spanish-basics",
+  "quiz_1": [
+    {
+      "id": "q1",
+      "text": "What does \"hola\" mean?",
+      "options": [
+        "Goodbye",
+        "Hello",
+        "Thank you",
+        "Please"
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "What is \"cinco\" in English?",
+      "options": [
+        "Three",
+        "Four",
+        "Five",
+        "Six"
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "What colour is \"rojo\"?",
+      "options": [
+        "Red",
+        "Blue",
+        "Green",
+        "Yellow"
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "What does \"lunes\" mean?",
+      "options": [
+        "Sunday",
+        "Tuesday",
+        "Friday",
+        "Monday"
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "How do you say \"My name is Tom\" in Spanish?",
+      "options": [
+        "Me gusta Tom",
+        "Me llamo Tom",
+        "Tengo Tom",
+        "Te llamas Tom"
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "What does \"Tengo un perro\" mean?",
+      "options": [
+        "I like dogs",
+        "I see a dog",
+        "I have a dog",
+        "I am a dog"
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "In Spanish, every noun is either masculine or feminine. This decides which word you use for \"the\". Masculine nouns use \"el\" and feminine nouns use \"la\". So \"the\" becomes el or la, depending on the noun.",
+    "Rule: most nouns ending in o are masculine and take el. Most nouns ending in a are feminine and take la. For more than one, use los with masculine nouns and las with feminine nouns, and add an s to the noun.",
+    "Example: libro ends in o, so it is el libro, and many books are los libros. Casa ends in a, so it is la casa, and many houses are las casas.",
+    "To check, look at the last letter of the noun. The letter o means el or los. The letter a means la or las. Then ask if there is one thing or many. Many things need an s on the noun and los or las."
+  ],
+  "quiz_2": [
+    {
+      "id": "q7",
+      "text": "Which word fits? ____ perro (the dog)",
+      "options": [
+        "la",
+        "el",
+        "las",
+        "los"
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "Which word fits? ____ mesa (the table)",
+      "options": [
+        "el",
+        "los",
+        "la",
+        "las"
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Which word fits? ____ gatos (the cats)",
+      "options": [
+        "los",
+        "las",
+        "el",
+        "la"
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "Which word fits? ____ sillas (the chairs)",
+      "options": [
+        "el",
+        "la",
+        "los",
+        "las"
+      ]
+    },
+    {
+      "id": "q11",
+      "text": "Which is correct for \"the girls\"?",
+      "options": [
+        "los chicos",
+        "las chicas",
+        "la chica",
+        "los chicas"
+      ]
+    }
+  ]
+}

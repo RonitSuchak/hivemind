@@ -1,0 +1,405 @@
+[
+  {
+    "id": "s01",
+    "name": "Amara",
+    "age": 12,
+    "start_level": 0.7,
+    "learn_speed": 0.6,
+    "reading_age": 13,
+    "english": 0.9,
+    "persistence": 0.8,
+    "tags": [
+      "confident"
+    ]
+  },
+  {
+    "id": "s02",
+    "name": "Ben",
+    "age": 11,
+    "start_level": 0.6,
+    "learn_speed": 0.5,
+    "reading_age": 12,
+    "english": 0.85,
+    "persistence": 0.6,
+    "tags": [
+      "confident"
+    ]
+  },
+  {
+    "id": "s03",
+    "name": "Chloe",
+    "age": 13,
+    "start_level": 0.8,
+    "learn_speed": 0.7,
+    "reading_age": 14,
+    "english": 0.95,
+    "persistence": 0.7,
+    "tags": [
+      "confident",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s04",
+    "name": "Dev",
+    "age": 11,
+    "start_level": 0.4,
+    "learn_speed": 0.5,
+    "reading_age": 11,
+    "english": 0.8,
+    "persistence": 0.6,
+    "tags": []
+  },
+  {
+    "id": "s05",
+    "name": "Elif",
+    "age": 10,
+    "start_level": 0.2,
+    "learn_speed": 0.4,
+    "reading_age": 8,
+    "english": 0.35,
+    "persistence": 0.4,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "low_reading"
+    ]
+  },
+  {
+    "id": "s06",
+    "name": "Finn",
+    "age": 11,
+    "start_level": 0.5,
+    "learn_speed": 0.3,
+    "reading_age": 10,
+    "english": 0.9,
+    "persistence": 0.3,
+    "tags": [
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s07",
+    "name": "Linh",
+    "age": 11,
+    "start_level": 0.3,
+    "learn_speed": 0.7,
+    "reading_age": 9,
+    "english": 0.4,
+    "persistence": 0.5,
+    "tags": [
+      "new_to_english",
+      "low_reading",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s08",
+    "name": "Grace",
+    "age": 12,
+    "start_level": 0.65,
+    "learn_speed": 0.8,
+    "reading_age": 13,
+    "english": 0.9,
+    "persistence": 0.9,
+    "tags": [
+      "confident",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s09",
+    "name": "Hassan",
+    "age": 10,
+    "start_level": 0.25,
+    "learn_speed": 0.5,
+    "reading_age": 9,
+    "english": 0.3,
+    "persistence": 0.55,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "low_reading"
+    ]
+  },
+  {
+    "id": "s10",
+    "name": "Isla",
+    "age": 11,
+    "start_level": 0.45,
+    "learn_speed": 0.4,
+    "reading_age": 11,
+    "english": 0.85,
+    "persistence": 0.5,
+    "tags": []
+  },
+  {
+    "id": "s11",
+    "name": "Jonas",
+    "age": 10,
+    "start_level": 0.15,
+    "learn_speed": 0.3,
+    "reading_age": 8,
+    "english": 0.8,
+    "persistence": 0.3,
+    "tags": [
+      "struggling",
+      "low_reading",
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s12",
+    "name": "Kai",
+    "age": 11,
+    "start_level": 0.2,
+    "learn_speed": 0.8,
+    "reading_age": 10,
+    "english": 0.4,
+    "persistence": 0.6,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s13",
+    "name": "Mateo",
+    "age": 12,
+    "start_level": 0.55,
+    "learn_speed": 0.6,
+    "reading_age": 12,
+    "english": 0.75,
+    "persistence": 0.7,
+    "tags": []
+  },
+  {
+    "id": "s14",
+    "name": "Nia",
+    "age": 11,
+    "start_level": 0.35,
+    "learn_speed": 0.45,
+    "reading_age": 10,
+    "english": 0.6,
+    "persistence": 0.6,
+    "tags": []
+  },
+  {
+    "id": "s15",
+    "name": "Omar",
+    "age": 12,
+    "start_level": 0.7,
+    "learn_speed": 0.4,
+    "reading_age": 12,
+    "english": 0.7,
+    "persistence": 0.25,
+    "tags": [
+      "confident",
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s16",
+    "name": "Priya",
+    "age": 12,
+    "start_level": 0.5,
+    "learn_speed": 0.75,
+    "reading_age": 13,
+    "english": 0.95,
+    "persistence": 0.8,
+    "tags": [
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s17",
+    "name": "Quinn",
+    "age": 11,
+    "start_level": 0.4,
+    "learn_speed": 0.3,
+    "reading_age": 9,
+    "english": 0.7,
+    "persistence": 0.35,
+    "tags": [
+      "low_reading",
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s18",
+    "name": "Rosa",
+    "age": 9,
+    "start_level": 0.1,
+    "learn_speed": 0.35,
+    "reading_age": 7,
+    "english": 0.3,
+    "persistence": 0.3,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "low_reading",
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s19",
+    "name": "Sami",
+    "age": 11,
+    "start_level": 0.25,
+    "learn_speed": 0.75,
+    "reading_age": 10,
+    "english": 0.45,
+    "persistence": 0.6,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s20",
+    "name": "Tomas",
+    "age": 12,
+    "start_level": 0.6,
+    "learn_speed": 0.55,
+    "reading_age": 12,
+    "english": 0.8,
+    "persistence": 0.65,
+    "tags": [
+      "confident"
+    ]
+  },
+  {
+    "id": "s21",
+    "name": "Uma",
+    "age": 11,
+    "start_level": 0.45,
+    "learn_speed": 0.65,
+    "reading_age": 11,
+    "english": 0.9,
+    "persistence": 0.75,
+    "tags": []
+  },
+  {
+    "id": "s22",
+    "name": "Vik",
+    "age": 11,
+    "start_level": 0.2,
+    "learn_speed": 0.85,
+    "reading_age": 10,
+    "english": 0.35,
+    "persistence": 0.65,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s23",
+    "name": "Wren",
+    "age": 13,
+    "start_level": 0.75,
+    "learn_speed": 0.85,
+    "reading_age": 14,
+    "english": 0.95,
+    "persistence": 0.85,
+    "tags": [
+      "confident",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s24",
+    "name": "Xavi",
+    "age": 10,
+    "start_level": 0.3,
+    "learn_speed": 0.5,
+    "reading_age": 9,
+    "english": 0.55,
+    "persistence": 0.5,
+    "tags": [
+      "low_reading"
+    ]
+  },
+  {
+    "id": "s25",
+    "name": "Yara",
+    "age": 12,
+    "start_level": 0.55,
+    "learn_speed": 0.45,
+    "reading_age": 12,
+    "english": 0.85,
+    "persistence": 0.4,
+    "tags": []
+  },
+  {
+    "id": "s26",
+    "name": "Zane",
+    "age": 11,
+    "start_level": 0.35,
+    "learn_speed": 0.6,
+    "reading_age": 10,
+    "english": 0.8,
+    "persistence": 0.45,
+    "tags": []
+  },
+  {
+    "id": "s27",
+    "name": "Aisha",
+    "age": 10,
+    "start_level": 0.15,
+    "learn_speed": 0.55,
+    "reading_age": 8,
+    "english": 0.4,
+    "persistence": 0.4,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "low_reading"
+    ]
+  },
+  {
+    "id": "s28",
+    "name": "Bryn",
+    "age": 11,
+    "start_level": 0.25,
+    "learn_speed": 0.7,
+    "reading_age": 10,
+    "english": 0.45,
+    "persistence": 0.55,
+    "tags": [
+      "struggling",
+      "new_to_english",
+      "fast_learner"
+    ]
+  },
+  {
+    "id": "s29",
+    "name": "Callum",
+    "age": 12,
+    "start_level": 0.65,
+    "learn_speed": 0.3,
+    "reading_age": 12,
+    "english": 0.9,
+    "persistence": 0.2,
+    "tags": [
+      "confident",
+      "gives_up_easily"
+    ]
+  },
+  {
+    "id": "s30",
+    "name": "Dara",
+    "age": 11,
+    "start_level": 0.5,
+    "learn_speed": 0.7,
+    "reading_age": 11,
+    "english": 0.6,
+    "persistence": 0.7,
+    "tags": [
+      "fast_learner"
+    ]
+  }
+]

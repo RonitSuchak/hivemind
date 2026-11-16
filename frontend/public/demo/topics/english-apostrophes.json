@@ -1,0 +1,123 @@
+{
+  "id": "english-apostrophes",
+  "quiz_1": [
+    {
+      "id": "q1",
+      "text": "Which spelling is correct?",
+      "options": [
+        "freind",
+        "frend",
+        "friend",
+        "firend"
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Choose the right word. \"We left our bags over ____.\"",
+      "options": [
+        "their",
+        "there",
+        "they're",
+        "thier"
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Which sentence is punctuated correctly?",
+      "options": [
+        "The dog barked at the postman",
+        "the dog barked at the postman.",
+        "The dog barked at the Postman.",
+        "The dog barked at the postman."
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Which sentence uses commas correctly in a list?",
+      "options": [
+        "We bought apples, pears and grapes.",
+        "We bought apples pears and grapes.",
+        "We bought, apples, pears, and grapes.",
+        "We bought apples, pears, and, grapes."
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "In \"The cat quickly climbed the tree\", which word is an adverb?",
+      "options": [
+        "tree",
+        "climbed",
+        "quickly",
+        "cat"
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Which sentence means the same as \"Nobody except Sam passed the test\"?",
+      "options": [
+        "Sam failed the test.",
+        "Only Sam passed the test.",
+        "Everybody passed the test.",
+        "Sam was the only one who failed."
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "An apostrophe can show that something belongs to someone. This is called possession. In \"the dog's bone\", the apostrophe tells us the bone belongs to the dog.",
+    "Rule: one owner means add 's, as in the girl's bag. Many owners ending in s means add ' after the s, as in the girls' bags. Its with no apostrophe shows ownership. It's is short for it is.",
+    "Example: one boy owns a bike, so it is the boy's bike. Three boys own a football, so it is the boys' football. A dog and its tail: \"The dog wagged its tail.\" There is no apostrophe, because its shows ownership.",
+    "To check, ask who owns it and how many owners there are. One owner: apostrophe before the s. Many owners ending in s: apostrophe after the s. For its, try saying it is. If that does not fit, leave the apostrophe out."
+  ],
+  "quiz_2": [
+    {
+      "id": "q7",
+      "text": "One teacher owns a coat. Which is correct?",
+      "options": [
+        "the teachers' coat",
+        "the teacher's coat",
+        "the teachers coat",
+        "the teacher coat's"
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "A room is shared by two sisters. Which is correct?",
+      "options": [
+        "the sister's room",
+        "the sisters room",
+        "the sisters' room",
+        "the sisters's room"
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Choose the right word. \"The bird built ____ nest.\"",
+      "options": [
+        "its",
+        "it's",
+        "its'",
+        "it"
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "Choose the right word. \"____ time to go home.\"",
+      "options": [
+        "Its",
+        "Its'",
+        "Its's",
+        "It's"
+      ]
+    },
+    {
+      "id": "q11",
+      "text": "Which sentence is correct?",
+      "options": [
+        "The tree lost it's leaves, and its cold now.",
+        "The tree lost its leaves, and it's cold now.",
+        "The tree lost its leaves, and its cold now.",
+        "The tree lost it's leaves, and it's cold now."
+      ]
+    }
+  ]
+}

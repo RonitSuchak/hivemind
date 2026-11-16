@@ -1,0 +1,22 @@
+[
+  {
+    "tutor_id": "answer_machine",
+    "tutor_name": "Answer Machine",
+    "style": "Gives the answer straight away"
+  },
+  {
+    "tutor_id": "socratic",
+    "tutor_name": "Socratic",
+    "style": "Only asks guiding questions"
+  },
+  {
+    "tutor_id": "simple_steps",
+    "tutor_name": "Simple Steps",
+    "style": "Short sentences, one step at a time"
+  },
+  {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer",
+    "style": "Long, accurate, hard-to-read explanations"
+  }
+]
