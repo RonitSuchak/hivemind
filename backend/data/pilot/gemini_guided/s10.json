@@ -1,0 +1,81 @@
+{
+ "student_id": "s10",
+ "tutor_id": "gemini_guided",
+ "before": 2,
+ "after": 4,
+ "gain": 2,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.17,
+  0.22,
+  0.26,
+  0.29
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Let's solve this equivalent fractions problem together! 🧮\n\nEquivalent fractions represent the exact same value, even though they look different. Think of a pizza 🍕: eating 2 out of 3 large slices gives you the exact same amount of pizza as cutting each slice in half to eat 4 out of 6 smaller slices.\n\nTo find the missing numerator in 2/3 = ?/6, we need to make sure we scale the top and bottom of the fraction equally.\n\nLooking at the denominators (the bottom numbers), what do we need to multiply 3 by to get 6?",
+   "move": "question",
+   "reading_age": 13.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is the answer 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "You're on the right track by keeping the denominator as 6! 👍\n\nHowever, if we keep the top number as 2, we get 2/6. Since the slices in sixths are smaller than the slices in thirds, having 2 of them is actually less than 2/3.\n\nTo keep the fractions equal, whatever we multiply the bottom number by, we also have to multiply the top number by.\n\nLet's look at the bottom numbers first: 3 × ? = 6. What number goes in that spot?",
+   "move": "question",
+   "reading_age": 10.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Um, is the answer 2/6? I thought it was that because of the 6 on the bottom.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "That makes total sense why you thought of 2/6—you saw the 6 in the denominator and kept the 2 on top!\n\nHere is the catch: when we change the bottom number (the denominator) to make smaller pieces, we also have to change the top number (the numerator) so we still have the same total amount.\n\nLook at how the bottom number changed from 3 to 6:\n3 × ? = 6\n\nWhat number do we multiply 3 by to get 6?",
+   "move": "question",
+   "reading_age": 12.6
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "relay",
+ "method": "hand-relayed",
+ "tool_id": "gemini_guided",
+ "relay_raw": [
+  "Let's solve this equivalent fractions problem together! 🧮\n\nEquivalent fractions represent the exact same value, even though they look different. Think of a pizza 🍕: eating 2 out of 3 large slices gives you the exact same amount of pizza as cutting each slice in half to eat 4 out of 6 smaller slices.\n\nTo find the missing numerator in 2/3 = ?/6, we need to make sure we scale the top and bottom of the fraction equally.\n\nLooking at the denominators (the bottom numbers), what do we need to multiply 3 by to get 6?\n",
+  "You're on the right track by keeping the denominator as 6! 👍\n\nHowever, if we keep the top number as 2, we get 2/6. Since the slices in sixths are smaller than the slices in thirds, having 2 of them is actually less than 2/3.\n\nTo keep the fractions equal, whatever we multiply the bottom number by, we also have to multiply the top number by.\n\nLet's look at the bottom numbers first: 3 × ? = 6. What number goes in that spot?\n",
+  "That makes total sense why you thought of 2/6—you saw the 6 in the denominator and kept the 2 on top!\n\nHere is the catch: when we change the bottom number (the denominator) to make smaller pieces, we also have to change the top number (the numerator) so we still have the same total amount.\n\nLook at how the bottom number changed from 3 to 6:\n3 × ? = 6\n\nWhat number do we multiply 3 by to get 6?\n"
+ ],
+ "created": "2026-11-16T21:14:28+00:00"
+}
