@@ -1,0 +1,123 @@
+{
+  "id": "science-forces",
+  "quiz_1": [
+    {
+      "id": "q1",
+      "text": "Ice turns into water. What is this change called?",
+      "options": [
+        "Freezing",
+        "Melting",
+        "Boiling",
+        "Condensing"
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Here is a food chain: grass, then rabbit, then fox. Which is the producer?",
+      "options": [
+        "Fox",
+        "Rabbit",
+        "The Sun",
+        "Grass"
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Which part is found in a plant cell but not in an animal cell?",
+      "options": [
+        "Nucleus",
+        "Cell membrane",
+        "Cell wall",
+        "Cytoplasm"
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "A cell and a bulb are joined by wires in a loop and the bulb is lit. A gap is made in a wire. What happens?",
+      "options": [
+        "The bulb goes out",
+        "The bulb gets brighter",
+        "The bulb stays the same",
+        "The cell charges up"
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "A car travels 100 m in 20 s. What is its speed?",
+      "options": [
+        "0.2 m/s",
+        "5 m/s",
+        "80 m/s",
+        "2000 m/s"
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Which of these is a compound?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Iron",
+        "Hydrogen"
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "A force is a push or a pull, and it is measured in newtons (N). Often more than one force acts on an object at once. The resultant force is the single force that has the same effect as all of them together.",
+    "Forces in opposite directions subtract: take the smaller from the larger. The resultant points the way of the larger force. If the forces are equal they are balanced, so the resultant is 0 N and the object's motion does not change.",
+    "Example: a sledge is pulled right with 50 N, and friction pulls left with 20 N. Smaller from larger: 50 N minus 20 N = 30 N. The resultant force is 30 N to the right, so the sledge speeds up to the right.",
+    "Check your answer in two ways. The resultant should point the same way as the bigger force, and it should be smaller than the bigger force. If the two forces are equal, the answer must be 0 N."
+  ],
+  "quiz_2": [
+    {
+      "id": "q7",
+      "text": "A box is pushed right with 8 N and left with 8 N. What is the resultant force?",
+      "options": [
+        "16 N to the right",
+        "8 N to the right",
+        "0 N",
+        "16 N to the left"
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "A cyclist pushes forwards with 60 N. Air resistance pushes backwards with 25 N. What is the resultant force?",
+      "options": [
+        "85 N forwards",
+        "35 N forwards",
+        "35 N backwards",
+        "25 N forwards"
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "A rope is pulled left with 45 N and right with 60 N. What is the resultant force?",
+      "options": [
+        "60 N to the right",
+        "15 N to the left",
+        "105 N to the right",
+        "15 N to the right"
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "A car drives at a steady 20 m/s in a straight line. The forces on it are balanced. What happens next?",
+      "options": [
+        "It keeps going at 20 m/s",
+        "It speeds up",
+        "It slows down",
+        "It stops at once"
+      ]
+    },
+    {
+      "id": "q11",
+      "text": "A boat engine pushes forwards with 400 N. The water pushes backwards with 550 N. What is the resultant force?",
+      "options": [
+        "550 N backwards",
+        "150 N forwards",
+        "150 N backwards",
+        "950 N backwards"
+      ]
+    }
+  ]
+}

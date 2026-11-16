@@ -1,0 +1,123 @@
+{
+  "id": "computing-binary",
+  "quiz_1": [
+    {
+      "id": "q1",
+      "text": "Which of these is an input device?",
+      "options": [
+        "Monitor",
+        "Speaker",
+        "Keyboard",
+        "Printer"
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "A file is called holiday.jpg. What is it most likely to be?",
+      "options": [
+        "A picture",
+        "A song",
+        "A text document",
+        "A video"
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "What is an algorithm?",
+      "options": [
+        "A type of computer virus",
+        "A part inside a computer that stores files",
+        "A website address",
+        "A set of clear steps to solve a problem"
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Which list puts storage units in order from smallest to largest?",
+      "options": [
+        "Kilobyte, byte, megabyte, gigabyte",
+        "Byte, kilobyte, megabyte, gigabyte",
+        "Gigabyte, megabyte, kilobyte, byte",
+        "Byte, megabyte, kilobyte, gigabyte"
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Read this code.\nLine 1: x = 4\nLine 2: x = x * 2\nLine 3: print x\nWhat does it print?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "42"
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "A door opens if the card is valid OR the code is right. The card is not valid but the code is right. Does the door open?",
+      "options": [
+        "Yes, one condition is true",
+        "No, both must be true",
+        "No, the card is not valid",
+        "Yes, but only after a second try"
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "Computers store numbers using only 0s and 1s. This is called binary. A group of four binary digits can show any number from 0 to 15.",
+    "Each place has a value. Reading from the left, the four places are worth 8, 4, 2 and 1. To read a binary number, add up the values of the places that hold a 1. A place that holds a 0 counts as nothing.",
+    "Example: 1010. The 1s are in the 8 place and the 2 place. The 0s are in the 4 place and the 1 place. So add 8 + 2 = 10. This means 1010 in binary is 10 in decimal.",
+    "To check, add the values of the places that hold a 1 and see if you get the number you started with. You can test any answer this way, even when you are asked to find the binary for a number."
+  ],
+  "quiz_2": [
+    {
+      "id": "q7",
+      "text": "What is 0011 in decimal?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "11"
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "What is 0110 in decimal?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "110"
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "What is 1001 in decimal?",
+      "options": [
+        "2",
+        "5",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "What is 1101 in decimal?",
+      "options": [
+        "3",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "id": "q11",
+      "text": "Which 4-bit binary number is 12 in decimal?",
+      "options": [
+        "0011",
+        "0110",
+        "1010",
+        "1100"
+      ]
+    }
+  ]
+}
