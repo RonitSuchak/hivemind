@@ -141,6 +141,9 @@ RATE_LIMITS = {  # bucket: (requests, per seconds), per device (IP address, kept
     "admin": (10, 600),
 }
 STORE_DIR = DATA_DIR / "store"  # JSON files when DATABASE_URL is not set
+REAL_TOOLS_FILE = DATA_DIR / "real_tools.json"  # Kien's real EdTech tools list, each with its demo tool type
+STORE_CONNECT_SECONDS = 5  # give up on the database after this long
+STORE_RETRY_SECONDS = 30  # then refuse at once for this long, so pages don't hang
 
 # Live chat (item 14)
 CHAT_MAX_TURNS = 12

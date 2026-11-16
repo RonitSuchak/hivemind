@@ -87,7 +87,10 @@ class GeminiClient:
                 if attempt < 3:
                     continue
                 raise LLMError(f"Gemini did not answer within {self.timeout:.0f} s, 4 times in a row.") from None
-            except urllib.error.URLError as error:
+            except urllib.error.URLError as error:  # no internet for a moment (Wi-Fi blip, DNS)
+                if attempt < 3:
+                    time.sleep(5 * 2**attempt)  # 5, 10, 20 seconds
+                    continue
                 raise LLMError(f"Could not reach Gemini: {error.reason}") from None
 
         try:

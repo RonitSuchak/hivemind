@@ -63,19 +63,42 @@ def resolve(host: str, port: int = 443) -> list[str]:
 
 
 class PinnedHTTPSConnection(http.client.HTTPSConnection):
-    """HTTPS to a fixed IP address, while still checking the certificate for the host name."""
+    """HTTPS to a fixed IP address, while still checking the certificate for the host name.
+
+    The socket is stored before the TLS handshake starts, so the watchdog can cut
+    a server that drips its handshake; expire() also stops a connect that hasn't begun.
+    """
 
     def __init__(self, host: str, ip: str, port: int, timeout: float):
         super().__init__(host, port=port, timeout=timeout, context=ssl.create_default_context())
         self._ip = ip
+        self._expired = False
 
     def connect(self):
+        if self._expired:
+            raise TimeoutError("deadline passed")
         sock = socket.create_connection((self._ip, self.port), self.timeout)
-        self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+        self.sock = self._context.wrap_socket(sock, server_hostname=self.host, do_handshake_on_connect=False)
+        if self._expired:  # the watchdog fired while we were connecting
+            raise TimeoutError("deadline passed")
+        self.sock.do_handshake()  # cut-able: self.sock is already set
+
+    def expire(self) -> None:
+        """Called by the watchdog: mark the deadline as passed and unblock any read."""
+        self._expired = True
+        sock = self.sock
+        if sock is not None:
+            try:
+                sock.shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass
 
 
 def _cut(conn) -> None:
-    """Called by the watchdog: shut the socket so any blocked read returns at once."""
+    """Called by the watchdog: shut the socket so any blocked read (or handshake) returns at once."""
+    if hasattr(conn, "expire"):
+        conn.expire()
+        return
     sock = getattr(conn, "sock", None)
     if sock is not None:
         try:

@@ -85,6 +85,62 @@ class ApiTests(unittest.TestCase):
         self.assertIn("below_average", self.client.get("/api/report/lecturer").json())
         self.assertError(self.client.get("/api/runs/robot"), 404, "not_found")
 
+    # --- database out of reach (e.g. a Wi-Fi that blocks port 5432)
+    def test_the_laptop_demo_keeps_working_when_the_database_is_out_of_reach(self):
+        from app import store
+
+        class Unreachable:
+            kind = "database"
+
+            def __getattr__(self, name):
+                def fail(*args, **kwargs):
+                    raise store.StoreUnavailable("database unreachable")
+                return fail
+
+        store.set_store(Unreachable())
+        try:
+            with TestClient(self.api.app) as client:  # startup (resume runs) must not crash
+                self.assertEqual(client.get("/api/health").json()["ok"], True)
+                self.assertEqual(len(client.get("/api/tutors").json()), 5)
+                for path in ("/api/students", "/api/runs/socratic", "/api/ratings", "/api/report/lecturer",
+                             "/api/check", "/api/test"):
+                    self.assertEqual(client.get(path).status_code, 200, path)
+                body = {"quiz_1": {"c1": "2/6"}, "quiz_2": {"c6": "4/10"}, "reading": {"r1": "3"},
+                        "english_confidence": 3}
+                m = client.post("/api/match", json=body)
+                self.assertEqual(m.status_code, 200, m.text)  # the check's result never needs the database
+                self.assertError(client.post("/api/ask", json={"match_id": m.json()["match_id"], "question": "Why?"}),
+                                 503, "store_unavailable")
+                self.assertError(client.get("/api/validation"), 503, "store_unavailable")
+                self.assertError(client.get("/api/submissions"), 503, "store_unavailable")
+        finally:
+            store.set_store(store.JsonStore(self.store_root))
+
+    def test_an_unreachable_database_fails_fast_then_retries(self):
+        from app import store
+
+        class FakePsycopg:
+            class OperationalError(Exception):
+                pass
+
+            calls = 0
+
+            def connect(self, *args, **kwargs):
+                FakePsycopg.calls += 1
+                raise FakePsycopg.OperationalError("timeout")
+
+        db = store.PostgresStore("postgresql://example.invalid/db")  # connects lazily: no error yet
+        db._psycopg = FakePsycopg()
+        with self.assertRaises(store.StoreUnavailable):
+            db.list("submissions")
+        with self.assertRaises(store.StoreUnavailable):  # refused at once, no second wait
+            db.get("submissions", "sub_001")
+        self.assertEqual(FakePsycopg.calls, 1)
+        db._failed_at -= config.STORE_RETRY_SECONDS + 1  # 30 seconds later it tries again
+        with self.assertRaises(store.StoreUnavailable):
+            db.list("submissions")
+        self.assertEqual(FakePsycopg.calls, 2)
+
     # --- advisor
     def test_match_has_the_contract_shape_and_is_stored(self):
         m = self.match()
@@ -94,6 +150,15 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn("tags", m["profile"])
         self.assertAlmostEqual(sum(x["weight"] for x in m["matches"]), 1.0)
         self.assertTrue((self.store_root / "matches" / f"{m['match_id']}.json").exists())
+        self.assertIn("real_tools", m)
+        if m["enough_matches"]:
+            self.assertTrue(m["real_tools"] and all(t["estimated"] for t in m["real_tools"]))
+            self.assertNotIn("scores", m["real_tools"][0])
+
+    def test_real_tools_endpoint(self):
+        r = self.client.get("/api/real-tools")
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(len(r.json()["tools"]), 78)
 
     def test_far_profile_from_the_check_gets_no_ranking(self):
         from app.check import QUIZ_1, QUIZ_2, READING_QS
@@ -102,6 +167,7 @@ class ApiTests(unittest.TestCase):
                         "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 1})
         self.assertFalse(m["enough_matches"])
         self.assertEqual(m["ranked"], [])
+        self.assertEqual(m["real_tools"], [])  # no ranking, no guessing
 
     def test_ask_answers_counts_and_stops_at_5(self):
         m = self.match()

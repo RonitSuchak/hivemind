@@ -18,7 +18,7 @@ def ask_tutor(url: str, messages: list[dict], post=post_json) -> dict:
     if len(response["body"]) > config.MAKER_MAX_RESPONSE_BYTES:
         raise LinkError("responds", "The reply was too big.")
     if response["status"] != 200:
-        raise LinkError("responds", f"The tutor answered with an error (HTTP {response['status']}).")
+        raise LinkError("responds", f"The product answered with an error (HTTP {response['status']}).")
     try:
         data = json.loads(response["body"].decode("utf-8"))
     except (UnicodeDecodeError, ValueError):

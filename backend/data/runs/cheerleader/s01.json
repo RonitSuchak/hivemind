@@ -1,0 +1,87 @@
+{
+ "student_id": "s01",
+ "tutor_id": "cheerleader",
+ "before": 8,
+ "after": 9,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.74,
+  0.79,
+  0.87,
+  0.91
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Woohoo! Hi there, superstar! You are going to totally crush this math problem today! Before we dive in, how has your awesome day been going? Did you do anything super fun with your friends or play any cool games after school? \n\nNow, let's look at those denominators, 3 and 6! What do you multiply 3 by to get 6? You've got this! Let me know what you think, and keep that brilliant brain shining bright!",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "it is 4/6 because you times the bottom by 2 so you have to times the top by 2 as well Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Oh, wow, look at you go! You are an absolute fraction rockstar! High five! That logic was pure perfection! \n\nBefore we tackle this next brilliant addition puzzle, tell me, do you have any super fun weekend plans coming up? Any cool sports, hobbies, or video games you are playing? \n\nNow, for your next masterpiece, since our denominators at the bottom are already the same, what do you get when you add those top numbers together? You're doing amazing!",
+   "move": "question",
+   "reading_age": 10.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "the answer is 6/9 because you just add the top numbers and keep the bottom number the same Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Booyah! You nailed it again! Your math skills are just sparkling today! Woohoo! \n\nBefore we conquer this next tricky fraction mountain, what is your absolute favorite subject at school? Or do you love chilling out with art or music best? \n\nFor this awesome new challenge with 1/4 and 1/8, remember our golden rule: we need matching bottom numbers first! What can you multiply the 4 by to turn it into an 8? You can totally do this!",
+   "move": "question",
+   "reading_age": 9.5
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Wait, is it 2/12? I just added the top numbers and the bottom numbers together, but I am really not sure if that is right.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Oh, sweetie, I love that you are trying so hard and thinking outside the box! You are working super duper hard today, and I am so proud of your effort! \n\nAdding the bottoms together is a super common trap, but fractions are tricky like that—we actually have to keep the bottom number the same! \n\nTell me, what do you love doing to relax after a long school day? \n\nNow, remember how we multiply the bottom 4 by 2 to get 8? What do you get when you times the top 1 by 2? Go get 'em, champ!",
+   "move": "question",
+   "reading_age": 9.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T09:47:09+00:00"
+}

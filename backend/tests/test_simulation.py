@@ -136,6 +136,15 @@ class GeminiClientTests(unittest.TestCase):
                 client.chat("s", [{"from": "student", "text": "a"}])
         self.assertEqual(urlopen.call_count, 4)
 
+    def test_a_network_blip_is_retried_then_reported_clearly(self):
+        import urllib.error
+        client = GeminiClient(api_key="x", model="gemini-test", min_seconds=0)
+        blip = urllib.error.URLError("nodename nor servname provided")
+        with mock.patch("urllib.request.urlopen", side_effect=blip) as urlopen, mock.patch("time.sleep"):
+            with self.assertRaisesRegex(Exception, "Could not reach Gemini"):
+                client.chat("s", [{"from": "student", "text": "a"}])
+        self.assertEqual(urlopen.call_count, 4)
+
     def test_student_and_tutor_become_user_and_model(self):
         client = GeminiClient(api_key="x", model="gemini-test", min_seconds=0)
         request = client.build_request("s", [{"from": "student", "text": "a"}, {"from": "tutor", "text": "b"}])

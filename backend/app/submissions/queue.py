@@ -30,7 +30,7 @@ LABELS = {
     "reputation": "Not on Google's dangerous-sites list",
     "public_address": "Points to a public server",
     "responds": "Replied to a test message in time",
-    "ownership": "Maker proved they own the tutor",
+    "ownership": "Maker proved they own the product",
 }
 EMAIL = re.compile(r"^[^@\s]{1,64}@[^@\s]+\.[A-Za-z]{2,}$")
 PUBLIC_FIELDS = ("id", "product", "tutor_url", "product_url", "subject", "age_range", "status", "checks",
@@ -123,7 +123,7 @@ def submit(body: dict, **check_tools) -> dict:
         if passed:
             sub["ownership_code"] = "HM-" + "".join(secrets.choice("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
                                                     for _ in range(4))
-            sub["checks"].append(_check("ownership", None, "Add the code below to your tutor's reply, then press "
+            sub["checks"].append(_check("ownership", None, "Add the code below to your product's reply, then press "
                                                            "Verify."))
         store.put("submissions", sub_id, sub)
     return sub
@@ -150,9 +150,9 @@ def verify(sub_id: str, ask=ask_tutor) -> dict:
     try:
         answer = ask(sub["tutor_url"], [{"role": "student", "text": config.MAKER_TEST_MESSAGE}])
         found = answer["code"] == sub["ownership_code"]
-        detail = "Code found in the tutor's reply." if found else "The code wasn't found in the reply yet."
+        detail = "Code found in the product's reply." if found else "The code wasn't found in the reply yet."
     except LinkError as error:
-        found, detail = False, f"Couldn't reach the tutor: {error.detail}"
+        found, detail = False, f"Couldn't reach the product: {error.detail}"
     sub["checks"] = [c for c in sub["checks"] if c["name"] != "ownership"] + [
         _check("ownership", True if found else None, detail)]
     if found:
@@ -201,7 +201,7 @@ def class_run_for(sub_id: str, make_tutor=None, make_voice=ScriptedVoice) -> Non
             store.put("submissions", sub_id, sub)
     except Exception as error:  # a maker tutor that stops answering: record it in plain words
         sub["run"]["state"] = "error"
-        sub["run"]["detail"] = error.detail if isinstance(error, LinkError) else "The tutor stopped answering."
+        sub["run"]["detail"] = error.detail if isinstance(error, LinkError) else "The product stopped answering."
         store.put("submissions", sub_id, sub)
         return
     for r in results:

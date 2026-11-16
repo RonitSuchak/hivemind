@@ -55,6 +55,7 @@ def main() -> None:
     save("health.json", get("/api/health"))
     for name in ("tutors", "students", "ratings", "check", "test", "validation", "submissions"):
         save(f"{name}.json", get(f"/api/{name}"))
+    save("real-tools.json", get("/api/real-tools"))
     for tutor, _ in catalog.rated():
         save(f"runs/{tutor['tutor_id']}.json", get(f"/api/runs/{tutor['tutor_id']}"))
         save(f"report/{tutor['tutor_id']}.json", get(f"/api/report/{tutor['tutor_id']}"))
@@ -68,7 +69,7 @@ def main() -> None:
         save("submission-example.json", subs[0])
     if args.with_ai:
         save("ask-example.json", client.post("/api/ask", json={"match_id": match["match_id"],
-                                                               "question": "Why is the first tutor best for me?"}).json())
+                                                               "question": "Why is the first demo tool best for me?"}).json())
         save("chat-example.json", client.post("/api/chat", json={"tutor_id": "simple_steps",
                                                                  "message": "how do i add 1/3 and 1/6"}).json())
     files = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*.json"))

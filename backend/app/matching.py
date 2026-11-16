@@ -141,5 +141,5 @@ def match(profile: dict, rated: list[tuple[dict, dict]]) -> dict:
             f"None of our {len(STUDENTS)} simulated students are close enough to your profile to give a fair "
             "answer, so we won't guess. Your result helps us decide which students to add next."),
         "note": (f"Advice from {config.MATCH_K} simulated students with a similar profile, not real children. "
-                 f"{n_tutors} tutors tested.") if ok else "Advice from simulated students, not real children.",
+                 f"{n_tutors} tools tested.") if ok else "Advice from simulated students, not real children.",
     }

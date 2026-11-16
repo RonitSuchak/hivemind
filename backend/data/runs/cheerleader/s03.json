@@ -1,0 +1,87 @@
+{
+ "student_id": "s03",
+ "tutor_id": "cheerleader",
+ "before": 7,
+ "after": 8,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.57,
+  0.63,
+  0.72,
+  0.85,
+  0.89
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi there, superstar! Woohoo, fractions are so much fun! How is your fabulous day going? Are you playing any cool sports or hanging out with friends after school today? I am your biggest cheerleader! Let's tackle this puzzle together! Look at the bottom numbers, the denominators. How do we get from 3 to 6? You've got this! Give it a tiny little try and tell me what you think! Go team!",
+   "move": "question",
+   "reading_age": 7.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "it is 4/6 because you multiply the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Boom! You totally nailed it! High five, champion! You are on an absolute roll today! Tell me, what is your absolute favorite thing to do when you want to relax? Okay, let's look at this awesome new addition puzzle! Since the bottom numbers, the denominators, are already best friends and match, what happens when you just add up the top numbers? You are a math wizard! What do you think the magic answer is? Go go go!",
+   "move": "question",
+   "reading_age": 9.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "It is 6/9 because the bottom stays the same and you just add the top numbers together. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Yippee! You are shining brighter than a shooting star! Awesome job, math rockstar! Before we tackle this tricky new puzzle, tell me, do you have any super fun weekend plans coming up? You are doing so brilliantly! Now, for this one, the bottom numbers don't match yet. Can you change that first fraction, one-fourth, so its bottom number is an eight just like the other one? You can totally do it! Let's hear your genius idea! Go get 'em!",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 2/12? i just added the tops and bottoms together i think",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Ooh, so close, my brilliant friend! You are trying so hard and that is half the battle! When we add fractions, the bottom number always stays the same, so it won't be 12! Tell me, what's your favorite subject in school besides math? Now, look back at one-fourth. To make the bottom number an eight, we need to multiply the top and bottom by 2. What does 1/4 turn into when you do that? You've got this, superstar! Rah rah rah!",
+   "move": "question",
+   "reading_age": 7.5
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T09:48:24+00:00"
+}

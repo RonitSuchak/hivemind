@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import re
 import threading
+import time
 from pathlib import Path
 
 from . import config
@@ -63,8 +64,16 @@ class JsonStore:
         return False
 
 
+class StoreUnavailable(Exception):
+    """The database can't be reached: no internet, or a network that blocks its port (5432)."""
+
+
 class PostgresStore:
-    """One table: records(kind, id, data jsonb, updated_at). Needs psycopg (installed in .venv)."""
+    """One table: records(kind, id, data jsonb, updated_at). Needs psycopg (installed in .venv).
+
+    Connects lazily, so the server starts and the built-in results work even when the
+    database is out of reach. After a failed connection it refuses at once for
+    STORE_RETRY_SECONDS, so pages don't each wait for the timeout."""
 
     kind = "database"
 
@@ -73,13 +82,23 @@ class PostgresStore:
         from psycopg.types.json import Jsonb
 
         self._psycopg, self._jsonb, self.url = psycopg, Jsonb, url
-        with self._connect() as conn:
+        self._ready, self._failed_at = False, None
+
+    def _connect(self):
+        if self._failed_at is not None and time.monotonic() - self._failed_at < config.STORE_RETRY_SECONDS:
+            raise StoreUnavailable("database unreachable")
+        try:
+            conn = self._psycopg.connect(self.url, connect_timeout=config.STORE_CONNECT_SECONDS, autocommit=True)
+        except self._psycopg.OperationalError:
+            self._failed_at = time.monotonic()
+            raise StoreUnavailable("database unreachable") from None
+        self._failed_at = None
+        if not self._ready:
             conn.execute("""CREATE TABLE IF NOT EXISTS records (
                 kind text NOT NULL, id text NOT NULL, data jsonb NOT NULL,
                 updated_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY (kind, id))""")
-
-    def _connect(self):
-        return self._psycopg.connect(self.url, connect_timeout=10, autocommit=True)
+            self._ready = True
+        return conn
 
     def get(self, kind: str, item_id: str) -> dict | None:
         _check(kind, item_id)

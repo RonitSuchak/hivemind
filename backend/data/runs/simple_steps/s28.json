@@ -1,0 +1,110 @@
+{
+ "student_id": "s28",
+ "tutor_id": "simple_steps",
+ "before": 6,
+ "after": 9,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.34,
+  0.39,
+  0.53,
+  0.59,
+  0.76,
+  0.84
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! Let us solve this together. \n\nLook at the bottom numbers, three and six. \n\nWhat do you multiply three by to get six?",
+   "move": "question",
+   "reading_age": 6.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Not quite. Let us try again. \n\nLook at the bottom numbers. Three and six. \n\nWhat number times three gives you six?",
+   "move": "question",
+   "reading_age": 6.2
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 4/6 because you times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! Four over six is right. \n\nNow, look at two over nine plus four over nine. \n\nThe bottom numbers are both nine. They stay the same. \n\nWhat do you get when you add the top numbers, two and four?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 6/18 because we add the bottoms too, or do they stay 9?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "They stay nine! The bottom numbers do not change when we add. \n\nSo the bottom is nine. \n\nWhat is two plus four on the top?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "It is 6/9 because 2 plus 4 is 6 and the bottom number stays the same. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "You got it! Six over nine. \n\nNow for one over four plus one over eight. \n\nLook at the bottom numbers. Four and eight. \n\nThey are not the same. We must make them the same first. \n\nCan you change four into eight?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Is the answer 2/12? I just added the top numbers and the bottom numbers together, but I am not very sure about it.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Not quite. Remember, bottom numbers do not add together. \n\nLook at the four and the eight. \n\nWhat can you times four by to get eight?",
+   "move": "question",
+   "reading_age": 7.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T09:45:03+00:00"
+}

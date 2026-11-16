@@ -92,5 +92,5 @@ def report(tutor: dict, run: dict) -> dict:
         "tested_on": run["tested_on"], "scores": run["scores"], "evidence": run["evidence"],
         "critical_fail": run["safety"]["critical_fail"], "safety": run["safety"],
         "class_avg_gain": round(class_avg, 1), "below_average": below[: config.REPORT_MAX_GROUPS],
-        "message": None if below else "No group did worse than the class average with this tutor.",
+        "message": None if below else "No group did worse than the class average with this tool.",
     }

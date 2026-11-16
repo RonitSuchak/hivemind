@@ -24,14 +24,14 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from . import advisor, catalog, config, live, matching
+from . import advisor, catalog, config, live, matching, real_tools
 from .check import profile_from, public_check
 from .limits import limiter
 from .middleware import BodyLimit, SecurityHeaders, client_ip
 from .llm import GeminiClient, LLMError
 from .ratings import ratings
 from .report import report
-from .store import get_store
+from .store import StoreUnavailable, get_store
 from .students import STUDENTS
 from .submissions import queue as submissions
 
@@ -50,12 +50,16 @@ def error(status: int, code: str, message: str, headers: dict | None = None) -> 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    submissions.resume_runs()  # carry on with any class run a restart interrupted
+    try:
+        submissions.resume_runs()  # carry on with any class run a restart interrupted
+    except StoreUnavailable:  # start anyway: everything except saved data still works
+        log.warning("could not resume submission runs: database unreachable")
     yield
 
 
 app = FastAPI(title="Hivemind API", version=config.API_VERSION, lifespan=lifespan,
-              description="Tests AI tutors on a simulated class of 30. Contract: docs/BACKEND.md.")
+              description="Tests demo tools (built-in AI tutors standing in for types of real EdTech tools) on a simulated "
+                          "class of 30. API fields keep the name `tutor`. Contract: docs/BACKEND.md.")
 # Order matters: the last one added runs first. CORS is outermost, so even a "too big" answer
 # carries CORS headers and the website can read its message.
 app.add_middleware(SecurityHeaders)
@@ -81,6 +85,11 @@ async def validation_error(_: Request, exc: RequestValidationError):
     first = exc.errors()[0] if exc.errors() else {}
     where = ".".join(str(p) for p in first.get("loc", []) if p != "body") or "body"
     return error(400, "invalid_input", f"Check '{where}': {first.get('msg', 'invalid value')}.")
+
+
+@app.exception_handler(StoreUnavailable)
+async def store_unavailable(_: Request, exc: StoreUnavailable):
+    return error(503, "store_unavailable", "Saved data is out of reach right now. Please try again in a minute.")
 
 
 @app.exception_handler(Exception)
@@ -155,7 +164,7 @@ def students():
 def runs(tutor_id: str):
     run = catalog.run(tutor_id)
     if run is None:
-        raise ApiError(404, "not_found", "No finished class run for that tutor.")
+        raise ApiError(404, "not_found", "No finished class run for that demo tool.")
     return run
 
 
@@ -168,7 +177,7 @@ def get_ratings():
 def get_report(tutor_id: str):
     tutor, run = catalog.tutor(tutor_id), catalog.run(tutor_id)
     if tutor is None or run is None:
-        raise ApiError(404, "not_found", "No finished class run for that tutor.")
+        raise ApiError(404, "not_found", "No finished class run for that demo tool.")
     return report(tutor, run)
 
 
@@ -189,11 +198,24 @@ class MatchBody(BaseModel):
 def build_match(profile: dict) -> dict:
     rated = catalog.rated()
     result = matching.match(profile, rated)
-    summary = live.validation_summary(validation_entries())
-    result["follow_ups"] = advisor.follow_ups(result, rated, summary)
-    get_store().put("matches", result["match_id"], {"profile": result["profile"], "questions": 0, "created": now()})
-    keys = ("match_id", "enough_matches", "profile", "radar", "matches", "ranked", "follow_ups", "message", "note")
+    try:
+        entries = validation_entries()
+    except StoreUnavailable:
+        entries = []
+    result["follow_ups"] = advisor.follow_ups(result, rated, live.validation_summary(entries))
+    try:  # the match itself never needs the database; only "ask" by match_id does
+        get_store().put("matches", result["match_id"], {"profile": result["profile"], "questions": 0, "created": now()})
+    except StoreUnavailable:
+        log.warning("match not saved: database unreachable")
+    result["real_tools"] = real_tools.for_match(result["ranked"])
+    keys = ("match_id", "enough_matches", "profile", "radar", "matches", "ranked", "real_tools", "follow_ups", "message",
+            "note")
     return {k: result[k] for k in keys}
+
+
+@app.get("/api/real-tools")
+def get_real_tools():
+    return real_tools.listing()
 
 
 @app.get("/api/check")
@@ -276,7 +298,7 @@ def post_chat(body: ChatBody):
     except live.ChatError as exc:
         raise ApiError(exc.status, exc.code, exc.message) from None
     except LLMError:
-        raise ApiError(503, "ai_unavailable", "The tutor is busy right now. Please try again in a minute.") from None
+        raise ApiError(503, "ai_unavailable", "The demo tool is busy right now. Please try again in a minute.") from None
 
 
 # --- real-classmate check ---------------------------------------------------------------
@@ -324,7 +346,7 @@ def post_validation(body: ValidationBody):
     rows = matching.rank(matching.nearest(profile), rated)
     row = next((r for r in rows if r["tutor_id"] == body.tutor_id), None)
     if row is None:
-        raise ApiError(404, "not_found", "No rated tutor called that.")
+        raise ApiError(404, "not_found", "No rated demo tool called that.")
     code = (body.code or "").strip().upper() or live.new_code()
     if not live.valid_code(code):
         raise ApiError(400, "invalid_input", "Codes look like HM-4XK2. Never use a name.")

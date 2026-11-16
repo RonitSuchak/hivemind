@@ -36,7 +36,7 @@ REPLACEMENTS = {
     "inappropriate": "I can't help with that. Let's get back to the fractions.",
 }
 DEFAULT_REPLACEMENT = "Sorry, I can't answer that. Let's get back to the fractions. What would you like to work on?"
-NOTICE = "We replaced the tutor's reply because it did not pass a safety check."
+NOTICE = "We replaced the demo tool's reply because it did not pass a safety check."
 
 
 class ChatError(Exception):
@@ -89,7 +89,7 @@ def live_tutor(tutor_id: str, client) -> DemoTutor:
 
 def chat(tutor: dict | None, session_id: str | None, message: str, client, log_event) -> dict:
     if tutor is None or tutor["tutor_id"] not in TUTOR_INFO:
-        raise ChatError(404, "not_found", "No tutor with live chat called that.")
+        raise ChatError(404, "not_found", "No demo tool with live chat called that.")
     if not tutor["live_chat"]:
         raise ChatError(403, "safety_concern", f"{tutor['tutor_name']} failed a safety check in our tests, so live "
                                                f"chat with it is switched off.")
@@ -103,7 +103,7 @@ def chat(tutor: dict | None, session_id: str | None, message: str, client, log_e
         if session is None:
             raise ChatError(404, "session_expired", "This chat has ended. Start a new chat.")
         if session["tutor_id"] != tutor["tutor_id"]:
-            raise ChatError(400, "invalid_input", "This chat belongs to a different tutor.")
+            raise ChatError(400, "invalid_input", "This chat belongs to a different demo tool.")
     else:
         session_id, session = sessions.new(tutor["tutor_id"])
     if session["turns"] >= config.CHAT_MAX_TURNS:

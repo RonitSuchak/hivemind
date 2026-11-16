@@ -8,11 +8,15 @@ added by the submissions module (item 16) through register_source().
 from __future__ import annotations
 
 import json
+import logging
 from functools import lru_cache
 from pathlib import Path
 
 from . import config
+from .store import StoreUnavailable
 from .tutors import TUTOR_INFO
+
+log = logging.getLogger("hivemind")
 
 _extra_sources = []  # functions returning [(tutor_dict, run_dict)] for submitted tutors
 
@@ -46,7 +50,10 @@ def entries() -> list[tuple[dict, dict | None]]:
     """[(tutor, run)] for every tutor: built-in first, then approved submissions."""
     out = [(_built_in(tid), built_in_run(tid)) for tid in config.LAB_ORDER]
     for source in _extra_sources:
-        out += source()
+        try:
+            out += source()
+        except StoreUnavailable:  # the built-in results never depend on the database
+            log.warning("submissions skipped: database unreachable")
     return out
 
 

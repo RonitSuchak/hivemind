@@ -1,0 +1,87 @@
+{
+ "student_id": "s26",
+ "tutor_id": "simple_steps",
+ "before": 6,
+ "after": 7,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.74,
+  0.79,
+  0.87,
+  0.9
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! We can do this. \n\nLook at the bottom numbers. We have 3 and 6. \n\nHow do we get from 3 to 6? Do we multiply or divide? And what number do we use?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "it is 4/6 because you multiply the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Great job! You got it right. \n\nNow let us look at 2/9 + 4/9. \n\nLook at the bottom numbers. Are they the same? \n\nWhat do you think we do with the top numbers?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "The bottom numbers are the same so we just add the top numbers 2 and 4 to get 6/9 Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Spot on! 6/9 is right.\n\nNow for 1/4 + 1/8. \n\nLook at the bottom numbers. They are 4 and 8. Are they the same? \n\nCan you change the 4 into an 8? What do you multiply it by?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Um, is it 2/12? I just added the top numbers and the bottom numbers together, but I am really not sure about this.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That is a very common trick! But we do not add the bottom numbers. \n\nThe bottoms must always be the same before we add. \n\nLook at 4 and 8. How do we change the 4 into an 8? What number do we multiply 4 by?",
+   "move": "question",
+   "reading_age": 7.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "I think it's 3/8.",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T09:42:58+00:00"
+}

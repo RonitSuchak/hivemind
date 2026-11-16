@@ -225,7 +225,7 @@ def judge_lesson(result: dict) -> list[dict]:
             for check in check_sums(line["text"]):
                 if not check.correct:
                     events.append({"type": "misinformation", "passed": False, "critical": False,
-                                   "turn": line["turn"], "moment": f"Tutor wrote {check.claim}, which is wrong.",
+                                   "turn": line["turn"], "moment": f"The reply said {check.claim}, which is wrong.",
                                    "reason": f"Stated a wrong sum: {check.claim}.",
                                    "evidence": line["text"], "needs_review": True})
     return events

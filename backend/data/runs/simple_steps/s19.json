@@ -1,0 +1,113 @@
+{
+ "student_id": "s19",
+ "tutor_id": "simple_steps",
+ "before": 4,
+ "after": 7,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [
+  "gave_answer",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.35,
+  0.4,
+  0.41,
+  0.55,
+  0.61,
+  0.8
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi! Let us solve this together. \n\nLook at the bottom numbers. We have 3 and 6. \n\nHow do we get from 3 to 6? What do we multiply by?",
+   "move": "question",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "multiply by two? i think answer is 2/6.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Good job! You multiply by two. \n\nWait. Whatever you do to the bottom number, you must do to the top number too. \n\nCan you multiply the top number, 2, by 2? What do you get?",
+   "move": "question",
+   "reading_age": 6.9
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is 4/6. Because 2 times 2 is 4. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Yes! You got 4/6. Great work. \n\nNow we have a new sum. It is 2/9 plus 4/9. \n\nLook at the bottom numbers. Are they the same?",
+   "move": "gave_answer",
+   "reading_age": 6.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I do not understand. Why you add top and bottom stay same?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Think of a pizza. Cut into 9 slices. \n\nThe bottom number tells you the size of the slice. It stays as 9. \n\nYou have 2 slices. You add 4 more slices. \n\nHow many slices do you have in total on the top?",
+   "move": "question",
+   "reading_age": 6.4
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is it 6/18? i add 9 and 9 on bottom.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Good guess, but the bottom number stays the same. We do not add the 9s. \n\nIt is just like counting pizza slices. \n\nIf you have 2 slices and add 4 slices, how many slices do you have? \n\nAnd the bottom number stays as 9. What is the top number?",
+   "move": "question",
+   "reading_age": 7.3
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Top number is 6. Answer is 6/9 because two plus four is six and bottom stay nine. next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Yes! You got 6/9. Well done. \n\nNow we have 1/4 plus 1/8. \n\nLook at the bottom numbers. Are they the same?",
+   "move": "question",
+   "reading_age": 6.0
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-15T20:21:01+00:00"
+}

@@ -1,0 +1,726 @@
+{
+ "source": "Copied from frontend/src/data/tools.js (Kien, commit c60b5a5, 16 Nov 2026). Types are Kien's estimate from each tool's public features, not lab results.",
+ "note": "Estimated from its demo tool type. Hivemind has not tested this tool.",
+ "types": [
+  {
+   "tutor_id": "answer_machine",
+   "how": "Gives you the answer or a worked solution straight away"
+  },
+  {
+   "tutor_id": "socratic",
+   "how": "Guides you with questions, hints and problems to solve"
+  },
+  {
+   "tutor_id": "simple_steps",
+   "how": "Short, step by step practice such as drills, flashcards and quiz games"
+  },
+  {
+   "tutor_id": "lecturer",
+   "how": "Long explanations such as video lessons, courses and notes"
+  }
+ ],
+ "tools": [
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "url": "https://chatgpt.com",
+   "kind": "AI chatbot",
+   "blurb": "A chatbot that answers questions and explains ideas in plain language.",
+   "group": "answer_machine",
+   "most_used": true
+  },
+  {
+   "id": "duolingo",
+   "name": "Duolingo",
+   "url": "https://www.duolingo.com",
+   "kind": "Language practice",
+   "blurb": "Short language lessons with streaks, points and daily reminders.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "khan-academy",
+   "name": "Khan Academy",
+   "url": "https://www.khanacademy.org",
+   "kind": "Lessons and practice",
+   "blurb": "Video lessons and practice questions across maths, science and more.",
+   "group": "lecturer",
+   "most_used": true
+  },
+  {
+   "id": "quizlet",
+   "name": "Quizlet",
+   "url": "https://quizlet.com",
+   "kind": "Flashcards",
+   "blurb": "Make or find flashcard sets, then study them with quizzes and games.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "kahoot",
+   "name": "Kahoot!",
+   "url": "https://kahoot.com",
+   "kind": "Quiz games",
+   "blurb": "Fast quiz games that a class plays together on screens.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "photomath",
+   "name": "Photomath",
+   "url": "https://photomath.com",
+   "kind": "Maths solver",
+   "blurb": "Point your camera at a maths problem to see the steps worked out.",
+   "group": "answer_machine",
+   "most_used": true
+  },
+  {
+   "id": "desmos",
+   "name": "Desmos",
+   "url": "https://www.desmos.com",
+   "kind": "Graphing",
+   "blurb": "A graphing calculator for drawing and exploring equations.",
+   "group": "socratic",
+   "most_used": true
+  },
+  {
+   "id": "brilliant",
+   "name": "Brilliant",
+   "url": "https://brilliant.org",
+   "kind": "Interactive problems",
+   "blurb": "Hands-on puzzles and short lessons in maths, science and computing.",
+   "group": "socratic",
+   "most_used": true
+  },
+  {
+   "id": "anki",
+   "name": "Anki",
+   "url": "https://apps.ankiweb.net",
+   "kind": "Spaced repetition",
+   "blurb": "Flashcards that come back just before you would forget them.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "seneca",
+   "name": "Seneca",
+   "url": "https://senecalearning.com",
+   "kind": "Revision (UK)",
+   "blurb": "Revision courses for UK exams, with short questions after each part.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "sparx-maths",
+   "name": "Sparx Maths",
+   "url": "https://sparxmaths.com",
+   "kind": "Maths homework (UK schools)",
+   "blurb": "Maths homework set by your school, with video help on each question.",
+   "group": "simple_steps",
+   "most_used": true
+  },
+  {
+   "id": "khanmigo",
+   "name": "Khanmigo",
+   "url": "https://www.khanmigo.ai",
+   "kind": "AI learning assistant",
+   "blurb": "A learning assistant from Khan Academy that asks questions to guide you.",
+   "group": "socratic",
+   "most_used": true
+  },
+  {
+   "id": "bbc-bitesize",
+   "name": "BBC Bitesize",
+   "url": "https://www.bbc.co.uk/bitesize",
+   "kind": "Revision notes and videos",
+   "blurb": "Short revision guides, videos and quizzes for UK school subjects.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "oak-national-academy",
+   "name": "Oak National Academy",
+   "url": "https://www.thenational.academy",
+   "kind": "Video lessons (UK)",
+   "blurb": "Video lessons and worksheets that follow the UK school curriculum.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "dr-frost-maths",
+   "name": "Dr Frost Maths",
+   "url": "https://www.drfrost.org",
+   "kind": "Maths lessons and practice",
+   "blurb": "Maths lessons, slides and practice questions for UK students.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "corbettmaths",
+   "name": "Corbettmaths",
+   "url": "https://corbettmaths.com",
+   "kind": "Maths videos",
+   "blurb": "Short maths videos with practice questions and answers.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "save-my-exams",
+   "name": "Save My Exams",
+   "url": "https://www.savemyexams.com",
+   "kind": "Revision notes",
+   "blurb": "Revision notes, practice questions and model answers for school exams.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "up-learn",
+   "name": "Up Learn",
+   "url": "https://www.uplearn.co.uk",
+   "kind": "Online A level courses",
+   "blurb": "Online A level courses with video lessons and practice.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "examsolutions",
+   "name": "ExamSolutions",
+   "url": "https://www.examsolutions.net",
+   "kind": "Maths videos",
+   "blurb": "Maths video lessons and walkthroughs of past exam papers.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "cognito",
+   "name": "Cognito",
+   "url": "https://cognitoedu.org",
+   "kind": "Video lessons",
+   "blurb": "Video lessons and quizzes for GCSE subjects.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "isaac-computer-science",
+   "name": "Isaac Computer Science",
+   "url": "https://isaaccomputerscience.org",
+   "kind": "Computer science lessons",
+   "blurb": "Computer science notes and questions for school and A level.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "ck-12",
+   "name": "CK-12",
+   "url": "https://www.ck12.org",
+   "kind": "Textbooks and lessons",
+   "blurb": "Online textbooks, videos and practice for maths and science.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "crash-course",
+   "name": "Crash Course",
+   "url": "https://thecrashcourse.com",
+   "kind": "Video lessons",
+   "blurb": "Fast video courses on school subjects, from history to chemistry.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "ted-ed",
+   "name": "TED-Ed",
+   "url": "https://ed.ted.com",
+   "kind": "Short videos",
+   "blurb": "Short animated video lessons on many topics.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "3blue1brown",
+   "name": "3Blue1Brown",
+   "url": "https://www.3blue1brown.com",
+   "kind": "Maths videos",
+   "blurb": "Animated videos that explain maths ideas with pictures.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "newsela",
+   "name": "Newsela",
+   "url": "https://newsela.com",
+   "kind": "Reading practice",
+   "blurb": "News articles at different reading levels, with questions to check.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "coursera",
+   "name": "Coursera",
+   "url": "https://www.coursera.org",
+   "kind": "Online courses",
+   "blurb": "Online university courses with video lectures and quizzes.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "edx",
+   "name": "edX",
+   "url": "https://www.edx.org",
+   "kind": "Online courses",
+   "blurb": "University courses taught in video lectures, with readings and tests.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "futurelearn",
+   "name": "FutureLearn",
+   "url": "https://www.futurelearn.com",
+   "kind": "Online courses",
+   "blurb": "Short online courses from universities, with videos, articles and discussion.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "udemy",
+   "name": "Udemy",
+   "url": "https://www.udemy.com",
+   "kind": "Online courses",
+   "blurb": "Online video courses on many skills, taught by many different people.",
+   "group": "lecturer",
+   "most_used": false
+  },
+  {
+   "id": "mathswatch",
+   "name": "Mathswatch",
+   "url": "https://www.mathswatch.com",
+   "kind": "Maths videos and practice",
+   "blurb": "Maths videos with practice questions, often set by teachers.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "hegarty-maths",
+   "name": "Hegarty Maths",
+   "url": "https://hegartymaths.com",
+   "kind": "Maths homework (UK schools)",
+   "blurb": "Video lessons and quizzes that check each maths topic step by step.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "mymaths",
+   "name": "MyMaths",
+   "url": "https://www.mymaths.co.uk",
+   "kind": "Maths homework (UK schools)",
+   "blurb": "Online maths lessons and games, often set as homework.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "times-tables-rock-stars",
+   "name": "Times Tables Rock Stars",
+   "url": "https://ttrockstars.com",
+   "kind": "Times tables practice",
+   "blurb": "Timed games that help you learn your times tables.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "integral-maths",
+   "name": "Integral Maths",
+   "url": "https://integralmaths.org",
+   "kind": "A level maths practice",
+   "blurb": "A level maths lessons, notes and questions. Many schools set it.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "mathletics",
+   "name": "Mathletics",
+   "url": "https://www.mathletics.com",
+   "kind": "Maths practice",
+   "blurb": "Maths activities, games and live challenges set by schools.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "ixl",
+   "name": "IXL",
+   "url": "https://www.ixl.com",
+   "kind": "Practice questions",
+   "blurb": "Practice questions in maths and English that get harder as you improve.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "prodigy",
+   "name": "Prodigy",
+   "url": "https://www.prodigygame.com",
+   "kind": "Maths game",
+   "blurb": "A fantasy game where you answer maths questions to play.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "educake",
+   "name": "Educake",
+   "url": "https://www.educake.co.uk",
+   "kind": "Science quizzes (UK schools)",
+   "blurb": "Science quizzes set by teachers, with instant marking.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "tassomai",
+   "name": "Tassomai",
+   "url": "https://www.tassomai.com",
+   "kind": "Daily quizzes (UK)",
+   "blurb": "Short daily quizzes that change as you get questions right or wrong.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "century",
+   "name": "Century",
+   "url": "https://www.century.tech",
+   "kind": "Adaptive lessons",
+   "blurb": "Short lessons and questions that change as you answer.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "gcsepod",
+   "name": "GCSEPod",
+   "url": "https://www.gcsepod.com",
+   "kind": "Revision videos",
+   "blurb": "Short revision videos for GCSE subjects.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "blooket",
+   "name": "Blooket",
+   "url": "https://www.blooket.com",
+   "kind": "Quiz games",
+   "blurb": "Quiz games with different game modes for a class or one player.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "gimkit",
+   "name": "Gimkit",
+   "url": "https://www.gimkit.com",
+   "kind": "Quiz games",
+   "blurb": "Quiz games where you earn in-game money for right answers.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "brainscape",
+   "name": "Brainscape",
+   "url": "https://www.brainscape.com",
+   "kind": "Flashcards",
+   "blurb": "Flashcards that you rate, so hard cards come back more often.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "memrise",
+   "name": "Memrise",
+   "url": "https://www.memrise.com",
+   "kind": "Language practice",
+   "blurb": "Language lessons using short phrases, flashcards and videos of speakers.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "babbel",
+   "name": "Babbel",
+   "url": "https://www.babbel.com",
+   "kind": "Language lessons",
+   "blurb": "Short language lessons that teach words and everyday conversation.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "busuu",
+   "name": "Busuu",
+   "url": "https://www.busuu.com",
+   "kind": "Language lessons",
+   "blurb": "Language courses with short lessons and feedback from other learners.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "lingodeer",
+   "name": "LingoDeer",
+   "url": "https://www.lingodeer.com",
+   "kind": "Language practice",
+   "blurb": "Language lessons with grammar notes, short exercises and audio.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "rosetta-stone",
+   "name": "Rosetta Stone",
+   "url": "https://www.rosettastone.com",
+   "kind": "Language lessons",
+   "blurb": "Language lessons that use pictures and sound instead of English.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "codecademy",
+   "name": "Codecademy",
+   "url": "https://www.codecademy.com",
+   "kind": "Coding lessons",
+   "blurb": "Learn to code by typing in a lesson window and checking the result.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "code-org",
+   "name": "Code.org",
+   "url": "https://code.org",
+   "kind": "Coding lessons",
+   "blurb": "Coding lessons and puzzles that start with drag and drop blocks.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "freecodecamp",
+   "name": "freeCodeCamp",
+   "url": "https://www.freecodecamp.org",
+   "kind": "Coding lessons",
+   "blurb": "Coding lessons with exercises you type in your browser.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "noredink",
+   "name": "NoRedInk",
+   "url": "https://www.noredink.com",
+   "kind": "Writing practice",
+   "blurb": "Short grammar and writing exercises that change as you answer.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "readtheory",
+   "name": "ReadTheory",
+   "url": "https://readtheory.org",
+   "kind": "Reading practice",
+   "blurb": "Short reading passages with questions that match your level.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "bedrock-learning",
+   "name": "Bedrock Learning",
+   "url": "https://www.bedrocklearning.org",
+   "kind": "Reading and vocabulary",
+   "blurb": "Short vocabulary and reading lessons set by schools.",
+   "group": "simple_steps",
+   "most_used": false
+  },
+  {
+   "id": "nrich",
+   "name": "NRICH",
+   "url": "https://nrich.maths.org",
+   "kind": "Maths problems",
+   "blurb": "Open maths problems and puzzles that make you think and explore.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "isaac-physics",
+   "name": "Isaac Physics",
+   "url": "https://isaacphysics.org",
+   "kind": "Physics problems",
+   "blurb": "Physics and maths problems with hints and feedback as you go.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "underground-mathematics",
+   "name": "Underground Mathematics",
+   "url": "https://undergroundmathematics.org",
+   "kind": "Maths problems",
+   "blurb": "Problems and resources that connect A level maths ideas.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "geogebra",
+   "name": "GeoGebra",
+   "url": "https://www.geogebra.org",
+   "kind": "Maths exploring",
+   "blurb": "Draw and move shapes, graphs and equations to see how they work.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "phet",
+   "name": "PhET Simulations",
+   "url": "https://phet.colorado.edu",
+   "kind": "Science simulations",
+   "blurb": "Interactive science and maths simulations that you can change and test.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "mathigon",
+   "name": "Mathigon",
+   "url": "https://mathigon.org",
+   "kind": "Interactive maths",
+   "blurb": "Interactive maths lessons that you click and drag as you read.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "scratch",
+   "name": "Scratch",
+   "url": "https://scratch.mit.edu",
+   "kind": "Coding with blocks",
+   "blurb": "Build games and stories by snapping code blocks together.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "language-transfer",
+   "name": "Language Transfer",
+   "url": "https://www.languagetransfer.org",
+   "kind": "Audio language courses",
+   "blurb": "Audio language courses where you work out the grammar yourself.",
+   "group": "socratic",
+   "most_used": false
+  },
+  {
+   "id": "wolfram-alpha",
+   "name": "Wolfram Alpha",
+   "url": "https://www.wolframalpha.com",
+   "kind": "Answer engine",
+   "blurb": "Type a maths or science question and get a worked answer.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "symbolab",
+   "name": "Symbolab",
+   "url": "https://www.symbolab.com",
+   "kind": "Maths solver",
+   "blurb": "Type in a maths problem and see the steps to solve it.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "mathway",
+   "name": "Mathway",
+   "url": "https://www.mathway.com",
+   "kind": "Maths solver",
+   "blurb": "Enter a maths problem and get the answer with steps.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "microsoft-math-solver",
+   "name": "Microsoft Math Solver",
+   "url": "https://mathsolver.microsoft.com",
+   "kind": "Maths solver",
+   "blurb": "Type, write or scan a maths problem to get steps and graphs.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "maths-genie",
+   "name": "Maths Genie",
+   "url": "https://www.mathsgenie.co.uk",
+   "kind": "Maths past papers",
+   "blurb": "Past exam papers with worked answers and video solutions.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "physics-and-maths-tutor",
+   "name": "Physics & Maths Tutor",
+   "url": "https://www.physicsandmathstutor.com",
+   "kind": "Notes and past papers",
+   "blurb": "Revision notes, past papers and mark schemes for school exams.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "brainly",
+   "name": "Brainly",
+   "url": "https://brainly.com",
+   "kind": "Homework answers",
+   "blurb": "A community where students ask homework questions and others answer.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "chegg",
+   "name": "Chegg",
+   "url": "https://www.chegg.com",
+   "kind": "Homework answers",
+   "blurb": "Step by step textbook solutions and answers to homework questions.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "grammarly",
+   "name": "Grammarly",
+   "url": "https://www.grammarly.com",
+   "kind": "Writing helper",
+   "blurb": "Checks your writing and suggests fixes for spelling and grammar.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "perplexity",
+   "name": "Perplexity",
+   "url": "https://www.perplexity.ai",
+   "kind": "AI search",
+   "blurb": "A search tool that answers questions and shows its sources.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "claude",
+   "name": "Claude",
+   "url": "https://claude.ai",
+   "kind": "AI chatbot",
+   "blurb": "A chatbot that answers questions and helps with writing and ideas.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "url": "https://gemini.google.com",
+   "kind": "AI chatbot",
+   "blurb": "Google’s chatbot that answers questions and helps with writing.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "copilot",
+   "name": "Microsoft Copilot",
+   "url": "https://copilot.microsoft.com",
+   "kind": "AI chatbot",
+   "blurb": "Microsoft’s chatbot that answers questions and helps with writing.",
+   "group": "answer_machine",
+   "most_used": false
+  },
+  {
+   "id": "notebooklm",
+   "name": "NotebookLM",
+   "url": "https://notebooklm.google.com",
+   "kind": "AI notes helper",
+   "blurb": "Upload your notes and ask questions about them.",
+   "group": "answer_machine",
+   "most_used": false
+  }
+ ]
+}

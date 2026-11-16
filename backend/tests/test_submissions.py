@@ -144,6 +144,48 @@ class LinkTests(unittest.TestCase):
         self.assertLess(time.monotonic() - started, 2)
         self.assertIn("No answer within", caught.exception.detail)
 
+    def test_a_server_that_drips_its_tls_handshake_is_cut_at_the_deadline(self):
+        """A real local server sends a TLS record header promising 16 KB, then 1 byte every 0.2 s."""
+        import threading
+        import time
+        from app.submissions.links import PinnedHTTPSConnection
+        server = socket.socket()
+        server.bind(("127.0.0.1", 0))
+        server.listen(1)
+        port, stop = server.getsockname()[1], threading.Event()
+
+        def drip():
+            conn, _ = server.accept()
+            try:
+                conn.sendall(b"\x16\x03\x03\x3f\xff")  # handshake record, length 16383
+                while not stop.is_set():
+                    conn.sendall(b"\x00")
+                    time.sleep(0.2)
+            except OSError:
+                pass
+            finally:
+                conn.close()
+        threading.Thread(target=drip, daemon=True).start()
+        started = time.monotonic()
+        try:
+            with mock.patch.object(config, "MAKER_TIMEOUT_SECONDS", 1.0):
+                with self.assertRaises(LinkError) as caught:
+                    post_json(f"https://pal.example:{port}/chat", {}, resolver=lambda h, p=443: ["127.0.0.1"],
+                              connection=PinnedHTTPSConnection)
+        finally:
+            stop.set()
+            server.close()
+        # Python's TLS handshake already uses one deadline for the whole handshake; the watchdog is a second guard.
+        self.assertLess(time.monotonic() - started, 3)
+        self.assertIn("No answer within", caught.exception.detail)
+
+    def test_an_expired_connection_never_starts(self):
+        from app.submissions.links import PinnedHTTPSConnection
+        conn = PinnedHTTPSConnection("pal.example", "127.0.0.1", 9, 1.0)
+        conn.expire()
+        with self.assertRaises(TimeoutError):
+            conn.connect()
+
     def test_oversized_and_html_replies_are_rejected(self):
         def post_with(body):
             return lambda url, payload: {"status": 200, "content_type": "application/json", "body": body,
