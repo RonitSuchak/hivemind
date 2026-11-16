@@ -1,11 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { animate, motion, useInView, useMotionValue, useTransform } from 'motion/react'
-import { getStudents } from '../api.js'
-import { useLoad, usePageTitle } from '../hooks.js'
+import { usePageTitle } from '../hooks.js'
 import { useMatch } from '../store.jsx'
 import { revealTokens, spring, tokenS, useReduced } from '../motion.js'
-import { Async, SkeletonResults } from '../components/States.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Radar, { heroTiming } from '../components/Radar.jsx'
 import ScoreBars from '../components/ScoreBars.jsx'
@@ -17,7 +15,6 @@ import '../styles/lab.css'  // calm Safety flag overrides live at the end of lab
 export default function Results() {
   usePageTitle('Your results')
   const { match } = useMatch()
-  const students = useLoad(getStudents, [])
   if (!match) {
     return (
       <div className="rs">
@@ -29,24 +26,13 @@ export default function Results() {
       </div>
     )
   }
-  return (
-    <Async state={students} label="Finding students like you" skeleton={<SkeletonResults />}
-      unavailable={(
-        <div className="rs">
-          <div className="rs-state glass" role="note">
-            <h1>Results are not available</h1>
-            <p>The lab is not connected, so there are no tool types to rank.</p>
-          </div>
-        </div>
-      )}>
-      {(list) => <Body match={match} students={list} />}
-    </Async>
-  )
+  return <Body match={match} />
 }
 
-function Body({ match, students }) {
+function Body({ match }) {
   const reduced = useReduced()
-  const near = match.nearest.map((id) => students.find((s) => s.id === id)).filter(Boolean)
+  // v3: each match already carries its name and radar, so no second request is needed.
+  const near = match.matches || []
   const t = heroTiming(near.length)
   const [toolsFor, setToolsFor] = useState(null) // the ranked tutor whose similar tools are open
   const after = (delay) => (reduced ? { initial: false } : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: spring('ui', { delay }) })
@@ -65,7 +51,7 @@ function Body({ match, students }) {
           <p>Your answers make this shape. The faint outlines are the closest simulated students.</p>
         </div>
         <figure className="rs-radar">
-          <Radar variant="hero" profile={match.profile} others={near} label="Your learning profile" />
+          <Radar variant="hero" profile={match.radar} others={near} label="Your learning profile" />
         </figure>
         <div className="rs-profile-key">
           <ul className="rs-key">
@@ -73,19 +59,38 @@ function Body({ match, students }) {
             <li><span className="rs-swatch rs-swatch-other" aria-hidden="true" /> Simulated students like you</li>
           </ul>
           <motion.p className="rs-matched" {...after(t.doneAt)}>
-            Matched to {match.nearest.length} simulated students like you
+            Matched to {near.length} simulated students like you
             {near.length > 0 && <span>{near.map((s) => s.name).join(', ')}</span>}
           </motion.p>
           <p className="rs-fine">Simulated students are not real children.</p>
         </div>
       </section>
 
-      <section className="rs-ranked-wrap" aria-labelledby="ranked-h">
-        <Reveal as="h2" id="ranked-h" className="rs-h2">Tool types that worked for students like you</Reveal>
-        <ol className="rs-ranked">
-          {match.ranked.map((tu, i) => <RankCard key={tu.tutor_id} t={tu} i={i} onTools={setToolsFor} />)}
-        </ol>
-      </section>
+      {match.enough_matches === false || !match.ranked?.length ? (
+        <section className="rs-ranked-wrap" aria-labelledby="ranked-h">
+          <h2 id="ranked-h" className="rs-h2">No ranking this time</h2>
+          <p className="rs-note" role="note"><Icon name="info" size={18} /> <span>{match.message || 'None of our simulated students are close enough to your profile to give a fair answer, so we will not guess.'}</span></p>
+        </section>
+      ) : (
+        <section className="rs-ranked-wrap" aria-labelledby="ranked-h">
+          <Reveal as="h2" id="ranked-h" className="rs-h2">Tool types that worked for students like you</Reveal>
+          <ol className="rs-ranked">
+            {match.ranked.map((tu, i) => <RankCard key={tu.tutor_id} t={tu} i={i} onTools={setToolsFor} />)}
+          </ol>
+        </section>
+      )}
+
+      {match.follow_ups?.length > 0 && (
+        <section className="rs-follow" aria-labelledby="follow-h">
+          <h2 id="follow-h" className="rs-h2">Questions you might have</h2>
+          {match.follow_ups.map((f) => (
+            <details key={f.id} className="rs-fu glass">
+              <summary>{f.question}</summary>
+              <p>{f.answer}</p>
+            </details>
+          ))}
+        </section>
+      )}
 
       <Reveal className="actions rs-actions">
         <Link to="/lab" className="btn">See the lab</Link>
@@ -113,12 +118,12 @@ function RankCard({ t, i, onTools }) {
   const barsAt = delay + spring('reveal').visualDuration * 0.15
   const warnAt = barsAt + 2 * tokenS('--stagger-bar', 0.05) + spring('bar').visualDuration * 0.7
   const warn = t.safety_warning
-  const sign = t.avg_gain < 0 ? '−' : '+'
-  const gain = Math.abs(t.avg_gain)
+  const sign = t.predicted_gain < 0 ? '−' : '+'
+  const gain = Math.abs(t.predicted_gain)
 
   return (
     <Reveal as="li" blur={false} delay={delay} className={`rs-card glass ${warn ? 'has-warning' : ''} ${i === 0 ? 'is-first' : ''}`}>
-      <span className="rs-rank" aria-hidden="true">{i + 1}</span>
+      <span className="rs-rank" aria-hidden="true">{t.rank ?? i + 1}</span>
       <div className="rs-card-main" ref={body}>
         <div className="rs-card-head">
           <div className="rs-card-title">

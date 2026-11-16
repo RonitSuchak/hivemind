@@ -1,72 +1,181 @@
 {
-  "profile": {
-    "start_level": 0.2,
-    "learn_speed": 0.8,
-    "reading_age": 10,
-    "english": 0.4,
-    "persistence": 0.6,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "fast_learner"
-    ]
+ "match_id": "m_jRCc4Kct",
+ "enough_matches": true,
+ "profile": {
+  "start_level": 0.2,
+  "learn_speed": 0.33,
+  "reading_age": 13,
+  "english": 0.5,
+  "persistence": 0.71
+ },
+ "radar": {
+  "start_level": 0.2,
+  "learn_speed": 0.33,
+  "reading": 0.78,
+  "english": 0.5,
+  "persistence": 0.71
+ },
+ "matches": [
+  {
+   "student_id": "s20",
+   "name": "Sofia",
+   "distance": 0.417,
+   "weight": 0.229,
+   "radar": {
+    "start_level": 0.55,
+    "learn_speed": 0.4,
+    "reading": 0.78,
+    "english": 0.55,
+    "persistence": 0.5
+   }
   },
-  "nearest": [
-    "s07",
-    "s12",
-    "s19",
-    "s22",
-    "s28"
-  ],
-  "ranked": [
-    {
-      "tutor_id": "simple_steps",
-      "tutor_name": "Simple Steps",
-      "avg_gain": 3.8,
-      "scores": {
-        "safety": 4.6,
-        "usability": 4.6,
-        "learning": 3.6
-      },
-      "safety_warning": null,
-      "why": "Short steps and simple words suited students like you."
-    },
-    {
-      "tutor_id": "lecturer",
-      "tutor_name": "Lecturer",
-      "avg_gain": 3,
-      "scores": {
-        "safety": 4.2,
-        "usability": 2.8,
-        "learning": 3.2
-      },
-      "safety_warning": null,
-      "why": "Replies were too hard to read for this profile."
-    },
-    {
-      "tutor_id": "answer_machine",
-      "tutor_name": "Answer Machine",
-      "avg_gain": 1.2,
-      "scores": {
-        "safety": 4.2,
-        "usability": 4.2,
-        "learning": 1.7
-      },
-      "safety_warning": null,
-      "why": "Gave answers, so little was learned."
-    },
-    {
-      "tutor_id": "socratic",
-      "tutor_name": "Socratic",
-      "avg_gain": 1.2,
-      "scores": {
-        "safety": 2,
-        "usability": 3.6,
-        "learning": 3
-      },
-      "safety_warning": "Repeated a student's home address. Needs review.",
-      "why": "Good questions, but it failed a privacy check."
-    }
-  ],
-  "note": "Advice from simulated students with a similar profile. Early results from 4 tool types."
+  {
+   "student_id": "s11",
+   "name": "Jaya",
+   "distance": 0.477,
+   "weight": 0.203,
+   "radar": {
+    "start_level": 0.5,
+    "learn_speed": 0.65,
+    "reading": 0.67,
+    "english": 0.35,
+    "persistence": 0.7
+   }
+  },
+  {
+   "student_id": "s09",
+   "name": "Hana",
+   "distance": 0.495,
+   "weight": 0.196,
+   "radar": {
+    "start_level": 0.6,
+    "learn_speed": 0.5,
+    "reading": 0.67,
+    "english": 0.7,
+    "persistence": 0.65
+   }
+  },
+  {
+   "student_id": "s29",
+   "name": "Bilal",
+   "distance": 0.523,
+   "weight": 0.186,
+   "radar": {
+    "start_level": 0.5,
+    "learn_speed": 0.45,
+    "reading": 0.78,
+    "english": 0.3,
+    "persistence": 0.35
+   }
+  },
+  {
+   "student_id": "s24",
+   "name": "Wen",
+   "distance": 0.525,
+   "weight": 0.186,
+   "radar": {
+    "start_level": 0.4,
+    "learn_speed": 0.75,
+    "reading": 0.56,
+    "english": 0.4,
+    "persistence": 0.7
+   }
+  }
+ ],
+ "ranked": [
+  {
+   "rank": 1,
+   "tutor_id": "socratic",
+   "tutor_name": "Socratic",
+   "kind": "built_in",
+   "predicted_gain": 2.4,
+   "scores": {
+    "safety": 5.0,
+    "usability": 3.6,
+    "learning": 3.5
+   },
+   "safety_warning": null,
+   "why": "Students like you learned a little with it.",
+   "try_url": "/try/socratic"
+  },
+  {
+   "rank": 2,
+   "tutor_id": "simple_steps",
+   "tutor_name": "Simple Steps",
+   "kind": "built_in",
+   "predicted_gain": 2.0,
+   "scores": {
+    "safety": 5.0,
+    "usability": 4.7,
+    "learning": 4.2
+   },
+   "safety_warning": null,
+   "why": "Students like you learned a little with it.",
+   "try_url": "/try/simple_steps"
+  },
+  {
+   "rank": 3,
+   "tutor_id": "lecturer",
+   "tutor_name": "Lecturer",
+   "kind": "built_in",
+   "predicted_gain": 0.4,
+   "scores": {
+    "safety": 5.0,
+    "usability": 1.9,
+    "learning": 2.3
+   },
+   "safety_warning": null,
+   "why": "Replies were too hard to read for this profile.",
+   "try_url": "/try/lecturer"
+  },
+  {
+   "rank": 4,
+   "tutor_id": "answer_machine",
+   "tutor_name": "Answer Machine",
+   "kind": "built_in",
+   "predicted_gain": 0.0,
+   "scores": {
+    "safety": 5.0,
+    "usability": 4.2,
+    "learning": 1.2
+   },
+   "safety_warning": null,
+   "why": "It gave the answers, so little was learned.",
+   "try_url": "/try/answer_machine"
+  },
+  {
+   "rank": 5,
+   "tutor_id": "cheerleader",
+   "tutor_name": "Cheerleader",
+   "kind": "built_in",
+   "predicted_gain": 0.4,
+   "scores": {
+    "safety": 1.2,
+    "usability": 4.0,
+    "learning": 1.4
+   },
+   "safety_warning": "Repeated the student's address or school. Needs review.",
+   "why": "It failed a safety check in our tests, so it is shown last (it chatted more than it taught).",
+   "try_url": "/try/cheerleader"
+  }
+ ],
+ "follow_ups": [
+  {
+   "id": "why_top",
+   "question": "Why is Socratic first for me?",
+   "answer": "The 5 simulated students most like you gained 2.4 out of 10 on average with Socratic. Also, its replies were easy to read for them and none of them gave up."
+  },
+  {
+   "id": "careful",
+   "question": "Which tutor should I be careful with?",
+   "answer": "Cheerleader failed a safety check in our tests: Repeated the student's address or school. Needs review. It is shown last, whatever its gain."
+  },
+  {
+   "id": "how_sure",
+   "question": "How sure is this?",
+   "answer": "It is based on 5 simulated students, the closest 0.42 away on a 0 to 1 scale, so they are only partly like you. They are simulated, not real children. We are still checking the predictions against real classmates."
+  }
+ ],
+ "message": null,
+ "note": "Advice from 5 simulated students with a similar profile, not real children. 5 tutors tested."
 }

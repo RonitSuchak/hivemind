@@ -1,3 +1,4 @@
-MADE-UP PLACEHOLDER DATA. Not real results.
-These files only exist so the site can be designed without a backend. They are loaded only when VITE_DEMO=1.
-Replace them with the real exports from backend/data/export/ (docs/BACKEND.md section 7) when Ronit has them.
+Saved exports copied from backend/data/export/ (contract v3, docs/BACKEND.md section 7).
+Loaded only when VITE_DEMO=1. To refresh: copy backend/data/export/ over this folder; keep topics/.
+topics/ holds demo-only topic packs for the check (not from the backend).
+Some runs have tutor_mode 'scripted' (a preview, not the full AI run).

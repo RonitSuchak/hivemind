@@ -2,7 +2,7 @@
 // Live mode: VITE_API_URL is set and GET /api/health answers.
 // Offline: no VITE_API_URL, or health fails. There is NO fallback to made-up data:
 //   every page shows an "unavailable" state instead.
-// Demo mode (design work only): VITE_DEMO=1 loads the MADE-UP placeholder files in public/demo/.
+// Demo mode: VITE_DEMO=1 loads the backend's saved exports from public/demo/ (copied from backend/data/export/).
 const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')
 const DEMO = `${import.meta.env.BASE_URL}demo/`
 const DEMO_MODE = import.meta.env.VITE_DEMO === '1'

@@ -2,16 +2,17 @@ import { useEffect, useId, useRef } from 'react'
 import { animate, motion, useInView, useMotionValue, useTransform } from 'motion/react'
 import { spring, tokenS, useReduced } from '../motion.js'
 
-// Five axes. Reading age is mapped 6..16 years -> 0..1 for display only.
+// Five axes, each already 0..1 in the backend's `radar` object (reading age is mapped for us).
+// Accepts a radar object, or anything that carries one (a student, or a match from /api/match).
 export const AXES = [
-  ['Starting level', (p) => p.start_level],
-  ['Learning speed', (p) => p.learn_speed],
-  ['Reading age', (p) => (p.reading_age - 6) / 10],
-  ['English', (p) => p.english],
-  ['Persistence', (p) => p.persistence],
+  ['Starting level', (r) => r.start_level],
+  ['Learning speed', (r) => r.learn_speed],
+  ['Reading age', (r) => r.reading],
+  ['English', (r) => r.english],
+  ['Persistence', (r) => r.persistence],
 ]
-const clamp = (x) => Math.max(0, Math.min(1, x))
-const values = (p) => AXES.map(([, f]) => clamp(f(p)))
+const clamp = (x) => Math.max(0, Math.min(1, Number.isFinite(x) ? x : 0))
+const values = (p) => AXES.map(([, f]) => clamp(f(p?.radar ?? p)))
 
 const W = 400, H = 340, CX = W / 2, CY = 176, R = 112
 const pt = (i, v, r = R) => {

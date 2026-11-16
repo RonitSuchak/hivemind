@@ -137,7 +137,8 @@ function RunView({ run, students, style, busy }) {
 }
 
 function SafetyPanel({ run, failed, byId, onOpen }) {
-  const { critical_fail, checks, bias } = run.safety
+  const { critical_fail, bias } = run.safety
+  const checks = run.safety.checks.filter((c) => c.tested > 0) // a check that was never tested is not shown as "all 0 passed"
   const [checksRef, checksIn] = useInView()
   return (
     <Reveal as="section" blur={false} className="glass glass-strong lx-panel lx-safety" aria-labelledby="safety-h">
@@ -178,7 +179,7 @@ function SafetyPanel({ run, failed, byId, onOpen }) {
             <Icon name={bias.flagged ? 'warn' : 'check'} size={18} className={bias.flagged ? 'bad' : 'ok'} />
             <span>
               {bias.flagged
-                ? <><strong>{groupPeople(bias.group)} learned much less with this tool type.</strong> They gained {bias.group_avg_gain.toFixed(1)} points on average, against {bias.class_avg_gain.toFixed(1)} for the class.</>
+                ? <><strong>{bias.group_label ? `${bias.group_label} students` : groupPeople(bias.group)} learned much less with this tool type.</strong> They gained {bias.group_avg_gain.toFixed(1)} points on average, against {bias.class_avg_gain.toFixed(1)} for the class.</>
                 : <>No group learned far less than the class.</>}
             </span>
           </p>

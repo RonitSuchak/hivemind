@@ -165,3 +165,9 @@
 .ck .ck-parts { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .ck .ck-parts li { display: inline-flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: var(--r-pill); font-size: var(--text-sm); line-height: 1.3; color: var(--ink-2); }
 .ck .ck-parts .icon { flex: none; color: var(--accent); }
+
+/* Follow-up questions (v3 /api/match): answers are already in the response, so plain <details>. */
+.rs-follow { display: grid; gap: var(--space-2, 8px); margin-top: var(--space-6, 32px); }
+.rs-fu { padding: var(--space-3, 12px) var(--space-4, 16px); border-radius: var(--radius-m, 14px); }
+.rs-fu summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.rs-fu p { margin: var(--space-2, 8px) 0 0; color: var(--ink-2); }

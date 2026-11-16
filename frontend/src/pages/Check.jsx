@@ -19,24 +19,24 @@ const MEASURES = {
   speed: { label: 'Learning speed', chip: 'learning speed', icon: 'clock' },
   reading: { label: 'Reading', chip: 'reading', icon: 'book' },
   english: { label: 'Language level', chip: 'language level', icon: 'chat' },
-  persistence: { label: 'What you do when stuck', chip: 'what you do when stuck', icon: 'spark' },
+  persistence: { label: 'Sticking with it', chip: 'sticking with it', icon: 'spark' },
 }
 
-// Optional parts: the live backend may not send them yet, so every one is checked before use.
+// v3 check: quiz_1, mini_lesson, quiz_2, reading (a list of passages) and one english_question object.
 function buildSteps(c) {
   const steps = [{ kind: 'intro', part: 'Before you start' }]
   c.quiz_1.forEach((q, i) => steps.push({ kind: 'q', part: 'Quiz 1', measure: 'level', q, n: i + 1, of: c.quiz_1.length }))
   steps.push({ kind: 'lesson', part: 'Mini-lesson', measure: 'speed' })
   c.quiz_2.forEach((q, i) => steps.push({ kind: 'q', part: 'Quiz 2', measure: 'speed', q, n: i + 1, of: c.quiz_2.length }))
-  c.reading.questions.forEach((q, i) => steps.push({ kind: 'q', part: 'Reading', measure: 'reading', q, n: i + 1, of: c.reading.questions.length, passage: c.reading.passage }))
-  const eq = extraQuestions(c)
-  eq.forEach((q, i) => steps.push({ kind: 'q', part: 'Language', measure: 'english', q, n: i + 1, of: eq.length }))
-  steps.push({ kind: 'english', part: 'About you', measure: 'english' })
-  if (c.persistence_question?.options?.length) steps.push({ kind: 'q', part: 'About you', measure: 'persistence', q: c.persistence_question })
+  const rq = readingQuestions(c)
+  rq.forEach((q, i) => steps.push({ kind: 'q', part: 'Reading', measure: 'reading', q, n: i + 1, of: rq.length, passage: q.passage }))
+  if (c.english_question) steps.push({ kind: 'english', part: 'About you', measure: 'english' })
   return steps
 }
 
-const extraQuestions = (c) => (Array.isArray(c.english_questions) ? c.english_questions.filter((q) => q?.id && q.options?.length) : [])
+// Every reading question, each remembering the passage it belongs to.
+const scale = (q) => Array.from({ length: Math.max(2, (q.max ?? 5) - (q.min ?? 1) + 1) }, (_, k) => (q.min ?? 1) + k)
+const readingQuestions = (c) => (c.reading || []).flatMap((p) => (p.questions || []).map((q) => ({ ...q, passage: p.passage })))
 
 export default function Check() {
   usePageTitle('The check')
@@ -111,21 +111,15 @@ function Flow({ base }) {
   async function submit(final) {
     const val = (id) => (final[id] === undefined ? null : final[id])
     const group = (qs) => Object.fromEntries(qs.map((q) => [q.id, val(q.id)]))
-    const engQs = extraQuestions(check)
-    const pq = check.persistence_question?.options?.length ? check.persistence_question : null
-    const ids = [...check.quiz_1, ...check.quiz_2, ...check.reading.questions, ...engQs, ...(pq ? [pq] : [])].map((q) => q.id)
     const eng = val('english')
+    // Exactly the v3 request (docs/BACKEND.md 5.8). A skipped question is null; the backend counts skips itself.
     const body = {
       quiz_1: group(check.quiz_1),
       quiz_2: group(check.quiz_2),
-      reading: group(check.reading.questions),
+      reading: group(readingQuestions(check)),
       english_confidence: eng === null ? null : Number(eng),
-      skipped: ids.filter((id) => val(id) === null).length + (eng === null ? 1 : 0),
       seconds_taken: Math.round((Date.now() - (startedAt.current ?? Date.now())) / 1000),
     }
-    // Extra keys are sent only when the check has those parts, so the live backend's payload is unchanged.
-    if (engQs.length) body.english_check = group(engQs)
-    if (pq) body.persistence = val(pq.id)
     setBusy(true); setError(null)
     try {
       setMatch(await postMatch(body))
@@ -185,7 +179,7 @@ function Flow({ base }) {
             {step.kind === 'intro' && (
               <>
                 <h1 ref={setHead} tabIndex={-1}>The check</h1>
-                <p className="ck-sub">Pick a topic, then five short parts. About 5 minutes.</p>
+                <p className="ck-sub">Pick a topic, then a few short parts. About 8 minutes.</p>
                 <TopicPicker value={topic} onChange={(t) => { setTopic(t); setAnswers({}) }} canStart={canStart} />
                 {packError && <p className="ck-pack-error" role="alert"><Icon name="warn" size={16} /> That topic did not load. Pick another one.</p>}
                 <h2 className="ck-parts-title">The 5 skills we measure</h2>
@@ -236,17 +230,17 @@ function Flow({ base }) {
 
             {step.kind === 'english' && (
               <fieldset className="ck-q">
-                <legend ref={setHead} tabIndex={-1} className="ck-legend">{check.english_question}</legend>
+                <legend ref={setHead} tabIndex={-1} className="ck-legend">{check.english_question.text}</legend>
                 <div className="ck-choices ck-scale">
-                  {[1, 2, 3, 4, 5].map((n) => (
+                  {scale(check.english_question).map((n, k, all) => (
                     <label className="ck-choice" key={n}>
                       <input type="radio" name="english" value={n} checked={answers.english === String(n)} onChange={() => answer('english', String(n))}
-                        aria-label={n === 1 ? '1, not at all' : n === 5 ? '5, very' : String(n)} />
+                        aria-label={k === 0 ? `${n}, ${check.english_question.min_label || 'lowest'}` : k === all.length - 1 ? `${n}, ${check.english_question.max_label || 'highest'}` : String(n)} />
                       <span className="ck-text">{n}</span>
                     </label>
                   ))}
                 </div>
-                <p className="ck-scale-ends" aria-hidden="true"><span>Not at all</span><span>Very</span></p>
+                <p className="ck-scale-ends" aria-hidden="true"><span>{check.english_question.min_label}</span><span>{check.english_question.max_label}</span></p>
               </fieldset>
             )}
           </section>

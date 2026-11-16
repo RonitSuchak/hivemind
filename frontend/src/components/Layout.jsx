@@ -46,7 +46,7 @@ export default function Layout() {
       {status === 'demo' && (
         <div className="wrap notice-wrap">
           <div className="notice glass" role="status">
-            <Icon name="info" size={16} /> <span>Demo results. These are made-up placeholders, not real data.</span>
+            <Icon name="info" size={16} /> <span>Saved results from the lab, not live. Some tutors are scripted previews until their full AI run is done.</span>
           </div>
         </div>
       )}

@@ -68,7 +68,7 @@ export default function About() {
         <div className="lx-article">
           <Reveal as="section" id="method" className="lx-about-sec" aria-labelledby="method-h">
             <h2 id="method-h">The method</h2>
-            <p>Testing every real product takes time and money. So the lab tests four <strong>tool types</strong>. Each one stands for real EdTech tools that teach the same way. Real products are <strong>not tested yet</strong>.</p>
+            <p>Testing every real product takes time and money. So the lab tests five <strong>tool types</strong>. Each one stands for real EdTech tools that teach the same way. Real products are <strong>not tested yet</strong>.</p>
             <p>We teach a <strong>simulated class of 30</strong> with each tool type. They sit a <strong>test</strong>, have a <strong>lesson</strong>, then sit the <strong>test again</strong>.</p>
             <p>A <strong>knowledge model</strong> decides what each student learns. A good hint helps. Being handed the answer does not.</p>
           </Reveal>
@@ -116,7 +116,7 @@ export default function About() {
             </Reveal>
             <Reveal as="ul" className="lx-list">
               <li>The students are simulated and do not behave like real children.</li>
-              <li>Results are early: four tool types, one topic, one short lesson.</li>
+              <li>Results are early: five tool types, one topic, one short lesson.</li>
               <li>The match is a starting point based on similar simulated students. It does not judge you.</li>
             </Reveal>
           </section>

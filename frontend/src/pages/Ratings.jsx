@@ -85,7 +85,9 @@ function summarise(row, groups) {
   return { overall: row.avg_gain.all, best, least, level: best[1] === least[1] }
 }
 
-function Body({ ratings }) {
+function Body({ ratings: raw }) {
+  // v3 sends `groups` as [{ id, label, size }]. The page works on ids; the backend's own labels win over ours.
+  const ratings = useMemo(() => ({ ...raw, tags: raw.groups.map((g) => g.id) }), [raw])
   const all = ratings.rows.flatMap((r) => ratings.tags.map((t) => r.avg_gain[t]))
   const max = Math.max(5, ...all)
   const groups = useMemo(() => ratings.tags.filter((t) => t !== 'all'), [ratings.tags])

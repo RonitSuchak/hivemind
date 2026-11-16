@@ -43,7 +43,7 @@ export default function LabGuide() {
       </summary>
       <div className="lx-guide-body">
         <p className="lx-guide-lead">
-          The lab tests four <strong>tool types</strong>. Each one stands for real EdTech tools that teach the same way.
+          The lab tests five <strong>tool types</strong>. Each one stands for real EdTech tools that teach the same way.
           Real products are <strong>not tested yet</strong>. The students are <strong>simulated</strong>, not real children.
         </p>
 

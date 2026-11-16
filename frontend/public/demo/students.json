@@ -1,405 +1,650 @@
 [
-  {
-    "id": "s01",
-    "name": "Amara",
-    "age": 12,
-    "start_level": 0.7,
-    "learn_speed": 0.6,
-    "reading_age": 13,
-    "english": 0.9,
-    "persistence": 0.8,
-    "tags": [
-      "confident"
-    ]
+ {
+  "id": "s01",
+  "name": "Aisha",
+  "age": 12,
+  "start_level": 0.7,
+  "learn_speed": 0.6,
+  "reading_age": 13,
+  "english": 0.9,
+  "persistence": 0.7,
+  "tags": [
+   "starts_high"
+  ],
+  "radar": {
+   "start_level": 0.7,
+   "learn_speed": 0.6,
+   "reading": 0.78,
+   "english": 0.9,
+   "persistence": 0.7
   },
-  {
-    "id": "s02",
-    "name": "Ben",
-    "age": 11,
-    "start_level": 0.6,
-    "learn_speed": 0.5,
-    "reading_age": 12,
-    "english": 0.85,
-    "persistence": 0.6,
-    "tags": [
-      "confident"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s02",
+  "name": "Ben",
+  "age": 11,
+  "start_level": 0.25,
+  "learn_speed": 0.4,
+  "reading_age": 9,
+  "english": 0.9,
+  "persistence": 0.3,
+  "tags": [
+   "starts_low",
+   "younger_reader",
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.25,
+   "learn_speed": 0.4,
+   "reading": 0.33,
+   "english": 0.9,
+   "persistence": 0.3
   },
-  {
-    "id": "s03",
-    "name": "Chloe",
-    "age": 13,
-    "start_level": 0.8,
-    "learn_speed": 0.7,
-    "reading_age": 14,
-    "english": 0.95,
-    "persistence": 0.7,
-    "tags": [
-      "confident",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s03",
+  "name": "Chen",
+  "age": 13,
+  "start_level": 0.55,
+  "learn_speed": 0.8,
+  "reading_age": 12,
+  "english": 0.5,
+  "persistence": 0.6,
+  "tags": [
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.55,
+   "learn_speed": 0.8,
+   "reading": 0.67,
+   "english": 0.5,
+   "persistence": 0.6
   },
-  {
-    "id": "s04",
-    "name": "Dev",
-    "age": 11,
-    "start_level": 0.4,
-    "learn_speed": 0.5,
-    "reading_age": 11,
-    "english": 0.8,
-    "persistence": 0.6,
-    "tags": []
+  "safety_moment": null
+ },
+ {
+  "id": "s04",
+  "name": "Dara",
+  "age": 12,
+  "start_level": 0.35,
+  "learn_speed": 0.5,
+  "reading_age": 10,
+  "english": 0.8,
+  "persistence": 0.5,
+  "tags": [],
+  "radar": {
+   "start_level": 0.35,
+   "learn_speed": 0.5,
+   "reading": 0.44,
+   "english": 0.8,
+   "persistence": 0.5
   },
-  {
-    "id": "s05",
-    "name": "Elif",
-    "age": 10,
-    "start_level": 0.2,
-    "learn_speed": 0.4,
-    "reading_age": 8,
-    "english": 0.35,
-    "persistence": 0.4,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "low_reading"
-    ]
+  "safety_moment": "privacy"
+ },
+ {
+  "id": "s05",
+  "name": "Emre",
+  "age": 11,
+  "start_level": 0.2,
+  "learn_speed": 0.75,
+  "reading_age": 9,
+  "english": 0.3,
+  "persistence": 0.6,
+  "tags": [
+   "starts_low",
+   "new_to_english",
+   "younger_reader",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.2,
+   "learn_speed": 0.75,
+   "reading": 0.33,
+   "english": 0.3,
+   "persistence": 0.6
   },
-  {
-    "id": "s06",
-    "name": "Finn",
-    "age": 11,
-    "start_level": 0.5,
-    "learn_speed": 0.3,
-    "reading_age": 10,
-    "english": 0.9,
-    "persistence": 0.3,
-    "tags": [
-      "gives_up_easily"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s06",
+  "name": "Fatima",
+  "age": 14,
+  "start_level": 0.8,
+  "learn_speed": 0.7,
+  "reading_age": 15,
+  "english": 0.95,
+  "persistence": 0.8,
+  "tags": [
+   "starts_high",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.8,
+   "learn_speed": 0.7,
+   "reading": 1.0,
+   "english": 0.95,
+   "persistence": 0.8
   },
-  {
-    "id": "s07",
-    "name": "Linh",
-    "age": 11,
-    "start_level": 0.3,
-    "learn_speed": 0.7,
-    "reading_age": 9,
-    "english": 0.4,
-    "persistence": 0.5,
-    "tags": [
-      "new_to_english",
-      "low_reading",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s07",
+  "name": "Linh",
+  "age": 11,
+  "start_level": 0.3,
+  "learn_speed": 0.7,
+  "reading_age": 9,
+  "english": 0.4,
+  "persistence": 0.5,
+  "tags": [
+   "starts_low",
+   "new_to_english",
+   "younger_reader",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.3,
+   "learn_speed": 0.7,
+   "reading": 0.33,
+   "english": 0.4,
+   "persistence": 0.5
   },
-  {
-    "id": "s08",
-    "name": "Grace",
-    "age": 12,
-    "start_level": 0.65,
-    "learn_speed": 0.8,
-    "reading_age": 13,
-    "english": 0.9,
-    "persistence": 0.9,
-    "tags": [
-      "confident",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s08",
+  "name": "Gabriel",
+  "age": 13,
+  "start_level": 0.45,
+  "learn_speed": 0.3,
+  "reading_age": 11,
+  "english": 0.85,
+  "persistence": 0.25,
+  "tags": [
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.45,
+   "learn_speed": 0.3,
+   "reading": 0.56,
+   "english": 0.85,
+   "persistence": 0.25
   },
-  {
-    "id": "s09",
-    "name": "Hassan",
-    "age": 10,
-    "start_level": 0.25,
-    "learn_speed": 0.5,
-    "reading_age": 9,
-    "english": 0.3,
-    "persistence": 0.55,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "low_reading"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s09",
+  "name": "Hana",
+  "age": 12,
+  "start_level": 0.6,
+  "learn_speed": 0.5,
+  "reading_age": 12,
+  "english": 0.7,
+  "persistence": 0.65,
+  "tags": [
+   "starts_high"
+  ],
+  "radar": {
+   "start_level": 0.6,
+   "learn_speed": 0.5,
+   "reading": 0.67,
+   "english": 0.7,
+   "persistence": 0.65
   },
-  {
-    "id": "s10",
-    "name": "Isla",
-    "age": 11,
-    "start_level": 0.45,
-    "learn_speed": 0.4,
-    "reading_age": 11,
-    "english": 0.85,
-    "persistence": 0.5,
-    "tags": []
+  "safety_moment": "inappropriate"
+ },
+ {
+  "id": "s10",
+  "name": "Isaac",
+  "age": 11,
+  "start_level": 0.15,
+  "learn_speed": 0.35,
+  "reading_age": 8,
+  "english": 0.9,
+  "persistence": 0.4,
+  "tags": [
+   "starts_low",
+   "younger_reader"
+  ],
+  "radar": {
+   "start_level": 0.15,
+   "learn_speed": 0.35,
+   "reading": 0.22,
+   "english": 0.9,
+   "persistence": 0.4
   },
-  {
-    "id": "s11",
-    "name": "Jonas",
-    "age": 10,
-    "start_level": 0.15,
-    "learn_speed": 0.3,
-    "reading_age": 8,
-    "english": 0.8,
-    "persistence": 0.3,
-    "tags": [
-      "struggling",
-      "low_reading",
-      "gives_up_easily"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s11",
+  "name": "Jaya",
+  "age": 13,
+  "start_level": 0.5,
+  "learn_speed": 0.65,
+  "reading_age": 12,
+  "english": 0.35,
+  "persistence": 0.7,
+  "tags": [
+   "new_to_english"
+  ],
+  "radar": {
+   "start_level": 0.5,
+   "learn_speed": 0.65,
+   "reading": 0.67,
+   "english": 0.35,
+   "persistence": 0.7
   },
-  {
-    "id": "s12",
-    "name": "Kai",
-    "age": 11,
-    "start_level": 0.2,
-    "learn_speed": 0.8,
-    "reading_age": 10,
-    "english": 0.4,
-    "persistence": 0.6,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "fast_learner"
-    ]
+  "safety_moment": "wrong_sum"
+ },
+ {
+  "id": "s12",
+  "name": "Kwame",
+  "age": 12,
+  "start_level": 0.25,
+  "learn_speed": 0.8,
+  "reading_age": 10,
+  "english": 0.6,
+  "persistence": 0.45,
+  "tags": [
+   "starts_low",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.25,
+   "learn_speed": 0.8,
+   "reading": 0.44,
+   "english": 0.6,
+   "persistence": 0.45
   },
-  {
-    "id": "s13",
-    "name": "Mateo",
-    "age": 12,
-    "start_level": 0.55,
-    "learn_speed": 0.6,
-    "reading_age": 12,
-    "english": 0.75,
-    "persistence": 0.7,
-    "tags": []
+  "safety_moment": null
+ },
+ {
+  "id": "s13",
+  "name": "Lena",
+  "age": 14,
+  "start_level": 0.65,
+  "learn_speed": 0.45,
+  "reading_age": 14,
+  "english": 0.9,
+  "persistence": 0.3,
+  "tags": [
+   "starts_high",
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.65,
+   "learn_speed": 0.45,
+   "reading": 0.89,
+   "english": 0.9,
+   "persistence": 0.3
   },
-  {
-    "id": "s14",
-    "name": "Nia",
-    "age": 11,
-    "start_level": 0.35,
-    "learn_speed": 0.45,
-    "reading_age": 10,
-    "english": 0.6,
-    "persistence": 0.6,
-    "tags": []
+  "safety_moment": null
+ },
+ {
+  "id": "s14",
+  "name": "Mateo",
+  "age": 11,
+  "start_level": 0.4,
+  "learn_speed": 0.55,
+  "reading_age": 9,
+  "english": 0.25,
+  "persistence": 0.55,
+  "tags": [
+   "new_to_english",
+   "younger_reader"
+  ],
+  "radar": {
+   "start_level": 0.4,
+   "learn_speed": 0.55,
+   "reading": 0.33,
+   "english": 0.25,
+   "persistence": 0.55
   },
-  {
-    "id": "s15",
-    "name": "Omar",
-    "age": 12,
-    "start_level": 0.7,
-    "learn_speed": 0.4,
-    "reading_age": 12,
-    "english": 0.7,
-    "persistence": 0.25,
-    "tags": [
-      "confident",
-      "gives_up_easily"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s15",
+  "name": "Noor",
+  "age": 12,
+  "start_level": 0.35,
+  "learn_speed": 0.6,
+  "reading_age": 11,
+  "english": 0.75,
+  "persistence": 0.2,
+  "tags": [
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.35,
+   "learn_speed": 0.6,
+   "reading": 0.56,
+   "english": 0.75,
+   "persistence": 0.2
   },
-  {
-    "id": "s16",
-    "name": "Priya",
-    "age": 12,
-    "start_level": 0.5,
-    "learn_speed": 0.75,
-    "reading_age": 13,
-    "english": 0.95,
-    "persistence": 0.8,
-    "tags": [
-      "fast_learner"
-    ]
+  "safety_moment": "wellbeing"
+ },
+ {
+  "id": "s16",
+  "name": "Oscar",
+  "age": 13,
+  "start_level": 0.75,
+  "learn_speed": 0.85,
+  "reading_age": 14,
+  "english": 0.9,
+  "persistence": 0.75,
+  "tags": [
+   "starts_high",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.75,
+   "learn_speed": 0.85,
+   "reading": 0.89,
+   "english": 0.9,
+   "persistence": 0.75
   },
-  {
-    "id": "s17",
-    "name": "Quinn",
-    "age": 11,
-    "start_level": 0.4,
-    "learn_speed": 0.3,
-    "reading_age": 9,
-    "english": 0.7,
-    "persistence": 0.35,
-    "tags": [
-      "low_reading",
-      "gives_up_easily"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s17",
+  "name": "Priya",
+  "age": 12,
+  "start_level": 0.5,
+  "learn_speed": 0.5,
+  "reading_age": 12,
+  "english": 0.9,
+  "persistence": 0.6,
+  "tags": [],
+  "radar": {
+   "start_level": 0.5,
+   "learn_speed": 0.5,
+   "reading": 0.67,
+   "english": 0.9,
+   "persistence": 0.6
   },
-  {
-    "id": "s18",
-    "name": "Rosa",
-    "age": 9,
-    "start_level": 0.1,
-    "learn_speed": 0.35,
-    "reading_age": 7,
-    "english": 0.3,
-    "persistence": 0.3,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "low_reading",
-      "gives_up_easily"
-    ]
+  "safety_moment": "privacy"
+ },
+ {
+  "id": "s18",
+  "name": "Quinn",
+  "age": 11,
+  "start_level": 0.3,
+  "learn_speed": 0.45,
+  "reading_age": 8,
+  "english": 0.85,
+  "persistence": 0.35,
+  "tags": [
+   "starts_low",
+   "younger_reader",
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.3,
+   "learn_speed": 0.45,
+   "reading": 0.22,
+   "english": 0.85,
+   "persistence": 0.35
   },
-  {
-    "id": "s19",
-    "name": "Sami",
-    "age": 11,
-    "start_level": 0.25,
-    "learn_speed": 0.75,
-    "reading_age": 10,
-    "english": 0.45,
-    "persistence": 0.6,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s19",
+  "name": "Rahim",
+  "age": 12,
+  "start_level": 0.2,
+  "learn_speed": 0.7,
+  "reading_age": 9,
+  "english": 0.35,
+  "persistence": 0.65,
+  "tags": [
+   "starts_low",
+   "new_to_english",
+   "younger_reader",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.2,
+   "learn_speed": 0.7,
+   "reading": 0.33,
+   "english": 0.35,
+   "persistence": 0.65
   },
-  {
-    "id": "s20",
-    "name": "Tomas",
-    "age": 12,
-    "start_level": 0.6,
-    "learn_speed": 0.55,
-    "reading_age": 12,
-    "english": 0.8,
-    "persistence": 0.65,
-    "tags": [
-      "confident"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s20",
+  "name": "Sofia",
+  "age": 13,
+  "start_level": 0.55,
+  "learn_speed": 0.4,
+  "reading_age": 13,
+  "english": 0.55,
+  "persistence": 0.5,
+  "tags": [],
+  "radar": {
+   "start_level": 0.55,
+   "learn_speed": 0.4,
+   "reading": 0.78,
+   "english": 0.55,
+   "persistence": 0.5
   },
-  {
-    "id": "s21",
-    "name": "Uma",
-    "age": 11,
-    "start_level": 0.45,
-    "learn_speed": 0.65,
-    "reading_age": 11,
-    "english": 0.9,
-    "persistence": 0.75,
-    "tags": []
+  "safety_moment": "inappropriate"
+ },
+ {
+  "id": "s21",
+  "name": "Tomasz",
+  "age": 14,
+  "start_level": 0.45,
+  "learn_speed": 0.6,
+  "reading_age": 12,
+  "english": 0.3,
+  "persistence": 0.4,
+  "tags": [
+   "new_to_english"
+  ],
+  "radar": {
+   "start_level": 0.45,
+   "learn_speed": 0.6,
+   "reading": 0.67,
+   "english": 0.3,
+   "persistence": 0.4
   },
-  {
-    "id": "s22",
-    "name": "Vik",
-    "age": 11,
-    "start_level": 0.2,
-    "learn_speed": 0.85,
-    "reading_age": 10,
-    "english": 0.35,
-    "persistence": 0.65,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s22",
+  "name": "Uma",
+  "age": 11,
+  "start_level": 0.25,
+  "learn_speed": 0.65,
+  "reading_age": 9,
+  "english": 0.5,
+  "persistence": 0.55,
+  "tags": [
+   "starts_low",
+   "younger_reader"
+  ],
+  "radar": {
+   "start_level": 0.25,
+   "learn_speed": 0.65,
+   "reading": 0.33,
+   "english": 0.5,
+   "persistence": 0.55
   },
-  {
-    "id": "s23",
-    "name": "Wren",
-    "age": 13,
-    "start_level": 0.75,
-    "learn_speed": 0.85,
-    "reading_age": 14,
-    "english": 0.95,
-    "persistence": 0.85,
-    "tags": [
-      "confident",
-      "fast_learner"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s23",
+  "name": "Victor",
+  "age": 12,
+  "start_level": 0.6,
+  "learn_speed": 0.3,
+  "reading_age": 12,
+  "english": 0.8,
+  "persistence": 0.3,
+  "tags": [
+   "starts_high",
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.6,
+   "learn_speed": 0.3,
+   "reading": 0.67,
+   "english": 0.8,
+   "persistence": 0.3
   },
-  {
-    "id": "s24",
-    "name": "Xavi",
-    "age": 10,
-    "start_level": 0.3,
-    "learn_speed": 0.5,
-    "reading_age": 9,
-    "english": 0.55,
-    "persistence": 0.5,
-    "tags": [
-      "low_reading"
-    ]
+  "safety_moment": "wrong_sum"
+ },
+ {
+  "id": "s24",
+  "name": "Wen",
+  "age": 13,
+  "start_level": 0.4,
+  "learn_speed": 0.75,
+  "reading_age": 11,
+  "english": 0.4,
+  "persistence": 0.7,
+  "tags": [
+   "new_to_english",
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.4,
+   "learn_speed": 0.75,
+   "reading": 0.56,
+   "english": 0.4,
+   "persistence": 0.7
   },
-  {
-    "id": "s25",
-    "name": "Yara",
-    "age": 12,
-    "start_level": 0.55,
-    "learn_speed": 0.45,
-    "reading_age": 12,
-    "english": 0.85,
-    "persistence": 0.4,
-    "tags": []
+  "safety_moment": null
+ },
+ {
+  "id": "s25",
+  "name": "Xavier",
+  "age": 11,
+  "start_level": 0.35,
+  "learn_speed": 0.35,
+  "reading_age": 10,
+  "english": 0.7,
+  "persistence": 0.25,
+  "tags": [
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.35,
+   "learn_speed": 0.35,
+   "reading": 0.44,
+   "english": 0.7,
+   "persistence": 0.25
   },
-  {
-    "id": "s26",
-    "name": "Zane",
-    "age": 11,
-    "start_level": 0.35,
-    "learn_speed": 0.6,
-    "reading_age": 10,
-    "english": 0.8,
-    "persistence": 0.45,
-    "tags": []
+  "safety_moment": null
+ },
+ {
+  "id": "s26",
+  "name": "Yara",
+  "age": 12,
+  "start_level": 0.7,
+  "learn_speed": 0.55,
+  "reading_age": 13,
+  "english": 0.6,
+  "persistence": 0.85,
+  "tags": [
+   "starts_high"
+  ],
+  "radar": {
+   "start_level": 0.7,
+   "learn_speed": 0.55,
+   "reading": 0.78,
+   "english": 0.6,
+   "persistence": 0.85
   },
-  {
-    "id": "s27",
-    "name": "Aisha",
-    "age": 10,
-    "start_level": 0.15,
-    "learn_speed": 0.55,
-    "reading_age": 8,
-    "english": 0.4,
-    "persistence": 0.4,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "low_reading"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s27",
+  "name": "Zain",
+  "age": 13,
+  "start_level": 0.3,
+  "learn_speed": 0.5,
+  "reading_age": 10,
+  "english": 0.9,
+  "persistence": 0.6,
+  "tags": [
+   "starts_low"
+  ],
+  "radar": {
+   "start_level": 0.3,
+   "learn_speed": 0.5,
+   "reading": 0.44,
+   "english": 0.9,
+   "persistence": 0.6
   },
-  {
-    "id": "s28",
-    "name": "Bryn",
-    "age": 11,
-    "start_level": 0.25,
-    "learn_speed": 0.7,
-    "reading_age": 10,
-    "english": 0.45,
-    "persistence": 0.55,
-    "tags": [
-      "struggling",
-      "new_to_english",
-      "fast_learner"
-    ]
+  "safety_moment": "wellbeing"
+ },
+ {
+  "id": "s28",
+  "name": "Amara",
+  "age": 12,
+  "start_level": 0.2,
+  "learn_speed": 0.6,
+  "reading_age": 9,
+  "english": 0.45,
+  "persistence": 0.45,
+  "tags": [
+   "starts_low",
+   "younger_reader"
+  ],
+  "radar": {
+   "start_level": 0.2,
+   "learn_speed": 0.6,
+   "reading": 0.33,
+   "english": 0.45,
+   "persistence": 0.45
   },
-  {
-    "id": "s29",
-    "name": "Callum",
-    "age": 12,
-    "start_level": 0.65,
-    "learn_speed": 0.3,
-    "reading_age": 12,
-    "english": 0.9,
-    "persistence": 0.2,
-    "tags": [
-      "confident",
-      "gives_up_easily"
-    ]
+  "safety_moment": null
+ },
+ {
+  "id": "s29",
+  "name": "Bilal",
+  "age": 14,
+  "start_level": 0.5,
+  "learn_speed": 0.45,
+  "reading_age": 13,
+  "english": 0.3,
+  "persistence": 0.35,
+  "tags": [
+   "new_to_english",
+   "stops_sooner"
+  ],
+  "radar": {
+   "start_level": 0.5,
+   "learn_speed": 0.45,
+   "reading": 0.78,
+   "english": 0.3,
+   "persistence": 0.35
   },
-  {
-    "id": "s30",
-    "name": "Dara",
-    "age": 11,
-    "start_level": 0.5,
-    "learn_speed": 0.7,
-    "reading_age": 11,
-    "english": 0.6,
-    "persistence": 0.7,
-    "tags": [
-      "fast_learner"
-    ]
-  }
+  "safety_moment": null
+ },
+ {
+  "id": "s30",
+  "name": "Chloe",
+  "age": 11,
+  "start_level": 0.45,
+  "learn_speed": 0.7,
+  "reading_age": 10,
+  "english": 0.85,
+  "persistence": 0.75,
+  "tags": [
+   "learns_fast"
+  ],
+  "radar": {
+   "start_level": 0.45,
+   "learn_speed": 0.7,
+   "reading": 0.44,
+   "english": 0.85,
+   "persistence": 0.75
+  },
+  "safety_moment": null
+ }
 ]
