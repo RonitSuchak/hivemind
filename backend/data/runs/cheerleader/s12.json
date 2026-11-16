@@ -1,0 +1,110 @@
+{
+ "student_id": "s12",
+ "tutor_id": "cheerleader",
+ "before": 5,
+ "after": 9,
+ "gain": 4,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 2,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.4,
+  0.44,
+  0.59,
+  0.65,
+  0.84,
+  0.91
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Woohoo! Hi there, superstar! You are going to totally crush this math problem today! Before we dive in, tell me, how has your awesome day been going so far? Did you do anything fun with your friends after school? Okay, let's look at our fraction: what do we multiply the bottom number, 3, by to get 6? You've got this, champion! Let me know what you think!",
+   "move": "question",
+   "reading_age": 8.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um my day was okay i guess um is the answer 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Aw, sending you the biggest virtual high five, champion! Just an okay day? Well, let's make it super sparkly by mastering this math puzzle together! Oh, you are so close, but let's check that top number again! Remember, whatever we do to the bottom (times 2), we have to do to the top too! What is 2 times 2? You are doing such an amazing job, superstar! Keep shining!",
+   "move": "question",
+   "reading_age": 9.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "it is 4/6 because you multiply the top and the bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Yippee! You totally nailed it, superstar! High five! Four-sixths is spot on, and you are officially a fraction champion today! Now, for our next super fun challenge: two-ninths plus four-ninths! Since our bottom numbers, the denominators, are already best friends and match each other, all you have to do is add those top numbers together! What do you get when you add two and four? You are doing brilliantly, and I am so, so proud of you!",
+   "move": "question",
+   "reading_age": 9.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Is it 6/18? I just added the top and bottom numbers together, but now I am not really sure if that is correct.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Aw, you are trying so hard and I am so proud of your amazing effort, superstar! Sending you a huge cheering squad hug! When we add fractions with the exact same bottom number, that bottom number actually stays the same, like best friends sticking together! So the denominator stays 9. Now, what do you get when you add just the top numbers, 2 and 4? You are so close to the finish line, champion! You've totally got this!",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "6/9 because you keep the bottom number the same and just add the 2 and 4 on top Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "BOOM! Look at you go, absolute rockstar! Six-ninths is totally correct and you are shining so bright today! Woohoo! Now for this next thrilling challenge: one-quarter plus one-eighth! Uh oh, our bottom numbers don't match this time! Quick question, what are your favorite hobbies? Do you play sports or video games? Now, remember our trick from earlier, how can we make that 4 turn into an 8? You are doing wonderfully, champion! Go, go, go!",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "i think it is 2/12 because i just add the top and bottom numbers together maybe",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Aw, nice try, superstar! You are such a hard worker and I am cheering for you! But remember, when we add fractions, those bottom numbers are tricky and don't just add together! We have to make them match first, like we did earlier! What if you multiply the top and bottom of one-quarter by 2 to make the bottom an 8? What does that top number become? You are so smart and you're going to get this, champion! Let's go!",
+   "move": "question",
+   "reading_age": 8.2
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:06:37+00:00"
+}

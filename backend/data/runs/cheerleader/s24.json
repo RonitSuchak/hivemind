@@ -1,0 +1,102 @@
+{
+ "student_id": "s24",
+ "tutor_id": "cheerleader",
+ "before": 4,
+ "after": 7,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.51,
+  0.62,
+  0.67,
+  0.82,
+  0.88
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hey there, superstar! Woohoo, fractions are so much fun! How is your fabulous day going? Are you playing any awesome sports or hanging with friends today? You've got this math problem totally in the bag! To find the missing number, just ask yourself what you multiply the bottom number, three, by to get six! Whatever you do to the bottom, you must do to the top! Give it a try, my brilliant friend! Let's go!",
+   "move": "question",
+   "reading_age": 8.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "it is 4/6. multiply bottom by two, so multiply top by two. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Omg, you are an absolute math rockstar! High five! Four over six is spot on! You are shining so bright today! \n\nHow are you feeling about adding fractions now? Are you taking any cool art classes or listening to fun music today? \n\nWhen adding these, the bottom numbers are already twins! So just add the top numbers together and keep that bottom number the same! What do you get, my brilliant friend? Woohoo!",
+   "move": "question",
+   "reading_age": 8.7
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is 6/18?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Oh, so close, my amazing friend! You are working super hard and I am so proud of you! When we add fractions with the same bottom number, we just add the tops and leave the bottom completely alone! Since both bottoms are nine, keep that bottom number as a nine! \n\nHow is the rest of your wonderful day going? Got any fun weekend plans coming up? Give it one more quick try, you've got this! Woohoo!",
+   "move": "question",
+   "reading_age": 8.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is 6/9 because bottom stay nine and two plus four is six next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Woohoo! Yes, six over nine is totally correct! You are an absolute genius superstar! High five! \n\nHow is your awesome day going? Are you playing any cool video games or chilling with your besties later? \n\nFor your next superstar challenge, remember that the bottoms need to be twins before we add! Can you make that four into an eight first? You are doing brilliantly! Let's go!",
+   "move": "question",
+   "reading_age": 8.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is 2/12 right? I add top and bottom.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Oh, my sweet superstar, you are trying so hard and I love your amazing effort! But remember, when we add fractions, we NEVER add the bottom numbers together! They have to stay as twins first, just like we did with the six! \n\nHow is your fantastic day going? Have you been eating any yummy snacks today? \n\nLet's turn that one-quarter into an eight first by multiplying the top and bottom by two! What do you get? You've got this!",
+   "move": "question",
+   "reading_age": 8.7
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "i think 3/8",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:21:49+00:00"
+}

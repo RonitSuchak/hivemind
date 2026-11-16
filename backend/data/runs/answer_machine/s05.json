@@ -1,0 +1,74 @@
+{
+ "student_id": "s05",
+ "tutor_id": "answer_machine",
+ "before": 3,
+ "after": 4,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.28,
+  0.32,
+  0.35
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4. Because to get from 3 to 6 in the denominator you multiply by 2, so you must also multiply the numerator 2 by 2.",
+   "move": "hint",
+   "reading_age": 13.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "No, the correct answer is 4. Because you must multiply both the top and the bottom numbers by the exact same amount.",
+   "move": "hint",
+   "reading_age": 10.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, it is 4 over 6. Because whatever you multiply the bottom number by, you must do the exact same to the top number.",
+   "move": "hint",
+   "reading_age": 10.9
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:34:13+00:00"
+}

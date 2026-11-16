@@ -1,0 +1,58 @@
+{
+ "student_id": "s02",
+ "tutor_id": "answer_machine",
+ "before": 4,
+ "after": 4,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.31,
+  0.33
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4. Because to get from 3 to 6 in the denominator you multiply by 2, you must also multiply the numerator 2 by 2.",
+   "move": "hint",
+   "reading_age": 13.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i guess it is 2/6. i dont get why it is not 2/6. this makes no sense at all.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "The answer is 4 because fractions need to be equal in value, and if you only change the bottom number, you are changing the size of the pieces instead of keeping the proportion the same.",
+   "move": "explanation",
+   "reading_age": 19.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:31:17+00:00"
+}

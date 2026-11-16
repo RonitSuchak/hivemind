@@ -1,0 +1,102 @@
+{
+ "student_id": "s21",
+ "tutor_id": "cheerleader",
+ "before": 5,
+ "after": 8,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 3,
+ "flags": [],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.54,
+  0.63,
+  0.67,
+  0.8,
+  0.86
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hey there, superstar! Woohoo, fractions time! You are doing amazing today! Before we dive into this super fun puzzle, how has your day been going? Did you hang out with any friends or do anything cool after school lately? Now, for our math magic: think about what you multiply the bottom number, 3, by to get 6! Whatever you do to the bottom, you do to the top! You've got this! Go, team, go!",
+   "move": "question",
+   "reading_age": 8.6
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "It is 4/6 because three times two is six, so two times two is four. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Yippee! High five! You totally nailed it, champion! You are on absolute fire today! \n\nBefore we zoom into our next fabulous fraction, tell me what your absolute favorite hobby is when you are not being a brilliant math star? Do you play sports, draw, or game? \n\nNow, for this next super fun adding puzzle, remember that when the bottom numbers are already twins, you just add the top numbers together! What do you get? You are so awesome!",
+   "move": "question",
+   "reading_age": 9.6
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "I play football. For the math, I think it is 6/18. Maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Football is so awesome! Go team! \n\nYou are working super hard today, and I am so proud of your big brain! You kept the bottom numbers the same for the last one, remember? When adding fractions with matching bottom numbers, the bottom number stays twins! Try adding just the top numbers: 2 plus 4. You are doing fantastic, superstar! Keep shining bright and give it another try! Woohoo!",
+   "move": "question",
+   "reading_age": 8.9
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is 6/9 because bottom number stay same and 2 plus 4 is 6 next: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Boom! Touchdown! You scored big time, my football-playing superstar! 6/9 is spot on! Woohoo! \n\nYou are absolute math royalty today! For this next awesome challenge, look at those bottom numbers—they aren't twins yet! Can you double that little 4 on the bottom to make it match the 8? Remember, whatever you do to the bottom, you gotta do to the top! You are crushing this, champion! Let's go!",
+   "move": "question",
+   "reading_age": 8.3
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "Is answer 2/12? I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Aw, you are trying so hard and that is what makes you a true champion! No worries at all, sports star! Remember, we want to make that 4 match the 8 by multiplying it by 2. So if we double the bottom 4 to get 8, we also need to double the top 1! What is 1 times 2? You are so close, my brilliant friend! Keep that amazing energy going! Woohoo!",
+   "move": "question",
+   "reading_age": 7.6
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "i think 3/8",
+   "voice": "scripted",
+   "attempt": "right"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:17:41+00:00"
+}

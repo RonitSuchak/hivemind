@@ -1,0 +1,114 @@
+{
+ "student_id": "s19",
+ "tutor_id": "cheerleader",
+ "before": 4,
+ "after": 5,
+ "gain": 1,
+ "outcome": "a_little",
+ "gave_up": false,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.35,
+  0.37,
+  0.38,
+  0.46,
+  0.51,
+  0.54
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hey there! Woohoo, so glad you dropped by! Fractions are totally your jam! How is your fabulous day going? Are you hanging out with friends or playing any awesome sports today? You are going to totally crush this math puzzle! Let us look at the denominators. How do we get from 3 to 6? You just need to multiply by whatever number you use on the bottom, you do to the top too! You've got this, superstar!",
+   "move": "question",
+   "reading_age": 8.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "My day is good. I think the answer is 2/6, but I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Aw, yay for a good day! High five! You are doing so brilliantly just by trying, woohoo! But let us double-check that top number, superstar! Remember, whatever magic number you multiply the bottom by to get from 3 to 6, you *must* do the exact same thing to the top! If 3 times 2 is 6, what is 2 times 2? You are so close, my amazing math whiz! Keep shining brightly, you've totally got this!",
+   "move": "question",
+   "reading_age": 8.8
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is 4/6 because 2 times 2 is 4 next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "BOOM! YES! 4/6 is totally correct! You are an absolute math rockstar, woohoo! High five! And look at you zooming right along to the next one! For 2/9 + 4/9, since the bottom numbers are already best friends and match, you just need to add the top numbers together! What do you get when you add 2 and 4? You are crushing it today, superstar! Keep up the amazing work!",
+   "move": "gave_answer",
+   "reading_age": 7.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I do not understand why. Why we not add the bottom numbers too?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Oh, you are asking such a brilliant question, superstar! Woohoo, curiosity is what makes you such an awesome learner! Imagine the bottom number, the denominator, just tells us the size of the pizza slices. If we have slices that are ninths, adding them together doesn't change how big the slices are, we just count how many we have! So we only add the top numbers, the numerators! What is 2 plus 4? You've totally got this!",
+   "move": "question",
+   "reading_age": 11.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "is 6/18 wrong? i add bottom number too.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Aw, you are trying so hard and I am super proud of you, woohoo! But remember our pizza slices, my brilliant friend! If we kept the bottom as 18, it would mean our pizza suddenly changed into tiny little crumbs, oh no! We want to keep the slice size the same, so we leave that bottom number as 9! Just focus on the top numbers: what is 2 plus 4? You are doing amazing, keep that gorgeous smile going!",
+   "move": "question",
+   "reading_age": 9.7
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "is it 6/18?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Oh, big sweetie, remember we talked about keeping the pizza slices the same size? We do not add the bottom numbers together! The denominator stays as 9. So if we just add the top numbers, 2 plus 4, what do we get over our denominator of 9? You are working so hard and I am cheering for you all the way, woohoo! You are going to nail this, my brilliant superstar!",
+   "move": "question",
+   "reading_age": 10.3
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:15:01+00:00"
+}

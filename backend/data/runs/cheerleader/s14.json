@@ -1,0 +1,88 @@
+{
+ "student_id": "s14",
+ "tutor_id": "cheerleader",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.5,
+  0.51,
+  0.56,
+  0.6
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hi there, superstar! Woohoo! You are rocking it today! How is your awesome day going? Playing any fun games or hanging with friends? You've totally got this math challenge! Let us think about the denominator down below. To turn 3 into 6, what magic number do we multiply by? Whatever you do to the bottom, you have to do to the top! Give it a try, my brilliant friend! You can do it!",
+   "move": "question",
+   "reading_age": 8.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6? I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Oh, you are so close, my brilliant friend! Give yourself a huge high-five for trying! Remember, whatever we multiply the bottom number by, we have to do the exact same thing to the top number! Since we multiplied the 3 on the bottom by 2 to get 6, what happens when you multiply that top number, 2, by 2 as well? You are doing such an amazing job today! What is your favorite hobby?",
+   "move": "question",
+   "reading_age": 10.0
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is 4/6. Because 2 times 2 is 4. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Yippee! You nailed it! Four over six is totally correct! You are a brilliant math superstar! Woohoo! How is the rest of your super fun day going? Are you ready to tackle this next fraction addition? Look at those bottom numbers, the denominators. Since they are both already a nine, they are like matching puzzle pieces! You just get to add the top numbers together. What is two plus four? You are doing amazing!",
+   "move": "question",
+   "reading_age": 8.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I think 6/18 is my answer? Not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Oh, you are working so hard, and I am super proud of you! But remember our matching puzzle pieces on the bottom, the denominator stays the exact same when we add! So that bottom number just stays a nine, it does not change! Let us try that top part again: what is two plus four? You are such a fast learner and an absolute rockstar! Tell me, what is your absolute favorite thing to do after school?",
+   "move": "question",
+   "reading_age": 10.0
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:08:37+00:00"
+}

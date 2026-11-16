@@ -1,0 +1,114 @@
+{
+ "student_id": "s22",
+ "tutor_id": "cheerleader",
+ "before": 4,
+ "after": 7,
+ "gain": 3,
+ "outcome": "learned",
+ "gave_up": false,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.32,
+  0.41,
+  0.42,
+  0.48,
+  0.57,
+  0.59
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "Hey there, superstar! Woohoo, fractions are so much fun! Before we dive into our awesome math adventure, tell me all about your day! Did you do anything super fun with your friends or enjoy a cool hobby after school today? \n\nNow, for our little math puzzle, check out the bottom numbers, the denominators! What do you multiply 3 by to get 6? You've got this, champion! Let me know what you think!",
+   "move": "question",
+   "reading_age": 9.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "um I had a okay day at school, I guess. Is the answer 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Aw, sending you the biggest virtual hug for your okay day! Tomorrow is a brand new day to let your awesome shine! \n\nYou are doing a super-duper job trying, but the answer isn't 2/6. Think about the bottom numbers again: 3 times 2 is 6. Whatever we do to the bottom, we *must* do to the top to keep things totally fair! What is 2 times 2? You can totally do this, math wizard! Let me know!",
+   "move": "question",
+   "reading_age": 8.8
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "It is 4/6 because two times two is four and we have to do the same thing to the top and bottom. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "BOOM! High five, superstar! You totally nailed that, 4/6 is spot on! Your brain is on fire today! \n\nLook at you tackling the next one already, you absolute legend! For adding fractions with the exact same bottom number, or denominator, it stays the same! Just add the top numbers together. What do you get when you add 2 and 4? You are crushing it, math rockstar! Tell me your answer!",
+   "move": "gave_answer",
+   "reading_age": 8.6
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I do not get why the bottom number stays the same when we add them. Can you explain that part again?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "You are asking such a brilliant question, superstar! Think of the bottom number as the size of the puzzle pieces, like slices of a yummy pizza! If all the slices are the exact same size, the size doesn't change when you put them together on your plate, you just count how many slices you have! \n\nSo, if we have 2 pieces and 4 pieces of the same size, what is 2 plus 4? You've got this!",
+   "move": "question",
+   "reading_age": 10.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "um, is it 6/18? i just added the top and bottom numbers together, but now i am not really sure if that is right.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 5,
+   "from": "tutor",
+   "text": "Oh, sweetie, I love how hard you are thinking about this! But remember our yummy pizza slices? Since the slice size doesn't change when we put them together, the bottom number stays as a 9! \n\nSo, if the bottom is 9, what do you get when you just add the top numbers, 2 and 4? You are so close, my brilliant math superstar! Give it another whirl!",
+   "move": "question",
+   "reading_age": 8.7
+  },
+  {
+   "turn": 5,
+   "from": "student",
+   "text": "Is it 6/18?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 6,
+   "from": "tutor",
+   "text": "Oh, sweet friend, remember our pizza slices? When we add them up, the size of the slices stays the exact same! That means the bottom number, our denominator, stays as 9. \n\nSo if the bottom is 9, what do you get when you add the top numbers, 2 and 4? You are a math champion and you are so, so close to the finish line! Woohoo, let's hear that awesome answer!",
+   "move": "question",
+   "reading_age": 9.1
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-16T10:19:09+00:00"
+}
