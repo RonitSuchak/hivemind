@@ -27,7 +27,16 @@ A plain guide for the team. "Test" means two things in Hivemind: the **benchmark
 - **The voice** (Google Gemini) only writes the words a student says, like "um is it 2/4?".
 - **Fair dice:** every student gets the same luck with every tutor, so differences come only from the teaching.
 
-We don't let an AI play the whole student, because an AI already knows fractions, acts differently every run, and can't explain its reasons. Maths makes the scores fair, repeatable and explainable.
+So each student is already a small agent: profile + maths brain + AI voice. The AI *plays* the student; the maths *is* the student.
+
+### Why not AI agents (or trained AIs) for the students?
+1. **An AI already knows fractions.** It can't truly be a confused 11-year-old: asked to act confused, it gets answers right or wrong at random. The maths brain only improves when the teaching earns it.
+2. **Fairness.** Every tutor must face the *same* class with the same luck. An AI student behaves differently every run, so differences between tutors would be partly noise.
+3. **Explainable scores.** Every point of gain comes from a known rule ("a question gives a 50% chance to learn"). An AI's reasons are hidden, and judges will ask "how do you know the tutor caused this?"
+4. **Training needs data and money we don't have.** Teaching a model to act like real students needs thousands of real tutoring chats with test results, plus paid computing. We use free tools only.
+5. **The free limit.** We get 500 AI calls a day; 30 AI agents with memory would need many more.
+
+**Later (a "next steps" idea):** collect real classmate results with the real-classmate check, then tune each student's brain numbers to match what real students actually did. That is the honest way to "train" the students: from real data, not from an AI pretending.
 
 ### The benchmark: how we know the test works
 We built the 5 tutors ourselves, each with a **known** strength or flaw. If the test is right, it must catch them:
