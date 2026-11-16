@@ -157,15 +157,20 @@
 .tg-head h1 { font-size: var(--text-hero); font-weight: 700; line-height: 0.98; letter-spacing: var(--track-display); }
 .tg-head .lede { margin-top: 0; }
 
-/* Moving strip: two copies of the row slide left for ever; edges fade out; hover pauses it */
-.tg-strip { overflow: hidden; margin-inline: calc(var(--gutter) * -1); padding-block: var(--s-5);
+/* Moving strip: two copies of one row slide for ever and never pause.
+   Edges fade out. Hover a preview and it straightens, leans toward the pointer (tilt.js) and comes closer. */
+.tg-strips { display: grid; gap: var(--s-4); margin-inline: calc(var(--gutter) * -1); padding-block: var(--s-4); overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-.tg-strip-track { display: flex; gap: var(--s-5); width: max-content; animation: tg-slide 70s linear infinite; }
-.tg-strip:hover .tg-strip-track { animation-play-state: paused; }
-.tg-strip-item { flex: none; width: clamp(15rem, 24vw, 21rem); }
-.tg-strip-item:nth-child(odd) { rotate: -1.5deg; translate: 0 6px; }
-.tg-strip-item:nth-child(even) { rotate: 1.5deg; translate: 0 -6px; }
-.tg-strip-item .tp { box-shadow: var(--glass-shadow-lg); }
+.tg-strip { padding-block: var(--s-4); }
+.tg-strip-track { display: flex; gap: var(--s-5); width: max-content; animation: tg-slide 190s linear infinite; }
+.tg-strip-item { flex: none; width: clamp(13rem, 20vw, 18rem); cursor: pointer; --lean: -1.5deg; --drop: 6px; perspective: 700px; }
+.tg-strip-item:nth-child(even) { --lean: 1.5deg; --drop: -6px; }
+.tg-strip-item .tp { box-shadow: var(--glass-shadow-lg); transform: translateY(var(--drop)) rotate(var(--lean)); transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+@media (hover: hover) and (pointer: fine) {
+  .tg-strip-item:hover { position: relative; z-index: 2; }
+  .tg-strip-item:hover .tp { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.14); box-shadow: 0 30px 60px -22px rgb(10 10 24 / 0.5), 0 0 0 2px var(--pop); }
+  .tg-strip-item[data-tilting] .tp { transition-duration: 0.14s, 0.55s; }
+}
 @keyframes tg-slide { to { transform: translateX(calc(-50% - var(--s-5) / 2)); } }
 @media (prefers-reduced-motion: reduce) { .tg-strip-track { animation: none; } }
 
@@ -176,7 +181,8 @@
 .tg-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); gap: var(--s-6) var(--s-5); }
 .tg-item { min-width: 0; }
 .tg-card { display: grid; gap: var(--s-4); width: 100%; height: 100%; align-content: start; justify-items: stretch; margin: 0; padding: 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; color: var(--ink); text-decoration: none; border-radius: var(--r-md); -webkit-tap-highlight-color: transparent; }
-.tg-card .tp { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.tg-card { perspective: 800px; }
+.tg-card .tp { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
 .tg-body { display: grid; gap: var(--s-1); }
 .tg-top { display: flex; align-items: center; gap: var(--s-3); font-size: var(--text-xs); color: var(--ink-3); }
 .tg-num { font-family: var(--font-display); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
@@ -187,7 +193,8 @@
 .tg-visit { display: inline-flex; align-items: center; gap: var(--s-1); width: fit-content; margin-top: var(--s-2); font-size: var(--text-sm); font-weight: 600; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: border-color var(--dur-fast); }
 .tg-visit .icon { transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast); }
 @media (hover: hover) and (pointer: fine) {
-  .tg-card:hover .tp { transform: translateY(-3px); box-shadow: var(--glass-shadow-lg); }
+  .tg-card:hover .tp { transform: translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.03); box-shadow: 0 26px 50px -24px rgb(10 10 24 / 0.45); }
+  .tg-card[data-tilting] .tp { transition-duration: 0.14s, 0.5s; }
   .tg-card:hover .tg-visit { border-color: var(--pop); }
   .tg-card:hover .tg-visit .icon { transform: translateX(2px); color: var(--pop); }
 }

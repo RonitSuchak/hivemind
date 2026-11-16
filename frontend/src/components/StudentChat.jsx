@@ -1,15 +1,22 @@
 import Radar from './Radar.jsx'
 import Icon from './Icon.jsx'
+import BestTools from './BestTools.jsx'
+import { mostEffective } from '../data/tools.js'
 import { OutcomeTag } from './OutcomeShape.jsx'
-import { MOMENT_LABEL, flagLabel, moveLabel, safetyLabel, tagLabel } from '../labels.js'
+import { MOMENT_LABEL, flagLabel, moveLabel, safetyLabel, tagLabel, typeName } from '../labels.js'
 
-// Drawer content for one simulated student: who they are, what changed, and the whole lesson.
+// Drawer content for one simulated student: who they are, what changed, the three websites that suit
+// them (ordered by how they did with each demo tool, see bestToolsFor in data/tools.js), and the lesson tucked away below.
 // Every tutor and student line is rendered as plain text (React text nodes), never as HTML.
 
 // A failed event quotes the tutor's words, sometimes cut short with "…". Match the reply by prefix.
+const andList = (xs) => (xs.length < 2 ? xs[0] ?? '' : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`)
+const listTypes = (ids) => andList(ids.map((id) => typeName(id)))
+const listNames = (ids, names) => andList(ids.map((id) => names[id] || typeName(id)))
 const stem = (s) => String(s || '').replace(/[….]+\s*$/, '').trim()
 
-export default function StudentDetail({ student, result, tutorName }) {
+export default function StudentDetail({ student, result, tutorName, gains, flagged = [], names = {} }) {
+  const best = mostEffective(gains, { flagged })
   const failed = result.safety_events.filter((e) => !e.passed)
   const stems = failed.map((e) => [stem(e.evidence), e]).filter(([s]) => s.length > 8)
   const failedFor = (m) => (m.from === 'tutor' ? stems.find(([s]) => String(m.text).startsWith(s))?.[1] : undefined)
@@ -42,10 +49,16 @@ export default function StudentDetail({ student, result, tutorName }) {
         </ul>
       )}
 
-      <div className="lx-chat-head">
-        <h3>Lesson with {tutorName}</h3>
-        <p className="lx-muted-sm">{result.transcript.length} messages</p>
-      </div>
+      {best.known && (best.none ? (
+        <p className="lx-best-nothing"><Icon name="info" size={16} /> <span>No type of tool helped {student.name} gain a point in this lesson, so no sites are suggested.</span></p>
+      ) : (
+        <BestTools title={`Most effective for ${student.name}: ${listTypes(best.groups)} sites${best.groups.length > 1 ? ' (a tie)' : ''}`}
+          note={`${student.name} gained most with ${listNames(best.groups, names)}, our demo ${best.groups.length > 1 ? 'tools for these types' : 'tool for this type'}. The sites are examples of ${best.groups.length > 1 ? 'those types' : 'this type'}. They have not been tested themselves.`}
+          items={best.items.map(({ tool }) => ({ tool, line: '' }))} />
+      ))}
+
+      <details className="lx-lesson">
+        <summary><span>Read the lesson with {tutorName}</span><span className="lx-muted-sm">{result.transcript.length} messages</span></summary>
       <ol className="lx-chat">
         {result.transcript.map((m, i) => {
           const isTutor = m.from === 'tutor'
@@ -72,6 +85,7 @@ export default function StudentDetail({ student, result, tutorName }) {
           )
         })}
       </ol>
+      </details>
     </div>
   )
 }

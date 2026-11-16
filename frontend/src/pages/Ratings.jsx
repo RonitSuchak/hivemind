@@ -4,6 +4,7 @@ import { getRatings } from '../api.js'
 import { useInView, useLoad, usePageTitle } from '../hooks.js'
 import { useReduced } from '../motion.js'
 import { groupPeople, tagLabel } from '../labels.js'
+import TypeName from '../components/TypeName.jsx'
 import { Async, SkeletonRatings, Unavailable } from '../components/States.jsx'
 import ScoreBars, { SafetyBadge } from '../components/ScoreBars.jsx'
 import { useTooltip } from '../components/Tooltip.jsx'
@@ -26,20 +27,19 @@ export default function Ratings() {
 const SUM_HEAD = (
   <div className="lx-sec-head">
     <h2 id="sum-h">How much students gained</h2>
-    <p>Each simulated class sat a test, had a lesson from one tool type, then sat the test again. Best result first.</p>
-    <p className="lx-note">Simulated students, not real children.</p>
+    <p>One simulated class per type of EdTech tool. Each sat a test, had a lesson with that type&rsquo;s demo tool, then sat the test again. Most points first; a serious safety fail goes last.</p>
   </div>
 )
-const CMP_HEAD = (
+const TABLE_HEAD = (
   <div className="lx-sec-head">
-    <h2 id="cmp-h">Compare for one group</h2>
-    <p>Pick a group of simulated students. Longer bar means more points gained.</p>
+    <h2 id="cmp-h">Every group at a glance</h2>
+    <p>The same results split by kind of student, in one table.</p>
   </div>
 )
 const SCORES_HEAD = (
   <div className="lx-sec-head">
     <h2 id="sc-h">Safety, usability and learning</h2>
-    <p>Three separate scores for each tool type, never blended into one number.</p>
+    <p>Three separate scores for each demo tool, never blended into one number.</p>
   </div>
 )
 
@@ -74,8 +74,9 @@ let heatPlayed = false
 
 const signed = (v) => `${v < 0 ? '\u2212' : '+'}${Math.abs(v).toFixed(1)}`
 
-// Per tool type: the overall average, and the groups it worked best and least for. All from avg_gain.
-// Best / least look at the groups only (every tag except "all"). The first group wins a tie. If every group
+// Per demo tool: the overall average and the group that gained most. All from the backend's avg_gain.
+// "Worked least for" is NOT worked out here: the backend judges that by share of possible gain (its report),
+// so a raw-marks guess on this page could disagree with it. Best looks at the groups only (every tag except "all"). The first group wins a tie. If every group
 // is level there is no best or least, so `level` is true and the card says so.
 function summarise(row, groups) {
   const vals = groups.map((g) => [g, row.avg_gain[g]])
@@ -92,13 +93,8 @@ function Body({ ratings: raw }) {
   const max = Math.max(5, ...all)
   const groups = useMemo(() => ratings.tags.filter((t) => t !== 'all'), [ratings.tags])
   const ranked = useMemo(
-    () => ratings.rows.map((row) => ({ row, ...summarise(row, groups) })).sort((a, b) => b.overall - a.overall),
+    () => ratings.rows.map((row) => ({ row, ...summarise(row, groups) })).sort((a, b) => Number(!!a.row.critical_fail) - Number(!!b.row.critical_fail) || b.overall - a.overall),
     [ratings.rows, groups],
-  )
-  const [group, setGroup] = useState('all')
-  const bars = useMemo(
-    () => ratings.rows.map((row) => ({ row, v: row.avg_gain[group] })).sort((a, b) => b.v - a.v),
-    [ratings.rows, group],
   )
   const tip = useTooltip()
   const reduced = useReduced()
@@ -112,11 +108,12 @@ function Body({ ratings: raw }) {
     <div className="lx-ratings">
       <section className="lx-sec" aria-labelledby="sum-h">
         <Reveal>{SUM_HEAD}</Reveal>
+        {raw.note && <p className="lx-note">{raw.note}</p>}
         <RevealGroup as="ol" className="lx-sum-grid">
-          {ranked.map(({ row, overall, best, least, level }, i) => (
+          {ranked.map(({ row, overall, best, level }, i) => (
             <Reveal as="li" key={row.tutor_id} blur={false} className={`glass lx-sum ${i === 0 ? 'is-top' : ''}`}>
               <div className="lx-sum-head">
-                <h3><Link to={`/lab?tutor=${row.tutor_id}`}>{row.tutor_name}</Link></h3>
+                <h3><Link to={`/lab?tutor=${row.tutor_id}`}><TypeName row={row} /></Link></h3>
                 {row.critical_fail && <SafetyBadge />}
               </div>
               <p className="lx-sum-gain">
@@ -128,7 +125,6 @@ function Body({ ratings: raw }) {
               ) : (
                 <>
                   <p className="lx-sum-line"><span>Worked best for:</span> <strong>{groupPeople(best[0])}</strong> <span className="lx-sum-v">({signed(best[1])})</span></p>
-                  <p className="lx-sum-line"><span>Worked least for:</span> <strong>{groupPeople(least[0])}</strong> <span className="lx-sum-v">({signed(least[1])})</span></p>
                 </>
               )}
             </Reveal>
@@ -139,35 +135,9 @@ function Body({ ratings: raw }) {
       <ProfilePredictor rows={ratings.rows} />
 
       <section className="lx-sec" aria-labelledby="cmp-h">
-        <Reveal>{CMP_HEAD}</Reveal>
-        <Reveal blur={false} delay={0.06} className="glass lx-cmp">
-          <div className="lx-cmp-chips" role="group" aria-label="Student group">
-            {ratings.tags.map((t) => (
-              <button key={t} type="button" className="lx-gchip" aria-pressed={t === group} onClick={() => setGroup(t)}>{tagLabel(t)}</button>
-            ))}
-          </div>
-          <p className="lx-cmp-title" aria-live="polite">
-            Showing <strong>{group === 'all' ? 'all simulated students' : groupPeople(group)}</strong>. Points gained out of 10.
-          </p>
-          <ol className="lx-bars">
-            {bars.map(({ row, v }) => (
-              <li key={`${group}-${row.tutor_id}`} className="lx-bar">
-                <span className="lx-bar-name">
-                  {row.tutor_name}
-                  {row.critical_fail && <span className="lx-bar-flag"><Icon name="flag" size={13} /><span className="sr-only"> Safety flag</span></span>}
-                </span>
-                <span className="lx-bar-track" aria-hidden="true">
-                  <span className="lx-bar-fill" style={{ '--v': Math.max(0, Math.min(1, v / scale)) }} />
-                </span>
-                <span className="lx-bar-num">{v.toFixed(1)}<span className="sr-only"> points gained</span></span>
-              </li>
-            ))}
-          </ol>
-          <p className="lx-note lx-cmp-scale">Every bar uses the same scale, 0 to {scale} points.</p>
-        </Reveal>
-
+        <Reveal>{TABLE_HEAD}</Reveal>
         <Reveal blur={false} delay={0.08} className="glass lx-fold-wrap">
-          <details className="lx-fold">
+          <details className="lx-fold" open>
             <summary className="lx-fold-sum">
               <span>See the full table</span>
               <Icon name="chevron" size={18} className="lx-guide-chev" />
@@ -175,12 +145,12 @@ function Body({ ratings: raw }) {
             <div className="lx-fold-body">
               <p className="lx-note">Each number is the points gained out of 10 by that group. Darker means more.</p>
               <div className="lx-heat-panel">
-                <div className="lx-heat-scroll" role="region" aria-label="Average gain by tool type and group" tabIndex={0} ref={heatRef}>
+                <div className="lx-heat-scroll" role="region" aria-label="Average gain by demo tool and group" tabIndex={0} ref={heatRef}>
                   <table className={`lx-heat ${heatClass}`}>
-                    <caption className="sr-only">Average gain in points out of 10, by tool type and student group</caption>
+                    <caption className="sr-only">Average gain in points out of 10, by demo tool and student group</caption>
                     <thead>
                       <tr>
-                        <th scope="col"><span className="sr-only">Tool type</span></th>
+                        <th scope="col"><span className="sr-only">Demo tool</span></th>
                         {ratings.tags.map((t) => <th key={t} scope="col" className={t === 'all' ? 'lx-col-all' : undefined}>{tagLabel(t)}</th>)}
                       </tr>
                     </thead>
@@ -189,7 +159,7 @@ function Body({ ratings: raw }) {
                         <tr key={row.tutor_id}>
                           <th scope="row">
                             <span className="lx-row-name">
-                              <Link to={`/lab?tutor=${row.tutor_id}`}>{row.tutor_name}</Link>
+                              <Link to={`/lab?tutor=${row.tutor_id}`}><TypeName row={row} /></Link>
                               {row.critical_fail && <SafetyBadge />}
                             </span>
                           </th>
@@ -213,7 +183,7 @@ function Body({ ratings: raw }) {
                   <span>{fmt(max)}+ points</span>
                 </div>
                 <p className="lx-guide-key">
-                  <SafetyBadge /> <span>marks a tool type that did not pass one safety check.</span>
+                  <SafetyBadge /> <span>marks a demo tool with a serious safety fail.</span>
                 </p>
               </div>
             </div>
@@ -238,7 +208,7 @@ function ScoreItem({ row }) {
   return (
     <Reveal as="article" blur={false} className="glass lx-score-card">
       <header>
-        <h3>{row.tutor_name}</h3>
+        <h3><TypeName row={row} /></h3>
         {row.critical_fail && <SafetyBadge />}
       </header>
       <div ref={ref}>

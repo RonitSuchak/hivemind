@@ -7,12 +7,12 @@
 // traits: beginner, stretch, lightReading, languages, motivation, guidance, selfPaced (each 0 to 2)
 // group: which of the four simulated tool types it most resembles in HOW it teaches.
 
-// The four simulated tool types the lab tests. Ids and names come from the backend.
+// The four tool types. Ids come from the backend; the names match labels.js.
 export const GROUPS = [
-  { id: 'answer_machine', name: 'Answer Machine', how: 'Gives you the answer or a worked solution straight away' },
-  { id: 'socratic', name: 'Socratic', how: 'Guides you with questions, hints and problems to solve' },
-  { id: 'simple_steps', name: 'Simple Steps', how: 'Short, step by step practice such as drills, flashcards and quiz games' },
-  { id: 'lecturer', name: 'Lecturer', how: 'Long explanations such as video lessons, courses and notes' },
+  { id: 'answer_machine', name: 'Instant answers', how: 'Gives you the answer or a worked solution straight away' },
+  { id: 'socratic', name: 'Guided hints', how: 'Guides you with questions, hints and problems to solve' },
+  { id: 'simple_steps', name: 'Bite-size practice', how: 'Short, step by step practice such as drills, flashcards and quiz games' },
+  { id: 'lecturer', name: 'Deep lessons', how: 'Long explanations such as video lessons, courses and notes' },
 ]
 
 const TRAIT_KEYS = ['beginner', 'stretch', 'lightReading', 'languages', 'motivation', 'guidance', 'selfPaced']
@@ -165,7 +165,7 @@ export const TOOLS = [
 export const SCALE_MAX = 10
 export const FILTERS = [
   {
-    id: 'level', label: 'Starting level', icon: 'chart',
+    id: 'level', label: 'Already knows', icon: 'chart',
     low: { beginner: 2, guidance: 1 }, high: { stretch: 2 },
     levels: [
       "Not sure where I'm at",
@@ -181,7 +181,7 @@ export const FILTERS = [
     ],
   },
   {
-    id: 'speed', label: 'Speed', icon: 'clock',
+    id: 'speed', label: 'Pick-up speed', icon: 'clock',
     low: { selfPaced: 2 }, high: { stretch: 1 },
     levels: [
       'Not sure how fast I learn',
@@ -213,7 +213,7 @@ export const FILTERS = [
     ],
   },
   {
-    id: 'english', label: 'English', icon: 'chat',
+    id: 'english', label: 'Language', icon: 'chat',
     low: { languages: 2, lightReading: 1 }, high: {},
     levels: [
       'Not sure about my English',
@@ -229,7 +229,7 @@ export const FILTERS = [
     ],
   },
   {
-    id: 'stuck', label: "When I'm stuck", icon: 'spark',
+    id: 'stuck', label: 'Staying power', icon: 'spark',
     low: { motivation: 2, guidance: 1 }, high: { stretch: 1 },
     levels: [
       'Not sure what I do',
@@ -306,8 +306,8 @@ export function toolsLike(tutorId) {
 // three letters). Name matches come first, then catalogue order. Optional { group } narrows by tool type.
 const words = (s) => String(s).toLowerCase().split(/[^a-z0-9]+/).filter(Boolean)
 const hits = (fieldWords, q) => fieldWords.some((w) => w.startsWith(q) || (q.length >= 3 && w.includes(q)))
-export function searchTools(query = '', { group } = {}) {
-  const pool = group && group !== 'all' ? TOOLS.filter((t) => t.group === group) : TOOLS
+export function searchTools(query = '', { group, from = TOOLS } = {}) {
+  const pool = group && group !== 'all' ? from.filter((t) => t.group === group) : from
   const qs = words(query)
   if (!qs.length) return pool
   const ranked = []
@@ -319,4 +319,66 @@ export function searchTools(query = '', { group } = {}) {
     ranked.push({ t, order, rank: nameHits === qs.length ? 0 : nameHits > 0 ? 1 : 2 })
   })
   return ranked.sort((a, b) => a.rank - b.rank || a.order - b.order).map((r) => r.t)
+}
+
+// The real tools as the backend sends them (GET /api/real-tools, and real_tools[] in a match), in this file's
+// shape. The backend owns the list, its order and each tool's type; our trait estimates are joined on by id.
+export const REAL_TOOLS_NOTE = 'Estimated from its demo tool type. Hivemind has not tested this tool.'
+const LOCAL = new Map(TOOLS.map((t) => [t.id, t]))
+export const fromBackend = (t) => ({
+  id: t.id, name: t.name, url: t.url, kind: t.kind, blurb: t.blurb, mostUsed: !!t.most_used,
+  group: t.type?.tutor_id ?? LOCAL.get(t.id)?.group, standIn: t.type?.tutor_name,
+  typeRank: t.type_rank ?? null, typeConcern: !!t.type_safety_concern, note: t.note || REAL_TOOLS_NOTE,
+  traits: LOCAL.get(t.id)?.traits ?? {},
+})
+
+// Real tools to show for one SIMULATED student (Lab drawer). The order is the backend's own rule for a person
+// (docs/BACKEND.md 5.8), applied to numbers the backend sent: first the type whose demo tool taught this
+// student most (`gains`: { demoToolId: points gained }), a type with a safety concern last (`flagged`), and the
+// catalogue's most-used order inside a type. `fits` only narrows the list to the lesson's subject. Nothing is
+// scored or estimated here, and the note on screen says the tools are not tested.
+const SUBJECT_ONLY = /language|coding|computer science|reading|writing|physics|science|a level|online courses|notes helper/i
+export const fitsMaths = (t) => !SUBJECT_ONLY.test(t.kind)
+// For the results page: tools made for one subject only show for that subject; general tools show for all.
+const SCIENCES = ['Physics', 'Chemistry', 'Biology', 'Combined Science']
+const MADE_FOR = [
+  [/coding|computer science/i, ['Computer Science']],
+  [/maths|graphing|times tables/i, ['Maths', 'Further Maths']],
+  [/physics/i, ['Physics', 'Combined Science']],
+  [/science/i, SCIENCES],
+  [/language/i, ['Languages']],
+  [/reading|writing/i, ['English']],
+]
+const TOO_YOUNG = /times tables|game|uk schools/i // not for A level and IB courses
+export const fitsSubject = (subject, advanced = false) => (t) => {
+  if (advanced && TOO_YOUNG.test(t.kind)) return false
+  const made = MADE_FOR.find(([re]) => re.test(t.kind))
+  return !made || made[1].includes(subject)
+}
+export function bestToolsFor(gains = {}, { n = 3, fits = fitsMaths, flagged = [] } = {}) {
+  const typeScore = (g) => (flagged.includes(g) ? -1000 : gains[g] ?? -100)
+  return TOOLS.filter(fits)
+    .map((t, order) => ({ tool: t, order, type: typeScore(t.group), gain: gains[t.group] ?? null }))
+    .sort((a, b) => b.type - a.type || a.order - b.order)
+    .slice(0, n)
+}
+
+// The tool type that did best for someone (by `gains`: { demoToolId: points }) and up to `n` real tools of it.
+// Only the TYPE has a result (through its demo tool). The sites are listed as examples of it, never as tested.
+// Honest about the edges:
+//   known: false   no gains yet (still loading): show nothing
+//   none: true     the best gain is zero or less: no type helped
+//   groups         more than one id when the best gain is a tie (within `tie` points): all of them are named,
+//                  and the sites are dealt out across the tied types
+export function mostEffective(gains = {}, { n = 3, fits = fitsMaths, flagged = [], tie = 0.05 } = {}) {
+  const pool = TOOLS.filter(fits).filter((t) => !flagged.includes(t.group) && gains[t.group] != null)
+  const types = [...new Set(pool.map((t) => t.group))]
+  if (!types.length) return { known: false, none: false, groups: [], gain: null, items: [] }
+  const top = Math.max(...types.map((g) => gains[g]))
+  if (top <= 0) return { known: true, none: true, groups: [], gain: top, items: [] }
+  const groups = types.filter((g) => top - gains[g] <= tie).sort((x, y) => gains[y] - gains[x])
+  const lists = groups.map((g) => pool.filter((t) => t.group === g))
+  const items = []
+  for (let k = 0; items.length < n && lists.some((l) => l[k]); k++) for (const l of lists) if (l[k] && items.length < n) items.push({ tool: l[k] })
+  return { known: true, none: false, groups, gain: top, items }
 }

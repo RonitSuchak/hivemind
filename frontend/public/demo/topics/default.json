@@ -1,0 +1,18 @@
+{
+  "title": "Maths: fractions",
+  "challenge": {
+    "id": "hard-1",
+    "text": "A water tank is 3/4 full. Then 1/3 of the water in it is used. What fraction of the whole tank is full now?",
+    "options": [
+      "5/12",
+      "1/2",
+      "1/4",
+      "2/3"
+    ],
+    "hints": [
+      "Read it again: 1/3 of the water in the tank is used, not 1/3 of the whole tank.",
+      "If 1/3 of the water is used, then 2/3 of the water is still there.",
+      "You need 2/3 of 3/4. Multiply the two fractions, then simplify your answer."
+    ]
+  }
+}

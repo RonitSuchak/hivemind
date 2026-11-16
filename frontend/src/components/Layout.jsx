@@ -6,12 +6,15 @@ import Icon from './Icon.jsx'
 import Ambient from './Ambient.jsx'
 import Mark from './Logo.jsx'
 import { TranslateBar, useSiteTranslation } from './Translate.jsx'
+import { useNoTranslate, useT } from '../i18n/index.js'
 
 export default function Layout() {
   const { pathname } = useLocation()
   const section = pathname.split('/')[1] || '' // page-enter replays per section, not per sub-page
   const status = useStatus()
   const translation = useSiteTranslation()
+  const t = useT()
+  const noTr = useNoTranslate() // dictionary words (ru, hi) are ours: the browser translator must skip them
   const main = useRef(null)
   const first = useRef(true)
 
@@ -31,31 +34,31 @@ export default function Layout() {
   return (
     <>
       <Ambient parallax={section === ''} />
-      <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header glass-bar">
+      <a className="skip-link" href="#main" {...noTr}>{t('skip')}</a>
+      <header className="site-header glass-bar" {...noTr}>
         <div className="wrap site-header-row">
           <Link to="/" className="wordmark" data-no-translate><Mark /><span>Hivemind</span></Link>
-          <nav aria-label="Main" className="site-nav">
-            <Link to="/check" aria-current={cur(advisor)}>AI Advisor</Link>
-            <Link to="/tools" aria-current={cur(tools)}>EdTech tools</Link>
-            <Link to="/lab" aria-current={cur(lab)}>Simulation Lab</Link>
-            <Link to="/about" aria-current={cur(about)}>About</Link>
+          <nav aria-label={t('nav.main')} className="site-nav">
+            <Link to="/check" aria-current={cur(advisor)}>{t('nav.advisor')}</Link>
+            <Link to="/tools" aria-current={cur(tools)}>{t('nav.tools')}</Link>
+            <Link to="/lab" aria-current={cur(lab)}>{t('nav.lab')}</Link>
+            <Link to="/about" aria-current={cur(about)}>{t('nav.about')}</Link>
           </nav>
         </div>
       </header>
       {status === 'demo' && (
-        <div className="wrap notice-wrap">
+        <div className="wrap notice-wrap" {...noTr}>
           <div className="notice glass" role="status">
-            <Icon name="info" size={16} /> <span>Saved results from the lab, not live. Some tutors are scripted previews until their full AI run is done.</span>
+            <Icon name="info" size={16} /> <span>{t('notice.demo')}</span>
           </div>
         </div>
       )}
       {status === 'offline' && (
-        <div className="wrap notice-wrap">
+        <div className="wrap notice-wrap" {...noTr}>
           <div className="notice notice-off glass" role="status">
             <Icon name="info" size={16} />
-            <span>The lab is not connected, so there are no numbers or charts yet.</span>
-            <button className="btn btn-small" onClick={retryConnection}>Retry</button>
+            <span>{t('notice.offline')}</span>
+            <button className="btn btn-small" onClick={retryConnection}>{t('notice.retry')}</button>
           </div>
         </div>
       )}
@@ -64,23 +67,26 @@ export default function Layout() {
           <Outlet />
         </div>
       </main>
-      <footer className="site-footer">
+      <footer className="site-footer" {...noTr}>
         <div className="wrap">
           <div className="footer-row">
             <div className="footer-mark">
               <Link to="/" className="wordmark" data-no-translate><Mark /><span>Hivemind</span></Link>
-              <p>Find the EdTech tool that works for students like you.</p>
+              <p>{t('footer.tagline')}</p>
             </div>
-            <nav aria-label="Footer" className="footer-nav">
-              <Link to="/check">AI Advisor</Link>
-              <Link to="/tools">EdTech tools</Link>
-              <Link to="/lab">Simulation Lab</Link>
-              <Link to="/about">About</Link>
+            <nav aria-label={t('nav.footer')} className="footer-nav">
+              <Link to="/check">{t('nav.advisor')}</Link>
+              <Link to="/tools">{t('nav.tools')}</Link>
+              <Link to="/lab">{t('nav.lab')}</Link>
+              <Link to="/about">{t('nav.about')}</Link>
             </nav>
           </div>
-          <p className="footer-note">Students are simulated, not real children. Hivemind stores no names or answers.</p>
+          <p className="footer-note">{t('footer.note')}</p>
         </div>
       </footer>
+      {/* Soft blur along the top and bottom edge while the page is scrolling (scroll.js sets data-scrolling). */}
+      <div className="edge-blur edge-blur-top" aria-hidden="true" />
+      <div className="edge-blur edge-blur-bottom" aria-hidden="true" />
       <TranslateBar status={translation} />
     </>
   )

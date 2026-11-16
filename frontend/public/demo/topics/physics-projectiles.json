@@ -1,0 +1,187 @@
+{
+  "beta": true,
+  "title": "Physics: projectile motion",
+  "level": "A level",
+  "quiz_1": [
+    {
+      "id": "ph-a1",
+      "text": "Which of these is a vector quantity?",
+      "options": [
+        "Velocity",
+        "Speed",
+        "Distance",
+        "Mass"
+      ]
+    },
+    {
+      "id": "ph-a2",
+      "text": "A ball is dropped from rest. Ignore air resistance and take g = 9.81 m s⁻². How far does it fall in 2.0 s?",
+      "options": [
+        "39.2 m",
+        "19.6 m",
+        "9.81 m",
+        "4.91 m"
+      ]
+    },
+    {
+      "id": "ph-a3",
+      "text": "A ball is thrown vertically upwards at 19.6 m s⁻¹. Ignore air resistance and take g = 9.81 m s⁻². How long does it take to reach the top, where it is momentarily at rest?",
+      "options": [
+        "4.0 s",
+        "1.0 s",
+        "2.0 s",
+        "192 s"
+      ]
+    },
+    {
+      "id": "ph-a4",
+      "text": "A car speeds up from 10 m s⁻¹ to 25 m s⁻¹ in 5.0 s. What is its average acceleration?",
+      "options": [
+        "5.0 m s⁻²",
+        "7.0 m s⁻²",
+        "75 m s⁻²",
+        "3.0 m s⁻²"
+      ]
+    },
+    {
+      "id": "ph-a5",
+      "text": "A velocity of 20 m s⁻¹ acts at 30° above the horizontal. What is the horizontal component?",
+      "options": [
+        "10 m s⁻¹",
+        "17.3 m s⁻¹",
+        "23.1 m s⁻¹",
+        "11.5 m s⁻¹"
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "A projectile is an object moving through the air under the force of gravity alone. We ignore air resistance. The key idea is that horizontal motion and vertical motion are independent. They happen at the same time, but neither one changes the other. Time is the only link between them.",
+    "Horizontally, no force acts, so there is no acceleration. The horizontal velocity stays constant, and horizontal distance = horizontal velocity × time. Vertically, gravity gives a constant acceleration g = 9.81 m s⁻² downwards. If the object is launched horizontally, its starting vertical velocity is zero. So the distance fallen is y = ½gt², and the vertical velocity is v = gt. The time to fall depends only on the height, not on the horizontal speed. To find the speed at any moment, combine the two components with Pythagoras' theorem.",
+    "Example: a ball rolls off a table 0.80 m high at 3.0 m s⁻¹. Take g = 9.81 m s⁻². Vertical: 0.80 = ½ × 9.81 × t², so t² = 0.163 and t = 0.40 s. Horizontal: distance = 3.0 × 0.40 = 1.2 m from the edge of the table.",
+    "Check by putting t back into y = ½gt². With t = 0.404 s you get ½ × 9.81 × 0.404² = 0.80 m, which matches. Also check the units: times in seconds, distances in metres. A taller table must give a longer time and a longer distance."
+  ],
+  "quiz_2": [
+    {
+      "id": "ph-b1",
+      "text": "A ball rolls off a table at 2.0 m s⁻¹ and falls to the floor. Ignore air resistance. What is true of its horizontal velocity while it falls?",
+      "options": [
+        "It increases by 9.81 m s⁻¹ every second",
+        "It decreases to zero as it falls",
+        "It stays at 2.0 m s⁻¹",
+        "It is zero at the start and then increases"
+      ]
+    },
+    {
+      "id": "ph-b2",
+      "text": "Ball P is dropped from rest from a window. At the same moment, ball Q is thrown horizontally from the same window at 5.0 m s⁻¹. Ignore air resistance. Which statement is correct?",
+      "options": [
+        "They hit the ground at the same time",
+        "P hits the ground first, because it has no horizontal speed",
+        "Q hits the ground first, because it is moving faster",
+        "Q hits the ground later, because it has further to travel"
+      ]
+    },
+    {
+      "id": "ph-b3",
+      "text": "A ball is thrown horizontally at 5.0 m s⁻¹ from the top of a building 19.6 m high. Ignore air resistance and take g = 9.81 m s⁻². How far from the base of the building does it land? Give your answer to 2 significant figures.",
+      "options": [
+        "20 m",
+        "10 m",
+        "7.1 m",
+        "98 m"
+      ]
+    },
+    {
+      "id": "ph-b4",
+      "text": "A ball is thrown horizontally at 6.0 m s⁻¹. Ignore air resistance and take g = 9.81 m s⁻². After 2.0 s, while it is still in the air, what is its speed?",
+      "options": [
+        "25.6 m s⁻¹",
+        "19.6 m s⁻¹",
+        "13.6 m s⁻¹",
+        "20.5 m s⁻¹"
+      ]
+    }
+  ],
+  "reading": {
+    "passage": "In 1971, an astronaut on the Moon dropped a hammer and a feather at the same time. They landed together. The Moon has almost no air, so nothing pushed back against the feather as it fell. On Earth, the same test gives a different result. Air pushes up against anything that falls through it, and this push is called air resistance. The feather has a large area for its weight, so air resistance on it is large compared with its weight. The hammer is heavy for its size, so air resistance on it is small compared with its weight. This is why a feather drifts down slowly while a hammer drops quickly.",
+    "questions": [
+      {
+        "id": "ph-r1",
+        "text": "Why did the hammer and the feather land together on the Moon?",
+        "options": [
+          "The feather was heavier than the hammer",
+          "There is almost no air to push back against the feather",
+          "The astronaut threw them downwards",
+          "Air pushed up equally on both"
+        ]
+      },
+      {
+        "id": "ph-r2",
+        "text": "What is air resistance?",
+        "options": [
+          "The pull of gravity on a falling object",
+          "A force found only on the Moon",
+          "The weight of a feather",
+          "The push of air against something moving through it"
+        ]
+      },
+      {
+        "id": "ph-r3",
+        "text": "A student squashes the feather into a tight ball. What does the passage suggest about how it will fall on Earth?",
+        "options": [
+          "It will fall more like the hammer, because its area is smaller",
+          "It will fall more slowly than before",
+          "It will fall in exactly the same way as before",
+          "It will not fall, because air pushes it up"
+        ]
+      }
+    ]
+  },
+  "english_questions": [
+    {
+      "id": "ph-l1",
+      "text": "A question says: 'Sketch a graph of velocity against time for the falling ball.' What do you need to draw?",
+      "options": [
+        "A graph with every point plotted exactly on graph paper",
+        "A table of numbers",
+        "A rough graph with labelled axes and the correct shape",
+        "A diagram of the ball"
+      ]
+    },
+    {
+      "id": "ph-l2",
+      "text": "A question says: 'Derive an expression for the time taken.' What do you need to do?",
+      "options": [
+        "State the expression from memory",
+        "Show step by step how the expression follows from known equations",
+        "Substitute numbers to get a value",
+        "Describe in words what time means"
+      ]
+    },
+    {
+      "id": "ph-l3",
+      "text": "In everyday English, 'work' can mean a job or effort. In physics, work is the energy transferred when a force moves an object. Which sentence uses 'work' in the physics sense?",
+      "options": [
+        "The crane does 5000 J of work lifting the load.",
+        "She goes to work by bus.",
+        "That was hard work.",
+        "The lift does not work today."
+      ]
+    }
+  ],
+  "challenge": {
+    "id": "ph-c1",
+    "text": "A ball is thrown horizontally from the top of a cliff 20 m high. It lands in the sea 30 m from the base of the cliff. Ignore air resistance and take g = 9.81 m s⁻². What was its launch speed?",
+    "options": [
+      "7.4 m s⁻¹",
+      "14.9 m s⁻¹",
+      "21.0 m s⁻¹",
+      "60.6 m s⁻¹"
+    ],
+    "hints": [
+      "The horizontal distance alone cannot give you the launch speed, because you do not know how long the ball was in the air. The time comes from the vertical fall.",
+      "Vertically the ball starts with zero vertical velocity, so the height fallen is h = ½gt². Put in h = 20 m and rearrange to find t.",
+      "Rearranging gives t = √(2h ÷ g). Then use horizontal distance = horizontal speed × time, and rearrange it to find the speed from the 30 m."
+    ]
+  }
+}

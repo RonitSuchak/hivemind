@@ -16,7 +16,9 @@ import Icon from './Icon.jsx'
 // counts tick up. React state only changes when a seat settles or the message number changes.
 // Reduced motion: no clock animation; "Next message" sets the clock to whole steps.
 
-const values = (r) => [r.before / 10, ...r.progress]
+// `progress` is the student's knowledge at the start and after each demo tool message (BACKEND.md 5.4).
+const values = (r) => (r.progress.length ? r.progress : [r.before / 10])
+const messages = (r) => Math.max(0, r.progress.length - 1)
 const easeStep = (f) => 0.5 * f + 0.5 * (f < 0.5 ? 2 * f * f : 1 - 2 * (1 - f) * (1 - f)) // gentle beat per message
 function knowledgeAt(vals, s) {
   if (s <= 0) return vals[0]
@@ -28,14 +30,14 @@ function knowledgeAt(vals, s) {
 
 function useTimeline(results, reduced) {
   return useMemo(() => {
-    const N = Math.max(1, ...results.map((r) => r.progress.length))
+    const N = Math.max(1, ...results.map(messages))
     const lastStep = N + (reduced ? 0 : 1)
     const total = tokenMs('--replay-total', 5400)
     const stagger = reduced ? 0 : tokenMs('--stagger-dot', 14)
     const tail = reduced ? 0 : (results.length - 1) * stagger + tokenMs('--dur-ui', 240) + 200
     const stepMs = reduced ? 1000 : Math.max(160, (total - tail) / lastStep)
     const offset = (i) => i * stagger
-    const settleAt = results.map((r, i) => offset(i) + (r.progress.length + (reduced ? 0 : 1)) * stepMs)
+    const settleAt = results.map((r, i) => offset(i) + (messages(r) + (reduced ? 0 : 1)) * stepMs)
     const order = results.map((r, i) => [settleAt[i], i]).sort((a, b) => a[0] - b[0])
     return { N, total: reduced ? N * stepMs : total, stepMs, offset, settleAt, order }
   }, [results, reduced])
@@ -126,7 +128,7 @@ export default function ClassPanel({ run, students, openId, onOpen, busy }) {
             </span>
           </div>
         ) : (
-          <p className="lx-hint">{done ? 'Replay finished. Select a student to read their lesson.' : 'Select a student to read their lesson, or replay the class.'}</p>
+          <p className="lx-hint">{done ? 'Replay finished. Select a student to see how they did.' : 'Select a student to see how they did, or replay the class.'}</p>
         )}
       </div>
 

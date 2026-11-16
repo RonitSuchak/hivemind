@@ -119,5 +119,20 @@
         "950 N backwards"
       ]
     }
-  ]
+  ],
+  "challenge": {
+    "id": "sc-c1",
+    "text": "A sledge is pulled to the right by one rope with a force of 60 N and by a second rope with a force of 35 N. Friction of 20 N and a headwind of 30 N both act to the left. What is the resultant force?",
+    "options": [
+      "145 N to the right",
+      "30 N to the right",
+      "45 N to the left",
+      "45 N to the right"
+    ],
+    "hints": [
+      "Forces in the same direction add together. Sort the four forces into two groups: right and left.",
+      "Add up all the forces pointing right. Then add up all the forces pointing left.",
+      "Take the smaller total from the larger total. The resultant points the way of the larger total."
+    ]
+  }
 }

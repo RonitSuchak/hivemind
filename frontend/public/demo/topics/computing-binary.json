@@ -119,5 +119,20 @@
         "1100"
       ]
     }
-  ]
+  ],
+  "challenge": {
+    "id": "cp-c1",
+    "text": "A 4-bit binary number is 0110. All its digits are shifted one place to the left, and a 0 is added on the right, giving 01100. What is the decimal value of the new number?",
+    "options": [
+      "12",
+      "3",
+      "7",
+      "24"
+    ],
+    "hints": [
+      "First read the original number using the place values 8, 4, 2, 1. What is 0110 in decimal?",
+      "Shifting every digit one place left moves each 1 into a place worth twice as much.",
+      "Write the new number 01100 under the place values 16, 8, 4, 2, 1 and add up the places that hold a 1. You can check by doubling the original value."
+    ]
+  }
 }

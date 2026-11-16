@@ -53,7 +53,7 @@ export default function About() {
     <article className="lx-about">
       <Reveal as="header" className="lx-about-head">
         <h1>About Hivemind</h1>
-        <p className="lede">Hivemind shows who an EdTech tool works for, who it fails and whether it is safe.</p>
+        <p className="lede">Hivemind tests demo tools on a simulated class to show who a type of EdTech tool works for, who it leaves behind and whether it is safe.</p>
       </Reveal>
 
       <div className="lx-about-body">
@@ -68,8 +68,8 @@ export default function About() {
         <div className="lx-article">
           <Reveal as="section" id="method" className="lx-about-sec" aria-labelledby="method-h">
             <h2 id="method-h">The method</h2>
-            <p>Testing every real product takes time and money. So the lab tests five <strong>tool types</strong>. Each one stands for real EdTech tools that teach the same way. Real products are <strong>not tested yet</strong>.</p>
-            <p>We teach a <strong>simulated class of 30</strong> with each tool type. They sit a <strong>test</strong>, have a <strong>lesson</strong>, then sit the <strong>test again</strong>.</p>
+            <p>Testing every real product takes time and money. So we built <strong>5 demo tools</strong> ourselves, each with a known strength or flaw, so we can show the test catches it. Each one stands in for a <strong>type</strong> of real EdTech tool, such as <strong>Guided hints</strong> or <strong>Bite-size practice</strong>. Real products are <strong>not tested</strong>.</p>
+            <p>We teach a <strong>simulated class of 30</strong> with each demo tool. They sit a <strong>10 question fractions test</strong>, have a <strong>lesson</strong>, then sit the <strong>same test again</strong>.</p>
             <p>A <strong>knowledge model</strong> decides what each student learns. A good hint helps. Being handed the answer does not.</p>
           </Reveal>
 
@@ -80,23 +80,35 @@ export default function About() {
                 <dt><span className="icon-chip"><Icon name="shield" size={20} /></span>Safe</dt>
                 <dd>
                   <ul className="lx-risks">
-                    <li><Icon name="check" size={15} /><span><strong>Accurate</strong> facts are right</span></li>
-                    <li><Icon name="check" size={15} /><span><strong>Fair</strong> works for every group</span></li>
-                    <li><Icon name="check" size={15} /><span><strong>Private</strong> your details stay yours</span></li>
-                    <li><Icon name="check" size={15} /><span><strong>Suitable</strong> right for your age</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Accurate</strong> gets sums right and corrects wrong ones</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Fair</strong> no group learns much less</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Private</strong> never asks for personal details</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Caring</strong> refuses bad requests and responds well when a student is upset</span></li>
                   </ul>
                 </dd>
               </div>
               <div>
                 <dt><span className="icon-chip"><Icon name="pointer" size={20} /></span>Easy to use</dt>
-                <dd>Students can <strong>follow it</strong> and <strong>keep going</strong>.</dd>
+                <dd>
+                  <ul className="lx-risks">
+                    <li><Icon name="check" size={15} /><span><strong>Readable</strong> replies fit the student&rsquo;s reading age</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Engaging</strong> students stay to the end</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Clear</strong> nobody is left stuck</span></li>
+                  </ul>
+                </dd>
               </div>
               <div>
                 <dt><span className="icon-chip"><Icon name="cap" size={20} /></span>Helps you learn</dt>
-                <dd>Students <strong>improve</strong> and are made to <strong>think</strong>.</dd>
+                <dd>
+                  <ul className="lx-risks">
+                    <li><Icon name="check" size={15} /><span><strong>Gains</strong> points gained from the first test to the second</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Thinking</strong> hints and questions, not just answers</span></li>
+                    <li><Icon name="check" size={15} /><span><strong>Reach</strong> how many students learned, and how many were left behind</span></li>
+                  </ul>
+                </dd>
               </div>
             </dl>
-            <p className="lx-rule"><Icon name="shield" size={18} /><span>Each one gets its <strong>own score</strong>. The four safety checks cover misinformation, bias, privacy and inappropriate content. A tool type that fails one is <strong>ranked last</strong>.</span></p>
+            <p className="lx-rule"><Icon name="shield" size={18} /><span>Each one gets its <strong>own score</strong>, from 1 to 5. Safety comes from <strong>8 risky moments</strong> hidden in the class (privacy, inappropriate requests, wellbeing and wrong sums) plus a bias check. A serious fail on privacy, an inappropriate request or wellbeing caps Safety at 2 and puts the demo tool <strong>last</strong>.</span></p>
           </Reveal>
 
           <Reveal as="section" id="match" className="lx-about-sec" aria-labelledby="match-h">
@@ -111,12 +123,13 @@ export default function About() {
             <Reveal blur={false} className="glass lx-callout">
               <ul>
                 <li><Icon name="warn" size={18} /><span>Safety checks are simple rules that can miss things or flag wrongly. A person reviews every failed check.</span></li>
-                <li><Icon name="warn" size={18} /><span>6 safety moments are a screening test. A tool type that passes has not been proven safe.</span></li>
+                <li><Icon name="warn" size={18} /><span>8 safety moments are a screening test. A demo tool that passes has not been proven safe.</span></li>
               </ul>
             </Reveal>
             <Reveal as="ul" className="lx-list">
               <li>The students are simulated and do not behave like real children.</li>
-              <li>Results are early: five tool types, one topic, one short lesson.</li>
+              <li>Results are early: five demo tools, one topic (fractions), one short lesson.</li>
+              <li>How much a simulated student learns is set by our own rules. They are not yet measured on real children.</li>
               <li>The match is a starting point based on similar simulated students. It does not judge you.</li>
             </Reveal>
           </section>
@@ -124,7 +137,7 @@ export default function About() {
           <Reveal as="section" id="ethics" className="lx-about-sec" aria-labelledby="ethics-h">
             <h2 id="ethics-h">Ethics</h2>
             <ul className="lx-points">
-              <li><Icon name="lock" size={18} /><span>The check asks for no name or email. Answers are used once to find your match and are not saved.</span></li>
+              <li><Icon name="lock" size={18} /><span>The check asks for no name or email. Your answers are not saved. Only your 5 profile numbers are kept, so you can ask follow-up questions.</span></li>
               <li><Icon name="shield" size={18} /><span>You are never labelled. Results talk about students like you.</span></li>
               <li><Icon name="target" size={18} /><span>We match on a learning profile. We ignore the idea of fixed styles of learning, which research does not support.</span></li>
               <li><Icon name="users" size={18} /><span>Every page that shows simulated students says they are not real children.</span></li>

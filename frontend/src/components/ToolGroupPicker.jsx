@@ -1,12 +1,14 @@
 import { useId, useRef, useState } from 'react'
 import Icon from './Icon.jsx'
 import ToolPreview from './ToolPreview.jsx'
-import { GROUPS, searchTools } from '../data/tools.js'
+import { GROUPS, REAL_TOOLS_NOTE, searchTools } from '../data/tools.js'
 
-// The real tools that teach like one simulated tool type: a search bar, a list to pick from and
-// the picked tool's details. Hivemind has not tested these tools, and the text says so.
+// The real tools of the type one demo tool stands in for: a search bar, a list to pick from and the picked
+// tool's details. Hivemind has not tested these tools, and the note (the backend's sentence) says so.
+// `tools` is the backend's list for a person (real_tools[] of a match, already in order); without it the
+// local catalogue is used.
 // The list is a radio group: arrow keys move the choice, Tab leaves the list.
-export default function ToolGroupPicker({ tutorId, tutorName, compact = false }) {
+export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL_TOOLS_NOTE, compact = false }) {
   const uid = useId()
   const [query, setQuery] = useState('')
   const [pickedId, setPickedId] = useState(null)
@@ -14,8 +16,8 @@ export default function ToolGroupPicker({ tutorId, tutorName, compact = false })
   const rows = useRef({})
 
   const group = GROUPS.find((g) => g.id === tutorId)
-  const total = searchTools('', { group: tutorId }).length
-  const matches = searchTools(query, { group: tutorId })
+  const total = searchTools('', { group: tutorId, from: tools }).length
+  const matches = searchTools(query, { group: tutorId, from: tools })
   const picked = matches.find((t) => t.id === pickedId) ?? matches[0] ?? null
   const searching = query.trim() !== ''
 
@@ -41,7 +43,7 @@ export default function ToolGroupPicker({ tutorId, tutorName, compact = false })
 
   return (
     <div className={`tgp${compact ? ' tgp-compact' : ''}`}>
-      {group && <p className="tgp-how"><b>{tutorName || group.name}</b>: {group.how}. These real tools teach in a similar way.</p>}
+      {group && <p className="tgp-how"><b>{group.name}</b>: {group.how}.{tutorName ? ` ${tutorName} is the demo tool that stands in for this type.` : ''}</p>}
 
       <div className="tgp-search">
         <label htmlFor={`${uid}-q`}>Search tools in this group</label>
@@ -55,7 +57,7 @@ export default function ToolGroupPicker({ tutorId, tutorName, compact = false })
 
       {matches.length > 0 ? (
         <div className="tgp-main">
-          <div className="tgp-list" role="radiogroup" aria-label={`Tools in the ${tutorName || group?.name || 'tool'} group`} onKeyDown={onKeyDown}>
+          <div className="tgp-list" role="radiogroup" aria-label={`${group?.name || 'Real'} tools`} onKeyDown={onKeyDown}>
             {matches.map((t) => {
               const on = t.id === picked.id
               return (
@@ -89,7 +91,7 @@ export default function ToolGroupPicker({ tutorId, tutorName, compact = false })
       )}
 
       <p className="sr-only" aria-live="polite">{said}</p>
-      <p className="tgp-note"><Icon name="info" size={16} /> <span>This grouping is our estimate. Hivemind has not tested these tools, so the scores above do not apply to them.</span></p>
+      <p className="tgp-note"><Icon name="info" size={16} /> <span>{note} A demo tool&rsquo;s scores do not apply to it.</span></p>
     </div>
   )
 }

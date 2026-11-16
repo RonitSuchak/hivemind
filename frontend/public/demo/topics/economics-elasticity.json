@@ -1,0 +1,187 @@
+{
+  "beta": true,
+  "title": "Economics: price elasticity of demand",
+  "level": "A level",
+  "quiz_1": [
+    {
+      "id": "ec-a1",
+      "text": "According to the law of demand, what happens to the quantity demanded of a good when its price rises, other things being equal?",
+      "options": [
+        "It falls",
+        "It rises",
+        "The demand curve shifts to the right",
+        "The demand curve shifts to the left"
+      ]
+    },
+    {
+      "id": "ec-a2",
+      "text": "Which change would shift the demand curve for a normal good to the right?",
+      "options": [
+        "A fall in consumers' incomes",
+        "A rise in consumers' incomes",
+        "A rise in the price of the good itself",
+        "A fall in the price of the good itself"
+      ]
+    },
+    {
+      "id": "ec-a3",
+      "text": "Tea and coffee are substitutes. The price of tea falls. What is the likely effect on the market for coffee?",
+      "options": [
+        "The demand curve for coffee shifts to the right",
+        "The supply curve for coffee shifts to the left",
+        "The demand curve for coffee shifts to the left",
+        "There is a movement up along the demand curve for coffee"
+      ]
+    },
+    {
+      "id": "ec-a4",
+      "text": "At a price of £8, quantity demanded is 120 and quantity supplied is 90. What is true of this market?",
+      "options": [
+        "There is a surplus of 30 units, so the price is likely to fall",
+        "There is a shortage of 210 units, so the price is likely to rise",
+        "The market is in equilibrium at £8",
+        "There is a shortage of 30 units, so the price is likely to rise"
+      ]
+    },
+    {
+      "id": "ec-a5",
+      "text": "The price of a magazine falls from £5.00 to £4.00. What is the percentage change in price?",
+      "options": [
+        "−25%",
+        "−20%",
+        "+20%",
+        "−80%"
+      ]
+    }
+  ],
+  "mini_lesson": [
+    "Price elasticity of demand (PED) measures how strongly buyers react when the price changes. PED = % change in quantity demanded ÷ % change in price. Work out each % change using the original value as the base. A demand curve slopes down, so PED is normally negative. When a question asks 'elastic or inelastic', it means the size of PED, so ignore the minus sign.",
+    "Use the size of PED to describe demand. Above 1, demand is elastic: quantity changes by a bigger percentage than price. Below 1, demand is inelastic: quantity changes by a smaller percentage. Exactly 1 is unit elastic. Total revenue is price × quantity sold. If demand is elastic, a price rise lowers revenue. If demand is inelastic, a price rise raises revenue. At unit elasticity, revenue does not change.",
+    "Example: a cinema ticket rises from £10 to £12, a rise of 20%. Weekly sales fall from 500 to 350, a fall of 30%. PED = −30 ÷ 20 = −1.5. The size is 1.5, which is more than 1, so demand is elastic. Revenue was £10 × 500 = £5,000. It is now £12 × 350 = £4,200, so revenue fell.",
+    "Check your work in two ways. First, the sign: if price rises and quantity falls, PED must be negative. Second, the revenue test: if demand is elastic, price and revenue move in opposite directions. If your answer breaks either test, look again at your percentages."
+  ],
+  "quiz_2": [
+    {
+      "id": "ec-b1",
+      "text": "The price of a good rises by 10%. The quantity demanded falls by 25%. What is the size of PED?",
+      "options": [
+        "0.4",
+        "15",
+        "2.5",
+        "35"
+      ]
+    },
+    {
+      "id": "ec-b2",
+      "text": "A good has a PED of size 0.4. Its price rises by 10%. What is the expected change in quantity demanded?",
+      "options": [
+        "A fall of 4%",
+        "A fall of 25%",
+        "A fall of 0.4%",
+        "A rise of 4%"
+      ]
+    },
+    {
+      "id": "ec-b3",
+      "text": "A firm sells a good with a PED of size 0.6. It raises its price. What happens to total revenue?",
+      "options": [
+        "It falls, because fewer units are sold",
+        "It rises, because quantity falls by a smaller percentage than price rises",
+        "It stays the same, because price and quantity cancel out",
+        "It rises, because quantity demanded rises"
+      ]
+    },
+    {
+      "id": "ec-b4",
+      "text": "A shop raises the price of a board game from £20 to £22. Monthly sales fall from 400 to 380. Which statement is correct?",
+      "options": [
+        "PED is −2, so demand is elastic, and revenue falls",
+        "PED is −0.5, so demand is inelastic, and revenue falls",
+        "PED is −2, so demand is elastic, and revenue rises",
+        "PED is −0.5, so demand is inelastic, and revenue rises"
+      ]
+    }
+  ],
+  "reading": {
+    "passage": "A town council has £2 million to spend this year. It can build a new library or repair the old swimming pool, but it cannot afford both. Some councillors wanted the library because they thought more children would use it. Others pointed out that the pool is unsafe and might have to close within a year. In the end, the council chose to repair the pool. The library plan was not cancelled. It was put off until next year, when the council hopes to have more money. Economists say that every choice has an opportunity cost, which is the value of the best alternative that is given up. Here, that cost is the library.",
+    "questions": [
+      {
+        "id": "ec-r1",
+        "text": "Why did the council choose to repair the pool?",
+        "options": [
+          "The pool is unsafe and might close within a year",
+          "More children would use it",
+          "The council could afford both projects",
+          "The library plan was cancelled"
+        ]
+      },
+      {
+        "id": "ec-r2",
+        "text": "What happened to the library plan?",
+        "options": [
+          "It was cancelled",
+          "It went ahead using money from the pool",
+          "It was put off until next year",
+          "It was passed to another council"
+        ]
+      },
+      {
+        "id": "ec-r3",
+        "text": "Which statement must be true, judging from the passage?",
+        "options": [
+          "The pool will close next year",
+          "The library will not be built this year",
+          "All of the councillors wanted the pool",
+          "The council has more than £2 million"
+        ]
+      }
+    ]
+  },
+  "english_questions": [
+    {
+      "id": "ec-l1",
+      "text": "An exam question says: 'Evaluate the effects of a price rise on a bakery.' What does 'evaluate' ask you to do?",
+      "options": [
+        "List the effects with no comment",
+        "Give the meaning of the words 'price rise'",
+        "Work out one number",
+        "Weigh up the effects, with points for and against, and reach a judgement"
+      ]
+    },
+    {
+      "id": "ec-l2",
+      "text": "Which command word asks for the shortest answer, with no explanation?",
+      "options": [
+        "Explain",
+        "Analyse",
+        "State",
+        "Discuss"
+      ]
+    },
+    {
+      "id": "ec-l3",
+      "text": "In everyday English, 'demand' can mean 'to ask for something firmly'. In economics, demand is the quantity buyers are willing and able to buy at a given price. Which sentence uses 'demand' in the economics sense?",
+      "options": [
+        "The customer demanded to see the manager.",
+        "At a price of £5, demand for concert tickets is 300 a week.",
+        "She made a demand for a refund.",
+        "The job was very demanding."
+      ]
+    }
+  ],
+  "challenge": {
+    "id": "ec-c1",
+    "text": "A shop sells 800 units a week at £25 each. The PED of the product is −1.5, and you can assume this value holds for the change below. The shop raises the price by 8%. By how much does weekly revenue change?",
+    "options": [
+      "Falls by £128",
+      "Rises by £448",
+      "Falls by £992",
+      "Falls by £2,400"
+    ],
+    "hints": [
+      "Revenue is price × quantity. To compare, you need the old revenue and the new revenue, so you need the new price and the new quantity.",
+      "Rearrange the PED formula: % change in quantity = PED × % change in price. Price goes up, so quantity goes down. Work out the new quantity from the old one.",
+      "The price rises 8%, so the quantity falls by 8 × 1.5 = 12%. Find the new price and the new quantity, multiply them, and subtract the old revenue of £20,000."
+    ]
+  }
+}

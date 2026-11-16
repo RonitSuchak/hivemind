@@ -1,5 +1,5 @@
 // Topics a student can pick for the check. `pack` says where its questions come from:
-//   'default'  the check the lab already serves (maths: sharing in a ratio)
+//   'default'  the check the lab serves (maths: fractions)
 //   '<id>'     a made-up demo pack in public/demo/topics/<id>.json (demo mode only)
 //   null       not written yet: shown as "Coming soon" and cannot be started
 // A pack swaps the first quiz, the mini-lesson and the second quiz. Reading, English and the
@@ -15,18 +15,34 @@ import { PROGRAMMES } from './programmes.js'
 
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 
-// There are only five question packs, so each subject falls back to one of them.
-const PACK_BY_SUBJECT = { Maths: 'default', Science: 'science-forces', Computing: 'computing-binary', English: 'english-apostrophes', Languages: 'languages-spanish-basics' }
-const packFor = (subject) => PACK_BY_SUBJECT[subject] ?? null
+// There are only eight question packs, so a subject falls back to the one written for it. A subject with
+// no pack of its own stays "Coming soon": a Biology topic never starts a Physics check, and French never
+// starts the Spanish one. Physics has two: a school-level pack and an A level one (beta).
+const PACK_BY_SUBJECT = {
+  Maths: 'default', 'Further Maths': 'further-maths-complex', Physics: 'science-forces', 'Combined Science': 'science-forces',
+  'Computer Science': 'computing-binary', Economics: 'economics-elasticity', English: 'english-apostrophes',
+}
+const ADVANCED = /a level|ib/i
+const packFor = (subject, level = '') => (subject === 'Physics' && ADVANCED.test(level) ? 'physics-projectiles' : PACK_BY_SUBJECT[subject] ?? null)
+// The three A level packs are a first try ("Beta").
+const BETA_PACKS = new Set(['economics-elasticity', 'further-maths-complex', 'physics-projectiles'])
 
 // A topic that names its own pack has its own questions (exact). Otherwise it uses the subject's general pack.
-const T = (subject, name, words = '', pack = null) => ({ id: `${subject}-${name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-'), subject, name, words, pack: pack ?? packFor(subject), exact: !!pack })
+const T = (subject, name, words = '', pack = null) => {
+  const use = pack ?? packFor(subject)
+  return { id: `${subject}-${name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-'), subject, name, words, pack: use, exact: !!pack, beta: BETA_PACKS.has(use) }
+}
 
-export const SUBJECTS = ['Maths', 'English', 'Science', 'Computing', 'Languages', 'Humanities', 'Economics']
+// Each subject is its own section. Computer Science is not part of Science, Further Maths is not part of
+// Maths, and the three sciences are separate (Combined Science is the GCSE course that covers all three).
+export const SUBJECTS = ['Maths', 'Further Maths', 'Physics', 'Chemistry', 'Biology', 'Computer Science', 'Economics', 'English', 'Languages', 'Geography', 'History']
 
 export const TOPICS = [
-  T('Maths', 'Sharing in a ratio', 'ratios proportion share split parts', 'default'),
-  T('Maths', 'Fractions', 'half quarter numerator denominator'),
+  T('Maths', 'Fractions', 'half quarter third numerator denominator equivalent', 'default'),
+  T('Maths', 'Sharing in a ratio', 'ratios proportion share split parts'),
+  T('Further Maths', 'Complex numbers: conjugates and dividing', 'complex conjugate divide division imaginary i argand a level', 'further-maths-complex'),
+  T('Physics', 'Projectile motion', 'projectiles horizontal vertical suvat kinematics mechanics a level', 'physics-projectiles'),
+  T('Economics', 'Price elasticity of demand', 'ped elastic inelastic revenue demand a level', 'economics-elasticity'),
   T('Maths', 'Percentages', 'percent discount sale increase'),
   T('Maths', 'Solving equations', 'algebra x unknown balance'),
   T('Maths', 'Area and perimeter', 'shapes rectangle triangle length'),
@@ -41,37 +57,37 @@ export const TOPICS = [
   T('English', 'Sentence types', 'grammar clause simple compound complex'),
   T('English', 'Persuasive writing', 'essay argument techniques'),
   T('English', 'Reading for meaning', 'comprehension inference text'),
-  T('Science', 'Forces', 'physics newtons balanced unbalanced resultant push pull', 'science-forces'),
-  T('Science', 'Electricity and circuits', 'physics current voltage bulb battery'),
-  T('Science', 'Cells', 'biology nucleus membrane microscope'),
-  T('Science', 'States of matter', 'chemistry solid liquid gas particles'),
-  T('Science', 'Photosynthesis', 'biology plants light leaves'),
-  T('Science', 'Acids and alkalis', 'chemistry pH indicator neutral'),
-  T('Science', 'The solar system', 'physics space planets sun moon'),
-  T('Computing', 'Binary numbers', 'bits ones zeros base 2 computer science', 'computing-binary'),
-  T('Computing', 'Algorithms', 'steps flowchart sorting computer science'),
-  T('Computing', 'Python basics', 'coding programming variables code'),
-  T('Computing', 'Spreadsheets', 'formulas cells excel sheets'),
-  T('Computing', 'Staying safe online', 'internet passwords privacy'),
+  T('Physics', 'Forces', 'physics newtons balanced unbalanced resultant push pull', 'science-forces'),
+  T('Physics', 'Electricity and circuits', 'physics current voltage bulb battery'),
+  T('Biology', 'Cells', 'biology nucleus membrane microscope'),
+  T('Chemistry', 'States of matter', 'chemistry solid liquid gas particles'),
+  T('Biology', 'Photosynthesis', 'biology plants light leaves'),
+  T('Chemistry', 'Acids and alkalis', 'chemistry pH indicator neutral'),
+  T('Physics', 'The solar system', 'physics space planets sun moon'),
+  T('Computer Science', 'Binary numbers', 'bits ones zeros base 2 computer science', 'computing-binary'),
+  T('Computer Science', 'Algorithms', 'steps flowchart sorting computer science'),
+  T('Computer Science', 'Python basics', 'coding programming variables code'),
+  T('Digital skills', 'Spreadsheets', 'formulas cells excel sheets'),
+  T('Digital skills', 'Staying safe online', 'internet passwords privacy'),
   T('Languages', 'Spanish basics', 'español el la greetings mfl', 'languages-spanish-basics'),
   T('Languages', 'French basics', 'français le la greetings mfl'),
   T('Languages', 'German basics', 'deutsch der die das greetings mfl'),
   T('Languages', 'Mandarin basics', 'chinese pinyin tones greetings mfl'),
-  T('Humanities', 'Map skills', 'geography grid references compass scale'),
-  T('Humanities', 'Rivers', 'geography erosion meander flood'),
-  T('Humanities', 'The Romans', 'history empire rome'),
-  T('Humanities', 'World War Two', 'history ww2 second world war'),
+  T('Geography', 'Map skills', 'geography grid references compass scale'),
+  T('Geography', 'Rivers', 'geography erosion meander flood'),
+  T('History', 'The Romans', 'history empire rome'),
+  T('History', 'World War Two', 'history ww2 second world war'),
 ]
 
 
 // Exam programme topics: one per topic name, with the programme and unit it belongs to.
 const programmeTopic = (p, unit, name) => ({
-  id: `${p.id}--${slug(unit.name)}--${slug(name)}`, subject: p.subject, name, words: '', pack: packFor(p.subject), exact: false,
+  id: `${p.id}--${slug(unit.name)}--${slug(name)}`, subject: p.subject, name, words: '', pack: packFor(p.subject, p.level), exact: false, beta: BETA_PACKS.has(packFor(p.subject, p.level)),
   programme: p.title, programmeShort: p.short, unit: unit.name, board: p.board, level: p.level, region: p.region, code: p.code,
 })
 // The whole course as one pickable entry. It works like any topic (same subject pack, never exact).
 const programmeEntry = (p, topicCount) => ({
-  id: `${p.id}--programme`, subject: p.subject, name: p.short, words: '', pack: packFor(p.subject), exact: false, isProgramme: true,
+  id: `${p.id}--programme`, subject: p.subject, name: p.short, words: '', pack: packFor(p.subject, p.level), exact: false, isProgramme: true, beta: BETA_PACKS.has(packFor(p.subject, p.level)),
   programme: p.title, programmeShort: p.short, unit: null, board: p.board, level: p.level, region: p.region, code: p.code,
   unitCount: p.units.length, topicCount,
 })
@@ -82,6 +98,12 @@ TOPICS.push(...PROGRAMME_TOPICS)
 const BY_PROGRAMME = new Map(PROGRAMMES.map((p) => [p.id, PROGRAMME_TOPICS.filter((t) => t.programme === p.title)]))
 export const programmeTopics = (programmeId) => BY_PROGRAMME.get(programmeId) ?? []
 
+// Words that find a subject besides its own name. "science" means the sciences: Computer Science is its own
+// section, so it answers to "computer", "computing" and "cs" instead.
+const SUBJECT_WORDS = {
+  Physics: ['physics', 'science'], Chemistry: ['chemistry', 'science'], Biology: ['biology', 'science'], 'Combined Science': ['combined', 'science'],
+  'Computer Science': ['computer', 'computing', 'cs', 'compsci'],
+}
 const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim()
 const split = (s) => norm(s).split(' ').filter(Boolean)
 // Letters and digits only, so "9 FM0", "9fm0" and "IB MAA" / "ibmaa" all compare equal.
@@ -93,7 +115,7 @@ const PROGS = PROGRAMMES.map((p) => {
   return {
     p, order: 0, entry: programmeEntry(p, BY_PROGRAMME.get(p.id).length), codeKeys: codes.map(compact),
     // Words a student may type to mean the whole course (not its topics).
-    titleWords: split([p.short, p.title, p.board, p.level, p.region, ...codes].join(' ')),
+    titleWords: [...split([p.short, p.title, p.board, p.level, p.region, ...codes].join(' ')), ...(SUBJECT_WORDS[p.subject] ?? [])],
     codeWords: split(codes.join(' ')),
     // Board, level, region and code words only: a query made of these is asking for courses, not topics.
     metaWords: split([p.board, p.level, p.region, ...codes].join(' ')),
@@ -104,10 +126,10 @@ const PROG_BY_ID = new Map(PROGS.map((x) => [x.p.id, x]))
 const PROG_BY_TITLE = new Map(PROGS.map((x) => [x.p.title, x]))
 
 const INDEX = TOPICS.map((t) => {
-  const name = split(t.name), subject = split(t.subject)
+  const name = split(t.name), subject = SUBJECT_WORDS[t.subject] ?? split(t.subject)
   const extra = t.programme ? PROG_BY_TITLE.get(t.programme).codeWords : []
   const words = [...split([t.words, t.programme, t.programmeShort, t.unit, t.board, t.level, t.region].filter(Boolean).join(' ')), ...extra]
-  return { name, subject, words, all: [...name, ...subject, ...words], nameStr: name.join(' '), metaStr: ` ${split([t.board, t.level, t.region].filter(Boolean).join(' ')).join(' ')}` }
+  return { name, subject, subjectStr: split(t.subject).join(' '), words, all: [...name, ...subject, ...words], nameStr: name.join(' '), metaStr: ` ${split([t.board, t.level, t.region].filter(Boolean).join(' ')).join(' ')}` }
 })
 
 // A programme's short label or full title typed in full (or its exact code) names exactly that programme.
@@ -156,7 +178,7 @@ export function searchTopics(query, canStart = () => true) {
   const joined = q.join(' ')
   const out = []
   for (let order = 0; order < TOPICS.length; order++) {
-    const { name, subject, words, all, nameStr, metaStr } = INDEX[order]
+    const { name, subject, subjectStr, words, all, nameStr, metaStr } = INDEX[order]
     let score = 0
     let ok = true
     for (const tok of q) {
@@ -170,6 +192,7 @@ export function searchTopics(query, canStart = () => true) {
       score += s
     }
     if (!ok) continue
+    if (subjectStr === joined || subjectStr.startsWith(`${joined} `)) score += 4 // the subject typed in full leads its own section
     if (nameStr.startsWith(joined)) score += 3
     else if (q.length > 1 && metaStr.includes(` ${joined}`)) score += 6 // "a level" typed as a phrase beats scattered word matches
     out.push(ready(TOPICS[order], score, order))

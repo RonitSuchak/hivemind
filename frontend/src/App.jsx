@@ -8,6 +8,7 @@ import Lab from './pages/Lab.jsx'
 import Ratings from './pages/Ratings.jsx'
 import About from './pages/About.jsx'
 import Tools from './pages/Tools.jsx'
+import { useHeavyScroll, useScrollingFlag } from './scroll.js'
 import './styles/theme.css' // theme layer: last, so it wins over page styles
 
 // The Lab heading and sub-nav stay mounted when switching between Class view and Ratings,
@@ -23,6 +24,8 @@ function LabShell() {
 }
 
 export default function App() {
+  useHeavyScroll(0.74) // the page moves about a quarter less per swipe (scroll.js)
+  useScrollingFlag() // drives the soft blur at the top and bottom edge while scrolling
   return (
     <Routes>
       <Route element={<Layout />}>

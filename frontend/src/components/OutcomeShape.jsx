@@ -4,7 +4,7 @@ import { OUTCOME } from '../labels.js'
 // One shape family: a five-point star at three fill levels. It never relies on colour alone.
 //   learned (Big gain):    solid star in the orange highlight.
 //   a_little (Small gain): midnight outline with the left half filled.
-//   left_behind (No gain): small, thin, hollow outline in the quiet grey.
+//   left_behind (Left behind): small, thin, hollow outline in the quiet grey.
 // Same markup, props and `.oshape` hooks as before (key-based swaps still animate).
 const STAR = 'M22 4.2l5.1 10.6 11.6 1.6-8.4 8.1 2.1 11.5L22 30.5l-10.4 5.5 2.1-11.5-8.4-8.1 11.6-1.6z'
 

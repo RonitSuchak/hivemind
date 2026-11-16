@@ -8,10 +8,10 @@ import { useReduced } from '../motion.js'
 //   are found   3 we look at how much those five learned with each tool type   4 the ranking.
 // The numbers are an example, and say so. Reduced motion shows every scene finished.
 
-const TYPES = ['Simple Steps', 'Lecturer', 'Socratic', 'Answer Machine']
+const TYPES = ['Simple Steps', 'Lecturer', 'Socratic', 'Answer Machine'] // the backend's demo tool names
 const GAINS = [[5, 4, 4, 5, 4], [3, 2, 2, 3, 2], [2, 3, 1, 2, 2], [1, 1, 0.5, 1, 1]] // five students per tool type
 const AVG = GAINS.map((g) => g.reduce((a, b) => a + b, 0) / g.length)
-const TRAITS = [['Starting level', 0.5], ['Learning speed', 0.8], ['Reading', 0.4], ['Language level', 0.9], ['When stuck', 0.6]]
+const TRAITS = [['Already knows', 0.5], ['Pick-up speed', 0.8], ['Reading', 0.4], ['Language', 0.9], ['Staying power', 0.6]]
 
 // 30 students scattered around "you": distance on the page stands for how different their profile is.
 const YOU = { x: 160, y: 96 }
@@ -135,8 +135,8 @@ export default function MatchDiagram() {
       <ol className="ms-list">
         <Scene n="1" title="You take the check" draw={Profile}>Your answers show <strong>five things</strong> about how you learn. Together they are your <strong>profile</strong>.</Scene>
         <Scene n="2" title="We find students like you" draw={Nearest}>The class has <strong>30 simulated students</strong>, each with a profile. We pick the <strong>5 closest</strong> to yours.</Scene>
-        <Scene n="3" title="We see what worked for them" draw={Worked}>Each of those 5 had a lesson with <strong>every tool type</strong>. We <strong>average</strong> how much they gained.</Scene>
-        <Scene n="4" title="You get your ranking" draw={Ranked}>The tool type that <strong>taught them most</strong> comes first. A safety flag moves a tool type to the end.</Scene>
+        <Scene n="3" title="We see what worked for them" draw={Worked}>Each of those 5 had a lesson with <strong>every demo tool</strong>. We <strong>average</strong> how much they gained, and the <strong>closest students count more</strong>.</Scene>
+        <Scene n="4" title="You get your ranking" draw={Ranked}>The demo tool that <strong>taught them most</strong> comes first. A safety concern moves a demo tool to the end. If nobody in the class is close to you, there is <strong>no ranking</strong>: we will not guess.</Scene>
       </ol>
       <p className="ms-note">Example numbers, to show how it works.</p>
     </div>

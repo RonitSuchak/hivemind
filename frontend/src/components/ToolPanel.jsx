@@ -7,7 +7,7 @@ import Icon from './Icon.jsx'
 import ToolPreview from './ToolPreview.jsx'
 
 // A centred panel with the details of one EdTech tool: what it is, an "at a glance" estimate, who it may
-// suit, and the four safety checks (all "Not tested yet"). Nothing here is a lab result.
+// suit, and the four safety checks (all "Not tested"). Nothing here is a lab result.
 // Behaviour follows Drawer.jsx: Escape and backdrop click close it, focus stays inside while it is open,
 // the page behind does not scroll, and focus goes back to the card that opened it.
 
@@ -132,7 +132,7 @@ function Panel({ panel, tool, onClose }) {
             <section className="tpn-sec" aria-labelledby={`${hid}-sum`}>
               <h3 id={`${hid}-sum`} className="tpn-h">Summary</h3>
               <p className="tpn-text">{tool.blurb}</p>
-              {group && <p className="tpn-text tpn-sub">It teaches like {group.name}: {lower(group.how)}.</p>}
+              {group && <p className="tpn-text tpn-sub">Tool type: {group.name}. {group.how}.{tool.standIn ? ` The demo tool that stands in for it is ${tool.standIn}.` : ''}</p>}
             </section>
           </div>
 
@@ -170,7 +170,7 @@ function Panel({ panel, tool, onClose }) {
               {CHECKS.map((c) => (
                 <li key={c} className="tpn-check">
                   <span className="tpn-check-name">{c}</span>
-                  <span className="tpn-check-state">Not tested yet</span>
+                  <span className="tpn-check-state">Not tested</span>
                 </li>
               ))}
             </ul>

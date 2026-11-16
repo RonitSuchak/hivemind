@@ -58,7 +58,7 @@ const A_MATHS_STATS = ['Sampling', 'Data presentation and interpretation', 'Meas
 const A_MATHS_MECH = ['Quantities and units in mechanics', 'Kinematics', 'Constant acceleration', 'Variable acceleration', 'Projectiles', 'Forces and Newton\'s laws', 'Friction', 'Connected particles', 'Moments']
 
 export const PROGRAMMES = [
-  P('edexcel-a-further-maths', 'Edexcel A level Further Maths', 'Pearson Edexcel', 'A level', 'Maths', 'Pearson Edexcel A level Further Mathematics', '9FM0', [
+  P('edexcel-a-further-maths', 'Edexcel A level Further Maths', 'Pearson Edexcel', 'A level', 'Further Maths', 'Pearson Edexcel A level Further Mathematics', '9FM0', [
     U('Core Pure 1', [
       'Proof by induction', 'Induction with series', 'Induction with divisibility', 'Induction with matrices',
       'Complex numbers', 'Complex conjugates', 'Quadratics with complex roots', 'Argand diagrams', 'Modulus and argument', 'Loci in the Argand diagram', 'Regions in the Argand diagram',
@@ -153,7 +153,7 @@ export const PROGRAMMES = [
 
   P('edexcel-gcse-maths', 'Edexcel GCSE Maths', 'Pearson Edexcel', 'GCSE', 'Maths', 'Pearson Edexcel GCSE (9-1) Mathematics', '1MA1', gcseMathsUnits('Ratio and proportion')),
 
-  P('ocr-a-physics-a', 'OCR A level Physics', 'OCR', 'A level', 'Science', 'OCR A level Physics A', 'H556', [
+  P('ocr-a-physics-a', 'OCR A level Physics', 'OCR', 'A level', 'Physics', 'OCR A level Physics A', 'H556', [
     U('Module 2 Foundations of physics', [
       'Physical quantities and units', 'SI units', 'Scalars and vectors', 'Making measurements', 'Uncertainties and errors', 'Analysing data',
     ]),
@@ -211,7 +211,7 @@ export const PROGRAMMES = [
     ]),
   ], ['8EC0']),
 
-  P('aqa-gcse-combined-science', 'AQA GCSE Combined Science', 'AQA', 'GCSE', 'Science', 'AQA GCSE Combined Science: Trilogy', '8464', [
+  P('aqa-gcse-combined-science', 'AQA GCSE Combined Science', 'AQA', 'GCSE', 'Combined Science', 'AQA GCSE Combined Science: Trilogy', '8464', [
     U('Biology', [
       'Cell biology', 'Eukaryotic and prokaryotic cells', 'Cell division', 'Stem cells', 'Transport in cells',
       'Organisation', 'Digestive system', 'Enzymes', 'Heart and blood vessels', 'Plant tissues',
@@ -242,7 +242,7 @@ export const PROGRAMMES = [
     ]),
   ]),
 
-  P('aqa-gcse-computer-science', 'AQA GCSE Computer Science', 'AQA', 'GCSE', 'Computing', 'AQA GCSE Computer Science', '8525', [
+  P('aqa-gcse-computer-science', 'AQA GCSE Computer Science', 'AQA', 'GCSE', 'Computer Science', 'AQA GCSE Computer Science', '8525', [
     U('Fundamentals of algorithms', [
       'Decomposition', 'Abstraction', 'Algorithms', 'Pseudocode', 'Flowcharts', 'Trace tables',
       'Linear search', 'Binary search', 'Bubble sort', 'Merge sort',
@@ -294,7 +294,7 @@ export const PROGRAMMES = [
     U('Mechanics', A_MATHS_MECH),
   ], ['H230']),
 
-  P('ocr-a-further-maths-a', 'OCR A level Further Maths', 'OCR', 'A level', 'Maths', 'OCR A level Further Mathematics A', 'H245', [
+  P('ocr-a-further-maths-a', 'OCR A level Further Maths', 'OCR', 'A level', 'Further Maths', 'OCR A level Further Mathematics A', 'H245', [
     U('Pure core', [
       'Proof by induction', 'Complex numbers', 'Roots of unity', 'Matrices and transformations', 'Further algebra and functions', 'Roots of polynomials', 'Series and the method of differences', 'Maclaurin series',
       'Polar coordinates', 'Hyperbolic functions', 'Further calculus', 'Volumes of revolution', 'Differential equations', 'Further vectors', 'Vector equations of lines and planes',
@@ -306,7 +306,7 @@ export const PROGRAMMES = [
   P('aqa-gcse-maths', 'AQA GCSE Maths', 'AQA', 'GCSE', 'Maths', 'AQA GCSE Mathematics', '8300', gcseMathsUnits('Ratio, proportion and rates of change')),
   P('ocr-gcse-maths', 'OCR GCSE Maths', 'OCR', 'GCSE', 'Maths', 'OCR GCSE (9-1) Mathematics', 'J560', gcseMathsUnits('Ratio, proportion and rates of change')),
 
-  P('aqa-a-physics', 'AQA A level Physics', 'AQA', 'A level', 'Science', 'AQA A level Physics', '7408', [
+  P('aqa-a-physics', 'AQA A level Physics', 'AQA', 'A level', 'Physics', 'AQA A level Physics', '7408', [
     U('Measurements and their errors', ['Use of SI units', 'Limitations of physical measurement', 'Estimation of physical quantities']),
     U('Particles and radiation', ['Constituents of the atom', 'Stable and unstable nuclei', 'Particles, antiparticles and photons', 'Particle interactions', 'Classification of particles', 'Quarks and antiquarks', 'Conservation laws', 'The photoelectric effect', 'Energy levels and spectra', 'Wave particle duality']),
     U('Waves', ['Progressive and stationary waves', 'Refraction', 'Diffraction', 'Interference', 'Polarisation', 'Diffraction gratings', 'Total internal reflection']),
@@ -318,13 +318,13 @@ export const PROGRAMMES = [
     U('Options', ['Astrophysics', 'Medical physics', 'Engineering physics', 'Turning points in physics']),
   ], ['7407']),
 
-  P('aqa-a-chemistry', 'AQA A level Chemistry', 'AQA', 'A level', 'Science', 'AQA A level Chemistry', '7405', [
+  P('aqa-a-chemistry', 'AQA A level Chemistry', 'AQA', 'A level', 'Chemistry', 'AQA A level Chemistry', '7405', [
     U('Physical chemistry', ['Atomic structure', 'Amount of substance', 'Bonding', 'Energetics', 'Kinetics', 'Chemical equilibria and Le Chatelier', 'Oxidation, reduction and redox equations', 'Thermodynamics', 'Rate equations', 'Equilibrium constant Kp', 'Electrode potentials and cells', 'Acids and bases']),
     U('Inorganic chemistry', ['Periodicity', 'Group 2, the alkaline earth metals', 'Group 7, the halogens', 'Period 3 elements and oxides', 'Transition metals', 'Reactions of ions in aqueous solution']),
     U('Organic chemistry', ['Introduction to organic chemistry', 'Alkanes', 'Halogenoalkanes', 'Alkenes', 'Alcohols', 'Organic analysis', 'Optical isomerism', 'Aldehydes and ketones', 'Carboxylic acids and derivatives', 'Aromatic chemistry', 'Amines', 'Polymers', 'Amino acids, proteins and DNA', 'Organic synthesis', 'Nuclear magnetic resonance spectroscopy', 'Chromatography']),
   ], ['7404']),
 
-  P('aqa-a-biology', 'AQA A level Biology', 'AQA', 'A level', 'Science', 'AQA A level Biology', '7402', [
+  P('aqa-a-biology', 'AQA A level Biology', 'AQA', 'A level', 'Biology', 'AQA A level Biology', '7402', [
     U('Biological molecules', ['Monomers and polymers', 'Carbohydrates', 'Lipids', 'Proteins', 'Enzymes', 'Nucleic acids', 'ATP', 'Water', 'Inorganic ions']),
     U('Cells', ['Cell structure', 'Mitosis and the cell cycle', 'Transport across cell membranes', 'Cell recognition and the immune system']),
     U('Organisms exchange substances with their environment', ['Surface area to volume ratio', 'Gas exchange', 'Digestion and absorption', 'Mass transport in animals', 'Mass transport in plants']),
@@ -335,7 +335,7 @@ export const PROGRAMMES = [
     U('The control of gene expression', ['Mutations of DNA', 'Gene expression and cancer', 'Genome projects', 'Gene technologies']),
   ], ['7401']),
 
-  P('ocr-a-chemistry-a', 'OCR A level Chemistry', 'OCR', 'A level', 'Science', 'OCR A level Chemistry A', 'H432', [
+  P('ocr-a-chemistry-a', 'OCR A level Chemistry', 'OCR', 'A level', 'Chemistry', 'OCR A level Chemistry A', 'H432', [
     U('Foundations in chemistry', ['Atoms and reactions', 'Electrons, bonding and structure', 'Amount of substance', 'Acids and redox']),
     U('Periodic table and energy', ['The periodic table and periodicity', 'Group 2 and the halogens', 'Qualitative analysis', 'Enthalpy changes', 'Reaction rates and equilibrium']),
     U('Core organic chemistry', ['Basic concepts and hydrocarbons', 'Alcohols and haloalkanes', 'Organic synthesis', 'Analytical techniques']),
@@ -343,7 +343,7 @@ export const PROGRAMMES = [
     U('Organic chemistry and analysis', ['Aromatic compounds', 'Carbonyl compounds', 'Carboxylic acids and esters', 'Nitrogen compounds', 'Polymers', 'Organic synthesis', 'Chromatography and spectroscopy']),
   ], ['H032']),
 
-  P('ocr-a-biology-a', 'OCR A level Biology', 'OCR', 'A level', 'Science', 'OCR A level Biology A', 'H420', [
+  P('ocr-a-biology-a', 'OCR A level Biology', 'OCR', 'A level', 'Biology', 'OCR A level Biology A', 'H420', [
     U('Foundations in biology', ['Cell structure', 'Biological molecules', 'Nucleotides and nucleic acids', 'Enzymes', 'Biological membranes', 'Cell division, diversity and organisation']),
     U('Exchange and transport', ['Exchange surfaces', 'Transport in animals', 'Transport in plants']),
     U('Biodiversity, evolution and disease', ['Communicable diseases and the immune system', 'Biodiversity', 'Classification and evolution']),
@@ -351,7 +351,7 @@ export const PROGRAMMES = [
     U('Genetics, evolution and ecosystems', ['Genetics of living systems', 'Patterns of inheritance', 'Manipulating genomes', 'Cloning and biotechnology', 'Ecosystems', 'Populations and sustainability']),
   ], ['H020']),
 
-  P('edexcel-a-physics', 'Edexcel A level Physics', 'Pearson Edexcel', 'A level', 'Science', 'Pearson Edexcel A level Physics', '9PH0', [
+  P('edexcel-a-physics', 'Edexcel A level Physics', 'Pearson Edexcel', 'A level', 'Physics', 'Pearson Edexcel A level Physics', '9PH0', [
     U('Working as a physicist', ['Planning and analysis', 'Units and uncertainties']),
     U('Mechanics', ['Vectors and scalars', 'Motion', 'Forces', 'Newton\'s laws of motion', 'Work, energy and power', 'Projectile motion']),
     U('Electric circuits', ['Current and potential difference', 'Resistance and resistivity', 'Series and parallel circuits', 'Potential dividers', 'Internal resistance']),
@@ -366,14 +366,14 @@ export const PROGRAMMES = [
     U('Oscillations', ['Simple harmonic motion', 'Resonance and damping']),
   ], ['8PH0']),
 
-  P('edexcel-a-chemistry', 'Edexcel A level Chemistry', 'Pearson Edexcel', 'A level', 'Science', 'Pearson Edexcel A level Chemistry', '9CH0', [
+  P('edexcel-a-chemistry', 'Edexcel A level Chemistry', 'Pearson Edexcel', 'A level', 'Chemistry', 'Pearson Edexcel A level Chemistry', '9CH0', [
     U('Physical chemistry', ['Atomic structure and the periodic table', 'Bonding and structure', 'Formulae, equations and amounts of substance', 'Energetics', 'Kinetics', 'Equilibrium', 'Acid-base equilibria', 'Redox', 'Lattice energy and entropy']),
     U('Inorganic chemistry', ['Periodicity', 'Group 2 and Group 7', 'Transition metals']),
     U('Organic chemistry', ['Introduction to organic chemistry', 'Alkanes', 'Alkenes', 'Halogenoalkanes', 'Alcohols', 'Carbonyl compounds', 'Carboxylic acids and esters', 'Aromatic compounds', 'Amines', 'Polymers', 'Amino acids and proteins', 'Organic synthesis']),
     U('Analytical techniques', ['Mass spectrometry', 'Infrared spectroscopy', 'NMR spectroscopy', 'Chromatography']),
   ], ['8CH0']),
 
-  P('aqa-gcse-biology', 'AQA GCSE Biology', 'AQA', 'GCSE', 'Science', 'AQA GCSE Biology', '8461', [
+  P('aqa-gcse-biology', 'AQA GCSE Biology', 'AQA', 'GCSE', 'Biology', 'AQA GCSE Biology', '8461', [
     U('Cell biology', ['Cell structure', 'Cell division', 'Cell differentiation', 'Stem cells', 'Transport in cells', 'Microscopy']),
     U('Organisation', ['Principles of organisation', 'The digestive system', 'Enzymes', 'The heart and blood vessels', 'Health and disease', 'Plant tissues and transport']),
     U('Infection and response', ['Communicable diseases', 'Preventing and treating disease', 'Vaccination', 'Antibiotics', 'Monoclonal antibodies', 'Plant disease']),
@@ -383,7 +383,7 @@ export const PROGRAMMES = [
     U('Ecology', ['Adaptations and competition', 'Organisation of an ecosystem', 'Cycling of materials', 'Biodiversity and ecosystems', 'Trophic levels', 'Food security']),
   ]),
 
-  P('aqa-gcse-chemistry', 'AQA GCSE Chemistry', 'AQA', 'GCSE', 'Science', 'AQA GCSE Chemistry', '8462', [
+  P('aqa-gcse-chemistry', 'AQA GCSE Chemistry', 'AQA', 'GCSE', 'Chemistry', 'AQA GCSE Chemistry', '8462', [
     U('Atomic structure and the periodic table', ['Atoms, elements and compounds', 'Mixtures and separation', 'Models of the atom', 'The periodic table', 'Groups 0, 1 and 7', 'Transition metals']),
     U('Bonding, structure and properties of matter', ['Chemical bonds', 'Ionic bonding', 'Covalent bonding', 'Metallic bonding', 'States of matter', 'Giant structures and polymers', 'Nanoparticles']),
     U('Quantitative chemistry', ['Conservation of mass', 'Relative formula mass', 'The mole', 'Limiting reactants', 'Concentration of solutions', 'Percentage yield and atom economy']),
@@ -396,7 +396,7 @@ export const PROGRAMMES = [
     U('Using resources', ['Using the Earth\'s resources', 'Potable water', 'Life cycle assessment', 'Recycling', 'The Haber process', 'Fertilisers']),
   ]),
 
-  P('aqa-gcse-physics', 'AQA GCSE Physics', 'AQA', 'GCSE', 'Science', 'AQA GCSE Physics', '8463', [
+  P('aqa-gcse-physics', 'AQA GCSE Physics', 'AQA', 'GCSE', 'Physics', 'AQA GCSE Physics', '8463', [
     U('Energy', ['Energy stores and transfers', 'Changes in energy', 'Conservation and dissipation of energy', 'National and global energy resources']),
     U('Electricity', ['Current and charge', 'Series and parallel circuits', 'Domestic uses and safety', 'Energy transfers', 'Static electricity']),
     U('Particle model of matter', ['Density', 'Changes of state', 'Internal energy', 'Specific latent heat', 'Particle motion in gases']),
@@ -407,7 +407,7 @@ export const PROGRAMMES = [
     U('Space physics', ['The solar system and stars', 'Life cycle of a star', 'Orbital motion', 'Red-shift']),
   ]),
 
-  P('ocr-gcse-computer-science', 'OCR GCSE Computer Science', 'OCR', 'GCSE', 'Computing', 'OCR GCSE (9-1) Computer Science', 'J277', [
+  P('ocr-gcse-computer-science', 'OCR GCSE Computer Science', 'OCR', 'GCSE', 'Computer Science', 'OCR GCSE (9-1) Computer Science', 'J277', [
     U('Computer systems', ['Systems architecture', 'Memory and storage', 'Computer networks, connections and protocols', 'Network security', 'Systems software', 'Ethical, legal, cultural and environmental impacts']),
     U('Computational thinking, algorithms and programming', ['Algorithms', 'Programming fundamentals', 'Producing robust programs', 'Boolean logic', 'Programming languages and IDEs']),
   ]),
@@ -436,7 +436,7 @@ export const PROGRAMMES = [
     U('Statistics', ['Classifying statistical data', 'Interpreting statistical data', 'Averages and measures of spread', 'Statistical charts and diagrams', 'Scatter diagrams', 'Histograms', 'Cumulative frequency']),
   ]),
 
-  I('cie-igcse-physics', 'Cambridge IGCSE Physics', 'Cambridge', 'IGCSE', 'Science', 'Cambridge IGCSE Physics', '0625', [
+  I('cie-igcse-physics', 'Cambridge IGCSE Physics', 'Cambridge', 'IGCSE', 'Physics', 'Cambridge IGCSE Physics', '0625', [
     U('Motion, forces and energy', ['Physical quantities and measurement', 'Motion', 'Mass and weight', 'Density', 'Effects of forces', 'Momentum', 'Energy, work and power', 'Pressure']),
     U('Thermal physics', ['Kinetic particle model of matter', 'Thermal properties and temperature', 'Transfer of thermal energy']),
     U('Waves', ['General properties of waves', 'Light', 'Electromagnetic spectrum', 'Sound']),
@@ -445,7 +445,7 @@ export const PROGRAMMES = [
     U('Space physics', ['Earth and the Solar System', 'Stars and the Universe']),
   ]),
 
-  I('cie-igcse-chemistry', 'Cambridge IGCSE Chemistry', 'Cambridge', 'IGCSE', 'Science', 'Cambridge IGCSE Chemistry', '0620', [
+  I('cie-igcse-chemistry', 'Cambridge IGCSE Chemistry', 'Cambridge', 'IGCSE', 'Chemistry', 'Cambridge IGCSE Chemistry', '0620', [
     U('States of matter', ['Solids, liquids and gases', 'Diffusion']),
     U('Atoms, elements and compounds', ['Elements, compounds and mixtures', 'Atomic structure and the Periodic Table', 'Isotopes', 'Ions and ionic bonds', 'Simple molecules and covalent bonds', 'Giant covalent structures']),
     U('Stoichiometry', ['Formulae', 'Relative masses of atoms and molecules', 'The mole and the Avogadro constant']),
@@ -460,7 +460,7 @@ export const PROGRAMMES = [
     U('Experimental techniques and chemical analysis', ['Experimental design', 'Acid-base titrations', 'Chromatography', 'Separation and purification', 'Identification of ions and gases']),
   ]),
 
-  I('cie-igcse-biology', 'Cambridge IGCSE Biology', 'Cambridge', 'IGCSE', 'Science', 'Cambridge IGCSE Biology', '0610', [
+  I('cie-igcse-biology', 'Cambridge IGCSE Biology', 'Cambridge', 'IGCSE', 'Biology', 'Cambridge IGCSE Biology', '0610', [
     U('Syllabus topics', [
       'Characteristics and classification of living organisms', 'Organisation of the organism', 'Movement into and out of cells', 'Biological molecules', 'Enzymes', 'Plant nutrition', 'Human nutrition',
       'Transport in plants', 'Transport in animals', 'Diseases and immunity', 'Gas exchange in humans', 'Respiration', 'Excretion in humans', 'Coordination and response', 'Drugs',
@@ -468,7 +468,7 @@ export const PROGRAMMES = [
     ]),
   ]),
 
-  I('cie-igcse-computer-science', 'Cambridge IGCSE Computer Science', 'Cambridge', 'IGCSE', 'Computing', 'Cambridge IGCSE Computer Science', '0478', [
+  I('cie-igcse-computer-science', 'Cambridge IGCSE Computer Science', 'Cambridge', 'IGCSE', 'Computer Science', 'Cambridge IGCSE Computer Science', '0478', [
     U('Computer systems', ['Number systems', 'Text, sound and images', 'Data storage and compression', 'Data transmission', 'Error detection', 'Encryption', 'Computer architecture', 'Input and output devices', 'Memory, storage and the cloud', 'Network hardware', 'Operating systems', 'Programming languages and translators', 'The internet', 'Cyber security', 'Automated and emerging technologies']),
     U('Algorithms, programming and logic', ['Computational thinking', 'Algorithms and flowcharts', 'Standard algorithms', 'Pseudocode', 'Programming concepts', 'Arrays', 'File handling', 'Databases and SQL', 'Logic gates and truth tables']),
   ]),
@@ -496,26 +496,26 @@ export const PROGRAMMES = [
     U('Probability and Statistics 2', ['The Poisson distribution', 'Linear combinations of random variables', 'Continuous random variables', 'Sampling and estimation', 'Hypothesis tests']),
   ]),
 
-  I('cie-a-further-maths', 'Cambridge A level Further Maths', 'Cambridge', 'A level', 'Maths', 'Cambridge International AS & A Level Further Mathematics', '9231', [
+  I('cie-a-further-maths', 'Cambridge A level Further Maths', 'Cambridge', 'A level', 'Further Maths', 'Cambridge International AS & A Level Further Mathematics', '9231', [
     U('Further Pure Mathematics 1', ['Roots of polynomial equations', 'Rational functions and graphs', 'Summation of series', 'Matrices', 'Polar coordinates', 'Vectors', 'Proof by induction']),
     U('Further Pure Mathematics 2', ['Hyperbolic functions', 'Matrices', 'Differential equations', 'Complex numbers', 'Calculus']),
     U('Further Mechanics', ['Motion of a projectile', 'Equilibrium of a rigid body', 'Circular motion', 'Hooke\'s law', 'Linear motion under a variable force', 'Momentum']),
     U('Further Probability and Statistics', ['Continuous random variables', 'Inference using normal and t distributions', 'Chi-squared tests', 'Non-parametric tests', 'Probability generating functions']),
   ]),
 
-  I('cie-a-physics', 'Cambridge A level Physics', 'Cambridge', 'A level', 'Science', 'Cambridge International AS & A Level Physics', '9702', [
+  I('cie-a-physics', 'Cambridge A level Physics', 'Cambridge', 'A level', 'Physics', 'Cambridge International AS & A Level Physics', '9702', [
     U('AS level', ['Physical quantities and units', 'Kinematics', 'Dynamics', 'Forces, density and pressure', 'Work, energy and power', 'Deformation of solids', 'Waves', 'Superposition', 'Electricity', 'D.C. circuits', 'Particle physics']),
     U('A level', ['Motion in a circle', 'Gravitational fields', 'Temperature', 'Ideal gases', 'Thermodynamics', 'Oscillations', 'Electric fields', 'Capacitance', 'Magnetic fields', 'Alternating currents', 'Quantum physics', 'Nuclear physics', 'Medical physics', 'Astronomy and cosmology']),
   ]),
 
-  I('cie-a-chemistry', 'Cambridge A level Chemistry', 'Cambridge', 'A level', 'Science', 'Cambridge International AS & A Level Chemistry', '9701', [
+  I('cie-a-chemistry', 'Cambridge A level Chemistry', 'Cambridge', 'A level', 'Chemistry', 'Cambridge International AS & A Level Chemistry', '9701', [
     U('Physical chemistry', ['Atomic structure', 'Atoms, molecules and stoichiometry', 'Chemical bonding', 'States of matter', 'Chemical energetics', 'Electrochemistry', 'Equilibria', 'Reaction kinetics']),
     U('Inorganic chemistry', ['Chemical periodicity', 'Group 2', 'Group 17', 'Nitrogen and sulfur', 'Transition elements']),
     U('Organic chemistry', ['Introduction to organic chemistry', 'Hydrocarbons', 'Halogen compounds', 'Hydroxy compounds', 'Carbonyl compounds', 'Carboxylic acids and derivatives', 'Nitrogen compounds', 'Polymerisation', 'Organic synthesis']),
     U('Analysis', ['Analytical techniques']),
   ]),
 
-  I('cie-a-biology', 'Cambridge A level Biology', 'Cambridge', 'A level', 'Science', 'Cambridge International AS & A Level Biology', '9700', [
+  I('cie-a-biology', 'Cambridge A level Biology', 'Cambridge', 'A level', 'Biology', 'Cambridge International AS & A Level Biology', '9700', [
     U('AS level', ['Cell structure', 'Biological molecules', 'Enzymes', 'Cell membranes and transport', 'The mitotic cell cycle', 'Nucleic acids and protein synthesis', 'Transport in plants', 'Transport in mammals', 'Gas exchange', 'Infectious diseases', 'Immunity']),
     U('A level', ['Energy and respiration', 'Photosynthesis', 'Homeostasis', 'Control and coordination', 'Inherited change', 'Selection and evolution', 'Classification, biodiversity and conservation', 'Genetic technology']),
   ]),
@@ -528,7 +528,7 @@ export const PROGRAMMES = [
     U('A level', ['International economic issues']),
   ]),
 
-  I('cie-a-computer-science', 'Cambridge A level Computer Science', 'Cambridge', 'A level', 'Computing', 'Cambridge International AS & A Level Computer Science', '9618', [
+  I('cie-a-computer-science', 'Cambridge A level Computer Science', 'Cambridge', 'A level', 'Computer Science', 'Cambridge International AS & A Level Computer Science', '9618', [
     U('AS level', ['Information representation', 'Communication', 'Hardware', 'Processor fundamentals', 'System software', 'Security, privacy and data integrity', 'Ethics and ownership', 'Databases', 'Algorithm design and problem solving', 'Data types and structures', 'Programming', 'Software development']),
     U('A level', ['Data representation', 'Communication and internet technologies', 'Hardware and virtual machines', 'System software', 'Security', 'Artificial intelligence', 'Computational thinking and problem solving', 'Further programming']),
   ]),
@@ -542,7 +542,7 @@ export const PROGRAMMES = [
     U('Statistics and probability', ['Graphical representation of data', 'Statistical measures', 'Probability']),
   ]),
 
-  I('edexcel-igcse-physics', 'Edexcel International GCSE Physics', 'Pearson Edexcel', 'IGCSE', 'Science', 'Pearson Edexcel International GCSE Physics', '4PH1', [
+  I('edexcel-igcse-physics', 'Edexcel International GCSE Physics', 'Pearson Edexcel', 'IGCSE', 'Physics', 'Pearson Edexcel International GCSE Physics', '4PH1', [
     U('Forces and motion', ['Movement and position', 'Forces, movement, shape and momentum']),
     U('Electricity', ['Mains electricity', 'Energy and voltage in circuits', 'Electric charge']),
     U('Waves', ['Properties of waves', 'The electromagnetic spectrum', 'Light and sound']),
@@ -553,14 +553,14 @@ export const PROGRAMMES = [
     U('Astrophysics', ['Motion in the universe', 'Stellar evolution']),
   ]),
 
-  I('edexcel-igcse-chemistry', 'Edexcel International GCSE Chemistry', 'Pearson Edexcel', 'IGCSE', 'Science', 'Pearson Edexcel International GCSE Chemistry', '4CH1', [
+  I('edexcel-igcse-chemistry', 'Edexcel International GCSE Chemistry', 'Pearson Edexcel', 'IGCSE', 'Chemistry', 'Pearson Edexcel International GCSE Chemistry', '4CH1', [
     U('Principles of chemistry', ['States of matter', 'Separating and purifying substances', 'Atomic structure', 'Relative masses and moles', 'Chemical formulae and equations', 'Ionic bonding', 'Covalent bonding', 'Metallic bonding', 'Electrolysis']),
     U('Inorganic chemistry', ['Group 1', 'Group 7', 'Gases in the atmosphere', 'Reactivity series', 'Acids, alkalis and titrations', 'Salt preparation', 'Chemical tests']),
     U('Physical chemistry', ['Energetics', 'Rates of reaction', 'Reversible reactions and equilibria']),
     U('Organic chemistry', ['Introduction to organic chemistry', 'Crude oil', 'Alkanes', 'Alkenes', 'Synthetic polymers']),
   ]),
 
-  I('edexcel-igcse-biology', 'Edexcel International GCSE Biology', 'Pearson Edexcel', 'IGCSE', 'Science', 'Pearson Edexcel International GCSE Biology', '4BI1', [
+  I('edexcel-igcse-biology', 'Edexcel International GCSE Biology', 'Pearson Edexcel', 'IGCSE', 'Biology', 'Pearson Edexcel International GCSE Biology', '4BI1', [
     U('The nature and variety of living organisms', ['Characteristics of living organisms', 'Variety of living organisms']),
     U('Structure and functions in living organisms', ['Levels of organisation', 'Cell structure', 'Biological molecules', 'Movement into and out of cells', 'Nutrition', 'Respiration', 'Gas exchange', 'Transport', 'Excretion', 'Coordination and response']),
     U('Reproduction and inheritance', ['Reproduction', 'Inheritance']),
@@ -582,7 +582,7 @@ export const PROGRAMMES = [
     U('Calculus', ['Limits and derivatives', 'Rules of differentiation', 'Tangents and normals', 'Integration', 'Kinematics', 'Optimisation', 'Differential equations', 'Maclaurin series']),
   ]),
 
-  I('ib-physics', 'IB Diploma Physics', 'IB', 'IB Diploma', 'Science', 'IB Diploma Physics', 'IB PHY', [
+  I('ib-physics', 'IB Diploma Physics', 'IB', 'IB Diploma', 'Physics', 'IB Diploma Physics', 'IB PHY', [
     U('Space, time and motion', ['Kinematics', 'Forces and momentum', 'Work, energy and power', 'Rigid body mechanics', 'Galilean and special relativity']),
     U('The particulate nature of matter', ['Thermal energy transfers', 'Greenhouse effect', 'Gas laws', 'Current and circuits', 'Thermodynamics']),
     U('Wave behaviour', ['Simple harmonic motion', 'Wave model', 'Wave phenomena', 'Standing waves and resonance', 'The Doppler effect']),
@@ -590,12 +590,12 @@ export const PROGRAMMES = [
     U('Nuclear and quantum physics', ['Structure of the atom', 'Quantum physics', 'Radioactive decay', 'Fission', 'Fusion and stars']),
   ]),
 
-  I('ib-chemistry', 'IB Diploma Chemistry', 'IB', 'IB Diploma', 'Science', 'IB Diploma Chemistry', 'IB CHE', [
+  I('ib-chemistry', 'IB Diploma Chemistry', 'IB', 'IB Diploma', 'Chemistry', 'IB Diploma Chemistry', 'IB CHE', [
     U('Structure', ['The particulate nature of matter', 'The nuclear atom', 'Electron configurations', 'The mole', 'Ideal gases', 'The ionic model', 'The covalent model', 'The metallic model', 'The periodic table', 'Functional groups']),
     U('Reactivity', ['Measuring enthalpy changes', 'Energy cycles', 'Energy from fuels', 'Entropy and spontaneity', 'Amount of chemical change', 'Rates of reaction', 'Extent of chemical change', 'Proton transfer', 'Electron transfer', 'Electron sharing reactions', 'Electron pair sharing reactions']),
   ]),
 
-  I('ib-biology', 'IB Diploma Biology', 'IB', 'IB Diploma', 'Science', 'IB Diploma Biology', 'IB BIO', [
+  I('ib-biology', 'IB Diploma Biology', 'IB', 'IB Diploma', 'Biology', 'IB Diploma Biology', 'IB BIO', [
     U('Unity and diversity', ['Water', 'Nucleic acids', 'Origins of cells', 'Cell structure', 'Viruses', 'Diversity of organisms', 'Classification and cladistics', 'Evolution and speciation', 'Conservation of biodiversity']),
     U('Form and function', ['Carbohydrates and lipids', 'Proteins', 'Membranes and transport', 'Organelles and compartmentalisation', 'Cell specialisation', 'Gas exchange', 'Transport', 'Muscle and motility', 'Adaptation to environment']),
     U('Interaction and interdependence', ['Enzymes and metabolism', 'Cell respiration', 'Photosynthesis', 'Chemical signalling', 'Neural signalling', 'Defence against disease', 'Populations and communities', 'Transfers of energy and matter']),

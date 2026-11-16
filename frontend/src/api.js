@@ -65,7 +65,7 @@ export function retryConnection() {
 
 const DEMO_FILE = (path) => {
   const p = path.replace(/^\/api\//, '')
-  if (p === 'tutors' || p === 'students' || p === 'ratings' || p === 'check') return `${p}.json`
+  if (p === 'tutors' || p === 'students' || p === 'ratings' || p === 'check' || p === 'real-tools') return `${p}.json`
   if (p.startsWith('runs/')) return `${p}.json`
   if (p === 'match') return 'match-example.json'
   return null
@@ -110,4 +110,6 @@ export const getStudents = () => get('/api/students')
 export const getRun = (id) => get(`/api/runs/${encodeURIComponent(id)}`)
 export const getRatings = () => get('/api/ratings')
 export const getCheck = () => get('/api/check')
+// Real EdTech products, each linked to the demo tool type it most resembles. Never tested, never scored.
+export const getRealTools = () => get('/api/real-tools')
 export const postMatch = (answers) => request('/api/match', { method: 'POST', body: JSON.stringify(answers) })

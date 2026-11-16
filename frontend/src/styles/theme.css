@@ -310,3 +310,45 @@ a:hover { text-decoration-color: var(--pop); }
 
 /* Spacing scan: icon chip sat too close to its heading on the tools page */
 .tg-risk-list h3 { margin-top: var(--s-1); }
+
+/* Translation bar: one compact line that stays out of the way of the buttons above it. */
+.trbar { font-size: var(--text-xs); line-height: 1.35; padding: 0.3rem 0.3rem 0.3rem var(--s-4); gap: var(--s-2); }
+.trbar .btn { min-height: 2rem; padding: 0.2rem 0.8rem; font-size: var(--text-xs); }
+@media (max-width: 30rem) { .trbar { flex-wrap: nowrap; border-radius: var(--r-lg); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-3); } }
+
+/* Edge blur: while the page scrolls, a thin band at the very top and bottom goes very slightly soft, then clears.
+   Kept barely noticeable on purpose (1px, narrow, slow to appear and to go) so it never pulses or distracts.
+   Below the header, drawers and panels; never catches clicks. */
+.edge-blur { position: fixed; left: 0; right: 0; z-index: 15; height: clamp(2rem, 6vh, 3.5rem); pointer-events: none; opacity: 0;
+  -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px); transition: opacity 1.2s ease; }
+.edge-blur-top { top: 0; height: clamp(5rem, 11vh, 6.5rem); -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+.edge-blur-bottom { bottom: 0; -webkit-mask-image: linear-gradient(to top, #000, transparent); mask-image: linear-gradient(to top, #000, transparent); }
+:root[data-scrolling] .edge-blur { opacity: 0.7; transition-duration: 0.6s; }
+@media (prefers-reduced-motion: reduce) { .edge-blur { display: none; } }
+
+/* Safety concern mark: a small orange dot (tabs and bars). */
+.sf-dot { display: inline-block; flex: none; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--pop); }
+
+/* About, "What we check": three columns with the same shape, each a short list. */
+.lx-trio-short .lx-risks li { align-items: flex-start; line-height: 1.45; }
+.lx-trio-short .lx-risks li .icon { margin-top: 0.3em; }
+.lx-trio-short .lx-risks strong { display: block; margin-right: 0; color: var(--ink); }
+
+/* Home: the live class. Each dot is a button for one simulated student (components/ClassDots.jsx). */
+.seats-live { list-style: none; margin: 0; padding: 0; }
+.seats-live li { display: block; }
+.seats-live .seat { display: block; width: 100%; padding: 0; background: none; font: inherit; color: inherit; will-change: transform; }
+.seats-live button.seat { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.25s; }
+.seats-live .seat-fill { transition: background-color 0.25s, box-shadow 0.25s; }
+.seats-live button.seat:focus-visible { outline: none; border-color: var(--pop); border-style: solid; }
+.seats-live button.seat:focus-visible .seat-fill, .seats-live button.seat[data-open] .seat-fill { background: var(--pop); box-shadow: 0 0 0 4px rgb(244 81 30 / 0.3); }
+@media (hover: hover) {
+  .seats-live button.seat:hover { border-color: var(--pop); border-style: solid; }
+  .seats-live button.seat:hover .seat-fill { background: var(--pop); box-shadow: 0 0 0 4px rgb(244 81 30 / 0.3); }
+}
+.seats-hint { display: flex; align-items: center; gap: var(--s-2); margin-top: var(--s-5); font-size: var(--text-sm); color: var(--ink-3); }
+.seats-hint .icon { flex: none; color: var(--pop); }
+
+/* "via Socratic": the demo tool that was tested for a tool type, small and quiet beside the type's name. */
+.type-via { margin-left: 0.4em; font-family: var(--font-body); font-size: 0.6em; font-weight: 500; letter-spacing: 0; color: var(--ink-3); white-space: nowrap; }
+.lx-bar-name .type-via, .lx-heat .type-via { font-size: 0.8em; }

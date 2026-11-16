@@ -378,3 +378,37 @@
 .lx-predict-notes { display: grid; gap: var(--s-1); }
 .lx-predict .lx-bar-fill { animation: none; transition: transform var(--dur-bar) var(--ease-out); }
 @media (prefers-reduced-motion: reduce) { .lx-predict .lx-bar-fill { transition: none; } }
+
+/* Student drawer: the sample lesson, closed until asked for (the best websites above it are in best.css). */
+.lx-lesson { border-top: 1px solid var(--line); padding-top: var(--s-3); }
+.lx-lesson > summary { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); padding: var(--s-2) 0; cursor: pointer; font-weight: 600; list-style: none; border-radius: var(--r-sm); }
+.lx-lesson > summary::-webkit-details-marker { display: none; }
+.lx-lesson > summary > span:first-child::before { content: '+'; display: inline-block; width: 1.1em; color: var(--pop-deep); font-weight: 700; }
+.lx-lesson[open] > summary > span:first-child::before { content: '\2212'; }
+.lx-lesson > summary:focus-visible { outline: none; box-shadow: var(--focus); }
+.lx-lesson[open] > .lx-chat { margin-top: var(--s-3); }
+
+/* Under a demo tool's name: the type of real tool it stands in for, and a label when its run is a preview. */
+.lx-stands { margin-top: var(--s-1); font-size: var(--text-sm); color: var(--ink-3); }
+.lx-stands b { color: var(--ink); font-weight: 600; }
+.lx-preview-tag { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: var(--s-2); padding: 0.15rem 0.6rem; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font-size: var(--text-xs); color: var(--ink-2); }
+
+/* Under a tool type's heading: the real EdTech tools of that type, as small previews. */
+.lx-toolrow { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--s-3) var(--s-4); margin-top: var(--s-4); }
+.lx-toolrow ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-3); margin: 0; padding: 0; }
+.lx-toolrow li a { display: grid; gap: var(--s-1); width: 8.5rem; color: var(--ink); text-decoration: none; font-size: var(--text-sm); font-weight: 600; border-radius: var(--r-sm); }
+.lx-toolrow li a .tp { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s; }
+@media (hover: hover) { .lx-toolrow li a:hover .tp { transform: translateY(-3px); box-shadow: var(--glass-shadow-lg); } }
+.lx-toolrow li a:focus-visible { outline: none; box-shadow: var(--focus); }
+.lx-toolrow-more { padding-bottom: 0.1rem; font-size: var(--text-sm); color: var(--ink-2); }
+.lx-toolrow-none { display: flex; align-items: flex-start; gap: var(--s-2); max-width: 38rem; margin-top: var(--s-3); padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-radius: var(--r-md); font-size: var(--text-sm); color: var(--ink-2); }
+.lx-toolrow-none .icon { flex: none; margin-top: 0.15rem; color: var(--ink-3); }
+@media (max-width: 30rem) { .lx-toolrow li a { width: calc((100vw - 2 * var(--gutter) - var(--s-3)) / 2); max-width: 9.5rem; } }
+
+/* Try a student: clickable closest students, and the three sites of the type that did best. */
+.lx-closest a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--pop); text-underline-offset: 3px; }
+@media (hover: hover) { .lx-closest a:hover { color: var(--pop-deep); } }
+.lx-predict-sites { grid-column: 1 / -1; padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.lx-predict-sites .lx-best h3 { font-size: var(--text-xl); font-weight: 650; }
+.lx-toolrow-note { flex-basis: 100%; display: flex; align-items: flex-start; gap: 0.35rem; font-size: var(--text-xs); color: var(--ink-3); }
+.lx-toolrow-note .icon { flex: none; margin-top: 0.15rem; }

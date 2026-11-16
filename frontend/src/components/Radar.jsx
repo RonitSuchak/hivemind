@@ -5,11 +5,11 @@ import { spring, tokenS, useReduced } from '../motion.js'
 // Five axes, each already 0..1 in the backend's `radar` object (reading age is mapped for us).
 // Accepts a radar object, or anything that carries one (a student, or a match from /api/match).
 export const AXES = [
-  ['Starting level', (r) => r.start_level],
-  ['Learning speed', (r) => r.learn_speed],
-  ['Reading age', (r) => r.reading],
-  ['English', (r) => r.english],
-  ['Persistence', (r) => r.persistence],
+  ['Already knows', (r) => r.start_level],
+  ['Pick-up speed', (r) => r.learn_speed],
+  ['Reading', (r) => r.reading],
+  ['Language', (r) => r.english],
+  ['Staying power', (r) => r.persistence],
 ]
 const clamp = (x) => Math.max(0, Math.min(1, Number.isFinite(x) ? x : 0))
 const values = (p) => AXES.map(([, f]) => clamp(f(p?.radar ?? p)))

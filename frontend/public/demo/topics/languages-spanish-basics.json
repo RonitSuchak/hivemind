@@ -119,5 +119,20 @@
         "los chicas"
       ]
     }
-  ]
+  ],
+  "challenge": {
+    "id": "sp-c1",
+    "text": "Choose the correct words for the gaps in this sentence: ___ chicas y ___ gatos están en ___ casa. (The girls and the cats are in the house.)",
+    "options": [
+      "los, las, la",
+      "las, los, la",
+      "las, los, el",
+      "las, las, la"
+    ],
+    "hints": [
+      "Look at the ending of each noun: does it end in o or a? Then check whether it means one thing or many.",
+      "Chicas ends in a and means many. Gatos ends in o and means many. Casa ends in a and means one.",
+      "Use el and la for one thing, and los and las for many. Words ending in o go with el or los. Words ending in a go with la or las. Fill the gaps in order."
+    ]
+  }
 }

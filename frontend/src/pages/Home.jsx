@@ -4,17 +4,20 @@ import { motion, useScroll, useSpring } from 'motion/react'
 import Icon from '../components/Icon.jsx'
 import HeroHive from '../components/HeroHive.jsx'
 import LanguagePicker from '../components/LanguagePicker.jsx'
+import ClassDots from '../components/ClassDots.jsx'
 import { Reveal, RevealGroup } from '../components/Reveal.jsx'
 import { usePageTitle } from '../hooks.js'
 import { SCORE_ICON } from '../labels.js'
 import { revealTokens, spring, tokenS, useReduced } from '../motion.js'
+import { useNoTranslate, useT } from '../i18n/index.js'
 
 // Home is a short scrolling story: hero -> how it works -> the class -> three scores -> start.
-// Nothing here is data: the class grid is decorative in every mode (no numbers, no names).
+// The class grid shows the lab's 30 simulated students by name when the lab answers (components/ClassDots.jsx).
 export default function Home() {
   usePageTitle('')
+  const noTr = useNoTranslate() // our own dictionary words: keep the browser translator off them
   return (
-    <div className="home">
+    <div className="home" {...noTr}>
       <Hero />
       <Languages />
       <HowItWorks />
@@ -28,6 +31,7 @@ export default function Home() {
 // Headline lines rise and unblur one after another. They are on screen at load, so the whole
 // entrance is short: the last line starts after ~3 x --stagger-line.
 function Hero() {
+  const t = useT()
   const reduced = useReduced()
   const v = useMemo(() => {
     const t = revealTokens(), step = tokenS('--stagger-line', 0.07)
@@ -39,15 +43,15 @@ function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-h">
       <h1 id="hero-h">
-        <HeroLine v={v} reduced={reduced} i={0}>Meet Hivemind, the #1 tool to</HeroLine>{' '}
-        <HeroLine v={v} reduced={reduced} i={1} className="hero-accent">find the EdTech tool that works for you.</HeroLine>
+        <HeroLine v={v} reduced={reduced} i={0}>{t('hero.line1')}</HeroLine>{' '}
+        <HeroLine v={v} reduced={reduced} i={1} className="hero-accent">{t('hero.line2')}</HeroLine>
       </h1>
       <HeroLine v={v} reduced={reduced} i={2} as="p" className="lede">
-        We test types of EdTech tool on a simulated class. You get a ranked list of the tool types that worked for students like you.
+        {t('hero.lede')}
       </HeroLine>
       <HeroLine v={v} reduced={reduced} i={3} as="div" className="actions">
-        <Link to="/check" className="btn btn-primary btn-large">Take the check <Icon name="arrow" size={18} className="icon-nudge" /></Link>
-        <Link to="/lab" className="btn btn-large">See the lab</Link>
+        <Link to="/check" className="btn btn-primary btn-large">{t('cta.check')} <Icon name="arrow" size={18} className="icon-nudge" /></Link>
+        <Link to="/lab" className="btn btn-large">{t('cta.lab')}</Link>
       </HeroLine>
       <div className="hero-art"><HeroHive /></div>
     </section>
@@ -60,16 +64,13 @@ function HeroLine({ i, as = 'span', className = '', v, reduced, children }) {
   return <M className={`hero-line ${className}`} custom={i} variants={v} initial="hidden" animate="shown">{children}</M>
 }
 
-const STEPS = [
-  ['Take a short check', 'A few fraction questions, a short lesson and a reading question. Skip any you like. Nothing is saved.'],
-  ['Meet students like you', 'We compare your profile with a simulated class. The closest students show which tool types worked for them.'],
-  ['See who each tool type works for', 'Each tool type gets three separate scores: safety, usability and learning. A serious safety failure is never averaged away.'],
-]
+const STEPS = ['how.1', 'how.2', 'how.3'] // dictionary keys: how.N.title and how.N.text
 
 const STEP_ICONS = ['pencil', 'users', 'list'] // check, class, ranked list
 
 // Three steps reveal as you scroll; a rail beside them fills with the scroll (springs smooth it).
 function HowItWorks() {
+  const t = useT()
   const reduced = useReduced()
   const list = useRef(null)
   const { scrollYProgress } = useScroll({ target: list, offset: ['start 75%', 'end 55%'] })
@@ -77,19 +78,19 @@ function HowItWorks() {
   return (
     <section className="home-section how" aria-labelledby="how-h">
       <Reveal className="how-head">
-        <h2 id="how-h" className="section-title">How it works</h2>
-        <p className="section-lede">Take a short check, get a ranked list. Nothing about you is kept.</p>
+        <h2 id="how-h" className="section-title">{t('how.title')}</h2>
+        <p className="section-lede">{t('how.lede')}</p>
       </Reveal>
       <div className="how-steps" ref={list}>
         <span className="how-rail" aria-hidden="true">
           <motion.span className="how-rail-fill" style={{ scaleY: reduced ? 1 : fill }} />
         </span>
         <ol className="how-list">
-          {STEPS.map(([title, text], i) => (
-            <Reveal as="li" key={title} className="how-step">
+          {STEPS.map((k, i) => (
+            <Reveal as="li" key={k} className="how-step">
               <span className="how-num" aria-hidden="true"><Icon name={STEP_ICONS[i]} size={15} /></span>
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <h3>{t(`${k}.title`)}</h3>
+              <p>{t(`${k}.text`)}</p>
             </Reveal>
           ))}
         </ol>
@@ -99,64 +100,47 @@ function HowItWorks() {
 }
 
 // Decorative class: empty seats fill from the centre outwards when the grid scrolls into view.
-const COLS = 10, ROWS = 3
-const SEATS = Array.from({ length: COLS * ROWS }, (_, k) => {
-  const c = k % COLS, r = Math.floor(k / COLS)
-  return { k, d: Math.hypot(c - (COLS - 1) / 2, (r - (ROWS - 1) / 2) * 1.6) }
-})
-
 function TheClass() {
-  const reduced = useReduced()
-  const v = useMemo(() => {
-    const step = tokenS('--ripple-stagger', 0.11)
-    return {
-      empty: { scale: 0.4, opacity: 0 },
-      full: (d) => ({ scale: 1, opacity: 1, transition: spring('ui', { delay: d * step }) }),
-    }
-  }, [])
+  const t = useT()
   return (
     <section className="home-section klass" aria-labelledby="class-h">
       <Reveal className="klass-text">
-        <h2 id="class-h" className="section-title">One class. Every tool type.</h2>
-        <p className="section-lede">Every tool type teaches the same class, so differences come from the teaching. Students vary in starting level, learning speed, reading age, English level and persistence.</p>
-        <p className="muted small">The students are simulated, not real children.</p>
+        <h2 id="class-h" className="section-title">{t('class.title')}</h2>
+        <p className="section-lede">{t('class.lede')}</p>
+        <p className="muted small">{t('class.note')}</p>
       </Reveal>
       <Reveal className="klass-panel glass" blur={false}>
-        <motion.div className="seats" aria-hidden="true" initial={reduced ? false : 'empty'} whileInView="full" viewport={{ once: true, margin: revealTokens().margin }}>
-          {SEATS.map((s) => (
-            <span key={s.k} className="seat">
-              <motion.span className="seat-fill" custom={s.d} variants={reduced ? undefined : v} />
-            </span>
-          ))}
-        </motion.div>
+        <ClassDots />
       </Reveal>
     </section>
   )
 }
 
 // What we check, in positive, plain words (the three scores are never blended into one number).
+// (bold words are marked **like this** inside each language's own sentence, so word order can differ)
 const CHECKS = [
-  { k: 'safety', title: 'Safe', text: <>It is <strong>accurate</strong>, <strong>fair</strong>, <strong>private</strong> and right for your age.</> },
-  { k: 'usability', title: 'Easy to use', text: <>You can <strong>follow it</strong> and <strong>keep going</strong>.</> },
-  { k: 'learning', title: 'Helps you learn', text: <>You <strong>improve</strong>, and it makes you <strong>think</strong>.</> },
+  { k: 'safety', key: 'checks.safe' },
+  { k: 'usability', key: 'checks.easy' },
+  { k: 'learning', key: 'checks.learn' },
 ]
 function Scores() {
+  const t = useT()
   return (
     <section className="home-section scores" aria-labelledby="scores-h">
       <Reveal>
-        <h2 id="scores-h" className="section-title">We check three things.</h2>
+        <h2 id="scores-h" className="section-title">{t('checks.title')}</h2>
       </Reveal>
       <RevealGroup as="dl" className="score-trio">
         {CHECKS.map((c) => (
           <Reveal key={c.k} className="score-def">
-            <dt><span className="icon-chip"><Icon name={SCORE_ICON[c.k]} size={20} /></span>{c.title}</dt>
-            <dd>{c.text}</dd>
+            <dt><span className="icon-chip"><Icon name={SCORE_ICON[c.k]} size={20} /></span>{t(`${c.key}.title`)}</dt>
+            <dd>{t.rich(`${c.key}.text`)}</dd>
           </Reveal>
         ))}
       </RevealGroup>
       <Reveal as="p" className="scores-note">
         <Icon name="shield" size={20} />
-        <span>Each one gets its <strong>own score</strong>. A tool type that fails a safety check is <strong>ranked last</strong>.</span>
+        <span>{t.rich('checks.note')}</span>
       </Reveal>
     </section>
   )
@@ -164,11 +148,12 @@ function Scores() {
 
 // Languages: asked on the landing page so the site starts from the student, in any language they speak.
 function Languages() {
+  const t = useT()
   return (
     <section className="home-section langs" aria-labelledby="langs-h">
       <Reveal className="langs-head">
-        <h2 id="langs-h" className="section-title">Which languages do you speak?</h2>
-        <p className="section-lede">Pick every language you use. The site switches to the one you pick.</p>
+        <h2 id="langs-h" className="section-title">{t('langs.title')}</h2>
+        <p className="section-lede">{t('langs.lede')}</p>
       </Reveal>
       <Reveal><LanguagePicker /></Reveal>
     </section>
@@ -176,14 +161,15 @@ function Languages() {
 }
 
 function Finale() {
+  const t = useT()
   return (
     <section className="home-section finale" aria-labelledby="finale-h">
       <Reveal>
-        <h2 id="finale-h" className="finale-title">See which tool types worked for students like you.</h2>
+        <h2 id="finale-h" className="finale-title">{t('finale.title')}</h2>
       </Reveal>
       <Reveal className="actions" delay={revealTokens().stagger}>
-        <Link to="/check" className="btn btn-primary btn-large">Take the check <Icon name="arrow" size={18} className="icon-nudge" /></Link>
-        <Link to="/about" className="btn btn-large btn-quiet">Read the method</Link>
+        <Link to="/check" className="btn btn-primary btn-large">{t('cta.check')} <Icon name="arrow" size={18} className="icon-nudge" /></Link>
+        <Link to="/about" className="btn btn-large btn-quiet">{t('cta.method')}</Link>
       </Reveal>
     </section>
   )

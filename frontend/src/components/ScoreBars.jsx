@@ -75,10 +75,10 @@ function Row({ k, v, i, help, anim, play, explain, delay }) {
   )
 }
 
-export function SafetyBadge({ children = 'Safety flag' }) {
+export function SafetyBadge({ children = 'Safety concern' }) {
   return (
     <span className="badge badge-warn">
-      <Icon name="flag" size={14} className="badge-flag-ico" />
+      <Icon name="shield" size={14} className="badge-flag-ico" />
       {children}
     </span>
   )

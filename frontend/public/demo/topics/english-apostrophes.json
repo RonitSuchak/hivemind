@@ -119,5 +119,20 @@
         "The tree lost it's leaves, and it's cold now."
       ]
     }
-  ]
+  ],
+  "challenge": {
+    "id": "en-c1",
+    "text": "Which sentence is punctuated correctly?",
+    "options": [
+      "The wolves howls woke the villagers, and it's said that the pack's leader was huge.",
+      "The wolves' howls woke the villager's, and it's said that the pack's leader was huge.",
+      "The wolves' howls woke the villagers, and it's said that the pack's leader was huge.",
+      "The wolves' howls woke the villagers, and its said that the pack's leader was huge."
+    ],
+    "hints": [
+      "Check one apostrophe at a time. Start with 'howls'. Do the howls belong to the wolves?",
+      "A plural noun that already ends in s takes the apostrophe after the s. An apostrophe never turns a single word into a plain plural.",
+      "Check each apostrophe in turn. Ask whether the word owns something, or whether it is short for 'it is'. A plain plural needs no apostrophe."
+    ]
+  }
 }

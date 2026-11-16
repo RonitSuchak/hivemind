@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useMatch } from '../store.jsx'
 import { LANGUAGES } from '../data/languages.js'
+import { BETA, useT } from '../i18n/index.js'
 
 // Shows the site in the language a student picked, using the browser's own built-in translator
 // (Chrome's on-device Translator API). Nothing is sent to a server: the browser downloads a language
@@ -8,7 +9,15 @@ import { LANGUAGES } from '../data/languages.js'
 //
 // How it works: every piece of visible text on the page is swapped for its translation, and the English
 // is remembered so "Show in English" can put it back. New text that appears later (a new page, a
-// changed number) is translated as it arrives. Anything inside [data-no-translate] is left alone
+// changed number) is translated as it arrives.
+//
+// Beta languages (English, Russian, Hindi: see i18n/) have the home page, header and footer written by
+// hand. Those regions are marked [data-no-translate]. For ru and hi the browser translator still runs
+// quietly for the pages that have no dictionary yet, but a missing or failing translator is never shown
+// as an error: the bar just says the home page is translated and the rest is still English.
+//
+// The page language (<html lang>, dir) is set at once when the language changes, before any translator
+// work, so fonts, hyphenation and spacing (styles/i18n.css) follow the choice even if no translator exists. Anything inside [data-no-translate] is left alone
 // (the Hivemind name, tool names, language names, equations in the background).
 
 const RTL = new Set(['ar', 'ur', 'fa', 'ps'])
@@ -31,6 +40,8 @@ export function useSiteTranslation() {
       document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'
     }
     if (!siteLang || siteLang === 'en') { restore(); setStatus({ state: 'idle', lang: 'en' }); return }
+    document.documentElement.lang = siteLang
+    document.documentElement.dir = RTL.has(siteLang) ? 'rtl' : 'ltr'
 
     let off = false, observer = null, translator = null
     const cache = new Map()
@@ -82,8 +93,6 @@ export function useSiteTranslation() {
           monitor(m) { m.addEventListener('downloadprogress', (e) => { if (!off) setStatus({ state: 'preparing', lang: siteLang, progress: e.loaded }) }) },
         }), 120000)
         if (off) { translator.destroy?.(); return }
-        document.documentElement.lang = siteLang
-        document.documentElement.dir = RTL.has(siteLang) ? 'rtl' : 'ltr'
         collect(root)
         observer = new MutationObserver((list) => {
           for (const m of list) {
@@ -106,10 +115,13 @@ export function useSiteTranslation() {
 // Small bar, bottom left, on every page while a translation is on (or could not be done).
 export function TranslateBar({ status }) {
   const { setSiteLang } = useMatch()
+  const t = useT()
   if (status.state === 'idle') return null
   const lang = LANGUAGES.find((l) => l.id === status.lang)
   const name = lang ? lang.own : status.lang
-  const text = {
+  // Beta languages: words come from our dictionary, and every translator problem reads as the same calm note.
+  const beta = status.lang !== 'en' && BETA.includes(status.lang)
+  const text = beta ? t(status.state === 'done' ? 'bar.betaDone' : 'bar.beta', { lang: lang ? lang.name : status.lang }) : {
     preparing: `Getting ${name} ready${status.progress != null && status.progress < 1 ? ` (${Math.round(status.progress * 100)}%)` : ''}`,
     working: `Translating to ${name}`,
     done: `Shown in ${name}. Translated by your browser, so it may not be perfect.`,
@@ -121,7 +133,7 @@ export function TranslateBar({ status }) {
   return (
     <div className="trbar" role="status" data-no-translate>
       <span>{text}</span>
-      <button type="button" className="btn btn-small" onClick={() => setSiteLang('en')}>Show in English</button>
+      <button type="button" className="btn btn-small" onClick={() => setSiteLang('en')}>{t('bar.showEnglish')}</button>
     </div>
   )
 }

@@ -11,8 +11,7 @@ import '../styles/topics.css'
 //   value: the chosen topic or null    onChange(topic | null)    canStart(topic): ready in this session?
 const MAX = 7
 // The word used in "You will get the general ___ check."
-const GENERAL = { Maths: 'maths', English: 'English', Science: 'science', Computing: 'computing', Languages: 'languages' }
-const generalName = (subject) => GENERAL[subject] ?? subject.toLowerCase()
+const generalName = (subject) => (subject === 'English' ? 'English' : subject.toLowerCase())
 
 // Bold the letters the student typed where they start a word of the name.
 function Marked({ text, query }) {
@@ -30,7 +29,7 @@ const detail = (t) => {
   if (t.programme) return [t.code, t.programmeShort, t.unit].filter(Boolean).join(' · ')
   return t.subject
 }
-const tagFor = (t) => (!t.ready ? 'Coming soon' : t.exact ? 'Start' : 'General check')
+const tagFor = (t) => (!t.ready ? 'Coming soon' : t.beta ? (t.exact ? 'Beta' : 'Beta check') : t.exact ? 'Start' : 'General check')
 
 export default function TopicPicker({ value, onChange, canStart }) {
   const id = useId()
@@ -56,7 +55,8 @@ export default function TopicPicker({ value, onChange, canStart }) {
         <span className="icon-chip icon-chip-pop" aria-hidden="true"><Icon name="target" size={18} /></span>
         <p className="tk-chosen-text"><span>{detail(value)}</span><strong>{value.name}</strong></p>
         <button type="button" className="btn btn-small" onClick={() => { onChange(null); requestAnimationFrame(() => input.current?.focus()) }}>Change</button>
-        {value.exact === false && <p className="tk-chosen-note">Questions for this {value.isProgramme ? 'whole course' : 'exact topic'} are not written yet. You will get the general {generalName(value.subject)} check.</p>}
+        {value.exact === false && <p className="tk-chosen-note">Questions for this {value.isProgramme ? 'whole course' : 'exact topic'} are not written yet. You will get the {value.beta ? 'beta' : 'general'} {generalName(value.subject)} check{value.pack === 'default' ? ', which is on fractions' : ''}.</p>}
+        {value.beta && <p className="tk-chosen-note"><b>Beta.</b> A first try: the questions are new and may change. Its language questions and hard question are trials: asked, but not scored yet.</p>}
       </div>
     )
   }
