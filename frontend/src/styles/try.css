@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Try a demo tool (.tr): a live chat page. Everything is scoped under .tr.
+   Uses the shared tokens only; no new colours.
+   ========================================================================== */
+.tr { max-width: 40rem; margin-inline: auto; display: grid; gap: var(--s-5); }
+.tr h1 { font-size: var(--text-2xl); }
+.tr .tr-head { display: grid; gap: var(--s-3); }
+.tr .tr-sub { color: var(--ink-2); font-size: var(--text-lg); line-height: 1.55; max-width: 34rem; }
+.tr .tr-flag { display: flex; gap: var(--s-3); align-items: flex-start; }
+.tr .tr-flag .icon { flex: none; margin-top: 0.2rem; }
+.tr .tr-privacy,
+.tr .tr-note { display: flex; gap: var(--s-3); align-items: flex-start; font-size: var(--text-sm); color: var(--ink-2); }
+.tr .tr-privacy .icon,
+.tr .tr-note .icon { flex: none; margin-top: 0.15rem; color: var(--accent); }
+.tr .tr-note { padding: var(--s-3) var(--s-4); border: 1px solid var(--warn-line); border-radius: var(--r-md); background: var(--warn-bg); color: var(--warn-ink); }
+
+.tr .tr-card { border-radius: var(--r-lg); padding: clamp(1rem, 3vw + 0.5rem, 2rem); display: grid; gap: var(--s-4); }
+.tr .tr-meta { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); min-height: 2rem; font-size: var(--text-sm); color: var(--ink-3); }
+
+.tr .tr-log { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); min-height: 8rem; max-height: min(26rem, 55vh); overflow-y: auto; align-content: start; }
+.tr .tr-empty { color: var(--ink-3); font-size: var(--text-sm); padding: var(--s-4) 0; }
+.tr .tr-msg { display: grid; gap: 4px; max-width: 88%; justify-self: start; }
+.tr .tr-msg[data-from="you"] { justify-self: end; justify-items: end; }
+.tr .tr-who { padding-inline: 2px; font-size: var(--text-xs, 0.8125rem); color: var(--ink-2); font-weight: 600; }
+.tr .tr-text { margin: 0; padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-radius: var(--r-md); border-top-left-radius: 4px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.tr .tr-msg[data-from="you"] .tr-text { border-top-left-radius: var(--r-md); border-top-right-radius: 4px; background: var(--accent-soft); }
+.tr .tr-wait .tr-text { color: var(--ink-3); }
+.tr .tr-replaced { display: flex; gap: var(--s-2); align-items: flex-start; margin: 0; padding: var(--s-2) var(--s-3); border: 1px solid var(--warn-line); border-radius: var(--r-md); background: var(--warn-bg); font-size: var(--text-sm); }
+.tr .tr-replaced .icon { flex: none; margin-top: 0.15rem; }
+.tr .tr-end { height: 1px; }
+
+.tr .tr-alert { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; padding: var(--s-3) var(--s-4); border: 1px solid var(--warn-line); border-radius: var(--r-md); background: var(--warn-bg); font-size: var(--text-sm); }
+.tr .tr-alert .icon { flex: none; }
+.tr .tr-alert .btn { margin-left: auto; }
+
+.tr .tr-form { display: grid; gap: var(--s-3); }
+.tr .tr-form textarea { width: 100%; resize: vertical; min-height: 4.5rem; padding: var(--s-3) var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: transparent; color: var(--ink); font: inherit; font-size: max(16px, var(--text-base)); line-height: 1.5; }
+.tr .tr-form textarea:disabled { opacity: 0.6; }
+.tr .tr-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
+.tr .tr-count { font-size: var(--text-sm); color: var(--ink-3); }
+.tr .tr-count.is-near { color: var(--ink); font-weight: 600; }
+.tr .tr-count.is-over { color: var(--ink); font-weight: 700; text-decoration: underline; }

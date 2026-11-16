@@ -139,6 +139,7 @@ function RunView({ run, students, gains, flagged, names, style, busy, startWith 
             ? <p className="lx-stands">Tested through <b>{run.tutor_name}</b>, our demo tool for this type{style ? `: ${style.charAt(0).toLowerCase()}${style.slice(1)}` : ''}.</p>
             : style && <p className="lx-tutor-style"><SwapText text={style} /></p>}
           {TYPE[run.tutor_id] && <ToolRow id={run.tutor_id} demo={run.tutor_name} />}
+          {!run.safety.critical_fail && <p className="lx-try"><Link to={`/try/${run.tutor_id}`} className="btn btn-small">Try this demo tool</Link></p>}
           {run.tutor_mode === 'scripted' && <p className="lx-preview-tag"><Icon name="info" size={14} /> Preview data. The full AI run is not finished.</p>}
         </div>
         {run.safety.critical_fail && <SafetyBadge />}

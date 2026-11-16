@@ -8,6 +8,7 @@ import Lab from './pages/Lab.jsx'
 import Ratings from './pages/Ratings.jsx'
 import About from './pages/About.jsx'
 import Tools from './pages/Tools.jsx'
+import Try from './pages/Try.jsx'
 import { useHeavyScroll, useScrollingFlag } from './scroll.js'
 import './styles/theme.css' // theme layer: last, so it wins over page styles
 
@@ -36,6 +37,7 @@ export default function App() {
           <Route index element={<Lab />} />
           <Route path="ratings" element={<Ratings />} />
         </Route>
+        <Route path="try/:tutorId" element={<Try />} />
         <Route path="tools" element={<Tools />} />
         <Route path="about" element={<About />} />
         <Route path="*" element={<Navigate to="/" replace />} />

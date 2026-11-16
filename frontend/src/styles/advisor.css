@@ -194,3 +194,6 @@
 /* Results: the three websites to try first, above the tool type ranking. */
 .rs .rs-best { margin-block: var(--s-7) 0; }
 .rs .rs-best h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; line-height: 1.12; letter-spacing: var(--track-display); }
+
+/* Try link beside "See real tools like this" */
+.rs-tools { display: flex; flex-wrap: wrap; gap: var(--s-2); }

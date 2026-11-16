@@ -92,7 +92,15 @@ async function request(path, options) {
   }
   let body = null
   try { body = await res.json() } catch { /* not JSON */ }
-  if (!res.ok) throw new Error(body?.error?.message || 'Something went wrong. Please try again.')
+  if (!res.ok) {
+    // Every backend error is { error: { code, message } } (docs/BACKEND.md section 5, errors). Keep the code so pages can react.
+    const err = new Error(body?.error?.message || 'Something went wrong. Please try again.')
+    err.code = body?.error?.code
+    err.status = res.status
+    const wait = Number(res.headers.get('Retry-After'))
+    if (err.code === 'rate_limited' && wait > 0) err.retryAfter = wait
+    throw err
+  }
   return body
 }
 
@@ -113,3 +121,4 @@ export const getCheck = () => get('/api/check')
 // Real EdTech products, each linked to the demo tool type it most resembles. Never tested, never scored.
 export const getRealTools = () => get('/api/real-tools')
 export const postMatch = (answers) => request('/api/match', { method: 'POST', body: JSON.stringify(answers) })
+export const postChat = (body) => request('/api/chat', { method: 'POST', body: JSON.stringify(body) })

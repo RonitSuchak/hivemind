@@ -169,6 +169,7 @@ function RankCard({ t, i, onTools }) {
             <button type="button" className="btn btn-small" aria-haspopup="dialog" onClick={() => onTools(t)}>
               <Icon name="list" size={16} /> See real tools like this
             </button>
+            {!warn && t.try_url && <Link to={t.try_url} className="btn btn-small rs-try">Try this demo tool</Link>}
           </p>
         )}
       </div>
