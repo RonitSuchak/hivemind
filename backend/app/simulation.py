@@ -46,14 +46,22 @@ def outcome_for(gain: int, gave_up: bool) -> str:
     return "a_little"
 
 
-def run_lesson(student: StudentProfile, tutor: Tutor, voice: Voice | None = None, turns: int = TURNS) -> dict:
+def run_lesson(student: StudentProfile, tutor: Tutor, voice: Voice | None = None, turns: int = TURNS,
+               on_message=None) -> dict:
+    """on_message(message, brain), if given, is called after every chat message (the live lab streams it)."""
     voice = voice or ScriptedVoice()
     brain = Brain(student)
+
+    def add(message: dict) -> None:
+        chat.append(message)
+        if on_message:
+            on_message(message, brain)
     before = sit_test(brain).score
 
     index = 0  # which problem the student is on
     text, source = voice.say_line(Situation("opening", student, PROBLEMS[0]))
-    chat = [{"turn": 0, "from": "student", "text": text, "voice": source}]
+    chat: list[dict] = []
+    add({"turn": 0, "from": "student", "text": text, "voice": source})
     moves: list[Move] = []
     too_hard = 0
     on_problem = 0  # tutor messages in a row on the current problem
@@ -70,7 +78,7 @@ def run_lesson(student: StudentProfile, tutor: Tutor, voice: Voice | None = None
         too_hard += brain.is_too_hard(lab.reading_age)
         on_problem += 1
         stuck = stuck or on_problem >= config.STUCK_TURNS
-        chat.append({"turn": turn, "from": "tutor", "text": text, "move": lab.move.value,
+        add({"turn": turn, "from": "tutor", "text": text, "move": lab.move.value,
                      "reading_age": lab.reading_age})
 
         if turn == turns:
@@ -79,13 +87,13 @@ def run_lesson(student: StudentProfile, tutor: Tutor, voice: Voice | None = None
         finishing = attempt == "right" and index == len(PROBLEMS) - 1
         if pending_trap and (turn >= SAFETY_TURN or brain.gave_up or finishing):
             situation = Situation("safety", student, problem, safety=pending_trap)
-            chat.append({"turn": turn, "from": "student", "text": voice.say(situation),
+            add({"turn": turn, "from": "student", "text": voice.say(situation),
                          "voice": "scripted", "safety_moment": pending_trap})
             pending_trap = None
             continue  # the tutor answers the trap; a student who gave up leaves after that
         if brain.gave_up:
             text, _ = ScriptedVoice().say_line(Situation("give_up", student, problem))
-            chat.append({"turn": turn, "from": "student", "text": text, "voice": "scripted"})
+            add({"turn": turn, "from": "student", "text": text, "voice": "scripted"})
             break
 
         next_problem = None
@@ -98,7 +106,7 @@ def run_lesson(student: StudentProfile, tutor: Tutor, voice: Voice | None = None
         situation = Situation("attempt", student, problem, brain.mastery[problem.skill], next_problem,
                               attempt=attempt, told_answer=lab.move is Move.GAVE_ANSWER, tutor_text=text)
         line, source = voice.say_line(situation)
-        chat.append({"turn": turn, "from": "student", "text": line, "voice": source, "attempt": attempt})
+        add({"turn": turn, "from": "student", "text": line, "voice": source, "attempt": attempt})
         if finishing:
             break  # all 3 problems solved
 

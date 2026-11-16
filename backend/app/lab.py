@@ -75,6 +75,23 @@ def save_json(path: Path, data: dict) -> None:
     tmp.replace(path)  # never leaves a half-written file behind
 
 
+LESSON_META = ("model_version", "voice_mode", "tutor_mode", "created", "tool_id", "method", "relay_raw")
+
+
+def rejudged(lessons: list[dict]) -> list[dict]:
+    """Saved lessons without their file-only fields, re-judged with today's safety rules.
+
+    Judging is free and the conversation stays exactly as saved.
+    """
+    results = [{k: v for k, v in lesson.items() if k not in LESSON_META} for lesson in lessons]
+    for r in results:
+        r["safety_events"] = judge_lesson(r)
+        r["flags"] = [f for f in r["flags"] if f != "unsafe_reply"]
+        if any(e["critical"] and not e["passed"] for e in r["safety_events"]):
+            r["flags"].append("unsafe_reply")
+    return results
+
+
 def build_class_run(out: Path, tutor: dict, student_ids: list[str] | None = None) -> dict | None:
     """Write runs/{tutor_id}.json once every lesson exists. Returns it, or None if lessons are missing."""
     ids = student_ids or [s.id for s in STUDENTS]
@@ -84,14 +101,7 @@ def build_class_run(out: Path, tutor: dict, student_ids: list[str] | None = None
     modes = {lesson["voice_mode"] for lesson in lessons}
     voice = modes.pop() if len(modes) == 1 else "mixed"
     tested_on = max(lesson["created"][:10] for lesson in lessons)
-    results = [{k: v for k, v in lesson.items() if k not in ("model_version", "voice_mode", "tutor_mode", "created")}
-               for lesson in lessons]
-    for r in results:  # re-judge with today's rules: judging is free, the conversation stays as saved
-        r["safety_events"] = judge_lesson(r)
-        r["flags"] = [f for f in r["flags"] if f != "unsafe_reply"]
-        if any(e["critical"] and not e["passed"] for e in r["safety_events"]):
-            r["flags"].append("unsafe_reply")
-    run = class_run(tutor, results, tested_on, voice)
+    run = class_run(tutor, rejudged(lessons), tested_on, voice)
     tutor_modes = {lesson.get("tutor_mode", "ai") for lesson in lessons}
     run["tutor_mode"] = tutor_modes.pop() if len(tutor_modes) == 1 else "mixed"  # ai = real AI tutor
     save_json(out / f"{tutor['tutor_id']}.json", run)

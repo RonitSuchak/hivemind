@@ -1,5 +1,5 @@
 {
- "match_id": "m_wGPR5dph",
+ "match_id": "m_URIuw8C2",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -167,10 +167,25 @@
    "kind": "Language practice",
    "blurb": "Short language lessons with streaks, points and daily reminders.",
    "most_used": true,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -183,10 +198,23 @@
    "kind": "Flashcards",
    "blurb": "Make or find flashcard sets, then study them with quizzes and games.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -199,10 +227,23 @@
    "kind": "Quiz games",
    "blurb": "Fast quiz games that a class plays together on screens.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 0
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -215,10 +256,23 @@
    "kind": "Spaced repetition",
    "blurb": "Flashcards that come back just before you would forget them.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -231,10 +285,23 @@
    "kind": "Revision (UK)",
    "blurb": "Revision courses for UK exams, with short questions after each part.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -247,10 +314,26 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Maths homework set by your school, with video help on each question.",
    "most_used": true,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 0
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -263,10 +346,26 @@
    "kind": "Maths videos and practice",
    "blurb": "Maths videos with practice questions, often set by teachers.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -279,10 +378,26 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Video lessons and quizzes that check each maths topic step by step.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 2,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -295,10 +410,26 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Online maths lessons and games, often set as homework.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -311,10 +442,26 @@
    "kind": "Times tables practice",
    "blurb": "Timed games that help you learn your times tables.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -327,10 +474,26 @@
    "kind": "A level maths practice",
    "blurb": "A level maths lessons, notes and questions. Many schools set it.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -343,10 +506,26 @@
    "kind": "Maths practice",
    "blurb": "Maths activities, games and live challenges set by schools.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -359,10 +538,23 @@
    "kind": "Practice questions",
    "blurb": "Practice questions in maths and English that get harder as you improve.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -375,10 +567,26 @@
    "kind": "Maths game",
    "blurb": "A fantasy game where you answer maths questions to play.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -391,10 +599,28 @@
    "kind": "Science quizzes (UK schools)",
    "blurb": "Science quizzes set by teachers, with instant marking.",
    "most_used": false,
+   "subjects": [
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Combined Science"
+   ],
+   "for_advanced": false,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 0
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -407,10 +633,23 @@
    "kind": "Daily quizzes (UK)",
    "blurb": "Short daily quizzes that change as you get questions right or wrong.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -423,10 +662,23 @@
    "kind": "Adaptive lessons",
    "blurb": "Short lessons and questions that change as you answer.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -439,10 +691,23 @@
    "kind": "Revision videos",
    "blurb": "Short revision videos for GCSE subjects.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -455,10 +720,23 @@
    "kind": "Quiz games",
    "blurb": "Quiz games with different game modes for a class or one player.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -471,10 +749,23 @@
    "kind": "Quiz games",
    "blurb": "Quiz games where you earn in-game money for right answers.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": false,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -487,10 +778,23 @@
    "kind": "Flashcards",
    "blurb": "Flashcards that you rate, so hard cards come back more often.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -503,10 +807,25 @@
    "kind": "Language practice",
    "blurb": "Language lessons using short phrases, flashcards and videos of speakers.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -519,10 +838,25 @@
    "kind": "Language lessons",
    "blurb": "Short language lessons that teach words and everyday conversation.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -535,10 +869,25 @@
    "kind": "Language lessons",
    "blurb": "Language courses with short lessons and feedback from other learners.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -551,10 +900,25 @@
    "kind": "Language practice",
    "blurb": "Language lessons with grammar notes, short exercises and audio.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -567,10 +931,25 @@
    "kind": "Language lessons",
    "blurb": "Language lessons that use pictures and sound instead of English.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -583,10 +962,25 @@
    "kind": "Coding lessons",
    "blurb": "Learn to code by typing in a lesson window and checking the result.",
    "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -599,10 +993,25 @@
    "kind": "Coding lessons",
    "blurb": "Coding lessons and puzzles that start with drag and drop blocks.",
    "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -615,10 +1024,25 @@
    "kind": "Coding lessons",
    "blurb": "Coding lessons with exercises you type in your browser.",
    "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -631,10 +1055,25 @@
    "kind": "Writing practice",
    "blurb": "Short grammar and writing exercises that change as you answer.",
    "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -647,10 +1086,25 @@
    "kind": "Reading practice",
    "blurb": "Short reading passages with questions that match your level.",
    "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -663,10 +1117,25 @@
    "kind": "Reading and vocabulary",
    "blurb": "Short vocabulary and reading lessons set by schools.",
    "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "simple_steps",
     "tutor_name": "Simple Steps"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 1,
    "type_safety_concern": false,
    "estimated": true,
@@ -679,10 +1148,26 @@
    "kind": "Graphing",
    "blurb": "A graphing calculator for drawing and exploring equations.",
    "most_used": true,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -695,10 +1180,23 @@
    "kind": "Interactive problems",
    "blurb": "Hands-on puzzles and short lessons in maths, science and computing.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -711,10 +1209,23 @@
    "kind": "AI learning assistant",
    "blurb": "A learning assistant from Khan Academy that asks questions to guide you.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -727,10 +1238,26 @@
    "kind": "Maths problems",
    "blurb": "Open maths problems and puzzles that make you think and explore.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -743,10 +1270,26 @@
    "kind": "Physics problems",
    "blurb": "Physics and maths problems with hints and feedback as you go.",
    "most_used": false,
+   "subjects": [
+    "Physics",
+    "Combined Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -759,10 +1302,26 @@
    "kind": "Maths problems",
    "blurb": "Problems and resources that connect A level maths ideas.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -775,10 +1334,26 @@
    "kind": "Maths exploring",
    "blurb": "Draw and move shapes, graphs and equations to see how they work.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -791,10 +1366,28 @@
    "kind": "Science simulations",
    "blurb": "Interactive science and maths simulations that you can change and test.",
    "most_used": false,
+   "subjects": [
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Combined Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -807,10 +1400,26 @@
    "kind": "Interactive maths",
    "blurb": "Interactive maths lessons that you click and drag as you read.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -823,10 +1432,25 @@
    "kind": "Coding with blocks",
    "blurb": "Build games and stories by snapping code blocks together.",
    "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -839,10 +1463,25 @@
    "kind": "Audio language courses",
    "blurb": "Audio language courses where you work out the grammar yourself.",
    "most_used": false,
+   "subjects": [
+    "Languages"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "socratic",
     "tutor_name": "Socratic"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 2,
    "type_safety_concern": false,
    "estimated": true,
@@ -855,10 +1494,23 @@
    "kind": "Lessons and practice",
    "blurb": "Video lessons and practice questions across maths, science and more.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -871,10 +1523,23 @@
    "kind": "Revision notes and videos",
    "blurb": "Short revision guides, videos and quizzes for UK school subjects.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -887,10 +1552,23 @@
    "kind": "Video lessons (UK)",
    "blurb": "Video lessons and worksheets that follow the UK school curriculum.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -903,10 +1581,26 @@
    "kind": "Maths lessons and practice",
    "blurb": "Maths lessons, slides and practice questions for UK students.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -919,10 +1613,26 @@
    "kind": "Maths videos",
    "blurb": "Short maths videos with practice questions and answers.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -935,10 +1645,23 @@
    "kind": "Revision notes",
    "blurb": "Revision notes, practice questions and model answers for school exams.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -951,10 +1674,23 @@
    "kind": "Online A level courses",
    "blurb": "Online A level courses with video lessons and practice.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -967,10 +1703,26 @@
    "kind": "Maths videos",
    "blurb": "Maths video lessons and walkthroughs of past exam papers.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -983,10 +1735,23 @@
    "kind": "Video lessons",
    "blurb": "Video lessons and quizzes for GCSE subjects.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -999,10 +1764,25 @@
    "kind": "Computer science lessons",
    "blurb": "Computer science notes and questions for school and A level.",
    "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1015,10 +1795,23 @@
    "kind": "Textbooks and lessons",
    "blurb": "Online textbooks, videos and practice for maths and science.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1031,10 +1824,23 @@
    "kind": "Video lessons",
    "blurb": "Fast video courses on school subjects, from history to chemistry.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1047,10 +1853,23 @@
    "kind": "Short videos",
    "blurb": "Short animated video lessons on many topics.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1063,10 +1882,26 @@
    "kind": "Maths videos",
    "blurb": "Animated videos that explain maths ideas with pictures.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1079,10 +1914,25 @@
    "kind": "Reading practice",
    "blurb": "News articles at different reading levels, with questions to check.",
    "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1095,10 +1945,23 @@
    "kind": "Online courses",
    "blurb": "Online university courses with video lectures and quizzes.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1111,10 +1974,23 @@
    "kind": "Online courses",
    "blurb": "University courses taught in video lectures, with readings and tests.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1127,10 +2003,23 @@
    "kind": "Online courses",
    "blurb": "Short online courses from universities, with videos, articles and discussion.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1143,10 +2032,23 @@
    "kind": "Online courses",
    "blurb": "Online video courses on many skills, taught by many different people.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "lecturer",
     "tutor_name": "Lecturer"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
@@ -1159,10 +2061,23 @@
    "kind": "AI chatbot",
    "blurb": "A chatbot that answers questions and explains ideas in plain language.",
    "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1175,10 +2090,26 @@
    "kind": "Maths solver",
    "blurb": "Point your camera at a maths problem to see the steps worked out.",
    "most_used": true,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1191,10 +2122,23 @@
    "kind": "Answer engine",
    "blurb": "Type a maths or science question and get a worked answer.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1207,10 +2151,26 @@
    "kind": "Maths solver",
    "blurb": "Type in a maths problem and see the steps to solve it.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1223,10 +2183,26 @@
    "kind": "Maths solver",
    "blurb": "Enter a maths problem and get the answer with steps.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1239,10 +2215,26 @@
    "kind": "Maths solver",
    "blurb": "Type, write or scan a maths problem to get steps and graphs.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1255,10 +2247,26 @@
    "kind": "Maths past papers",
    "blurb": "Past exam papers with worked answers and video solutions.",
    "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1271,10 +2279,23 @@
    "kind": "Notes and past papers",
    "blurb": "Revision notes, past papers and mark schemes for school exams.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1287,10 +2308,23 @@
    "kind": "Homework answers",
    "blurb": "A community where students ask homework questions and others answer.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1303,10 +2337,23 @@
    "kind": "Homework answers",
    "blurb": "Step by step textbook solutions and answers to homework questions.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1319,10 +2366,25 @@
    "kind": "Writing helper",
    "blurb": "Checks your writing and suggests fixes for spelling and grammar.",
    "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1335,10 +2397,23 @@
    "kind": "AI search",
    "blurb": "A search tool that answers questions and shows its sources.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1351,10 +2426,23 @@
    "kind": "AI chatbot",
    "blurb": "A chatbot that answers questions and helps with writing and ideas.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1367,10 +2455,23 @@
    "kind": "AI chatbot",
    "blurb": "Google’s chatbot that answers questions and helps with writing.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1383,10 +2484,23 @@
    "kind": "AI chatbot",
    "blurb": "Microsoft’s chatbot that answers questions and helps with writing.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
@@ -1399,16 +2513,30 @@
    "kind": "AI notes helper",
    "blurb": "Upload your notes and ask questions about them.",
    "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
    "type": {
     "tutor_id": "answer_machine",
     "tutor_name": "Answer Machine"
    },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
    "type_rank": 4,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   }
  ],
+ "topic": null,
  "follow_ups": [
   {
    "id": "why_top",

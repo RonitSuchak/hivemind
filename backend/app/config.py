@@ -97,6 +97,7 @@ VOICE_MAX_CHARS = 200
 DATA_DIR = BACKEND_DIR / "data"
 RUNS_DIR = DATA_DIR / "runs"  # saved AI runs: they ship with the code and are the demo
 OFFLINE_RUNS_DIR = DATA_DIR / "runs-offline"  # pre-written tutors and voice (tests, backup)
+PILOT_DIR = DATA_DIR / "pilot"  # hand-relayed lessons with real EdTech tools (app.relay)
 LAB_ORDER = ("socratic", "simple_steps", "cheerleader", "answer_machine", "lecturer")  # pitch tutors first
 CALLS_PER_LESSON = 11  # 6 tutor messages + up to 5 student lines
 GEMINI_DAILY_BUDGET = int(setting("GEMINI_DAILY_BUDGET", "500"))  # free tier: 15 per minute, 500 per day (AI Studio, 15 Nov)
@@ -139,6 +140,8 @@ RATE_LIMITS = {  # bucket: (requests, per seconds), per device (IP address, kept
     "verify": (10, 600),
     "validation": (10, 3600),
     "admin": (10, 600),
+    "live_lab": (3, 600),  # each live run costs up to 33 AI calls
+    "live_lab_replay": (30, 600),
 }
 STORE_DIR = DATA_DIR / "store"  # JSON files when DATABASE_URL is not set
 REAL_TOOLS_FILE = DATA_DIR / "real_tools.json"  # Kien's real EdTech tools list, each with its demo tool type
@@ -175,3 +178,13 @@ SECURITY_HEADERS = {
     "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
 }
 DOCS_PATHS = ("/docs", "/redoc", "/docs/oauth2-redirect")  # need their own scripts: no strict CSP
+
+# Real-tools mini pilot (app.relay, GET /api/pilot)
+PILOT_VOICE_CALLS = 5  # AI student lines per relayed lesson at most (the tool itself is a person pasting)
+RELAY_MAX_REPLY_CHARS = 6000  # a pasted tool reply longer than this is refused, not cut
+RELAY_END_MARKER = "END"  # a line with only this ends a pasted reply
+
+# Live lab (GET /api/live-lab)
+LIVE_LAB_MAX_STUDENTS = 3
+LIVE_LAB_STALE_SECONDS = 600  # a run slot held longer than this is treated as free
+REPLAY_DELAY_SECONDS = 1.0  # default gap between replayed messages (0 to 3)

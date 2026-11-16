@@ -20,11 +20,11 @@ from datetime import datetime, timezone
 from fastapi import Depends, FastAPI, Header, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel, ConfigDict
+from fastapi.responses import JSONResponse, StreamingResponse
+from pydantic import BaseModel, ConfigDict, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from . import advisor, catalog, config, live, matching, real_tools
+from . import advisor, catalog, config, live, live_lab, matching, pilot, real_tools
 from .check import profile_from, public_check
 from .limits import limiter
 from .middleware import BodyLimit, SecurityHeaders, client_ip
@@ -186,6 +186,33 @@ def get_report(tutor_id: str):
 Answers = dict[str, str | None] | None
 
 
+class Topic(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    subject: str = Field(min_length=1, max_length=40)
+    advanced: bool = False
+
+
+class LanguageAnswer(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=40)
+    answer: str | None = Field(default=None, max_length=200)
+
+
+class HardAnswer(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(min_length=1, max_length=40)
+    answer: str | None = Field(default=None, max_length=200)
+    hints_opened: int = Field(default=0, ge=0, le=10)
+
+
+class Extras(BaseModel):
+    """Trial parts of a demo topic pack. Stored with the match, never used in scoring (yet)."""
+    model_config = ConfigDict(extra="forbid")
+    pack: str | None = Field(default=None, max_length=60)
+    language: list[LanguageAnswer] = Field(default_factory=list, max_length=10)
+    hard: HardAnswer | None = None
+
+
 class MatchBody(BaseModel):
     model_config = ConfigDict(extra="ignore")
     quiz_1: Answers = None
@@ -193,10 +220,14 @@ class MatchBody(BaseModel):
     reading: Answers = None
     english_confidence: int | None = None
     seconds_taken: int | None = None
+    topic: Topic | None = None
+    extras: Extras | None = None
 
 
-def build_match(profile: dict) -> dict:
+def build_match(profile: dict, topic: dict | None = None, extras: dict | None = None) -> dict:
+    """topic: {"subject", "advanced"} narrows real_tools only. extras: stored, never scored."""
     rated = catalog.rated()
+    topic = real_tools.clean_topic(topic)
     result = matching.match(profile, rated)
     try:
         entries = validation_entries()
@@ -204,18 +235,58 @@ def build_match(profile: dict) -> dict:
         entries = []
     result["follow_ups"] = advisor.follow_ups(result, rated, live.validation_summary(entries))
     try:  # the match itself never needs the database; only "ask" by match_id does
-        get_store().put("matches", result["match_id"], {"profile": result["profile"], "questions": 0, "created": now()})
+        get_store().put("matches", result["match_id"], {"profile": result["profile"], "questions": 0, "created": now(),
+                                                         "topic": topic, "extras": extras})
     except StoreUnavailable:
         log.warning("match not saved: database unreachable")
-    result["real_tools"] = real_tools.for_match(result["ranked"])
-    keys = ("match_id", "enough_matches", "profile", "radar", "matches", "ranked", "real_tools", "follow_ups", "message",
-            "note")
+    result["real_tools"] = real_tools.for_match(result["ranked"], topic)
+    result["topic"] = topic
+    keys = ("match_id", "enough_matches", "profile", "radar", "matches", "ranked", "real_tools", "topic", "follow_ups",
+            "message", "note")
     return {k: result[k] for k in keys}
 
 
 @app.get("/api/real-tools")
-def get_real_tools():
-    return real_tools.listing()
+def get_real_tools(student: str | None = None, subject: str | None = None, advanced: bool = False):
+    """Every real tool; or, with ?student=s07, the tools for one simulated student (Lab drawer)."""
+    if subject is not None and not 0 < len(subject.strip()) <= real_tools.SUBJECT_MAX_CHARS:
+        raise ApiError(400, "invalid_input", f"subject must be 1 to {real_tools.SUBJECT_MAX_CHARS} characters.")
+    if student is None:
+        if subject is not None:
+            raise ApiError(400, "invalid_input", "subject only works with student. For a person, send topic to /api/match.")
+        return real_tools.listing()
+    try:
+        return real_tools.for_student(student, subject, advanced)
+    except KeyError:
+        raise ApiError(404, "not_found", "No simulated student with that id.") from None
+
+
+@app.get("/api/pilot")
+def get_pilot():
+    return pilot.listing()
+
+
+SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+
+
+@app.get("/api/live-lab")
+def get_live_lab(request: Request, tutor_id: str, students: str | None = None, mode: str = "live",
+                 delay: float = config.REPLAY_DELAY_SECONDS):
+    """Server-Sent Events: a live (or replayed) lab run. Event format in docs/BACKEND.md 5.21."""
+    if mode not in ("live", "replay"):
+        raise ApiError(400, "invalid_input", 'mode must be "live" or "replay".')
+    try:
+        chosen = live_lab.parse_students(students)  # checked first, so a typo doesn't use up a live run
+        rate_limit("live_lab" if mode == "live" else "live_lab_replay")(request)
+        if mode == "replay":
+            if not 0 <= delay <= 3:
+                raise ApiError(400, "invalid_input", "delay must be between 0 and 3 seconds.")
+            stream = live_lab.replay_stream(live_lab.replay_events(tutor_id, chosen), delay)
+        else:
+            stream = live_lab.start_live(tutor_id, chosen)
+    except live_lab.LiveLabError as exc:
+        raise ApiError(exc.status, exc.code, exc.message) from None
+    return StreamingResponse(stream, media_type="text/event-stream", headers=SSE_HEADERS)
 
 
 @app.get("/api/check")
@@ -225,7 +296,8 @@ def check():
 
 @app.post("/api/match", dependencies=[Depends(rate_limit("match"))])
 def post_match(body: MatchBody):
-    return build_match(profile_from(body.model_dump()))
+    data = body.model_dump()
+    return build_match(profile_from(data), data.get("topic"), data.get("extras"))
 
 
 class AskBody(BaseModel):

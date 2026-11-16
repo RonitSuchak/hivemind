@@ -4,7 +4,8 @@
 
 Calls the real app (no server needed), so the files are exactly what the API
 returns. Kien and Nina copy the folder into the website's public folder and
-load it when /api/health fails. Example POST responses are saved too; ask and
+load it when /api/health fails. live-lab/{tutor_id}.json holds the replay
+events of GET /api/live-lab (the default 3 students) as a list, since a file can't stream. Example POST responses are saved too; ask and
 chat examples need real AI calls, so they are only made with --with-ai.
 """
 
@@ -17,7 +18,7 @@ import sys
 
 from fastapi.testclient import TestClient
 
-from . import catalog, config
+from . import catalog, config, live_lab
 from .api import app
 from .check import QUIZ_1, QUIZ_2, READING_QS
 
@@ -56,9 +57,15 @@ def main() -> None:
     for name in ("tutors", "students", "ratings", "check", "test", "validation", "submissions"):
         save(f"{name}.json", get(f"/api/{name}"))
     save("real-tools.json", get("/api/real-tools"))
+    for student in get("/api/students"):  # the Lab drawer's real tools, one file per simulated student
+        save(f"real-tools/students/{student['id']}.json", get(f"/api/real-tools?student={student['id']}"))
+    save("pilot.json", get("/api/pilot"))
     for tutor, _ in catalog.rated():
         save(f"runs/{tutor['tutor_id']}.json", get(f"/api/runs/{tutor['tutor_id']}"))
         save(f"report/{tutor['tutor_id']}.json", get(f"/api/report/{tutor['tutor_id']}"))
+        if tutor["kind"] == "built_in":  # the live lab's replay events, for demo mode (no server to stream)
+            events = live_lab.replay_events(tutor["tutor_id"], live_lab.parse_students(None))
+            save(f"live-lab/{tutor['tutor_id']}.json", [{"event": e, "data": d} for e, d in events])
 
     match = client.post("/api/match", json=NEAR_CHECK).json()
     save("match-example.json", match)

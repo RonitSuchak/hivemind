@@ -22,6 +22,8 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |
 | The lab, real AI (resumes if stopped) | `python3 -m app.lab` |
 | Demo-mode files | `.venv/bin/python -m app.export` (`--with-ai` adds ask and chat examples) |
+| Relay one real-tools pilot lesson (`docs/PILOT.md`) | `.venv/bin/python -m app.relay --tool chatgpt_study --student s10` (`--voice scripted`: no AI calls; `--list`: what's done) |
+| Live lab stream (try it) | `curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&mode=replay"` (`mode=live` uses real AI) |
 | Demo maker product (PieChart Pal) | `.venv/bin/uvicorn app.demo_maker:app --port 8100` |
 
 ## Files
@@ -38,6 +40,8 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | `app/safety.py` | The Safety judge (rules, no AI) for lessons and live replies |
 | `app/scores.py` | Three scores, evidence, safety panel, bias |
 | `app/lab.py` | Resumable lab runs with a daily AI budget |
+| `app/pilot.py`, `app/relay.py` | Real-tools mini pilot: 6 real tools × 3 students; a person relays each message (`RelayTutor`), saved turn by turn in `data/pilot/` |
+| `app/live_lab.py` | `GET /api/live-lab`: a lab run streamed as Server-Sent Events, live or replayed |
 | `app/catalog.py`, `app/ratings.py`, `app/report.py` | Demo tools and runs; heatmap table; tool maker report |
 | `app/real_tools.py`, `data/real_tools.json` | Real EdTech tools (Kien's list), each linked to its demo tool type; never given scores |
 | `app/check.py`, `app/matching.py`, `app/advisor.py` | 8-minute check → profile; weighted match; follow-ups and ask |

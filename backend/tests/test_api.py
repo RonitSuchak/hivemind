@@ -160,6 +160,57 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()["tools"]), 78)
 
+    def test_match_topic_filters_real_tools_and_extras_are_stored_not_scored(self):
+        from app.export import NEAR_CHECK
+        plain = self.match(dict(NEAR_CHECK))
+        extras = {"pack": "languages-spanish-basics", "language": [{"id": "es-l1", "answer": "Hola"}],
+                  "hard": {"id": "es-c1", "answer": "B", "hints_opened": 2}}
+        m = self.match({**NEAR_CHECK, "topic": {"subject": "Languages", "advanced": False}, "extras": extras})
+        self.assertEqual(m["topic"], {"subject": "Languages", "advanced": False})
+        self.assertEqual((m["profile"], m["ranked"]), (plain["profile"], plain["ranked"]))  # never scored
+        self.assertLess(len(m["real_tools"]), len(plain["real_tools"]))
+        self.assertTrue(all(not t["subjects"] or "Languages" in t["subjects"] for t in m["real_tools"]))
+        self.assertIsNone(plain["topic"])
+        saved = json.loads((self.store_root / "matches" / f"{m['match_id']}.json").read_text())
+        self.assertEqual(saved["extras"], extras)
+        self.assertEqual(saved["topic"], m["topic"])
+
+    def test_match_extras_are_checked_and_capped(self):
+        from app.export import NEAR_CHECK
+        bad = [{"language": [{"id": "x"}] * 11}, {"language": [{"id": "x", "answer": "a" * 201}]},
+               {"hard": {"id": "c", "hints_opened": 11}}, {"hard": {"id": "c", "secret": 1}},
+               {"pack": "p" * 61}]
+        for extras in bad:
+            r = self.client.post("/api/match", json={**NEAR_CHECK, "extras": extras})
+            self.assertEqual((r.status_code, r.json()["error"]["code"]), (400, "invalid_input"), extras)
+        r = self.client.post("/api/match", json={**NEAR_CHECK, "topic": {"subject": "x" * 41}})
+        self.assertEqual(r.status_code, 400)
+
+    def test_real_tools_for_one_simulated_student(self):
+        r = self.client.get("/api/real-tools", params={"student": "s07"})
+        self.assertEqual(r.status_code, 200)
+        data = r.json()
+        types = data["types"]
+        self.assertEqual([t["rank"] for t in types], list(range(1, len(types) + 1)))
+        safe = [t for t in types if not t["safety_concern"]]
+        self.assertEqual(types[:len(safe)], safe)  # safety concerns last
+        self.assertEqual([t["gain"] for t in safe], sorted((t["gain"] for t in safe), reverse=True))
+        top = max(t["gain"] for t in safe)
+        self.assertEqual(set(data["best"]["tutor_ids"]),
+                         {t["tutor_id"] for t in safe if t["gain"] == top and
+                          any(x["type"]["tutor_id"] == t["tutor_id"] for x in data["tools"])})
+        self.assertTrue(data["tools"] and all(t["fits_lab_lesson"] for t in data["tools"]))
+        self.assertEqual([t["type_rank"] for t in data["tools"]], sorted(t["type_rank"] for t in data["tools"]))
+        self.assertTrue(all("gain" not in t and "scores" not in t for t in data["tools"]))
+        physics = self.client.get("/api/real-tools", params={"student": "s07", "subject": "Physics"}).json()
+        self.assertEqual(physics["topic"], {"subject": "Physics", "advanced": False})
+        self.assertTrue(all(not t["subjects"] or "Physics" in t["subjects"] for t in physics["tools"]))
+
+    def test_real_tools_query_errors(self):
+        cases = [({"student": "zz"}, 404), ({"subject": "Maths"}, 400), ({"student": "s07", "subject": ""}, 400)]
+        for params, status in cases:
+            self.assertEqual(self.client.get("/api/real-tools", params=params).status_code, status, params)
+
     def test_far_profile_from_the_check_gets_no_ranking(self):
         from app.check import QUIZ_1, QUIZ_2, READING_QS
         m = self.match({"quiz_1": {q.id: q.answer for q in QUIZ_1},

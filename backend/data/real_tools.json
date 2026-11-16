@@ -1,5 +1,5 @@
 {
- "source": "Copied from frontend/src/data/tools.js (Kien, commit c60b5a5, 16 Nov 2026). Types are Kien's estimate from each tool's public features, not lab results.",
+ "source": "Copied from frontend/src/data/tools.js (Kien): list and types at commit c60b5a5, estimates (his 'traits') at f12bdec, 16 Nov 2026. Types and estimates are Kien's from each tool's public features, not lab results.",
  "note": "Estimated from its demo tool type. Hivemind has not tested this tool.",
  "types": [
   {
@@ -27,7 +27,16 @@
    "kind": "AI chatbot",
    "blurb": "A chatbot that answers questions and explains ideas in plain language.",
    "group": "answer_machine",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "duolingo",
@@ -36,7 +45,16 @@
    "kind": "Language practice",
    "blurb": "Short language lessons with streaks, points and daily reminders.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "khan-academy",
@@ -45,7 +63,16 @@
    "kind": "Lessons and practice",
    "blurb": "Video lessons and practice questions across maths, science and more.",
    "group": "lecturer",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "quizlet",
@@ -54,7 +81,16 @@
    "kind": "Flashcards",
    "blurb": "Make or find flashcard sets, then study them with quizzes and games.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "kahoot",
@@ -63,7 +99,16 @@
    "kind": "Quiz games",
    "blurb": "Fast quiz games that a class plays together on screens.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 0
+   }
   },
   {
    "id": "photomath",
@@ -72,7 +117,16 @@
    "kind": "Maths solver",
    "blurb": "Point your camera at a maths problem to see the steps worked out.",
    "group": "answer_machine",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 1
+   }
   },
   {
    "id": "desmos",
@@ -81,7 +135,16 @@
    "kind": "Graphing",
    "blurb": "A graphing calculator for drawing and exploring equations.",
    "group": "socratic",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "brilliant",
@@ -90,7 +153,16 @@
    "kind": "Interactive problems",
    "blurb": "Hands-on puzzles and short lessons in maths, science and computing.",
    "group": "socratic",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "anki",
@@ -99,7 +171,16 @@
    "kind": "Spaced repetition",
    "blurb": "Flashcards that come back just before you would forget them.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "seneca",
@@ -108,7 +189,16 @@
    "kind": "Revision (UK)",
    "blurb": "Revision courses for UK exams, with short questions after each part.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "sparx-maths",
@@ -117,7 +207,16 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Maths homework set by your school, with video help on each question.",
    "group": "simple_steps",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 0
+   }
   },
   {
    "id": "khanmigo",
@@ -126,7 +225,16 @@
    "kind": "AI learning assistant",
    "blurb": "A learning assistant from Khan Academy that asks questions to guide you.",
    "group": "socratic",
-   "most_used": true
+   "most_used": true,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "bbc-bitesize",
@@ -135,7 +243,16 @@
    "kind": "Revision notes and videos",
    "blurb": "Short revision guides, videos and quizzes for UK school subjects.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "oak-national-academy",
@@ -144,7 +261,16 @@
    "kind": "Video lessons (UK)",
    "blurb": "Video lessons and worksheets that follow the UK school curriculum.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "dr-frost-maths",
@@ -153,7 +279,16 @@
    "kind": "Maths lessons and practice",
    "blurb": "Maths lessons, slides and practice questions for UK students.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "corbettmaths",
@@ -162,7 +297,16 @@
    "kind": "Maths videos",
    "blurb": "Short maths videos with practice questions and answers.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "save-my-exams",
@@ -171,7 +315,16 @@
    "kind": "Revision notes",
    "blurb": "Revision notes, practice questions and model answers for school exams.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "up-learn",
@@ -180,7 +333,16 @@
    "kind": "Online A level courses",
    "blurb": "Online A level courses with video lessons and practice.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "examsolutions",
@@ -189,7 +351,16 @@
    "kind": "Maths videos",
    "blurb": "Maths video lessons and walkthroughs of past exam papers.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "cognito",
@@ -198,7 +369,16 @@
    "kind": "Video lessons",
    "blurb": "Video lessons and quizzes for GCSE subjects.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "isaac-computer-science",
@@ -207,7 +387,16 @@
    "kind": "Computer science lessons",
    "blurb": "Computer science notes and questions for school and A level.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "ck-12",
@@ -216,7 +405,16 @@
    "kind": "Textbooks and lessons",
    "blurb": "Online textbooks, videos and practice for maths and science.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "crash-course",
@@ -225,7 +423,16 @@
    "kind": "Video lessons",
    "blurb": "Fast video courses on school subjects, from history to chemistry.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "ted-ed",
@@ -234,7 +441,16 @@
    "kind": "Short videos",
    "blurb": "Short animated video lessons on many topics.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "3blue1brown",
@@ -243,7 +459,16 @@
    "kind": "Maths videos",
    "blurb": "Animated videos that explain maths ideas with pictures.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "newsela",
@@ -252,7 +477,16 @@
    "kind": "Reading practice",
    "blurb": "News articles at different reading levels, with questions to check.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "coursera",
@@ -261,7 +495,16 @@
    "kind": "Online courses",
    "blurb": "Online university courses with video lectures and quizzes.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "edx",
@@ -270,7 +513,16 @@
    "kind": "Online courses",
    "blurb": "University courses taught in video lectures, with readings and tests.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "futurelearn",
@@ -279,7 +531,16 @@
    "kind": "Online courses",
    "blurb": "Short online courses from universities, with videos, articles and discussion.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "udemy",
@@ -288,7 +549,16 @@
    "kind": "Online courses",
    "blurb": "Online video courses on many skills, taught by many different people.",
    "group": "lecturer",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "mathswatch",
@@ -297,7 +567,16 @@
    "kind": "Maths videos and practice",
    "blurb": "Maths videos with practice questions, often set by teachers.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "hegarty-maths",
@@ -306,7 +585,16 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Video lessons and quizzes that check each maths topic step by step.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 2,
+    "self_paced": 1
+   }
   },
   {
    "id": "mymaths",
@@ -315,7 +603,16 @@
    "kind": "Maths homework (UK schools)",
    "blurb": "Online maths lessons and games, often set as homework.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "times-tables-rock-stars",
@@ -324,7 +621,16 @@
    "kind": "Times tables practice",
    "blurb": "Timed games that help you learn your times tables.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   }
   },
   {
    "id": "integral-maths",
@@ -333,7 +639,16 @@
    "kind": "A level maths practice",
    "blurb": "A level maths lessons, notes and questions. Many schools set it.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "mathletics",
@@ -342,7 +657,16 @@
    "kind": "Maths practice",
    "blurb": "Maths activities, games and live challenges set by schools.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "ixl",
@@ -351,7 +675,16 @@
    "kind": "Practice questions",
    "blurb": "Practice questions in maths and English that get harder as you improve.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "prodigy",
@@ -360,7 +693,16 @@
    "kind": "Maths game",
    "blurb": "A fantasy game where you answer maths questions to play.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "educake",
@@ -369,7 +711,16 @@
    "kind": "Science quizzes (UK schools)",
    "blurb": "Science quizzes set by teachers, with instant marking.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 0
+   }
   },
   {
    "id": "tassomai",
@@ -378,7 +729,16 @@
    "kind": "Daily quizzes (UK)",
    "blurb": "Short daily quizzes that change as you get questions right or wrong.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 2,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "century",
@@ -387,7 +747,16 @@
    "kind": "Adaptive lessons",
    "blurb": "Short lessons and questions that change as you answer.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "gcsepod",
@@ -396,7 +765,16 @@
    "kind": "Revision videos",
    "blurb": "Short revision videos for GCSE subjects.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "blooket",
@@ -405,7 +783,16 @@
    "kind": "Quiz games",
    "blurb": "Quiz games with different game modes for a class or one player.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   }
   },
   {
    "id": "gimkit",
@@ -414,7 +801,16 @@
    "kind": "Quiz games",
    "blurb": "Quiz games where you earn in-game money for right answers.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 1
+   }
   },
   {
    "id": "brainscape",
@@ -423,7 +819,16 @@
    "kind": "Flashcards",
    "blurb": "Flashcards that you rate, so hard cards come back more often.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "memrise",
@@ -432,7 +837,16 @@
    "kind": "Language practice",
    "blurb": "Language lessons using short phrases, flashcards and videos of speakers.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "babbel",
@@ -441,7 +855,16 @@
    "kind": "Language lessons",
    "blurb": "Short language lessons that teach words and everyday conversation.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "busuu",
@@ -450,7 +873,16 @@
    "kind": "Language lessons",
    "blurb": "Language courses with short lessons and feedback from other learners.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "lingodeer",
@@ -459,7 +891,16 @@
    "kind": "Language practice",
    "blurb": "Language lessons with grammar notes, short exercises and audio.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "rosetta-stone",
@@ -468,7 +909,16 @@
    "kind": "Language lessons",
    "blurb": "Language lessons that use pictures and sound instead of English.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "codecademy",
@@ -477,7 +927,16 @@
    "kind": "Coding lessons",
    "blurb": "Learn to code by typing in a lesson window and checking the result.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "code-org",
@@ -486,7 +945,16 @@
    "kind": "Coding lessons",
    "blurb": "Coding lessons and puzzles that start with drag and drop blocks.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "freecodecamp",
@@ -495,7 +963,16 @@
    "kind": "Coding lessons",
    "blurb": "Coding lessons with exercises you type in your browser.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "noredink",
@@ -504,7 +981,16 @@
    "kind": "Writing practice",
    "blurb": "Short grammar and writing exercises that change as you answer.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "readtheory",
@@ -513,7 +999,16 @@
    "kind": "Reading practice",
    "blurb": "Short reading passages with questions that match your level.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "bedrock-learning",
@@ -522,7 +1017,16 @@
    "kind": "Reading and vocabulary",
    "blurb": "Short vocabulary and reading lessons set by schools.",
    "group": "simple_steps",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 1
+   }
   },
   {
    "id": "nrich",
@@ -531,7 +1035,16 @@
    "kind": "Maths problems",
    "blurb": "Open maths problems and puzzles that make you think and explore.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "isaac-physics",
@@ -540,7 +1053,16 @@
    "kind": "Physics problems",
    "blurb": "Physics and maths problems with hints and feedback as you go.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "underground-mathematics",
@@ -549,7 +1071,16 @@
    "kind": "Maths problems",
    "blurb": "Problems and resources that connect A level maths ideas.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "geogebra",
@@ -558,7 +1089,16 @@
    "kind": "Maths exploring",
    "blurb": "Draw and move shapes, graphs and equations to see how they work.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "phet",
@@ -567,7 +1107,16 @@
    "kind": "Science simulations",
    "blurb": "Interactive science and maths simulations that you can change and test.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "mathigon",
@@ -576,7 +1125,16 @@
    "kind": "Interactive maths",
    "blurb": "Interactive maths lessons that you click and drag as you read.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "scratch",
@@ -585,7 +1143,16 @@
    "kind": "Coding with blocks",
    "blurb": "Build games and stories by snapping code blocks together.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 2,
+    "motivation": 2,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "language-transfer",
@@ -594,7 +1161,16 @@
    "kind": "Audio language courses",
    "blurb": "Audio language courses where you work out the grammar yourself.",
    "group": "socratic",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "wolfram-alpha",
@@ -603,7 +1179,16 @@
    "kind": "Answer engine",
    "blurb": "Type a maths or science question and get a worked answer.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "symbolab",
@@ -612,7 +1197,16 @@
    "kind": "Maths solver",
    "blurb": "Type in a maths problem and see the steps to solve it.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 2,
+    "self_paced": 2
+   }
   },
   {
    "id": "mathway",
@@ -621,7 +1215,16 @@
    "kind": "Maths solver",
    "blurb": "Enter a maths problem and get the answer with steps.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "microsoft-math-solver",
@@ -630,7 +1233,16 @@
    "kind": "Maths solver",
    "blurb": "Type, write or scan a maths problem to get steps and graphs.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "maths-genie",
@@ -639,7 +1251,16 @@
    "kind": "Maths past papers",
    "blurb": "Past exam papers with worked answers and video solutions.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "physics-and-maths-tutor",
@@ -648,7 +1269,16 @@
    "kind": "Notes and past papers",
    "blurb": "Revision notes, past papers and mark schemes for school exams.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "brainly",
@@ -657,7 +1287,16 @@
    "kind": "Homework answers",
    "blurb": "A community where students ask homework questions and others answer.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "chegg",
@@ -666,7 +1305,16 @@
    "kind": "Homework answers",
    "blurb": "Step by step textbook solutions and answers to homework questions.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "grammarly",
@@ -675,7 +1323,16 @@
    "kind": "Writing helper",
    "blurb": "Checks your writing and suggests fixes for spelling and grammar.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "perplexity",
@@ -684,7 +1341,16 @@
    "kind": "AI search",
    "blurb": "A search tool that answers questions and shows its sources.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   }
   },
   {
    "id": "claude",
@@ -693,7 +1359,16 @@
    "kind": "AI chatbot",
    "blurb": "A chatbot that answers questions and helps with writing and ideas.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "gemini",
@@ -702,7 +1377,16 @@
    "kind": "AI chatbot",
    "blurb": "Google’s chatbot that answers questions and helps with writing.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "copilot",
@@ -711,7 +1395,16 @@
    "kind": "AI chatbot",
    "blurb": "Microsoft’s chatbot that answers questions and helps with writing.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   },
   {
    "id": "notebooklm",
@@ -720,7 +1413,17 @@
    "kind": "AI notes helper",
    "blurb": "Upload your notes and ask questions about them.",
    "group": "answer_machine",
-   "most_used": false
+   "most_used": false,
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   }
   }
- ]
+ ],
+ "estimates_note": "Our estimate from the tool's public features. Not a lab result."
 }
