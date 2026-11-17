@@ -6,6 +6,8 @@
 :root:not(:has(.film, [data-noscrub]:not(.sg))) .stage-strings { opacity: 0.5; }
 /* About: strong while the film is pinned, quiet while you read the text above and below it */
 :root:has(.af):not(.af-pinned) .stage-strings { opacity: 0.5; }
+/* EdTech tools: the same, strong while its film fills the screen (at/ToolsFilm.jsx sets tf-on) */
+:root:has(.tfilm):not(.tf-on) .stage-strings { opacity: 0.5; }
 
 /* Lists fade up in place. No sideways slide, so the left edge of a list is always straight while it appears. */
 [data-scrub="slide"] { transform: translateY(calc((1 - var(--t)) * 14px)); }

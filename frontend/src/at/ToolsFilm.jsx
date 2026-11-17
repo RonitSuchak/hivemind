@@ -132,8 +132,12 @@ export default function ToolsFilm({ groups, renderCard }) {
     el.addEventListener('wheel', onWheel, { passive: false })
     const html = document.documentElement, oldOver = html.style.overscrollBehaviorX
     html.style.overscrollBehaviorX = 'none' // a sideways swipe must not trigger the browser's back gesture here
+    let wasOn = null
     const unsub = subscribe((s) => {
       const r = el.getBoundingClientRect()
+      // The film fills the middle of the screen: the equations stay strong. Below it, on the text, they go quiet (sections/global.css).
+      const on = r.top <= H / 2 && r.bottom >= H / 2
+      if (on !== wasOn) { wasOn = on; html.classList.toggle('tf-on', on) }
       if (r.bottom < -50 || r.top > H + 50) return // off screen: nothing to draw
       render(playhead(), s)
     })
@@ -145,7 +149,7 @@ export default function ToolsFilm({ groups, renderCard }) {
       window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY + f * travel)
       render(f * (N - 1), state)
     }
-    return () => { unsub(); window.removeEventListener('resize', measure); el.removeEventListener('wheel', onWheel); html.style.overscrollBehaviorX = oldOver; seekRef.current = null }
+    return () => { unsub(); window.removeEventListener('resize', measure); el.removeEventListener('wheel', onWheel); html.style.overscrollBehaviorX = oldOver; html.classList.remove('tf-on'); seekRef.current = null }
   }, [reduced, N]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const jump = (i) => {
