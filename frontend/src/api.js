@@ -132,15 +132,19 @@ function get(path) {
 const HIDDEN = new Set(['cheerleader'])
 export const isHidden = (id) => HIDDEN.has(id)
 const shown = (list) => (Array.isArray(list) ? list.filter((t) => !HIDDEN.has(t.tutor_id)) : list)
-// The match, tidied for the site: hidden tools out, ordered by predicted gain alone, numbered again, and the lab's
-// sentences use the type names. Demo tools carry no safety rating here (safety is for specific EdTech tools), so the
-// safety sentence is dropped; a tool that failed a check still gets no "try it" link.
+// The match, tidied for the site: hidden tools out, ordered by predicted gain, numbered again, and the lab's
+// sentences use the type names. Demo tools show no safety rating here (safety is for specific EdTech tools), so the
+// lab's safety sentence is dropped. Two things from the lab's safety check are kept all the same:
+//   - a tool that failed a check can never be shown in first place (the best tool that passed goes first);
+//   - a tool that failed a check gets no "try it" link.
 function tidyMatch(m) {
   if (!m || !Array.isArray(m.ranked)) return m
-  const ranked = shown(m.ranked)
-    .map((t) => (t.safety_warning ? { ...t, safety_warning: null, why: '', try_url: null } : { ...t, why: plainWords(t.why) }))
+  const byGain = shown(m.ranked)
+    .map((t) => (t.safety_warning ? { ...t, failed: true, safety_warning: null, why: '', try_url: null } : { ...t, failed: false, why: plainWords(t.why) }))
     .sort((a, b) => b.predicted_gain - a.predicted_gain)
-    .map((t, i) => ({ ...t, rank: i + 1 }))
+  const firstPassed = byGain.findIndex((t) => !t.failed)
+  if (firstPassed > 0) byGain.unshift(...byGain.splice(firstPassed, 1))
+  const ranked = byGain.map(({ failed, ...t }, i) => ({ ...t, rank: i + 1 })) // eslint-disable-line no-unused-vars
   return {
     ...m, ranked,
     follow_ups: (m.follow_ups || []).filter((q) => q.id !== 'careful').map((q) => ({ ...q, question: plainWords(q.question), answer: plainWords(q.answer) })),
