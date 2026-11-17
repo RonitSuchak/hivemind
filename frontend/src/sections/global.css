@@ -44,4 +44,6 @@
   :root .site-nav a { padding-inline: 0.24rem; font-size: 0.8rem; }
   :root .site-nav { gap: 0; }
   :root .ground-toggle { width: 1.5rem; margin-left: auto; }
+  /* as specific as the label rule in at/fd.css, so the smaller size wins and the switch stays on screen */
+  :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { font-size: 0.8125rem; padding-inline: 0.3rem; }
 }
