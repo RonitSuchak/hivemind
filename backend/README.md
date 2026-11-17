@@ -17,6 +17,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 |---|---|
 | All tests (free, offline) | `.venv/bin/python -m unittest discover -s tests -t .` |
 | The API | `RELOAD=1 .venv/bin/python -m app.serve`, then open `http://localhost:8000/docs` |
+| The API for teammates on the same network (demo, crash test) | `sh share.sh` (prints the address to give them) |
 | One lesson, printed | `python3 -m app.run_lesson --student s07 --tutor socratic --offline` |
 | How much each demo tool teaches each group (tuning) | `python3 -m app.tune` |
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |
@@ -28,7 +29,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 
 ## Before a demo or crash test
 1. Be on a network that allows port 5432 (a phone hotspot works), so saved data works.
-2. Start it for the team: `HOST=0.0.0.0 .venv/bin/python -m app.serve`, then find the laptop's address with `ipconfig getifaddr en0` and give teammates `http://<address>:8000`.
+2. Start it for the team: `sh share.sh` (from `backend/`). It checks the database, keeps the Mac awake while it runs, starts the API for the network and prints the `VITE_API_URL=http://<address>:8000` line to send teammates. The first time a teammate connects, macOS may ask to allow incoming connections for Python: click Allow.
 3. Check `curl http://localhost:8000/api/health` answers `{"ok": true, ..., "store": "database", "tutors": 5}`.
 4. Run the tests: `.venv/bin/python -m unittest discover -s tests -t .` (214 pass on 17 Nov).
 5. The live lab on stage: `mode=live` uses Gemini calls; `mode=replay` uses none, so keep replay ready if the Wi-Fi or the daily limit fails.
