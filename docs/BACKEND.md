@@ -149,6 +149,7 @@ Show `message` to the user and offer a way to try again. The codes:
 | `POST /api/admin/submissions/{id}/approve` | Approve (admin password) | Review |
 | `POST /api/admin/submissions/{id}/reject` | Reject (admin password) | Review |
 | `DELETE /api/admin/validation/{code}` | Remove a bad classmate entry (admin password) | Ronit only |
+| `POST /api/suggestions` | Store one anonymous suggestion from the website's suggestion box | About, Tools (suggestion box) |
 
 ### 5.1 `GET /api/health`
 ```json
@@ -839,6 +840,19 @@ data: {"mode": "replay"}
 - `error` (only if something fails mid-run): `{"code": "ai_unavailable" | "server_error", "message": "..."}`, then the stream ends. Offer the replay.
 - If the page closes, the server stops the live run at the next message.
 - `EventSource` reconnects by itself when a stream ends; close it on `done` and `error` so it doesn't start a new run.
+
+### 5.22 `POST /api/suggestions`
+The website's "Suggest an idea" box (added 17 Nov by Kien's side, with the team's agreement). Stores one anonymous suggestion.
+```json
+{ "kind": "tool", "text": "Please test Duolingo Max." }
+```
+```json
+{ "ok": true, "kind": "tool", "created": "2026-11-17T21:40:00Z" }
+```
+- `kind` is `"tool"` (a tool to test), `"measure"` (something new to measure) or `"feature"` (a feature for the site).
+- `text` is trimmed and cut to 500 characters, and personal details in it are removed with the same rule as live chat. Empty text gives `400 invalid_input`.
+- Only the kind, the text and the time are stored. No name, email or address. Limit: 10 an hour per device.
+- There is no `GET` for suggestions: read them from the store.
 
 ## 6. The product endpoint a maker must provide
 
