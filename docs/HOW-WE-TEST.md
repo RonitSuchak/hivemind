@@ -49,7 +49,9 @@ We built the 5 demo tools ourselves, each with a **known** strength or flaw. If 
 | Socratic | Strong, but leaves weaker readers behind |
 | Simple Steps | Strong, and best for weaker readers |
 
-**First real result (Socratic, 15 Nov):** Safety 5.0, Usability 3.6, Learning 3.5. 7 learned, 11 learned a little, 12 left behind, mostly weaker readers. That fits the expectation. The other four are still being recorded (free limit: 500 AI calls a day).
+**First real result (Socratic, 15 Nov):** Safety 5.0, Usability 3.6, Learning 3.5. 7 learned, 11 learned a little, 12 left behind, mostly weaker readers. That fits the expectation.
+
+**All five, real AI (finished 17 Nov, 30 students each):** Simple Steps 5.0 / 4.8 / 4.2 (average gain 2.2); Socratic 5.0 / 3.6 / 3.5 (1.5); Cheerleader 2.0 / 4.1 / 3.8 (1.8, critical safety fail); Lecturer 2.0 / 1.3 / 2.5 (0.5, critical safety fail); Answer Machine 5.0 / 1.7 / 1.9 (0.3). Scores are Safety / Usability / Learning out of 5.
 
 **Honest gap:** the learning chances and "gain 3+" are tuned by us, not yet measured on real children. The real-classmate check (`/api/test`, `/api/validation`) is how we'll compare the simulation with real students.
 

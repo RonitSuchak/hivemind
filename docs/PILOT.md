@@ -67,4 +67,6 @@ Files saved with other learning numbers (`model_version`) are ignored, so everyo
 ```bash
 curl -s http://localhost:8000/api/pilot | python3 -m json.tool | less
 ```
+**Done 17 Nov: all 18 lessons relayed** (normal ChatGPT in a temporary, Unpersonalized chat, so no memory or custom instructions). Results are in `GET /api/pilot` and `backend/data/export/pilot.json`.
+
 A tool shows scores only when all 3 of its lessons are done. Each tool reply is saved twice: tidied in the transcript (Markdown and maths notation such as `\frac{1}{3}` become plain `1/3`, so the labeller and the sum checker can read it) and exactly as pasted in `relay_raw`, for checking.

@@ -1,6 +1,6 @@
 # Prompt: wire the Hivemind website to the backend
 
-**For Kien and Nina.** Paste everything below the line into your AI assistant, in the repo root. It changes only `frontend/`. Written by Ronit's side on 16 Nov 2026, against backend contract v3 (`docs/BACKEND.md`), and checked against `frontend/` at commit 15b2139.
+**For Kien and Nina.** Paste everything below the line into your AI assistant, in the repo root. It changes only `frontend/`. Written by Ronit's side on 16 Nov 2026 and updated 17 Nov, against backend contract v3 (`docs/BACKEND.md`), and checked against `frontend/` at commit f12bdec (the latest frontend commit on 17 Nov).
 
 ---
 
@@ -19,15 +19,14 @@ You are helping Kien and Nina connect the Hivemind website (`frontend/`, Vite + 
 - **8-minute check**, not "5 minute check" (for example `src/pages/Tools.jsx`). Use `minutes` from `GET /api/check` instead of typing the number.
 
 ## 1. Connect
-1. Ronit runs the backend on his laptop (`HOST=0.0.0.0 .venv/bin/python -m app.serve`, port 8000) and gives you his laptop's address on the shared Wi-Fi.
+1. Ronit runs the backend on his laptop (`HOST=0.0.0.0 .venv/bin/python -m app.serve`, port 8000) and gives you his laptop's address on the shared Wi-Fi (`ipconfig getifaddr en0` on his Mac). You must be on the **same network** as him. If he's on his phone hotspot (the school or venue Wi-Fi can block the database), join the hotspot too.
 2. In `frontend/.env` set `VITE_API_URL=http://<Ronit's address>:8000`, or `http://localhost:8000` if the backend runs on your own machine. Leave `VITE_DEMO` empty.
 3. Run the site with `npm run dev`. It must be on **http://localhost:5173**: that's the origin the backend allows (CORS: the browser blocks calls from any address the backend hasn't allowed). `vite preview` (port 4173) or a deployed address is blocked until Ronit adds it to `CORS_ORIGINS`, so send him the exact address.
-4. Check `GET /api/health` answers `{"ok": true, ...}`. The site's "Lab not connected" state should switch to live.
+4. Check `GET /api/health` answers `{"ok": true, "version": "3.0.0", "store": "database", "tutors": 5}` (if the database is out of reach, health still answers, but saving or reading check results and submissions returns `store_unavailable` (503); everything else keeps working). The site's "Lab not connected" state should switch to live.
+5. Can't connect? Check the address and port, that both machines are on the same network, that the site runs on `http://localhost:5173`, and that the Mac firewall allows incoming connections for Python.
 
 ## 2. Saved data (demo mode)
-`frontend/public/demo/` already holds the real export, including `real-tools.json` (Kien's update, 16 Nov 11:10). Keep `topics/`.
-- New files after Ronit's next export: `pilot.json`, the `live-lab/` folder and `real-tools/students/`. Copy them in too (keep your `topics/`).
-- The AI lab finished on 17 Nov and `backend/data/export/` was re-run: copy it over `public/demo/` again so every run is the real AI one.
+**The final export is ready (17 Nov):** the AI lab is finished (all 5 demo tools are real AI runs, no preview data) and all 18 real-tools pilot lessons are done. Copy all of `backend/data/export/` over `frontend/public/demo/`, keeping your own `topics/` folder. That brings in the new `pilot.json`, the `live-lab/` folder and `real-tools/students/`, and replaces every run with the real AI one.
 
 ## 3. Still to fix (checked against `frontend/` at commit f12bdec)
 Fixed by Kien's 16 Nov updates (a170943, f12bdec), leave as is: Ratings reading `groups`, the 8-minute wording, "Try a student" labelled as a rough explorer, real tools from the backend in its order with no scores, "demo tool" wording, the "Preview data" label, and the Try a demo tool page with every chat error handled.

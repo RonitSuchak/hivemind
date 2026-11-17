@@ -10,7 +10,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 - `GEMINI_API_KEY`: real demo tools, student voice, live chat and ask.
 - `SAFE_BROWSING_API_KEY`: the link check for product submissions.
 - `ADMIN_PASSWORD`: approve or reject submissions.
-- `DATABASE_URL`: online only (Neon Postgres); empty means JSON files in `data/store/`.
+- `DATABASE_URL`: the Neon Postgres database for saved data (real-classmate checks, submissions); empty means JSON files in `data/store/`. It needs port 5432, which some Wi-Fi (school, venues) blocks: use a phone hotspot. If it's out of reach, only saved-data routes fail (`store_unavailable`, 503) and `python -m app.export` stops, so export on a network that allows it.
 
 ## Run
 | What | Command |
@@ -25,6 +25,13 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | Relay one real-tools pilot lesson (`docs/PILOT.md`) | `.venv/bin/python -m app.relay --tool chatgpt_study --student s10` (`--voice scripted`: no AI calls; `--list`: what's done) |
 | Live lab stream (try it) | `curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&mode=replay"` (`mode=live` uses real AI) |
 | Demo maker product (PieChart Pal) | `.venv/bin/uvicorn app.demo_maker:app --port 8100` |
+
+## Before a demo or crash test
+1. Be on a network that allows port 5432 (a phone hotspot works), so saved data works.
+2. Start it for the team: `HOST=0.0.0.0 .venv/bin/python -m app.serve`, then find the laptop's address with `ipconfig getifaddr en0` and give teammates `http://<address>:8000`.
+3. Check `curl http://localhost:8000/api/health` answers `{"ok": true, ..., "store": "database", "tutors": 5}`.
+4. Run the tests: `.venv/bin/python -m unittest discover -s tests -t .` (214 pass on 17 Nov).
+5. The live lab on stage: `mode=live` uses Gemini calls; `mode=replay` uses none, so keep replay ready if the Wi-Fi or the daily limit fails.
 
 ## Files
 | File | What it does |
