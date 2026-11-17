@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import Radar from './Radar.jsx'
 import Icon from './Icon.jsx'
 import BestTools from './BestTools.jsx'
-import { getStudentTools } from '../api.js'
+import { getStudentTools, isHidden } from '../api.js'
 import { useLoad } from '../hooks.js'
 import { fromBackend, mostEffective, teaches } from '../data/tools.js'
 import { OutcomeTag } from './OutcomeShape.jsx'
@@ -29,8 +29,10 @@ function useBest(student, gains, hide) {
   if (load.status === 'error') return mostEffective(gains)
   const b = load.status === 'ok' ? load.data?.best : null
   if (!b) return { known: false }
-  const items = (load.data.tools || []).filter((t) => b.tutor_ids.includes(t.type?.tutor_id)).map(fromBackend).filter(teaches).slice(0, 3).map((tool) => ({ tool }))
-  return { known: true, none: !!b.none || items.length === 0, groups: b.tutor_ids, items }
+  const groups = (b.tutor_ids || []).filter((id) => !isHidden(id)) // hidden tools never show
+  if (!b.none && !groups.length) return { known: false }
+  const items = (load.data.tools || []).filter((t) => groups.includes(t.type?.tutor_id)).map(fromBackend).filter(teaches).slice(0, 3).map((tool) => ({ tool }))
+  return { known: true, none: !!b.none || items.length === 0, groups, items }
 }
 
 export default function StudentDetail({ student, result, tutorName, gains, focusTurn = null, hideBest = false, safety = false }) {
