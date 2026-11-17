@@ -1,0 +1,58 @@
+{
+ "student_id": "s29",
+ "tutor_id": "answer_machine",
+ "before": 5,
+ "after": 6,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.52,
+  0.54,
+  0.56
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing numerator is 4 because you multiply both the top and bottom of two thirds by two to get six on the bottom.",
+   "move": "hint",
+   "reading_age": 14.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "I think it is 2/6. I do not understand why it is 4.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "It is 4 because whatever you multiply the bottom number by, you must also multiply the top number by that same amount to keep the fractions equal.",
+   "move": "hint",
+   "reading_age": 17.7
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:40:35+00:00"
+}

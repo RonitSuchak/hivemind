@@ -27,7 +27,7 @@ You are helping Kien and Nina connect the Hivemind website (`frontend/`, Vite + 
 ## 2. Saved data (demo mode)
 `frontend/public/demo/` already holds the real export, including `real-tools.json` (Kien's update, 16 Nov 11:10). Keep `topics/`.
 - New files after Ronit's next export: `pilot.json`, the `live-lab/` folder and `real-tools/students/`. Copy them in too (keep your `topics/`).
-- Ronit re-exports after the AI lab finishes (about Wed 18 Nov). Copy `backend/data/export/` over `public/demo/` again then, so every run is the real AI one.
+- The AI lab finished on 17 Nov and `backend/data/export/` was re-run: copy it over `public/demo/` again so every run is the real AI one.
 
 ## 3. Still to fix (checked against `frontend/` at commit f12bdec)
 Fixed by Kien's 16 Nov updates (a170943, f12bdec), leave as is: Ratings reading `groups`, the 8-minute wording, "Try a student" labelled as a rough explorer, real tools from the backend in its order with no scores, "demo tool" wording, the "Preview data" label, and the Try a demo tool page with every chat error handled.

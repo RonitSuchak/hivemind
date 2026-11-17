@@ -1,0 +1,74 @@
+{
+ "student_id": "s21",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.5,
+  0.51,
+  0.53
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the unknown numerator, one must recognize the multiplicative relationship between the denominators. By dividing the target denominator, six, by the initial denominator, three, we determine a scaling factor of two. Consequently, to preserve equivalence, the numerator, two, must be multiplied by this exact scalar. Multiplying two by two yields four. Therefore, two-thirds is equivalent to four-sixths, maintaining proportional equality through the application of fundamental scaling principles.",
+   "move": "hint",
+   "reading_age": 19.3
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i think it is 2/6? but i not understand long words.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Your hypothesis of two-sixths is mathematically incorrect because altering only the denominator without proportionately scaling the numerator violates the fundamental axiom of fraction equivalence. To maintain proportionality, whatever operation is performed upon the denominator must be replicated identically upon the numerator. Since the denominator three was multiplied by two to become six, the numerator two must likewise be multiplied by two, resulting in four-sixths.",
+   "move": "explanation",
+   "reading_age": 24.6
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "i dont understand. 2/3 is same as 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, two-thirds and two-sixths are not identical quantities. They represent disparate proportions of a whole. Imagine a single unit partitioned into three equal segments versus six equal segments. Two segments of a triad constitute a significantly greater magnitude than two segments of a hexad. Because the denominator dictates the magnitude of the fractional parts, altering it necessitates a corresponding adjustment to the numerator to preserve exact equivalence. Thus, two-thirds equals four-sixths.",
+   "move": "explanation",
+   "reading_age": 16.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:12:20+00:00"
+}

@@ -1,0 +1,88 @@
+{
+ "student_id": "s01",
+ "tutor_id": "lecturer",
+ "before": 8,
+ "after": 9,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 2,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.72,
+  0.73,
+  0.75,
+  0.79,
+  0.81
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the unknown numerator, one must employ the fundamental principle of equivalent fractions. Since the denominator increases from three to six, we multiply by the scalar factor two. To preserve proportionality and maintain mathematical equivalence, the numerator must undergo identical multiplication. Consequently, multiplying two by two yields four. Therefore, two-thirds is precisely equivalent to four-sixths.",
+   "move": "hint",
+   "reading_age": 19.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Is it 4/6? Because you multiply the bottom by two, so you have to do the same to the top. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Affirmatively, four-sixths is correct. To compute the addition of two-ninths and four-ninths, observe that the denominators are identical, signifying shared fractional units. Consequently, one simply aggregates the numerators while retaining the common denominator. Adding the numerator two to the numerator four results in six. Thus, the sum is six-ninths, which subsequently simplifies by division of the greatest common divisor, yielding two-thirds.",
+   "move": "hint",
+   "reading_age": 17.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 6/9 because the bottom stays the same and we just add 2 and 4 on top? Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Precisely, six-ninths is accurate before reduction. For one-fourth plus one-eighth, the denominators differ, precluding immediate addition. One must first determine the lowest common denominator, which is eight. Convert one-fourth by multiplying its numerator and denominator by two, yielding two-eighths. Subsequently, aggregate this with one-eighth by retaining the denominator eight and summing the numerators two and one. The final irreducible solution is therefore three-eighths, representing the combined proportional value of both fractions.",
+   "move": "hint",
+   "reading_age": 17.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "is it 2/12? i just added the top numbers and the bottom numbers together.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "That methodology is fundamentally erroneous, as one cannot aggregate denominators directly when they represent dissimilar fractional partitions. To amalgamate disparate fractions, you must first ascertain the lowest common denominator to establish uniformity. For instance, in adding one-fourth and one-eighth, one must convert the quarters into eighths by scaling both numerator and denominator by two, yielding two-eighths. Only then may you sum the numerators, resulting in three-eighths.",
+   "move": "hint",
+   "reading_age": 19.5
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:41:40+00:00"
+}

@@ -1,0 +1,58 @@
+{
+ "student_id": "s25",
+ "tutor_id": "answer_machine",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.37,
+  0.4,
+  0.41
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4 because you multiply both the top and bottom of two-thirds by two to get six on the bottom.",
+   "move": "hint",
+   "reading_age": 13.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Wait, so it is 2/6? I am confused.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "No, it is 4 over 6 because whatever you do to the bottom number you must also do to the top number.",
+   "move": "explanation",
+   "reading_age": 13.7
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:38:31+00:00"
+}

@@ -1,0 +1,90 @@
+{
+ "student_id": "s24",
+ "tutor_id": "answer_machine",
+ "before": 4,
+ "after": 4,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.46,
+  0.49,
+  0.51,
+  0.52
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The answer is 4 because you multiply the numerator and denominator of 2/3 by 2 to get an equivalent fraction with a denominator of 6.",
+   "move": "hint",
+   "reading_age": 20.1
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "No, the answer is 4 because the denominator changed from 3 to 6 by multiplying by 2, so you must also multiply the numerator 2 by 2 to keep the fractions equal.",
+   "move": "hint",
+   "reading_age": 19.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, the answer is 4 because whatever you do to the bottom number you must also do to the top number, so multiplying both by 2 gives 4 over 6.",
+   "move": "hint",
+   "reading_age": 16.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "Yes, is 4/6 because 3 times 2 is 6, and 2 times 2 is 4. next: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "The answer is 6/9 because the denominators are already the same, so you just add the top numbers together.",
+   "move": "gave_answer",
+   "reading_age": 15.4
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:38:19+00:00"
+}

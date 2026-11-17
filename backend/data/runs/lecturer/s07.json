@@ -1,0 +1,74 @@
+{
+ "student_id": "s07",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 7,
+ "gain": 2,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.37,
+  0.4,
+  0.43
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To determine the equivalent fraction, you must scale the numerator and denominator by the exact same multiplicative factor to preserve proportionality. Since the denominator increases from three to six, you ascertain the multiplier by calculating six divided by three, which yields two. Subsequently, you multiply the numerator, two, by this scaling factor of two. Consequently, the resulting numerator is four, establishing that two-thirds is mathematically identical to four-sixths.",
+   "move": "hint",
+   "reading_age": 19.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6? i am not sure",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "No, it is not two-sixths. To maintain strict equivalence, you must multiply both the numerator and the denominator by the exact same scaling factor. Since the original denominator of three was multiplied by two to reach six, you must apply that identical operation to the numerator. Multiplying the numerator, two, by two yields four. Therefore, the properly calculated numerator is four, making the correct equivalent fraction four-sixths.",
+   "move": "hint",
+   "reading_age": 16.2
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, it is unequivocally four-sixths, not two-sixths. When transforming fractions into higher terms, you must multiply both the numerator and the denominator by the identical scaling factor. Because the denominator three was multiplied by two to become six, you are mathematically obligated to multiply the numerator two by that same factor of two. Consequently, two multiplied by two results in four, establishing the correct numerator for the equivalent fraction.",
+   "move": "hint",
+   "reading_age": 18.6
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:43:44+00:00"
+}

@@ -1,0 +1,58 @@
+{
+ "student_id": "s25",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.37,
+  0.38,
+  0.41
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the unknown numerator, one must apply the fundamental principle of equivalence, ensuring the proportional relationship remains invariant. Consequently, one multiplies both the numerator and denominator of the fraction two thirds by the scalar factor two, derived from dividing six by three. Performing this multiplication yields a numerator of four. Therefore, two thirds is identically equivalent to four sixths, maintaining exact quantitative parity through simultaneous scaling of both terms.",
+   "move": "explanation",
+   "reading_age": 20.7
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "wait I still don't get all those big words is it 2/6 maybe I really hate this fraction stuff",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "It is entirely normal to find fractions perplexing initially, but it is definitely not two-sixths. To solve this, you must determine what number you multiply three by to get six, which is two. You then apply that exact same multiplication factor to the numerator, multiplying two by two. This yields a numerator of four, resulting in four-sixths. Both fractions occupy the exact same magnitude upon the numerical continuum, maintaining absolute proportional equivalence through simultaneous scalar multiplication.",
+   "move": "hint",
+   "reading_age": 17.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:13:36+00:00"
+}

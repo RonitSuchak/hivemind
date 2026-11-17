@@ -1,0 +1,90 @@
+{
+ "student_id": "s19",
+ "tutor_id": "answer_machine",
+ "before": 4,
+ "after": 4,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.28,
+  0.3,
+  0.3,
+  0.34
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4. Because you multiply the denominator 3 by 2 to get 6, you must also multiply the numerator 2 by 2 to keep the fractions equal.",
+   "move": "hint",
+   "reading_age": 14.2
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i think the answer is 2/6 because the bottom number is six.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "The answer is actually 4, not 2. Because you multiplied the bottom number by 2, you have to do the exact same thing to the top number so the fraction stays the same size.",
+   "move": "explanation",
+   "reading_age": 11.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, it is 4/6, because whatever you multiply the bottom number by, you must multiply the top number by the exact same amount.",
+   "move": "gave_answer",
+   "reading_age": 16.2
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "I don't understand. Why we multiply top and bottom by same number?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "The missing number is 4 because multiplying the top and bottom by the same number is like multiplying by one, which keeps the overall value of the fraction exactly the same.",
+   "move": "hint",
+   "reading_age": 18.4
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:19:32+00:00"
+}

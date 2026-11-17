@@ -1,0 +1,58 @@
+{
+ "student_id": "s13",
+ "tutor_id": "lecturer",
+ "before": 8,
+ "after": 8,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.67,
+  0.68,
+  0.7
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To resolve this equivalence, you must determine the multiplicative scaling factor applied to the denominator. Since six divided by three yields two, the denominator has doubled. Consequently, to maintain mathematical proportionality and equivalence, you must multiply the numerator, two, by that exact same scalar. Two multiplied by two equals four. Therefore, the unknown numerator is four, establishing the equivalent fraction two thirds equals four sixths.",
+   "move": "hint",
+   "reading_age": 17.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "oh ok i get it now its 4/6 because you times the top and bottom by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "To ascertain the sum of these homogeneous fractions, retain the common denominator of nine. Subsequently, compute the aggregation of the numerators, namely two and four, which evaluates to six. This yields the fractional result six ninths. Finally, to achieve canonical irreducible form, determine the greatest common divisor of the numerator and denominator, which is three. Divide both terms by three to ascertain the simplified equivalent of two thirds.",
+   "move": "hint",
+   "reading_age": 17.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:46:02+00:00"
+}

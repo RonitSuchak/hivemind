@@ -1,0 +1,58 @@
+{
+ "student_id": "s08",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.49,
+  0.51
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To resolve this equivalence, ascertain the multiplicative factor scaling the denominator from three to six, which is two. By the fundamental principle of fractions, whatever operation is performed upon the denominator must be identically replicated upon the numerator to preserve proportionality. Consequently, multiply the numerator, two, by this scaling factor of two, yielding a product of four. Thus, the unknown numerator is four, establishing the equivalent rational expression two thirds equals four sixths.",
+   "move": "hint",
+   "reading_age": 20.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "wait, is it 2/6? honestly this makes no sense, why are we doing this.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Negative, the numerator is four, not two. Mathematical equivalence necessitates that fractions maintain identical proportional values despite varying numerical representations. By multiplying both the antecedent and consequent by the identical scalar two, we generate a congruent fraction. This procedure is paramount for subsequent operations, specifically addition and subtraction, which mandate a common denominator to ensure dimensional homogeneity prior to aggregation. The scaling preserves the intrinsic mathematical value unalterably.",
+   "move": "hint",
+   "reading_age": 23.2
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:43:59+00:00"
+}

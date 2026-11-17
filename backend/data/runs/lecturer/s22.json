@@ -1,0 +1,74 @@
+{
+ "student_id": "s22",
+ "tutor_id": "lecturer",
+ "before": 4,
+ "after": 5,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.32,
+  0.36,
+  0.39
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the equivalent fraction, one must employ the fundamental principle of fractions, multiplying both the numerator and denominator by an identical non-zero scalar. Inspecting the denominators, three multiplied by two yields six. Consequently, to maintain proportionality, you must multiply the numerator, two, by the exact same multiplier, two. The product of two multiplied by two is four. Thus, the unknown numerator is four, resulting in two-thirds being identically equal to four-sixths.",
+   "move": "hint",
+   "reading_age": 17.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "I think it is 2/6 because the top number stayed the same.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That hypothesis is fundamentally incorrect, as altering only the numerator violates the principle of multiplicative invariance essential for equivalent fractions. To preserve fractional equivalence, any operation performed upon the denominator—such as multiplying by two to transform three into six—must be identically replicated upon the numerator. Since two multiplied by two equals four, the resultant numerator must be four, not two. Therefore, the mathematically rigorous solution necessitates four-sixths, ensuring proportionality remains uncompromised throughout the entire calculation.",
+   "move": "hint",
+   "reading_age": 24.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "i dont really get all those big words, but is the answer 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, the correct answer is four-sixths. To determine this equivalent fraction, you must scale both parts proportionally. Since the denominator three was multiplied by two to reach six, you are mathematically required to multiply the numerator two by that exact same factor of two. Multiplying two by two produces four. Leaving the numerator unchanged would alter the numerical value, thereby violating the fundamental mathematical equivalence required to solve this proportion accurately.",
+   "move": "hint",
+   "reading_age": 18.1
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:12:41+00:00"
+}

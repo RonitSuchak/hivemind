@@ -1,0 +1,58 @@
+{
+ "student_id": "s18",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 6,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.32,
+  0.34,
+  0.37
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the unknown numerator, one must employ the principle of equivalent fractions by determining the scaling factor. Division of the consequent six by the antecedent three yields a multiplier of two. Consequently, to maintain proportionality and mathematical equivalence, the antecedent two of the fraction two-thirds must be multiplied by this exact scalar quotient. Executing this multiplication produces a resultant numerator of four, thereby establishing the complete equivalent ratio as four-sixths.",
+   "move": "explanation",
+   "reading_age": 20.6
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "I did not understand that big speech at all. Is the answer 2/6 maybe?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Negative, the correct numerator is not two. To solve this proportion correctly, one must analyze the denominator transformation from three to six, which involves multiplication by a scale factor of two. To preserve absolute mathematical equivalence, you are required to multiply the numerator, two, by that exact same scaling factor of two. Multiplying two by two yields a product of four. Therefore, the equivalent fraction is four-sixths, demonstrating that two-thirds and four-sixths represent identical quantities.",
+   "move": "hint",
+   "reading_age": 17.3
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:11:08+00:00"
+}

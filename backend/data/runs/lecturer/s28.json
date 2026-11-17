@@ -1,0 +1,74 @@
+{
+ "student_id": "s28",
+ "tutor_id": "lecturer",
+ "before": 6,
+ "after": 6,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.22,
+  0.27,
+  0.29,
+  0.31
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To determine the unknown numerator, you must ascertain the multiplicative factor scaling the denominators. By dividing six by three, we derive a scale factor of two. Consequently, to maintain equivalence through proportionality, you must multiply the numerator, two, by this identical scalar. Multiplying two by two yields four. Therefore, the equivalent fraction is four-sixths. This methodology guarantees proportional integrity across rational numbers through the application of the fundamental principle of fractions.",
+   "move": "hint",
+   "reading_age": 18.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6? i just kept the top number the same because we changed the bottom one",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That hypothesis is mathematically incorrect. Altering the denominator without a corresponding proportional modification to the numerator violates the fundamental theorem of equivalence, disrupting the ratio. To preserve equal value, any operation performed upon the denominator must be identically replicated upon the numerator. Since the denominator was multiplied by two, the numerator must similarly be scaled by two, yielding four-sixths. Merely retaining the initial numerator generates an unequal rational quantity, invalidating the equivalence equation entirely.",
+   "move": "explanation",
+   "reading_age": 24.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6? I just kept the top number the same because I was not sure what else to do with it",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "That assertion remains erroneous. Fractions represent a proportional relationship; therefore, altering only the denominator fundamentally changes the numerical value, violating mathematical equivalence. To preserve the proportional ratio, whatever scalar operation is applied to the denominator must be identically replicated upon the numerator. Since the denominator was multiplied by two, the numerator must also be multiplied by two. Consequently, two-thirds is equivalent to four-sixths, as both maintain a precise two-to-three ratio.",
+   "move": "explanation",
+   "reading_age": 21.0
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:14:54+00:00"
+}

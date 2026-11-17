@@ -1,0 +1,74 @@
+{
+ "student_id": "s10",
+ "tutor_id": "lecturer",
+ "before": 2,
+ "after": 4,
+ "gain": 2,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.17,
+  0.22,
+  0.24,
+  0.27
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the equivalent fraction, one must employ the fundamental principle of fractions, multiplying both the numerator and denominator by identical non-zero integers. Observing the denominators, three must be multiplied by two to yield six. Consequently, to maintain mathematical proportionality, the numerator, two, must similarly be multiplied by two. Executing this multiplication yields a numerator of four. Thus, two-thirds is identically equal to four-sixths.",
+   "move": "hint",
+   "reading_age": 19.1
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is the answer 2/6 maybe? I just kept the top number the same.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "That hypothesis is mathematically incorrect. Altering exclusively the denominator violates the invariant property of rational numbers, resulting in a distinct value. To preserve equivalence, any scaling factor applied to the denominator must be identically replicated upon the numerator. Since the denominator three was multiplied by two to reach six, the numerator two must likewise be multiplied by two, producing four. Therefore, the correct equivalent fraction is four-sixths, not two-sixths.",
+   "move": "explanation",
+   "reading_age": 19.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is the answer 2/6? i dont really get it",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Negative, the correct numerator is four, resulting in four-sixths. Fractions represent proportional relationships. If you enlarge the total number of partitions in the denominator from three to six, you have doubled the quantity of divisions. Consequently, to preserve the exact same proportion of the whole, you must correspondingly double the selected parts in the numerator. Multiplying both terms by the scaling factor of two transforms two-thirds into four-sixths, maintaining strict mathematical equivalence.",
+   "move": "hint",
+   "reading_age": 17.1
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:45:07+00:00"
+}

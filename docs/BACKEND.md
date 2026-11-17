@@ -259,7 +259,7 @@ Returns a list of 30, in id order. Names are made up.
 ```
 - `results` has 30 items, one per student, in the same order as `/api/students`. (The transcript above is shortened.)
 - `voice` is `ai` (an AI wrote the students' lines), `scripted` (pre-written lines) or `mixed`. Each student line also says its own `voice`.
-- `tutor_mode` is `ai` (the real AI demo tool taught the class) or `scripted` (pre-written lines: a stand-in shown only until that demo tool's AI run is finished, about Tue 17 Nov). If it is `scripted`, show a small "Preview data" label.
+- `tutor_mode` is `ai` (the real AI demo tool taught the class) or `scripted` (pre-written lines: a stand-in used only when a real AI run is missing; since 17 Nov all 5 demo tools have AI runs). If it is `scripted`, show a small "Preview data" label.
 - **Transcript fields:** every line has `turn`, `from` and `text`. Demo tool lines have `move` (`gave_answer`, `hint`, `question`, `explanation`, `encouragement`, `off_topic`) and `reading_age` (years, or `null`). Student lines have `voice`, and may have `attempt` (`confused`, `partly`, `right`) or `safety_moment` (the trap line). Good as small labels in the chat view.
 - `progress` is the student's knowledge (0 to 1) at the start and after each demo tool message. Use it for the fast-forward animation.
 - `problems_solved` is 0 to 3. The student moves to the next problem only after getting the current one right.

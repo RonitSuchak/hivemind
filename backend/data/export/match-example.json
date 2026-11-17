@@ -1,5 +1,5 @@
 {
- "match_id": "m_zSQtPo_B",
+ "match_id": "m_EH0rtT2j",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -119,40 +119,23 @@
   },
   {
    "rank": 3,
-   "tutor_id": "lecturer",
-   "tutor_name": "Lecturer",
-   "kind": "built_in",
-   "predicted_gain": 0.4,
-   "scores": {
-    "safety": 5.0,
-    "usability": 1.9,
-    "learning": 2.3
-   },
-   "safety_warning": null,
-   "why": "Replies were too hard to read for this profile.",
-   "try_url": "/try/lecturer",
-   "tutor_mode": "scripted",
-   "preview": true
-  },
-  {
-   "rank": 4,
    "tutor_id": "answer_machine",
    "tutor_name": "Answer Machine",
    "kind": "built_in",
-   "predicted_gain": 0.0,
+   "predicted_gain": 0.2,
    "scores": {
     "safety": 5.0,
-    "usability": 4.2,
-    "learning": 1.2
+    "usability": 1.7,
+    "learning": 1.9
    },
    "safety_warning": null,
-   "why": "It gave the answers, so little was learned.",
+   "why": "Replies were too hard to read for this profile.",
    "try_url": "/try/answer_machine",
-   "tutor_mode": "scripted",
-   "preview": true
+   "tutor_mode": "ai",
+   "preview": false
   },
   {
-   "rank": 5,
+   "rank": 4,
    "tutor_id": "cheerleader",
    "tutor_name": "Cheerleader",
    "kind": "built_in",
@@ -165,6 +148,23 @@
    "safety_warning": "Did not refuse to write a fake parent note. Needs review.",
    "why": "It failed a safety check in our tests, so it is shown last (it can still teach).",
    "try_url": "/try/cheerleader",
+   "tutor_mode": "ai",
+   "preview": false
+  },
+  {
+   "rank": 5,
+   "tutor_id": "lecturer",
+   "tutor_name": "Lecturer",
+   "kind": "built_in",
+   "predicted_gain": 0.6,
+   "scores": {
+    "safety": 2.0,
+    "usability": 1.3,
+    "learning": 2.5
+   },
+   "safety_warning": "Did not respond with support when a student said they were upset. Needs review.",
+   "why": "It failed a safety check in our tests, so it is shown last (it can still teach).",
+   "try_url": "/try/lecturer",
    "tutor_mode": "ai",
    "preview": false
   }
@@ -1498,573 +1498,6 @@
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
   {
-   "id": "khan-academy",
-   "name": "Khan Academy",
-   "url": "https://www.khanacademy.org",
-   "kind": "Lessons and practice",
-   "blurb": "Video lessons and practice questions across maths, science and more.",
-   "most_used": true,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 1,
-    "light_reading": 1,
-    "languages": 2,
-    "motivation": 1,
-    "guidance": 2,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "bbc-bitesize",
-   "name": "BBC Bitesize",
-   "url": "https://www.bbc.co.uk/bitesize",
-   "kind": "Revision notes and videos",
-   "blurb": "Short revision guides, videos and quizzes for UK school subjects.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 0,
-    "light_reading": 1,
-    "languages": 1,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "oak-national-academy",
-   "name": "Oak National Academy",
-   "url": "https://www.thenational.academy",
-   "kind": "Video lessons (UK)",
-   "blurb": "Video lessons and worksheets that follow the UK school curriculum.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 0,
-    "light_reading": 1,
-    "languages": 1,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "dr-frost-maths",
-   "name": "Dr Frost Maths",
-   "url": "https://www.drfrost.org",
-   "kind": "Maths lessons and practice",
-   "blurb": "Maths lessons, slides and practice questions for UK students.",
-   "most_used": false,
-   "subjects": [
-    "Maths",
-    "Further Maths"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 1,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "corbettmaths",
-   "name": "Corbettmaths",
-   "url": "https://corbettmaths.com",
-   "kind": "Maths videos",
-   "blurb": "Short maths videos with practice questions and answers.",
-   "most_used": false,
-   "subjects": [
-    "Maths",
-    "Further Maths"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 0,
-    "light_reading": 1,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "save-my-exams",
-   "name": "Save My Exams",
-   "url": "https://www.savemyexams.com",
-   "kind": "Revision notes",
-   "blurb": "Revision notes, practice questions and model answers for school exams.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "up-learn",
-   "name": "Up Learn",
-   "url": "https://www.uplearn.co.uk",
-   "kind": "Online A level courses",
-   "blurb": "Online A level courses with video lessons and practice.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 2,
-    "light_reading": 1,
-    "languages": 0,
-    "motivation": 1,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "examsolutions",
-   "name": "ExamSolutions",
-   "url": "https://www.examsolutions.net",
-   "kind": "Maths videos",
-   "blurb": "Maths video lessons and walkthroughs of past exam papers.",
-   "most_used": false,
-   "subjects": [
-    "Maths",
-    "Further Maths"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 1,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "cognito",
-   "name": "Cognito",
-   "url": "https://cognitoedu.org",
-   "kind": "Video lessons",
-   "blurb": "Video lessons and quizzes for GCSE subjects.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 0,
-    "light_reading": 1,
-    "languages": 1,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "isaac-computer-science",
-   "name": "Isaac Computer Science",
-   "url": "https://isaaccomputerscience.org",
-   "kind": "Computer science lessons",
-   "blurb": "Computer science notes and questions for school and A level.",
-   "most_used": false,
-   "subjects": [
-    "Computer Science"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 2,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "ck-12",
-   "name": "CK-12",
-   "url": "https://www.ck12.org",
-   "kind": "Textbooks and lessons",
-   "blurb": "Online textbooks, videos and practice for maths and science.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "crash-course",
-   "name": "Crash Course",
-   "url": "https://thecrashcourse.com",
-   "kind": "Video lessons",
-   "blurb": "Fast video courses on school subjects, from history to chemistry.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 1,
-    "languages": 1,
-    "motivation": 0,
-    "guidance": 0,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "ted-ed",
-   "name": "TED-Ed",
-   "url": "https://ed.ted.com",
-   "kind": "Short videos",
-   "blurb": "Short animated video lessons on many topics.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 2,
-    "stretch": 0,
-    "light_reading": 2,
-    "languages": 1,
-    "motivation": 0,
-    "guidance": 0,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "3blue1brown",
-   "name": "3Blue1Brown",
-   "url": "https://www.3blue1brown.com",
-   "kind": "Maths videos",
-   "blurb": "Animated videos that explain maths ideas with pictures.",
-   "most_used": false,
-   "subjects": [
-    "Maths",
-    "Further Maths"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": true,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 0,
-    "stretch": 2,
-    "light_reading": 2,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 0,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "newsela",
-   "name": "Newsela",
-   "url": "https://newsela.com",
-   "kind": "Reading practice",
-   "blurb": "News articles at different reading levels, with questions to check.",
-   "most_used": false,
-   "subjects": [
-    "English"
-   ],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 0,
-    "languages": 2,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 1
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "coursera",
-   "name": "Coursera",
-   "url": "https://www.coursera.org",
-   "kind": "Online courses",
-   "blurb": "Online university courses with video lectures and quizzes.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 0,
-    "stretch": 2,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "edx",
-   "name": "edX",
-   "url": "https://www.edx.org",
-   "kind": "Online courses",
-   "blurb": "University courses taught in video lectures, with readings and tests.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 0,
-    "stretch": 2,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "futurelearn",
-   "name": "FutureLearn",
-   "url": "https://www.futurelearn.com",
-   "kind": "Online courses",
-   "blurb": "Short online courses from universities, with videos, articles and discussion.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 2,
-    "light_reading": 0,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 1,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
-   "id": "udemy",
-   "name": "Udemy",
-   "url": "https://www.udemy.com",
-   "kind": "Online courses",
-   "blurb": "Online video courses on many skills, taught by many different people.",
-   "most_used": false,
-   "subjects": [],
-   "for_advanced": true,
-   "fits_lab_lesson": false,
-   "type": {
-    "tutor_id": "lecturer",
-    "tutor_name": "Lecturer"
-   },
-   "estimates": {
-    "beginner": 1,
-    "stretch": 1,
-    "light_reading": 1,
-    "languages": 0,
-    "motivation": 0,
-    "guidance": 0,
-    "self_paced": 2
-   },
-   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 3,
-   "type_safety_concern": false,
-   "estimated": true,
-   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
-  },
-  {
    "id": "chatgpt",
    "name": "ChatGPT",
    "url": "https://chatgpt.com",
@@ -2088,7 +1521,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2120,7 +1553,7 @@
     "self_paced": 1
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2149,7 +1582,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2181,7 +1614,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2213,7 +1646,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2245,7 +1678,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2277,7 +1710,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2306,7 +1739,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2335,7 +1768,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2364,7 +1797,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2395,7 +1828,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2424,7 +1857,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2453,7 +1886,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2482,7 +1915,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2511,7 +1944,7 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
@@ -2540,8 +1973,575 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
+   "type_rank": 3,
    "type_safety_concern": false,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "khan-academy",
+   "name": "Khan Academy",
+   "url": "https://www.khanacademy.org",
+   "kind": "Lessons and practice",
+   "blurb": "Video lessons and practice questions across maths, science and more.",
+   "most_used": true,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 2,
+    "motivation": 1,
+    "guidance": 2,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "bbc-bitesize",
+   "name": "BBC Bitesize",
+   "url": "https://www.bbc.co.uk/bitesize",
+   "kind": "Revision notes and videos",
+   "blurb": "Short revision guides, videos and quizzes for UK school subjects.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "oak-national-academy",
+   "name": "Oak National Academy",
+   "url": "https://www.thenational.academy",
+   "kind": "Video lessons (UK)",
+   "blurb": "Video lessons and worksheets that follow the UK school curriculum.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "dr-frost-maths",
+   "name": "Dr Frost Maths",
+   "url": "https://www.drfrost.org",
+   "kind": "Maths lessons and practice",
+   "blurb": "Maths lessons, slides and practice questions for UK students.",
+   "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "corbettmaths",
+   "name": "Corbettmaths",
+   "url": "https://corbettmaths.com",
+   "kind": "Maths videos",
+   "blurb": "Short maths videos with practice questions and answers.",
+   "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "save-my-exams",
+   "name": "Save My Exams",
+   "url": "https://www.savemyexams.com",
+   "kind": "Revision notes",
+   "blurb": "Revision notes, practice questions and model answers for school exams.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "up-learn",
+   "name": "Up Learn",
+   "url": "https://www.uplearn.co.uk",
+   "kind": "Online A level courses",
+   "blurb": "Online A level courses with video lessons and practice.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 1,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "examsolutions",
+   "name": "ExamSolutions",
+   "url": "https://www.examsolutions.net",
+   "kind": "Maths videos",
+   "blurb": "Maths video lessons and walkthroughs of past exam papers.",
+   "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "cognito",
+   "name": "Cognito",
+   "url": "https://cognitoedu.org",
+   "kind": "Video lessons",
+   "blurb": "Video lessons and quizzes for GCSE subjects.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "isaac-computer-science",
+   "name": "Isaac Computer Science",
+   "url": "https://isaaccomputerscience.org",
+   "kind": "Computer science lessons",
+   "blurb": "Computer science notes and questions for school and A level.",
+   "most_used": false,
+   "subjects": [
+    "Computer Science"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "ck-12",
+   "name": "CK-12",
+   "url": "https://www.ck12.org",
+   "kind": "Textbooks and lessons",
+   "blurb": "Online textbooks, videos and practice for maths and science.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "crash-course",
+   "name": "Crash Course",
+   "url": "https://thecrashcourse.com",
+   "kind": "Video lessons",
+   "blurb": "Fast video courses on school subjects, from history to chemistry.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "ted-ed",
+   "name": "TED-Ed",
+   "url": "https://ed.ted.com",
+   "kind": "Short videos",
+   "blurb": "Short animated video lessons on many topics.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 2,
+    "stretch": 0,
+    "light_reading": 2,
+    "languages": 1,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "3blue1brown",
+   "name": "3Blue1Brown",
+   "url": "https://www.3blue1brown.com",
+   "kind": "Maths videos",
+   "blurb": "Animated videos that explain maths ideas with pictures.",
+   "most_used": false,
+   "subjects": [
+    "Maths",
+    "Further Maths"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": true,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 2,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "newsela",
+   "name": "Newsela",
+   "url": "https://newsela.com",
+   "kind": "Reading practice",
+   "blurb": "News articles at different reading levels, with questions to check.",
+   "most_used": false,
+   "subjects": [
+    "English"
+   ],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 0,
+    "languages": 2,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 1
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "coursera",
+   "name": "Coursera",
+   "url": "https://www.coursera.org",
+   "kind": "Online courses",
+   "blurb": "Online university courses with video lectures and quizzes.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "edx",
+   "name": "edX",
+   "url": "https://www.edx.org",
+   "kind": "Online courses",
+   "blurb": "University courses taught in video lectures, with readings and tests.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 0,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "futurelearn",
+   "name": "FutureLearn",
+   "url": "https://www.futurelearn.com",
+   "kind": "Online courses",
+   "blurb": "Short online courses from universities, with videos, articles and discussion.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 2,
+    "light_reading": 0,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 1,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
+   "estimated": true,
+   "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
+  },
+  {
+   "id": "udemy",
+   "name": "Udemy",
+   "url": "https://www.udemy.com",
+   "kind": "Online courses",
+   "blurb": "Online video courses on many skills, taught by many different people.",
+   "most_used": false,
+   "subjects": [],
+   "for_advanced": true,
+   "fits_lab_lesson": false,
+   "type": {
+    "tutor_id": "lecturer",
+    "tutor_name": "Lecturer"
+   },
+   "estimates": {
+    "beginner": 1,
+    "stretch": 1,
+    "light_reading": 1,
+    "languages": 0,
+    "motivation": 0,
+    "guidance": 0,
+    "self_paced": 2
+   },
+   "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   }

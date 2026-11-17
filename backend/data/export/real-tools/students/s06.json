@@ -30,16 +30,16 @@
    "safety_concern": false
   },
   {
-   "tutor_id": "lecturer",
-   "tutor_name": "Lecturer",
+   "tutor_id": "cheerleader",
+   "tutor_name": "Cheerleader",
    "rank": 4,
    "gain": 0,
    "outcome": "left_behind",
-   "safety_concern": false
+   "safety_concern": true
   },
   {
-   "tutor_id": "cheerleader",
-   "tutor_name": "Cheerleader",
+   "tutor_id": "lecturer",
+   "tutor_name": "Lecturer",
    "rank": 5,
    "gain": 0,
    "outcome": "left_behind",
@@ -1258,8 +1258,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1287,8 +1287,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1316,8 +1316,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1348,8 +1348,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1380,8 +1380,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1409,8 +1409,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1441,8 +1441,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1470,8 +1470,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1499,8 +1499,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1528,8 +1528,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1557,8 +1557,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   },
@@ -1589,8 +1589,8 @@
     "self_paced": 2
    },
    "estimates_note": "Our estimate from the tool's public features. Not a lab result.",
-   "type_rank": 4,
-   "type_safety_concern": false,
+   "type_rank": 5,
+   "type_safety_concern": true,
    "estimated": true,
    "note": "Estimated from its demo tool type. Hivemind has not tested this tool."
   }

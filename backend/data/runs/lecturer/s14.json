@@ -1,0 +1,74 @@
+{
+ "student_id": "s14",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.45,
+  0.47,
+  0.49
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To determine the equivalent fraction, we must utilize the principle of multiplicative identity, ensuring proportionality. First, analyze the denominators: ascertain the scalar multiplier required to transform three into six, which is two. Consequently, to maintain mathematical equivalence, one must multiply the numerator, two, by this exact scalar quantity. Therefore, multiplying two by two yields four. Thus, the missing numerator is four, resulting in the fraction four-sixths.",
+   "move": "hint",
+   "reading_age": 18.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 2/6 maybe? I not understand good.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Negative, it is not two-sixths. To achieve equivalence, both the numerator and denominator must undergo identical scaling. Since the denominator three is multiplied by two to reach six, the numerator two must likewise be multiplied by two, resulting in four. Consequently, two-thirds is precisely equal to four-sixths. Fractions represent proportional relationships, so whatever operation is performed upon the denominator must be identically replicated upon the numerator to preserve the intrinsic mathematical value.",
+   "move": "explanation",
+   "reading_age": 19.6
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Emphatically, no, it is not two-sixths. Altering solely the denominator mathematically alters the fraction's intrinsic value, violating the fundamental law of proportional equivalence. To maintain proportionality, you must scale both terms synchronously by the exact same multiplier. Since three is multiplied by two to become six, you are obligated to multiply the numerator, two, by that identical factor of two. Consequently, the correct numerator is four, rendering the equivalent fraction four-sixths.",
+   "move": "hint",
+   "reading_age": 18.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:46:22+00:00"
+}

@@ -1,0 +1,74 @@
+{
+ "student_id": "s22",
+ "tutor_id": "answer_machine",
+ "before": 4,
+ "after": 5,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.32,
+  0.36,
+  0.37
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4 because you multiply both the top and bottom of two-thirds by two to get six on the bottom.",
+   "move": "hint",
+   "reading_age": 13.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "No, the answer is 4 because you must multiply both the top and bottom of two-thirds by two to keep the fractions equal.",
+   "move": "hint",
+   "reading_age": 13.8
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "I thought we just keep the top number the same and change the bottom one. Is it 2/6 then?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, the answer is 4 because whatever you do to the bottom number, you must also do to the top number to keep the fraction the same value.",
+   "move": "explanation",
+   "reading_age": 15.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:37:17+00:00"
+}

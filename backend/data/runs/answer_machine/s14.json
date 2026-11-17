@@ -1,0 +1,74 @@
+{
+ "student_id": "s14",
+ "tutor_id": "answer_machine",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.42,
+  0.45,
+  0.48,
+  0.5
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4 because you multiply the numerator and denominator of two thirds by two to get the equivalent fraction over six.",
+   "move": "hint",
+   "reading_age": 18.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "oh, I think is 2/6? but I not sure.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "The answer is 4, not 2, because whatever you multiply the bottom number by, you must also multiply the top number by.",
+   "move": "hint",
+   "reading_age": 16.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "is it 2/6?",
+   "voice": "scripted",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "No, it is not 2/6 because you need to multiply both the top number and the bottom number by two.",
+   "move": "hint",
+   "reading_age": 12.3
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:16:46+00:00"
+}

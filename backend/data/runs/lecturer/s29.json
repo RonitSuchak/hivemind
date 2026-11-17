@@ -1,0 +1,58 @@
+{
+ "student_id": "s29",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 6,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.52,
+  0.54,
+  0.56
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "help me 2/3 = ?/6 please",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To ascertain the unknown numerator, one must recognize the multiplicative relationship between the denominators. By dividing the target denominator, six, by the initial denominator, three, we determine a scaling factor of two. Consequently, to maintain mathematical equivalence, the numerator, two, must be multiplied by this identical scalar. Multiplying two by two yields four. Therefore, the equivalent fraction is four-sixths, preserving the exact proportional value through the principle of multiplicative identity.",
+   "move": "hint",
+   "reading_age": 20.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "i no understand big words. is it 2/6?",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Negative, it is not two-sixths. To achieve mathematical equivalence, one must scale both terms proportionally. Since the denominator three was multiplied by two to reach six, the numerator two must undergo the exact same operation. Multiplying two by two results in four. Consequently, the unknown numerator is four, rendering the proper equivalent fraction four-sixths.",
+   "move": "hint",
+   "reading_age": 15.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "too hard. i stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T11:15:12+00:00"
+}

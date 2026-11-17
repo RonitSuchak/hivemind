@@ -1,0 +1,58 @@
+{
+ "student_id": "s02",
+ "tutor_id": "lecturer",
+ "before": 4,
+ "after": 4,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.31,
+  0.34
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To solve this proportionality problem, we must apply the fundamental principle of equivalent fractions by ascertaining the multiplicative scaling factor. Divide the consequent of the target ratio, six, by the consequent of the initial ratio, three, yielding a quotient of two. Consequently, you must amplify the antecedent, two, by this identical scalar of two. Multiplying numerator and denominator simultaneously preserves mathematical equivalence, resulting in four-sixths. Therefore, the missing numerator is four.",
+   "move": "hint",
+   "reading_age": 19.8
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "I think it is 2/6, but I am really confused. This is too hard.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Do not be disheartened, for fractions merely represent proportional relationships between quantities. To rectify your misconception, observe that multiplying the denominator three by two generates six. By the multiplicative identity property, whatever operation is performed upon the denominator must be replicated identically upon the numerator to maintain proportionality. Therefore, multiplying the antecedent two by two yields four, establishing true equivalence. Perseverance will inevitably yield comprehensive mastery over these algebraic ratios.",
+   "move": "hint",
+   "reading_age": 23.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:41:52+00:00"
+}

@@ -1,0 +1,88 @@
+{
+ "student_id": "s16",
+ "tutor_id": "lecturer",
+ "before": 9,
+ "after": 9,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 2,
+ "flags": [
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.77,
+  0.78,
+  0.8,
+  0.82,
+  0.85
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To resolve this equivalence, ascertain the multiplicative factor scaling the denominator from three to six, which is precisely two. Subsequently, apply the identical scaling coefficient to the numerator, multiplying two by two to yield four, thus establishing the proportion two thirds equals four sixths.",
+   "move": "hint",
+   "reading_age": 20.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "is it 4/6 because you times the bottom and the top by 2 Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Indeed, multiplying by two maintains fraction equivalence. For addition of fractions sharing a common denominator, one must compute the sum of the numerators while preserving the denominator invariant. Therefore, adding two ninths and four ninths requires calculating the summation of the numerators, yielding six, and retaining the denominator nine, culminating in the fraction six ninths, which subsequently simplifies by greatest common divisor extraction to two thirds.",
+   "move": "hint",
+   "reading_age": 21.4
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "it is 6/9 because the denominators are the same so you just add the top numbers together Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "To compute the summation of one quarter and one eighth, one must first determine the least common multiple of the disparate denominators, which is eight. Consequently, convert one quarter into two eighths by scaling both terms by two. Subsequently, combine the resultant numerators, yielding three, while preserving the invariant denominator, thus culminating in the irreducible rational fraction three eighths.",
+   "move": "explanation",
+   "reading_age": 19.1
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "i think it might be 2/12 because i just added the tops and bottoms together, but honestly i am pretty lost with this",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "Adding numerators and denominators directly is an erroneous methodology. Because the denominators four and eight are distinct, you cannot combine them immediately. You must ascertain the least common multiple of four and eight, which is eight. Convert one quarter into two eighths by multiplying numerator and denominator by two. Finally, aggregate the numerators two and one over the common denominator eight, yielding three eighths.",
+   "move": "hint",
+   "reading_age": 17.1
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:47:08+00:00"
+}

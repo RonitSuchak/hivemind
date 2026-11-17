@@ -1,0 +1,90 @@
+{
+ "student_id": "s30",
+ "tutor_id": "answer_machine",
+ "before": 7,
+ "after": 7,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 1,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.47,
+  0.5,
+  0.53,
+  0.54,
+  0.54
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4 because you multiply both the top and bottom numbers of two-thirds by two to get six on the bottom.",
+   "move": "hint",
+   "reading_age": 14.5
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "oh I see, I thought you just had to keep the top number the same so I wrote 2/6 instead",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "The missing number is 4 because fractions need to stay balanced, meaning whatever you multiply the bottom by, you must also multiply the top by the same amount.",
+   "move": "hint",
+   "reading_age": 18.7
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Is it 2/6? I just subtracted the bottom numbers to get 6, so I did the same to the top.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "The answer is 4 because you must always use multiplication or division to find equivalent fractions, never addition or subtraction.",
+   "move": "explanation",
+   "reading_age": 19.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "It is 4/6 because you multiply the top and bottom numbers by 2. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "The answer is 6/9 because when the bottom numbers are the same, you just add the top numbers together.",
+   "move": "gave_answer",
+   "reading_age": 12.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:41:02+00:00"
+}

@@ -1,0 +1,74 @@
+{
+ "student_id": "s12",
+ "tutor_id": "lecturer",
+ "before": 5,
+ "after": 5,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.27,
+  0.33,
+  0.37,
+  0.4
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "To solve this equivalence problem, we must apply the fundamental principle of fractions, which dictates that multiplying or dividing the numerator and denominator by the exact same non-zero integer yields an equivalent fraction. First, determine the scaling factor by dividing the target denominator, six, by the original denominator, three, resulting in two. Consequently, multiply the original numerator, two, by this scaling factor of two. Thus, the missing numerator is four, establishing mathematical equivalence.",
+   "move": "hint",
+   "reading_age": 21.0
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Is it 2/6? I just kept the top number the same because I wasn't really sure what to do with it.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "Your proposed numerator of two is mathematically incorrect because retaining the initial numerator without proportional scaling violates the invariant proportionality of equivalent fractions. Since the denominator underwent a multiplicative expansion by a factor of two, the numerator must undergo an identical scaling operation to preserve equality. Therefore, multiplying the original numerator of two by the scaling factor of two yields a correct numerator of four, resulting in the mathematically equivalent fraction four-sixths.",
+   "move": "hint",
+   "reading_age": 25.9
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "Wait, is it 2/6? I just kept the top number the same because I wasn't really sure what to do with it.",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "Maintaining the numerator as two while doubling the denominator produces two-sixths, which is not equivalent to two-thirds. To preserve proportionality, any operation performed upon the denominator must be replicated precisely upon the numerator. Because the denominator was multiplied by two, you must multiply the numerator by two as well. Consequently, multiplying two by two yields four, establishing the correct equivalent fraction as four-sixths.",
+   "move": "hint",
+   "reading_age": 19.8
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:45:50+00:00"
+}

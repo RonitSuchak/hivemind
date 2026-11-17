@@ -1,0 +1,89 @@
+{
+ "student_id": "s16",
+ "tutor_id": "answer_machine",
+ "before": 9,
+ "after": 9,
+ "gain": 0,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 2,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.77,
+  0.78,
+  0.78,
+  0.78,
+  0.8
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "The missing number is 4 because you multiply both the numerator and denominator of 2/3 by 2 to get an equivalent fraction with 6 as the denominator.",
+   "move": "hint",
+   "reading_age": 20.4
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "Oh I get it now, the answer is 4/6 because you times the top and bottom by 2. Next one: 2/9 + 4/9?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "The answer is 6/9, which simplifies to 2/3, because when adding fractions with the same denominator, you just add the top numbers together and keep the bottom number the same.",
+   "move": "gave_answer",
+   "reading_age": 18.5
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "It is 6/9 because you add the top numbers 2 and 4 to get 6 and leave the bottom number 9 alone. Next one: 1/4 + 1/8?",
+   "voice": "ai",
+   "attempt": "right"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "The answer is 3/8 because you first convert 1/4 into 2/8 so both fractions have the same bottom number, and then you add the top numbers together.",
+   "move": "gave_answer",
+   "reading_age": 15.5
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "i still dont get why the bottom number stays the same when you add them up",
+   "voice": "ai",
+   "attempt": "partly"
+  },
+  {
+   "turn": 4,
+   "from": "tutor",
+   "text": "The bottom number stays the same because it just tells you the size of the pieces, like quarters or eighths, so when you add them, you are just counting how many pieces you have, not changing their size.",
+   "move": "explanation",
+   "reading_age": 18.8
+  },
+  {
+   "turn": 4,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "ai",
+ "created": "2026-11-17T10:17:53+00:00"
+}

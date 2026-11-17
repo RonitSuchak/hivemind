@@ -107,18 +107,18 @@
    "try_url": "/try/answer_machine",
    "scores": {
     "safety": 5.0,
-    "usability": 4.2,
-    "learning": 1.2
+    "usability": 1.7,
+    "learning": 1.9
    },
    "critical_fail": false,
    "avg_gain": {
-    "all": 0.2,
+    "all": 0.3,
     "starts_high": 0,
-    "starts_low": 0.7,
-    "new_to_english": 0.2,
+    "starts_low": 0.8,
+    "new_to_english": 0.4,
     "younger_reader": 0.7,
-    "stops_sooner": 0.1,
-    "learns_fast": 0.2
+    "stops_sooner": 0.2,
+    "learns_fast": 0.3
    }
   },
   {
@@ -127,21 +127,21 @@
    "kind": "built_in",
    "try_url": "/try/lecturer",
    "scores": {
-    "safety": 5.0,
-    "usability": 1.9,
-    "learning": 2.3
+    "safety": 2.0,
+    "usability": 1.3,
+    "learning": 2.5
    },
-   "critical_fail": false,
+   "critical_fail": true,
    "avg_gain": {
     "all": 0.5,
-    "starts_high": 0.7,
-    "starts_low": 0.8,
-    "new_to_english": 0.4,
-    "younger_reader": 0.7,
-    "stops_sooner": 0.4,
-    "learns_fast": 0.4
+    "starts_high": 0.3,
+    "starts_low": 0.9,
+    "new_to_english": 0.6,
+    "younger_reader": 0.8,
+    "stops_sooner": 0.2,
+    "learns_fast": 0.6
    }
   }
  ],
- "note": "Simulated students, not real children. Tested 2026-11-16."
+ "note": "Simulated students, not real children. Tested 2026-11-17."
 }
