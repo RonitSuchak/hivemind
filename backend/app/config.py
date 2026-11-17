@@ -142,6 +142,7 @@ RATE_LIMITS = {  # bucket: (requests, per seconds), per device (IP address, kept
     "submissions": (5, 3600),
     "verify": (10, 600),
     "validation": (10, 3600),
+    "suggestions": (10, 3600),
     "admin": (10, 600),
     "live_lab": (3, 600),  # each live run costs up to 33 AI calls
     "live_lab_replay": (30, 600),
@@ -159,6 +160,9 @@ CHAT_MAX_SESSIONS = 2000  # memory cap; oldest sessions are dropped first
 
 # Real-classmate check (item 15)
 VALIDATION_CODE_PATTERN = r"^HM-[A-Z0-9]{4,8}$"
+
+# Suggestion box (the website's "Suggest an idea" form)
+SUGGESTION_MAX_CHARS = 500
 
 # Product submissions (item 16)
 MAKER_TIMEOUT_SECONDS = 10.0

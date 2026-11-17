@@ -313,6 +313,31 @@ class ApiTests(unittest.TestCase):
                                                                    "tutor_id": "socratic", "before": 1, "after": 2}),
                          400, "invalid_input")
 
+    # --- suggestion box
+    def test_suggestion_is_stored_without_personal_details(self):
+        from app import store
+        long_text = "  Please test Khanmigo. My email is kid@example.com " + "x" * 600
+        got = self.client.post("/api/suggestions", json={"kind": "tool", "text": long_text, "name": "Ignored"})
+        self.assertEqual(got.status_code, 200)
+        self.assertEqual(got.json()["ok"], True)
+        saved = [s for s in store.get_store().list("suggestions") if s["created"] == got.json()["created"]][-1]
+        self.assertEqual(set(saved), {"kind", "text", "created"})
+        self.assertEqual(saved["kind"], "tool")
+        self.assertTrue(saved["text"].startswith("Please test Khanmigo."))
+        self.assertNotIn("kid@example.com", saved["text"])
+        self.assertLessEqual(len(saved["text"]), config.SUGGESTION_MAX_CHARS)
+
+    def test_suggestion_refuses_a_bad_kind_or_empty_text(self):
+        self.assertError(self.client.post("/api/suggestions", json={"kind": "spam", "text": "hi"}), 400, "invalid_input")
+        self.assertError(self.client.post("/api/suggestions", json={"kind": "feature", "text": "   "}), 400, "invalid_input")
+
+    def test_suggestions_are_rate_limited(self):
+        count, _ = config.RATE_LIMITS["suggestions"]
+        for _ in range(count):
+            self.client.post("/api/suggestions", json={"kind": "measure", "text": "Time on task"})
+        self.assertError(self.client.post("/api/suggestions", json={"kind": "measure", "text": "Time on task"}),
+                         429, "rate_limited")
+
     # --- admin
     def test_admin_routes_reject_a_wrong_password_and_are_off_without_one(self):
         import os

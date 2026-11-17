@@ -5,8 +5,8 @@ Run from backend/:
 Docs to try every request: http://localhost:8000/docs
 
 Rules: errors are always {"error": {"code", "message"}} with no stack traces;
-bodies over 16 KB are refused; chat, ask, match, submissions, validation and
-admin routes are rate-limited per device; no IP address, message or email is
+bodies over 16 KB are refused; chat, ask, match, submissions, validation, suggestions
+and admin routes are rate-limited per device; no IP address, message or email is
 ever logged.
 """
 
@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import hmac
 import logging
+import secrets
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
+from typing import Literal
 
 from fastapi import Depends, FastAPI, Header, Request
 from fastapi.exceptions import RequestValidationError
@@ -449,6 +451,27 @@ def delete_validation(code: str):
     if not deleted:
         raise ApiError(404, "not_found", "No entry with that code.")
     return {"deleted": code.strip().upper()}
+
+
+# --- suggestion box -----------------------------------------------------------------------
+
+class SuggestionBody(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    kind: Literal["tool", "measure", "feature"]
+    text: str
+
+
+@app.post("/api/suggestions", dependencies=[Depends(rate_limit("suggestions"))])
+def post_suggestion(body: SuggestionBody):
+    """The website's suggestion box. Stores kind, text and time only: no name, email or address,
+    and personal details in the text are removed first (the same rule as live chat)."""
+    text = live.redact(body.text.strip()[:config.SUGGESTION_MAX_CHARS]).strip()
+    if not text:
+        raise ApiError(400, "invalid_input", "Write a suggestion first.")
+    created = now()
+    item_id = created.replace("-", "").replace(":", "") + "_" + secrets.token_hex(3)  # sorts by time
+    get_store().put("suggestions", item_id, {"kind": body.kind, "text": text, "created": created})
+    return {"ok": True, "kind": body.kind, "created": created}
 
 
 # --- product submissions ----------------------------------------------------------------
