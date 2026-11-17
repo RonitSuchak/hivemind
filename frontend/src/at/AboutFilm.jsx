@@ -302,17 +302,21 @@ export default function AboutFilm({ facts = {} }) {
   return (
     <section className={`af${reduced ? ' af-static' : ''}`} ref={root} data-noscrub aria-label="The short version" style={{ '--af-n': N }}>
       <div className="af-view" ref={view}>
-        <div className="af-figs">
-          {CHAPTERS.map((c, i) => (
-            <div className="af-fig" key={c.id} ref={(el) => { figs.current[i] = el }}><div className="af-fig-in">{FIGS[c.id]}</div></div>
-          ))}
-        </div>
+        {!reduced && (
+          <div className="af-figs">
+            {CHAPTERS.map((c, i) => (
+              <div className="af-fig" key={c.id} ref={(el) => { figs.current[i] = el }}><div className="af-fig-in">{FIGS[c.id]}</div></div>
+            ))}
+          </div>
+        )}
         <div className="af-cards">
           {CHAPTERS.map((c, i) => (
             <article className="af-card glass" key={c.id} ref={(el) => { cards.current[i] = el }}>
               <p className="af-tag" aria-hidden="true">{String(i + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</p>
               <h2 className="af-title">{c.name}</h2>
               <ul className="af-list">{c.bullets(f).map((b, j) => <li key={j}>{b}</li>)}</ul>
+              {/* Reduced motion: the chapter's figure sits still inside its card, fully drawn */}
+              {reduced && <div className="af-fig af-fig-static"><div className="af-fig-in">{FIGS[c.id]}</div></div>}
               <Link className="af-more" to={{ hash: `#${c.id}` }}>Read the detail <span aria-hidden="true">-&gt;</span></Link>
             </article>
           ))}

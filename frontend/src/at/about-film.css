@@ -106,13 +106,15 @@
   .af-nav .af-name { display: none; }
 }
 
-/* Reduced motion: no pinning, no canvas, no figures; just the cards, stacked */
+/* Reduced motion: no pinning, no canvas; the cards are stacked and each holds its figure, still and complete */
 .af-static { height: auto; }
 .af-static .af-view { position: static; height: auto; width: auto; margin-left: 0; overflow: visible; }
 .af-static .af-figs, .af-static .af-nav, .af-static .af-line { display: none; }
 .af-static .af-cards { position: static; display: grid; gap: var(--s-5); pointer-events: auto; }
 .af-static .af-card { position: static; width: min(40rem, 100%); max-height: none; margin-block: 0; height: auto; pointer-events: auto; }
 .af-static .af-card::before, .af-static .af-card::after { opacity: 1; }
+.af-static .af-fig-static { position: static; display: block; visibility: visible; opacity: 1; --k: 1; margin-top: var(--s-4, 1rem); }
+.af-static .af-fig-static .af-fig-in { width: 100%; scale: 1; }
 
 /* The stat wheel inside the match diagram (components/MatchDiagram.jsx) */
 .ms-wheel { max-width: 20rem; margin-inline: auto; }
