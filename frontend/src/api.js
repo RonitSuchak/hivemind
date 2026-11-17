@@ -143,10 +143,15 @@ function tidyMatch(m) {
     .map((t) => (t.safety_warning ? { ...t, failed: true, safety_warning: null, why: '', try_url: null } : { ...t, failed: false, why: plainWords(t.why) }))
     .sort((a, b) => b.predicted_gain - a.predicted_gain)
   const firstPassed = byGain.findIndex((t) => !t.failed)
-  if (firstPassed > 0) byGain.unshift(...byGain.splice(firstPassed, 1))
+  const moved = firstPassed > 0 // a failed tool had the highest gain, so the best tool that passed is put first
+  if (moved) {
+    byGain.unshift(...byGain.splice(firstPassed, 1))
+    // the tools that were stepped over say why, so the order never looks like a mistake
+    for (let i = 1; i <= firstPassed; i++) byGain[i] = { ...byGain[i], why: 'It is not the first pick because it did not pass one of the lab\u2019s checks.' }
+  }
   const ranked = byGain.map(({ failed, ...t }, i) => ({ ...t, rank: i + 1 })) // eslint-disable-line no-unused-vars
   return {
-    ...m, ranked,
+    ...m, ranked, pick_not_top: moved,
     follow_ups: (m.follow_ups || []).filter((q) => q.id !== 'careful').map((q) => ({ ...q, question: plainWords(q.question), answer: plainWords(q.answer) })),
     note: plainWords(m.note || '').replace(/\b\d+ tools tested\.?/, `${ranked.length} demo tools tested.`),
     message: plainWords(m.message),

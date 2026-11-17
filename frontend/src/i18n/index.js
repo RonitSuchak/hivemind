@@ -103,8 +103,7 @@ export const en = {
   'picker.many': 'You picked {n} languages.',
 
   // translate bar
-  'bar.beta': 'Beta: only the home page is in {lang} so far.',
-  'bar.betaDone': 'Beta: the home page is in {lang}. Your browser translates the rest.',
+  'bar.beta': 'The site is shown in {lang}. Quoted chat messages and tool names stay in English.',
   'bar.showEnglish': 'English',
 }
 

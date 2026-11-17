@@ -135,7 +135,7 @@ function Body({ match, pace }) {
 
       {first.length > 0 && !noWinner && (
         <Reveal as="section" className="rs-best">
-          <BestTools wide headingId="best-you-h" title={bestTitle([first[0].group], example ? 'this' : 'you')}
+          <BestTools wide headingId="best-you-h" title={match.pick_not_top ? `The first pick for ${example ? 'students like this one' : 'students like you'} is ${typeName(first[0].group)} tools` : bestTitle([first[0].group], example ? 'this' : 'you')}
             items={first.map((tool) => ({ tool, line: '' }))}
             note={`${bestNote([first[0].group])} Hivemind has not tested the sites themselves.${topic.subject ? ` Only tools for ${topic.subject} are shown.` : ''}`} />
         </Reveal>
