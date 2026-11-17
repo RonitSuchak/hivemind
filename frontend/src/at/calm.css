@@ -1,0 +1,37 @@
+/* Calm pass (loaded last): the words lead. Reading typefaces, a three-colour palette, less ornament.
+   Nothing here removes a feature; the films, the wheel and the lab all work as before. */
+
+/* ---------- Type: Newsreader for headings and italic accents, Figtree for everything else ---------- */
+:root {
+  --font-display: "Newsreader Variable", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-accent: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --track-display: -0.022em; --track-heading: -0.012em; --track-small: 0; /* a serif needs less tightening than the old grotesque */
+  --leading-tight: 1.1; --leading: 1.62;
+}
+h1, h2, h3, .film-title, .af-title, .tw-name, .aff-say { font-optical-sizing: auto; text-wrap: balance; }
+::selection { background: rgb(244 81 30 / 0.22); }
+
+/* The small labels were monospace capitals (they read as a machine talking). Now plain words in the body face. */
+.film-tag, .film-hud button, .film-hint, .af-nav button, .tsr-count, .tw-bar-t, .tw-count, .tw-go, .tw-cap, .tfilm-nav button, .tfilm-hint,
+.tfl-kind, .tfl-count, .tfl-pull, .tfl-esc, .tw-lab, .tpn-spec-num, .tab-extra, .wheel-scale {
+  font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 500; }
+.film-hud button, .af-nav button, .tfilm-nav button, .tsr-count, .tw-count, .tw-go, .tfilm-hint, .film-hint, .tfl-kind, .tfl-count, .tfl-pull, .tfl-esc { font-size: 0.8125rem; }
+.wheel-scale { font-weight: 700; }
+
+/* ---------- Colour: split-complementary. Orange (the base) plus the two colours either side of its opposite:
+   navy blue for ink and structure, teal for one job only: a good result (passed, learned, tested). ---------- */
+:root {
+  --teal: #0e7157; --teal-strong: #4ed0ad; --teal-soft: rgb(14 113 87 / 0.1);
+  --ok: var(--teal); --c-learned: var(--teal); --c-left: var(--pop-deep);
+  --sheen: transparent; --facet: transparent; /* no shine or facet gradients on cards */
+}
+:root[data-ground="midnight"], .on-dark, .site-footer, .home-section.klass, .home-section.finale {
+  --ok: var(--teal-strong); --c-learned: var(--teal-strong); --c-left: var(--pop-strong); --sheen: transparent; --facet: transparent; }
+.tw-lab[data-tested] { color: var(--ok); border-color: currentColor; }
+
+/* ---------- Less ornament ---------- */
+.gem { display: none; }                                   /* corner crystal */
+.film-tag, .af-tag, .af-num { display: none; }            /* "01 / 09" counters above headings */
+.af-card::before, .af-card::after, .tw::before, .tw::after, .film-card::before, .film-card::after { display: none; } /* orange corner ticks */
+.aff-note { border: 1px solid var(--card-edge); background: var(--fill-subtle); } /* was a thick orange side stripe */

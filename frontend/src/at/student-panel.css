@@ -1,0 +1,33 @@
+/* Matched-student side panel (components/StudentPanel.jsx) and the clickable names on the results page. */
+.sp { display: grid; gap: var(--s-4); }
+.sp-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); font-size: var(--text-sm); }
+.sp-sub { color: var(--ink-2); }
+.sp-tags { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0; }
+.sp-tags li { padding: 0.15rem 0.65rem; border: 1px solid var(--line-strong); border-radius: var(--r-pill); font-size: var(--text-xs); color: var(--ink-2); }
+/* The wheel's labels sit outside its box, so leave room on the sides. */
+.sp-wheel { margin: 0; padding: var(--s-3) 5.5rem; display: flex; justify-content: center; }
+@media (max-width: 30rem) { .sp-wheel { padding-inline: 4.5rem; } }
+.sp-block { display: grid; gap: var(--s-1); border-top: 1px solid var(--line); padding-top: var(--s-4); }
+.sp-h { font-size: var(--text-base, 1rem); font-weight: 600; }
+.sp-tools { list-style: none; display: grid; margin: var(--s-2) 0 0; padding: 0; }
+.sp-tool { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: var(--s-3); padding: var(--s-3) 0; border-top: 1px solid var(--line); }
+.sp-tool:first-child { border-top: 0; }
+.sp-tool p { font-size: var(--text-sm); }
+.sp-gain { font-weight: 600; font-variant-numeric: tabular-nums; }
+.sp-link, .sp-lab a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 0.2em; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; border-radius: var(--r-sm); }
+.sp-link:hover, .sp-lab a:hover { color: var(--ink); }
+.sp-link:focus-visible, .sp-lab a:focus-visible { outline: none; box-shadow: var(--focus); }
+.sp-lab { font-size: var(--text-sm); }
+
+/* A matched student's name on the results page: reads as text, behaves as a button. */
+.rs .rs-matched .rs-name { background: none; border: 0; padding: 0.15rem 0; font: inherit; color: var(--ink-2); cursor: pointer; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 0.2em; border-radius: var(--r-sm); }
+.rs .rs-matched .rs-name:hover { color: var(--ink); text-decoration-color: currentColor; }
+.rs .rs-matched .rs-name:focus-visible { outline: none; box-shadow: var(--focus); }
+
+/* Hero wheel: room for the labels, and the notes under it. */
+.rs .rs-radar.rs-wheel { display: flex; flex-direction: column; align-items: center; gap: var(--s-3); padding: var(--s-3) 5rem; }
+@media (max-width: 30rem) { .rs .rs-radar.rs-wheel { padding-inline: 4rem; } }
+.rs .rs-radar.rs-wheel figcaption { font-size: var(--text-sm); color: var(--ink-3); text-align: center; max-width: 28rem; }
+
+/* The flag next to the words "gave up". */
+.sp-tool .gaveup-flag { display: inline-block; vertical-align: -3px; margin: 0 0.1em 0 0.15em; }

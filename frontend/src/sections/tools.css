@@ -1,0 +1,9 @@
+/* tools section: its own styles go here. Loaded after every other stylesheet (see main.jsx),
+   so a rule here wins over older rules with the same selector. */
+
+/* Spacing fixes on the tools page */
+.tg-risk h2 + p { margin-top: var(--s-2); }                 /* the line under "Safety and risk" no longer sits tight against it */
+.tg-risk-list li h3 { margin-top: var(--s-1); }             /* a little air under the rule above each risk */
+.tg-cta h2 + p { margin-top: var(--s-3); }
+.tgp-how { margin-bottom: var(--s-1); }
+.tpn-foot-note { margin-top: var(--s-3); }                  /* the note below the "At a glance" bars */

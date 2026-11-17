@@ -1,7 +1,10 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import ToolPreview from './ToolPreview.jsx'
-import { GROUPS, REAL_TOOLS_NOTE, searchTools } from '../data/tools.js'
+import { GROUPS, REAL_TOOLS_NOTE, TOOLS, searchTools, teaches } from '../data/tools.js'
+import { usePiloted } from '../pilot.js'
+import { plainWords } from '../labels.js'
 
 // The real tools of the type one demo tool stands in for: a search bar, a list to pick from and the picked
 // tool's details. Hivemind has not tested these tools, and the note (the backend's sentence) says so.
@@ -16,8 +19,12 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
   const rows = useRef({})
 
   const group = GROUPS.find((g) => g.id === tutorId)
-  const total = searchTools('', { group: tutorId, from: tools }).length
-  const matches = searchTools(query, { group: tutorId, from: tools })
+  // Only tools that teach belong to a tool type. Study helpers (graphing, answer finders) are never listed here.
+  const pool = useMemo(() => (tools || TOOLS).filter(teaches), [tools])
+  const { map: piloted, sample } = usePiloted()
+  const total = searchTools('', { group: tutorId, from: pool }).length
+  const matches = searchTools(query, { group: tutorId, from: pool })
+  const anyPiloted = pool.some((t) => t.group === tutorId && piloted.has(t.id))
   const picked = matches.find((t) => t.id === pickedId) ?? matches[0] ?? null
   const searching = query.trim() !== ''
 
@@ -43,7 +50,7 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
 
   return (
     <div className={`tgp${compact ? ' tgp-compact' : ''}`}>
-      {group && <p className="tgp-how"><b>{group.name}</b>: {group.how}.{tutorName ? ` ${tutorName} is the demo tool that stands in for this type.` : ''}</p>}
+      {group && <p className="tgp-how"><b>{group.name}</b>: {group.how}.{tutorId ? ` Hivemind tested this type with our ${group.name} demo tool.` : ''}</p>}
 
       <div className="tgp-search">
         <label htmlFor={`${uid}-q`}>Search tools in this group</label>
@@ -64,7 +71,7 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
                 <button key={t.id} type="button" role="radio" aria-checked={on} tabIndex={on ? 0 : -1}
                   ref={(el) => { if (el) rows.current[t.id] = el; else delete rows.current[t.id] }}
                   className={`tgp-row${on ? ' is-on' : ''}`} onClick={() => choose(t)}>
-                  <span className="tgp-row-name">{t.name}</span>
+                  <span className="tgp-row-name">{t.name}{piloted.has(t.id) && <span className="tgp-piloted">Piloted</span>}</span>
                   <span className="tgp-row-kind">{t.kind}</span>
                 </button>
               )
@@ -77,6 +84,9 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
               <h3 id={`${uid}-d`}>{picked.name}</h3>
               <p className="tgp-detail-kind">{picked.kind}</p>
               <p className="tgp-detail-blurb">{picked.blurb}</p>
+              {piloted.has(picked.id) && (
+                <p className="tgp-detail-pilot">Piloted with {sample ?? 'a few'} simulated students. It is a small pilot, not a rating. <Link to="/lab/real-tools">See the pilot</Link></p>
+              )}
               <a className="btn btn-small tgp-visit" href={picked.url} target="_blank" rel="noopener noreferrer">
                 Visit site <Icon name="arrow" size={15} /><span className="sr-only"> (opens in a new tab)</span>
               </a>
@@ -91,7 +101,9 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
       )}
 
       <p className="sr-only" aria-live="polite">{said}</p>
-      <p className="tgp-note"><Icon name="info" size={16} /> <span>{note} A demo tool&rsquo;s scores do not apply to it.</span></p>
+      <p className="tgp-note"><Icon name="info" size={16} /> <span>{anyPiloted
+        ? <>None of these tools has had the class test, so a demo tool&rsquo;s scores do not apply to them. A tool marked Piloted had a small test of its own.</>
+        : <>{plainWords(note)} A demo tool&rsquo;s scores do not apply to it.</>}</span></p>
     </div>
   )
 }

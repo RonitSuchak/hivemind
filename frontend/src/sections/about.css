@@ -1,0 +1,62 @@
+/* about section: its own styles go here. Loaded after every other stylesheet (see main.jsx),
+   so a rule here wins over older rules with the same selector. */
+
+/* ---- About film figures (17 Nov). --k (0..1) is how far a figure has arrived; --grow follows it, so every bar
+   grows in and rewinds. Every bar in the film is the same: 10px tall, 2px corners, navy (white at midnight). ---- */
+.af-fig { --grow: clamp(0, calc(var(--k) * 2.5 - 1.2), 1); } /* set here, next to --k, so it follows it */
+@media (prefers-reduced-motion: reduce) { .af-fig { --grow: 1; } } /* no growing: bars are simply full */
+
+/* a note: plain text under a short orange rule, no box */
+.af .aff-note { border: 0; background: none; padding: 0.7rem 0 0; position: relative; }
+.af .aff-note::before { content: ""; position: absolute; left: 0; top: 0; width: 2.5rem; height: 2px; background: var(--pop); }
+
+/* a 1 to 5 score: one bar on a hairline track, and its number */
+.afm { display: grid; grid-template-columns: 1fr 2rem; align-items: center; gap: 0.6rem; }
+.afm i { display: block; height: 10px; border-radius: 2px; background: var(--line); position: relative; overflow: hidden; }
+.afm i::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--f) * 100%); border-radius: 2px; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--grow)); }
+.afm b { text-align: right; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+
+/* method: the three steps are three parts of one line, then the gains */
+.af .aff-steps { gap: 4px; }
+.aff-steps li { display: grid; gap: 0.15rem; padding-top: 0.65rem; border-top: 4px solid var(--ink); }
+.aff-steps li:nth-child(2) { border-top-color: var(--pop); } /* the lesson is the part that differs between demo tools */
+.aff-steps em { font-style: normal; color: var(--ink-3); font-weight: 500; margin-right: 0.4rem; font-variant-numeric: tabular-nums; }
+.aff-block .aff-h { margin: 0 0 0.6rem; }
+.af .aff-gains i { display: block; height: 10px; border-radius: 2px; background: var(--ink); width: calc(var(--w) * 100%); transform-origin: 0 50%; transform: scaleX(var(--grow)); }
+
+/* what we check: each demo tool's two scores, side by side */
+.aff-scores { display: grid; gap: 0.75rem; }
+.aff-scores-head, .aff-score { display: grid; grid-template-columns: 8.5rem 1fr 1fr; gap: 1.4rem; align-items: center; }
+.aff-scores-head { align-items: end; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+.aff-scores-head span { font-size: 0.78rem; line-height: 1.3; color: var(--ink-3); }
+.aff-scores-head .aff-h { display: block; }
+.aff-score > b { font-size: 0.86rem; font-weight: 500; line-height: 1.25; }
+
+/* how a score is made: two recipe blocks. Each part is a weight bar (its share of the full track),
+   then the share and the part in words. Stacked; side by side once the figure is wide enough. */
+.aff-recipes { display: grid; gap: 1.5rem; }
+@container aff (min-width: 34rem) { .aff-recipes { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; } }
+.aff-recipe { display: grid; gap: 0.8rem; align-content: start; }
+.aff-recipe-head { margin: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+.aff-recipe-head span { font-size: 0.86rem; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aff-parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.aff-parts li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); column-gap: 0.5rem; row-gap: 0.4rem; align-items: baseline; font-size: 0.82rem; line-height: 1.4; color: var(--ink-2); }
+.aff-w { grid-column: 1 / -1; display: block; height: 10px; border-radius: 2px; background: var(--line); position: relative; overflow: hidden; }
+.aff-w::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--w) * 100%); border-radius: 2px; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--grow)); }
+.aff-pct { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.aff-parts strong { font-weight: 700; color: var(--ink); }
+.aff-recipes + .aff-cap { text-align: left; }
+
+@media (max-width: 32rem) {
+  .aff-scores-head, .aff-score { grid-template-columns: 1fr 1fr; gap: 0.3rem 0.9rem; }
+  .aff-scores-head span:first-child { display: none; }
+  .aff-score > b { grid-column: 1 / -1; }
+  /* phones: the stacked recipes are tall, so keep them tight (the film shrinks a figure that is still too tall) */
+  .aff-recipes { gap: 1rem; } .aff-recipe { gap: 0.55rem; } .aff-parts { gap: 0.6rem; }
+  .aff-parts li { row-gap: 0.3rem; font-size: 0.78rem; line-height: 1.35; }
+  /* phones: only the share and the name of each part; the sentence beside it is in the text card already */
+  .aff-words { display: none; }
+}
+
+/* ---- The full detail: two things are scored now, so two columns ---- */
+@media (min-width: 40rem) { .lx-about .lx-trio { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

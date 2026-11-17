@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { getRatings } from '../api.js'
 import { useInView, useLoad, usePageTitle } from '../hooks.js'
 import { useReduced } from '../motion.js'
-import { groupPeople, tagLabel } from '../labels.js'
-import TypeName from '../components/TypeName.jsx'
+import { groupPeople, plainWords, tagLabel, typeName } from '../labels.js'
 import { Async, SkeletonRatings, Unavailable } from '../components/States.jsx'
-import ScoreBars, { SafetyBadge } from '../components/ScoreBars.jsx'
+import ScoreBars from '../components/ScoreBars.jsx'
 import { useTooltip } from '../components/Tooltip.jsx'
 import Reveal, { RevealGroup } from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
@@ -15,7 +14,7 @@ import '../styles/lab.css'
 
 export default function Ratings() {
   usePageTitle('Ratings')
-  const load = useLoad(getRatings, [])
+  const load = useLoad(() => getRatings(), [])
   return (
     <Async state={load} label="Loading ratings" skeleton={<SkeletonRatings />} className="lab-body"
       unavailable={<Offline />}>
@@ -27,7 +26,7 @@ export default function Ratings() {
 const SUM_HEAD = (
   <div className="lx-sec-head">
     <h2 id="sum-h">How much students gained</h2>
-    <p>One simulated class per type of EdTech tool. Each sat a test, had a lesson with that type&rsquo;s demo tool, then sat the test again. Most points first; a serious safety fail goes last.</p>
+    <p>Each demo tool taught one simulated class. The students sat a test, had a lesson and sat the same test again. The tools are listed by average points gained, highest first.</p>
   </div>
 )
 const TABLE_HEAD = (
@@ -38,8 +37,8 @@ const TABLE_HEAD = (
 )
 const SCORES_HEAD = (
   <div className="lx-sec-head">
-    <h2 id="sc-h">Safety, usability and learning</h2>
-    <p>Three separate scores for each demo tool, never blended into one number.</p>
+    <h2 id="sc-h">Usability and learning scores</h2>
+    <p>Each demo tool has a Usability score and a Learning score, scored separately. Both come from one simulated class.</p>
   </div>
 )
 
@@ -92,10 +91,12 @@ function Body({ ratings: raw }) {
   const all = ratings.rows.flatMap((r) => ratings.tags.map((t) => r.avg_gain[t]))
   const max = Math.max(5, ...all)
   const groups = useMemo(() => ratings.tags.filter((t) => t !== 'all'), [ratings.tags])
+  // Highest average gain first. The summary cards, the table and the score cards all use this order.
   const ranked = useMemo(
-    () => ratings.rows.map((row) => ({ row, ...summarise(row, groups) })).sort((a, b) => Number(!!a.row.critical_fail) - Number(!!b.row.critical_fail) || b.overall - a.overall),
+    () => ratings.rows.map((row) => ({ row, ...summarise(row, groups) })).sort((a, b) => b.overall - a.overall),
     [ratings.rows, groups],
   )
+  const sizeOf = Object.fromEntries(raw.groups.map((g) => [g.id, g.size]))
   const tip = useTooltip()
   const reduced = useReduced()
   const animate = useRef(!heatPlayed && !reduced).current
@@ -108,13 +109,12 @@ function Body({ ratings: raw }) {
     <div className="lx-ratings">
       <section className="lx-sec" aria-labelledby="sum-h">
         <Reveal>{SUM_HEAD}</Reveal>
-        {raw.note && <p className="lx-note">{raw.note}</p>}
+        {raw.note && <p className="lx-note">{plainWords(raw.note)}</p>}
         <RevealGroup as="ol" className="lx-sum-grid">
           {ranked.map(({ row, overall, best, level }, i) => (
             <Reveal as="li" key={row.tutor_id} blur={false} className={`glass lx-sum ${i === 0 ? 'is-top' : ''}`}>
               <div className="lx-sum-head">
-                <h3><Link to={`/lab?tutor=${row.tutor_id}`}><TypeName row={row} /></Link></h3>
-                {row.critical_fail && <SafetyBadge />}
+                <h3><Link to={`/lab?tutor=${row.tutor_id}`}>{typeName(row.tutor_id, row.tutor_name)}</Link></h3>
               </div>
               <p className="lx-sum-gain">
                 <span className="lx-sum-num">{signed(overall)}</span>
@@ -143,7 +143,7 @@ function Body({ ratings: raw }) {
               <Icon name="chevron" size={18} className="lx-guide-chev" />
             </summary>
             <div className="lx-fold-body">
-              <p className="lx-note">Each number is the points gained out of 10 by that group. Darker means more.</p>
+              <p className="lx-note">Each number is the points gained out of 10 by that group. <span className="on-white">Darker</span><span className="on-midnight">Brighter</span> means more.</p>
               <div className="lx-heat-panel">
                 <div className="lx-heat-scroll" role="region" aria-label="Average gain by demo tool and group" tabIndex={0} ref={heatRef}>
                   <table className={`lx-heat ${heatClass}`}>
@@ -151,23 +151,22 @@ function Body({ ratings: raw }) {
                     <thead>
                       <tr>
                         <th scope="col"><span className="sr-only">Demo tool</span></th>
-                        {ratings.tags.map((t) => <th key={t} scope="col" className={t === 'all' ? 'lx-col-all' : undefined}>{tagLabel(t)}</th>)}
+                        {ratings.tags.map((t) => <th key={t} scope="col" className={t === 'all' ? 'lx-col-all' : undefined}>{tagLabel(t)}{sizeOf[t] != null && <span className="lx-n">{sizeOf[t]} students</span>}</th>)}
                       </tr>
                     </thead>
                     <tbody>
-                      {ratings.rows.map((row, ri) => (
+                      {ranked.map(({ row }, ri) => (
                         <tr key={row.tutor_id}>
                           <th scope="row">
                             <span className="lx-row-name">
-                              <Link to={`/lab?tutor=${row.tutor_id}`}><TypeName row={row} /></Link>
-                              {row.critical_fail && <SafetyBadge />}
+                              <Link to={`/lab?tutor=${row.tutor_id}`}>{typeName(row.tutor_id, row.tutor_name)}</Link>
                             </span>
                           </th>
                           {ratings.tags.map((t, ci) => {
                             const v = row.avg_gain[t]
                             return (
                               <td key={t} className="lx-cell" data-s={stepOf(v, max)} style={{ '--d': ri + ci }}
-                                {...tip.bind(`${row.tutor_name}, ${tagLabel(t)}: ${v.toFixed(1)} points gained`)}>
+                                {...tip.bind(`${typeName(row.tutor_id, row.tutor_name)}, ${tagLabel(t)}: ${v.toFixed(1)} points gained`)}>
                                 {v.toFixed(1)}
                               </td>
                             )
@@ -182,9 +181,6 @@ function Body({ ratings: raw }) {
                   <span className="lx-legend-ramp" aria-hidden="true">{Array.from({ length: STEPS }, (_, i) => <span key={i} />)}</span>
                   <span>{fmt(max)}+ points</span>
                 </div>
-                <p className="lx-guide-key">
-                  <SafetyBadge /> <span>marks a demo tool with a serious safety fail.</span>
-                </p>
               </div>
             </div>
           </details>
@@ -194,7 +190,7 @@ function Body({ ratings: raw }) {
       <section className="lx-sec" aria-labelledby="sc-h">
         <Reveal>{SCORES_HEAD}</Reveal>
         <RevealGroup className="lx-score-grid">
-          {ratings.rows.map((row) => <ScoreItem key={row.tutor_id} row={row} />)}
+          {ranked.map(({ row }) => <ScoreItem key={row.tutor_id} row={row} />)}
         </RevealGroup>
       </section>
       {tip.node}
@@ -208,8 +204,7 @@ function ScoreItem({ row }) {
   return (
     <Reveal as="article" blur={false} className="glass lx-score-card">
       <header>
-        <h3><TypeName row={row} /></h3>
-        {row.critical_fail && <SafetyBadge />}
+        <h3>{typeName(row.tutor_id, row.tutor_name)}</h3>
       </header>
       <div ref={ref}>
         <ScoreBars scores={row.scores} grow play={inView} explain />

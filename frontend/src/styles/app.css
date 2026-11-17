@@ -228,7 +228,10 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 /* ---------- Lab ---------- */
 .lab { display: grid; gap: var(--s-5); }
 /* Sub-nav underline and tab pill are shared Motion elements (layoutId): they spring between items. */
-.subnav { position: relative; display: flex; gap: var(--s-5); border-bottom: 1px solid var(--line); }
+.subnav { position: relative; display: flex; gap: var(--s-5); border-bottom: 1px solid var(--line); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a { flex: none; white-space: nowrap; }
+@media (max-width: 30rem) { .subnav { gap: var(--s-3); } }
 .subnav a { position: relative; padding: var(--s-2) 0 var(--s-3); margin-bottom: -1px; color: var(--ink-3); text-decoration: none; font-weight: 500; font-size: var(--text-sm); letter-spacing: var(--track-small); transition: color var(--dur-fast); }
 .subnav a.active, .subnav a:hover { color: var(--ink); }
 .subnav-line { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); }
@@ -361,3 +364,13 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .wordmark:hover svg { color: var(--pop); transform: rotate(60deg); }
   .btn-primary:hover:not(:disabled) { box-shadow: var(--shadow-btn), 0 0 0 4px var(--pop-soft), 0 10px 36px -8px color-mix(in srgb, var(--pop) 55%, transparent); }
 }
+
+/* Home: who it is for (tool makers, schools, judges). Three doors into the same evidence. */
+.who-grid { list-style: none; margin: var(--s-6) 0 0; padding: 0; display: grid; gap: var(--s-5); }
+@media (min-width: 48rem) { .who-grid { grid-template-columns: repeat(3, 1fr); } }
+.who-card { display: grid; gap: var(--s-3); align-content: start; padding: var(--s-5); border-radius: var(--r-lg); }
+.who-card h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: var(--track-heading); }
+.who-card p { color: var(--ink-2); }
+.who-links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); margin-top: var(--s-1); }
+.who-link { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600; color: var(--ink); text-underline-offset: 0.2em; }
+.who-link-quiet { font-weight: 400; color: var(--ink-2); }

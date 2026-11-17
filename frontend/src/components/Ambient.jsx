@@ -12,7 +12,7 @@ import { tokenPx, useReduced } from '../motion.js'
 
 const sup = (b, e) => <>{b}<sup>{e}</sup></>
 // x / y: position in % of the viewport. s: size in rem. r: tilt in degrees. near: brighter. pop: lime.
-const GLYPHS = [
+export const GLYPHS = [
   { c: <>{sup('e', 'iπ')} + 1 = 0</>, x: 60, y: 15, s: 2.6, r: -6, near: true, pop: true },
   { c: <>E = {sup('mc', '2')}</>, x: 5, y: 66, s: 2.3, r: 5, near: true },
   { c: <>{sup('a', '2')} + {sup('b', '2')} = {sup('c', '2')}</>, x: 84, y: 47, s: 1.7, r: 8 },

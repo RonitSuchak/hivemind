@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { SHOTS } from '../data/shots.js'
+import '../styles/best.css'
 
 // A little browser window showing a saved screenshot of a tool's home page (public/previews/<id>.jpg).
 // Most of these sites refuse to load inside another page, so a live frame is not possible.
-// Tools without a screenshot (see data/shots.js) show the tool's name on a plain panel instead.
+// Tools without a screenshot (see data/shots.js) show the tool's name and kind on a calm light panel instead (styled in best.css).
 export default function ToolPreview({ tool }) {
   const [failed, setFailed] = useState(false)
   const host = tool.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')

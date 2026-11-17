@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import BestTools from './BestTools.jsx'
-import TypeName from './TypeName.jsx'
+import BestTools, { bestNote, bestTitle } from './BestTools.jsx'
 import { typeLabel, typeName } from '../labels.js'
 import { mostEffective } from '../data/tools.js'
 import { useMemo, useState } from 'react'
@@ -74,7 +73,6 @@ export function PredictHead() {
     <div className="lx-sec-head">
       <h2 id="try-h">Try a student</h2>
       <p>Move the sliders to describe a student. A slider left at 1 means not sure, so it is left out.</p>
-      <p className="lx-note">Simulated students, not real children.</p>
     </div>
   )
 }
@@ -120,11 +118,10 @@ function Panel({ rows, students, runs }) {
 
   const ranked = rows
     .map((row, i) => ({ row, i, v: perTool[row.tutor_id] }))
-    .sort((a, b) => Number(!!a.row.critical_fail) - Number(!!b.row.critical_fail) || b.v - a.v || a.i - b.i) // a serious safety fail always goes last
+    .sort((a, b) => b.v - a.v || a.i - b.i) // most points first
   const top = ranked[0]
-  const safest = ranked.find((x) => !x.row.critical_fail)
-  // The type that taught these students most, and three real sites of that type (never a type with a safety concern).
-  const best = mostEffective(perTool, { flagged: rows.filter((r) => r.critical_fail).map((r) => r.tutor_id) })
+  // The type that taught these students most, and three real sites of that type.
+  const best = mostEffective(perTool)
   const set = (id) => (level) => setPicks((p) => ({ ...p, [id]: level }))
   const spr = useMemo(() => spring('ui'), [])
 
@@ -144,9 +141,7 @@ function Panel({ rows, students, runs }) {
         <p className="lx-predict-say" aria-live="polite">
           {isClass
             ? <>Move a slider to describe a student. Until then, this is the <strong>class average</strong>.</>
-            : top.row.critical_fail && safest && safest !== top
-              ? <>For a student like this, <strong>{typeLabel(top.row)}</strong> tools taught most, but that type has a safety concern. <strong>{typeLabel(safest.row)}</strong> came next.</>
-              : <>For a student like this, <strong>{typeLabel(top.row)}</strong> tools taught most.</>}
+            : <>For a student like this, <strong>{typeLabel(top.row)}</strong> tools taught most.</>}
         </p>
 
         <LayoutGroup>
@@ -155,8 +150,7 @@ function Panel({ rows, students, runs }) {
               const inner = (
                 <>
                   <span className="lx-bar-name">
-                    <TypeName row={row} />
-                    {row.critical_fail && <span className="lx-bar-flag"><span className="sf-dot" /><span className="sr-only"> Safety concern</span></span>}
+                    {typeName(row.tutor_id, row.tutor_name)}
                   </span>
                   <span className="lx-bar-track" aria-hidden="true">
                     <span className="lx-bar-fill" style={{ '--v': Math.max(0, Math.min(1, v / scale)) }} />
@@ -176,7 +170,7 @@ function Panel({ rows, students, runs }) {
             ? <p className="lx-note">Worked out from all {students.length} simulated students.</p>
             : (
               <>
-                <p className="lx-note">A rough look: the plain average of the {K} simulated students closest to these sliders.</p>
+                <p className="lx-note">This is the plain average of the {K} simulated students closest to these sliders.</p>
                 <p className="lx-note lx-closest">Closest:{' '}
                   {near.map((s, k) => (
                     <span key={s.id}><Link to={`/lab?student=${encodeURIComponent(s.id)}`}>{s.name}</Link>{k < near.length - 1 ? ', ' : '.'}</span>
@@ -185,16 +179,15 @@ function Panel({ rows, students, runs }) {
                 </p>
               </>
             )}
-          <p className="lx-note"><b>This is a rough explorer, not the Advisor&rsquo;s match.</b> The check weighs the closest students more and will not guess when nobody is close, so its ranking can differ.</p>
-          <p className="lx-note">Simulated students, not real children.</p>
+          <p className="lx-note"><b>This is a rough explorer.</b> The Advisor&rsquo;s match weighs the closest students more and will not guess when nobody is close, so its ranking can differ.</p>
         </div>
       </div>
 
       {best.known && !best.none && (
         <div className="lx-predict-sites">
-          <BestTools wide headingId="try-sites" title={`Most effective for a student like this: ${andList(best.groups.map((g) => typeName(g)))} sites${best.groups.length > 1 ? ' (a tie)' : ''}`}
+          <BestTools wide headingId="try-sites" title={bestTitle(best.groups, 'this')}
             items={best.items.map(({ tool }) => ({ tool, line: '' }))}
-            note={`These students gained most with ${andList(best.groups.map((g) => rows.find((r) => r.tutor_id === g)?.tutor_name ?? typeName(g)))}, our demo ${best.groups.length > 1 ? 'tools for these types' : 'tool for this type'}. The sites are examples. They have not been tested themselves.`} />
+            note={`${bestNote(best.groups)} They have not been tested themselves.`} />
         </div>
       )}
     </Reveal>

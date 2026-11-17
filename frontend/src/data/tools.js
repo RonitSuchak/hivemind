@@ -8,6 +8,7 @@
 // group: which of the four simulated tool types it most resembles in HOW it teaches.
 
 // The four tool types. Ids come from the backend; the names match labels.js.
+import { SHOTS } from './shots.js'
 export const GROUPS = [
   { id: 'answer_machine', name: 'Instant answers', how: 'Gives you the answer or a worked solution straight away' },
   { id: 'socratic', name: 'Guided hints', how: 'Guides you with questions, hints and problems to solve' },
@@ -299,8 +300,26 @@ export function rankTools(selection = {}) {
 // first the tools students use most. This is our own estimate from public features.
 // These tools have NOT been tested by Hivemind: a tool type's scores never apply to them.
 export function toolsLike(tutorId) {
-  return TOOLS.filter((t) => t.group === tutorId)
+  return TOOLS.filter(teaches).filter((t) => t.group === tutorId)
 }
+
+// TEACHING TOOLS and STUDY HELPERS. Both are EdTech, and both stay on the site.
+// A tool TEACHES if it explains an idea, or gives you practice and tells you how you did. A person can do that
+// (a tutor) or software can (a lesson, a course, a chatbot). Only teaching tools can be ranked, matched or
+// called "most effective", because only teaching can be judged by what a student learned.
+// A STUDY HELPER does one job for you: it draws the graph, works out the answer or tidies your writing.
+// It is useful next to a lesson, but on its own it does not explain or check what you understood.
+// The split is our own reading of each tool's public features, by tool id. The lab's list does not carry it yet.
+export const HELPER_KINDS = [
+  { id: 'visual', name: 'Visualiser', how: 'Draws graphs, shapes or experiments so you can see an idea', ids: ['desmos', 'geogebra', 'phet'] },
+  { id: 'answers', name: 'Answer finder', how: 'Works out or looks up an answer for you', ids: ['photomath', 'wolfram-alpha', 'symbolab', 'mathway', 'microsoft-math-solver', 'brainly', 'chegg'] },
+  { id: 'making', name: 'Writing and making', how: 'Helps you write, sort your notes or build something', ids: ['grammarly', 'notebooklm', 'scratch'] },
+]
+const HELPER_OF = new Map(HELPER_KINDS.flatMap((k) => k.ids.map((id) => [id, k])))
+export const helperKind = (t) => HELPER_OF.get(t?.id) || null
+export const teaches = (t) => !HELPER_OF.has(t?.id)
+export const TEACHES_RULE = 'A tool teaches if it explains an idea, or gives you practice and tells you how you did.'
+export const HELPER_RULE = 'A study helper does one job for you, such as drawing a graph or working out an answer. It is useful next to a lesson, but it does not teach on its own, so Hivemind does not rank it.'
 
 // Every word typed must start a word in the tool's name, kind or blurb (inside a word is fine from
 // three letters). Name matches come first, then catalogue order. Optional { group } narrows by tool type.
@@ -323,18 +342,19 @@ export function searchTools(query = '', { group, from = TOOLS } = {}) {
 
 // The real tools as the backend sends them (GET /api/real-tools, and real_tools[] in a match), in this file's
 // shape. The backend owns the list, its order and each tool's type; our trait estimates are joined on by id.
-export const REAL_TOOLS_NOTE = 'Estimated from its demo tool type. Hivemind has not tested this tool.'
+export const REAL_TOOLS_NOTE = 'This is an estimate from our demo tool of the same type. Hivemind has not tested this tool.'
 const LOCAL = new Map(TOOLS.map((t) => [t.id, t]))
 export const fromBackend = (t) => ({
   id: t.id, name: t.name, url: t.url, kind: t.kind, blurb: t.blurb, mostUsed: !!t.most_used,
   group: t.type?.tutor_id ?? LOCAL.get(t.id)?.group, standIn: t.type?.tutor_name,
-  typeRank: t.type_rank ?? null, typeConcern: !!t.type_safety_concern, note: t.note || REAL_TOOLS_NOTE,
+  typeRank: t.type_rank ?? null, note: t.note || REAL_TOOLS_NOTE,
   traits: LOCAL.get(t.id)?.traits ?? {},
+  reviews: t.reviews ?? LOCAL.get(t.id)?.reviews, // optional: [{ quote, source, url }]. No tool has one yet.
 })
 
 // Real tools to show for one SIMULATED student (Lab drawer). The order is the backend's own rule for a person
 // (docs/BACKEND.md 5.8), applied to numbers the backend sent: first the type whose demo tool taught this
-// student most (`gains`: { demoToolId: points gained }), a type with a safety concern last (`flagged`), and the
+// student most (`gains`: { demoToolId: points gained }), and the
 // catalogue's most-used order inside a type. `fits` only narrows the list to the lesson's subject. Nothing is
 // scored or estimated here, and the note on screen says the tools are not tested.
 const SUBJECT_ONLY = /language|coding|computer science|reading|writing|physics|science|a level|online courses|notes helper/i
@@ -355,9 +375,12 @@ export const fitsSubject = (subject, advanced = false) => (t) => {
   const made = MADE_FOR.find(([re]) => re.test(t.kind))
   return !made || made[1].includes(subject)
 }
-export function bestToolsFor(gains = {}, { n = 3, fits = fitsMaths, flagged = [] } = {}) {
-  const typeScore = (g) => (flagged.includes(g) ? -1000 : gains[g] ?? -100)
-  return TOOLS.filter(fits)
+// Example sites with a saved screenshot come first, so the cards in a row look alike. These lists are examples
+// of a type, never a ranking, so the order of sites inside a type carries no meaning.
+const shotFirst = (list) => [...list.filter((t) => SHOTS.has(t.id)), ...list.filter((t) => !SHOTS.has(t.id))]
+export function bestToolsFor(gains = {}, { n = 3, fits = fitsMaths } = {}) {
+  const typeScore = (g) => gains[g] ?? -100
+  return shotFirst(TOOLS.filter(teaches).filter(fits))
     .map((t, order) => ({ tool: t, order, type: typeScore(t.group), gain: gains[t.group] ?? null }))
     .sort((a, b) => b.type - a.type || a.order - b.order)
     .slice(0, n)
@@ -370,8 +393,8 @@ export function bestToolsFor(gains = {}, { n = 3, fits = fitsMaths, flagged = []
 //   none: true     the best gain is zero or less: no type helped
 //   groups         more than one id when the best gain is a tie (within `tie` points): all of them are named,
 //                  and the sites are dealt out across the tied types
-export function mostEffective(gains = {}, { n = 3, fits = fitsMaths, flagged = [], tie = 0.05 } = {}) {
-  const pool = TOOLS.filter(fits).filter((t) => !flagged.includes(t.group) && gains[t.group] != null)
+export function mostEffective(gains = {}, { n = 3, fits = fitsMaths, tie = 0.05 } = {}) {
+  const pool = shotFirst(TOOLS.filter(teaches).filter(fits).filter((t) => gains[t.group] != null))
   const types = [...new Set(pool.map((t) => t.group))]
   if (!types.length) return { known: false, none: false, groups: [], gain: null, items: [] }
   const top = Math.max(...types.map((g) => gains[g]))

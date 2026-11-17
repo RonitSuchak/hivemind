@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { getStudents } from '../api.js'
 import { useLoad } from '../hooks.js'
-import { tagLabel } from '../labels.js'
+import { studentTags, tagLabel, tagNote } from '../labels.js'
 import { revealTokens, spring, tokenS, useReduced } from '../motion.js'
 import { useT } from '../i18n/index.js'
 import Drawer from './Drawer.jsx'
@@ -108,9 +108,9 @@ export default function ClassDots() {
         {student && (
           <div className="lx-student">
             <div className="lx-student-radar"><Radar profile={student} compact staged label={`${student.name}: learning profile`} /></div>
-            {student.tags?.length > 0 && (
+            {studentTags(student).length > 0 && (
               <ul className="lx-chips" aria-label="Groups">
-                {student.tags.map((g) => <li key={g} className="lx-chip">{tagLabel(g)}</li>)}
+                {studentTags(student).map((g) => <li key={g} className="lx-chip" title={tagNote(g)}>{tagLabel(g)}</li>)}
               </ul>
             )}
             <p className="actions">

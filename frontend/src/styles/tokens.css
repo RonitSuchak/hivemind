@@ -11,44 +11,44 @@
      The orange highlight is --pop (bottom of this file). Dark bands flip these with .on-dark (theme.css). */
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #e7e8f1;
-  --ink: #0a0a18;
-  --ink-2: #2b2c44;
-  --ink-3: #5b5d78;
-  --line: rgb(10 10 24 / 0.12);
-  --line-strong: rgb(10 10 24 / 0.28);
+  --surface-2: #e6e9f2;
+  --ink: #0f172f;
+  --ink-2: #273048;
+  --ink-3: #55607e;
+  --line: rgb(15 23 47 / 0.12);
+  --line-strong: rgb(15 23 47 / 0.28);
 
-  --accent: #0a0a18;
-  --accent-strong: #0a0a18;
+  --accent: #0f172f;
+  --accent-strong: #0f172f;
   --accent-ink: #ffffff;
-  --accent-soft: rgb(10 10 24 / 0.06);
+  --accent-soft: rgb(15 23 47 / 0.06);
 
   /* Outcomes: colour + shape + glyph are always used together */
   --c-learned: #2f55d4;
-  --c-little: #9a9ebf;
+  --c-little: #94a1c5;
   --c-left: #c62f2f;
   --c-glyph: #ffffff;
-  --c-glyph-little: #0a0a18;
+  --c-glyph-little: #0f172f;
 
   /* Flags and notices: calm and neutral on purpose (midnight text, soft fill). Not an alarm colour. */
-  --warn-bg: rgb(10 10 24 / 0.04);
-  --warn-ink: #0a0a18;
-  --warn-line: rgb(10 10 24 / 0.22);
-  --ok: #0a0a18;
+  --warn-bg: rgb(15 23 47 / 0.04);
+  --warn-ink: #0f172f;
+  --warn-line: rgb(15 23 47 / 0.22);
+  --ok: #0f172f;
 
   /* Heatmap (single-hue sequential, colour-blind safe) */
-  --heat-lo: #eef0f7;
-  --heat-hi: #0a0a18;
+  --heat-lo: #edf0f8;
+  --heat-hi: #0f172f;
   --heat-text-hi: #ffffff;
 
   /* Radar */
   --radar-you: #f4511e;
-  --radar-other: #7a7d9c;
+  --radar-other: #7380a3;
 
   /* Ambient background: a few large, soft, slow colour fields (variations of the accent + one warm field) */
   --ambient-a: rgb(244 81 30 / 0.07);    /* indigo, top left */
-  --ambient-b: rgb(60 70 200 / 0.07);    /* deep blue, right */
-  --ambient-c: rgb(10 10 24 / 0.04);   /* violet, low */
+  --ambient-b: rgb(47 91 213 / 0.07);    /* deep blue, right */
+  --ambient-c: rgb(15 23 47 / 0.04);   /* violet, low */
   --ambient-size: 70vmax;
   --ambient-drift: 60s;                  /* one slow drift cycle per field */
   --ambient-shift: 6vmax;                /* how far a field wanders */
@@ -61,16 +61,16 @@
   --glass-sat: 150%;
   --glass-fill: rgb(255 255 255 / 0.74);         /* cards, nav, notice */
   --glass-fill-strong: rgb(255 255 255 / 0.95);  /* drawer, tooltips: holds body text */
-  --glass-edge: rgb(10 10 24 / 0.10);      /* 1px outline */
+  --glass-edge: rgb(15 23 47 / 0.10);      /* 1px outline */
   --glass-highlight: rgb(255 255 255 / 0.9); /* 1px inner top highlight: light catching the edge */
-  --fill-subtle: rgb(10 10 24 / 0.03);    /* resting fill: secondary buttons, tab track */
-  --fill-hover: rgb(10 10 24 / 0.06);     /* hover fill: nav links, buttons, icon buttons */
-  --fill-current: rgb(10 10 24 / 0.08);   /* current nav item */
-  --line-hover: rgb(10 10 24 / 0.5);     /* button outline on hover */
+  --fill-subtle: rgb(15 23 47 / 0.03);    /* resting fill: secondary buttons, tab track */
+  --fill-hover: rgb(15 23 47 / 0.06);     /* hover fill: nav links, buttons, icon buttons */
+  --fill-current: rgb(15 23 47 / 0.08);   /* current nav item */
+  --line-hover: rgb(15 23 47 / 0.5);     /* button outline on hover */
   --bar-edge: transparent;              /* dark inner line under the glass nav */
   --seat-highlight: transparent; /* top light on the home class seats */
-  --glass-shadow: 0 1px 2px rgb(10 10 24 / 0.05), 0 14px 34px -16px rgb(10 10 24 / 0.18);
-  --glass-shadow-lg: 0 2px 6px rgb(10 10 24 / 0.06), 0 32px 64px -20px rgb(10 10 24 / 0.28);
+  --glass-shadow: 0 1px 2px rgb(15 23 47 / 0.05), 0 14px 34px -16px rgb(15 23 47 / 0.18);
+  --glass-shadow-lg: 0 2px 6px rgb(15 23 47 / 0.06), 0 32px 64px -20px rgb(15 23 47 / 0.28);
 
   /* Type */
   --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;   /* headings: quirky grotesque */
@@ -100,10 +100,10 @@
 
   /* Shape + depth */
   --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-pill: 999px;
-  --shadow-1: 0 1px 2px rgb(10 10 24 / 0.08);
-  --shadow-drawer: -24px 0 64px rgb(10 10 24 / 0.18);
-  --shadow-btn: 0 1px 2px rgb(10 10 24 / 0.2), 0 10px 22px -12px rgb(10 10 24 / 0.45);
-  --scrim: rgb(10 10 24 / 0.4);
+  --shadow-1: 0 1px 2px rgb(15 23 47 / 0.08);
+  --shadow-drawer: -24px 0 64px rgb(15 23 47 / 0.18);
+  --shadow-btn: 0 1px 2px rgb(15 23 47 / 0.2), 0 10px 22px -12px rgb(15 23 47 / 0.45);
+  --scrim: rgb(15 23 47 / 0.4);
   --focus: 0 0 0 2px var(--bg), 0 0 0 4px #f4511e;
 
   /* Motion: tune the whole site's feel here. Staging delays are built from these. */
@@ -192,7 +192,7 @@
   --press-scale-row: 0.985;       /* big answer rows press less than buttons */
   --radar-fill-in: rgb(244 81 30 / 0.24);
   --radar-fill-out: rgb(244 81 30 / 0.05);
-  --radar-plate: rgb(10 10 24 / 0.02);
+  --radar-plate: rgb(15 23 47 / 0.02);
 }
 @media (prefers-reduced-motion: reduce) {
   :root { --press-scale-row: 1; }
@@ -203,13 +203,13 @@
   /* Heatmap: six discrete steps along one hue (OKLab, --heat-lo to --heat-hi). Dark ink on 0-2,
      white on 3-5; every step keeps its printed number at 4.5:1 or better. The middle band where
      neither ink reaches 4.5:1 is skipped on purpose. */
-  --lab-heat-0: #eef0f7;
-  --lab-heat-1: #d0d3e6;
-  --lab-heat-2: #a6aacb;
-  --lab-heat-3: #5f6396;
-  --lab-heat-4: #343764;
-  --lab-heat-5: #0a0a18;
-  --lab-heat-ink: #0a0a18;
+  --lab-heat-0: #edf0f8;
+  --lab-heat-1: #cdd5e9;
+  --lab-heat-2: #a1aed0;
+  --lab-heat-3: #576a9e;
+  --lab-heat-4: #2e3e6a;
+  --lab-heat-5: #0f172f;
+  --lab-heat-ink: #0f172f;
   --lab-heat-ink-dark: #ffffff;
   --lab-sticky: rgb(255 255 255 / 0.96);   /* sticky tutor column on the heatmap (sits on glass) */
   --lab-seat: 44px;
@@ -225,21 +225,21 @@
   --pop: #f4511e;
   --pop-strong: #ff6a3d;                 /* on dark bands and hover */
   --pop-deep: #c23c0b;                   /* small text on white */
-  --pop-ink: #0a0a18;
+  --pop-ink: #0f172f;
   --pop-soft: rgb(244 81 30 / 0.12);
-  --midnight: #0a0a18;
+  --midnight: #0f172f;
   --ambient-d: rgb(244 81 30 / 0.05);
   --glow: rgb(244 81 30 / 0.09);         /* glow that trails the pointer */
   --glow-size: 34rem;
-  --glyph: rgb(10 10 24 / 0.10);         /* background equations */
-  --glyph-near: rgb(10 10 24 / 0.16);
+  --glyph: rgb(15 23 47 / 0.10);         /* background equations */
+  --glyph-near: rgb(15 23 47 / 0.16);
   --glyph-pop: rgb(244 81 30 / 0.5);
   --glyph-float: 10px;
   --glyph-dur: 9s;
   --glyph-reach: 190;                    /* px: how close the pointer gets before a glyph flees */
   --glyph-push: 130;                     /* px: how far it flees */
-  --pattern-line: rgb(10 10 24 / 0.07);
-  --pattern-dot: rgb(10 10 24 / 0.2);
+  --pattern-line: rgb(15 23 47 / 0.07);
+  --pattern-dot: rgb(15 23 47 / 0.2);
   --reveal-scale: 0.9;                   /* things jump in from this size */
 }
 @media (prefers-reduced-motion: reduce) { :root { --glyph-float: 0px; } }

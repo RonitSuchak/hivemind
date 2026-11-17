@@ -8,11 +8,11 @@
 /* ---------- Midnight bands (the 30%) ----------
    .on-dark flips the tokens for everything inside it, so the same components work on midnight. */
 .on-dark, .site-footer, .home-section.klass, .home-section.finale {
-  --bg: var(--midnight); --surface: #15162c; --surface-2: #262848;
-  --ink: #ffffff; --ink-2: #d5d7e8; --ink-3: #a4a7c4;
+  --bg: var(--midnight); --surface: #121a2f; --surface-2: #222d4c;
+  --ink: #ffffff; --ink-2: #d3d9ea; --ink-3: #9faac9;
   --line: rgb(255 255 255 / 0.14); --line-strong: rgb(255 255 255 / 0.3);
   --accent: #ffffff; --accent-strong: #ffffff; --accent-ink: var(--midnight); --accent-soft: rgb(255 255 255 / 0.1);
-  --glass-fill: rgb(255 255 255 / 0.06); --glass-fill-strong: rgb(21 22 44 / 0.95); --glass-edge: rgb(255 255 255 / 0.14); --glass-highlight: rgb(255 255 255 / 0.08);
+  --glass-fill: rgb(255 255 255 / 0.06); --glass-fill-strong: rgb(18 26 47 / 0.95); --glass-edge: rgb(255 255 255 / 0.14); --glass-highlight: rgb(255 255 255 / 0.08);
   --fill-subtle: rgb(255 255 255 / 0.04); --fill-hover: rgb(255 255 255 / 0.09); --fill-current: rgb(255 255 255 / 0.12); --line-hover: rgb(255 255 255 / 0.5);
   --glass-shadow: 0 0 #0000; --pop-deep: var(--pop-strong);
   --focus: 0 0 0 2px var(--midnight), 0 0 0 4px var(--pop-strong);
@@ -148,7 +148,7 @@ a:hover { text-decoration-color: var(--pop); }
 .tp-shot { display: block; aspect-ratio: 16 / 10; background: var(--surface-2); }
 .tp-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .tp-none { display: grid; place-content: center; justify-items: center; gap: 0.2em; height: 100%; padding: 8%; text-align: center; color: #fff;
-  background: radial-gradient(120% 120% at 15% 0%, #2a2c55, var(--midnight) 70%); container-type: inline-size; }
+  background: radial-gradient(120% 120% at 15% 0%, #25335a, var(--midnight) 70%); container-type: inline-size; }
 .tp-none b { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 11cqw, 2.25rem); line-height: 1; letter-spacing: var(--track-display); }
 .tp-none i { font-style: normal; font-size: clamp(0.5625rem, 4cqw, 0.75rem); letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.6); }
 

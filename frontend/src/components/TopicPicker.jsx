@@ -1,6 +1,6 @@
 import { useId, useMemo, useRef, useState } from 'react'
 import Icon from './Icon.jsx'
-import { SUBJECTS, searchTopics, programmeForQuery } from '../data/topics.js'
+import { searchTopics, programmeForQuery } from '../data/topics.js'
 import '../styles/topics.css'
 
 // "What do you want to work on?" A text box that narrows with every letter: subjects first, then
@@ -75,15 +75,7 @@ export default function TopicPicker({ value, onChange, canStart }) {
         {typing && <button type="button" className="tk-clear" aria-label="Clear" onClick={() => { type(''); input.current?.focus() }}><Icon name="close" size={16} /></button>}
       </div>
 
-      {!typing && (
-        <ul className="tk-subjects" aria-label="Subjects">
-          {SUBJECTS.map((s) => (
-            <li key={s}><button type="button" onClick={() => { type(`${s} `); input.current?.focus() }}>{s}</button></li>
-          ))}
-        </ul>
-      )}
 
-      {!typing && <p className="tk-hint">Know your exam code? Type it, for example 9FM0, H556 or 0580.</p>}
 
       {typing && (
         <>

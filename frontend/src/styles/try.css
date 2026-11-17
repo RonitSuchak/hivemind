@@ -6,8 +6,6 @@
 .tr h1 { font-size: var(--text-2xl); }
 .tr .tr-head { display: grid; gap: var(--s-3); }
 .tr .tr-sub { color: var(--ink-2); font-size: var(--text-lg); line-height: 1.55; max-width: 34rem; }
-.tr .tr-flag { display: flex; gap: var(--s-3); align-items: flex-start; }
-.tr .tr-flag .icon { flex: none; margin-top: 0.2rem; }
 .tr .tr-privacy,
 .tr .tr-note { display: flex; gap: var(--s-3); align-items: flex-start; font-size: var(--text-sm); color: var(--ink-2); }
 .tr .tr-privacy .icon,
@@ -25,7 +23,7 @@
 .tr .tr-text { margin: 0; padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-radius: var(--r-md); border-top-left-radius: 4px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
 .tr .tr-msg[data-from="you"] .tr-text { border-top-left-radius: var(--r-md); border-top-right-radius: 4px; background: var(--accent-soft); }
 .tr .tr-wait .tr-text { color: var(--ink-3); }
-.tr .tr-replaced { display: flex; gap: var(--s-2); align-items: flex-start; margin: 0; padding: var(--s-2) var(--s-3); border: 1px solid var(--warn-line); border-radius: var(--r-md); background: var(--warn-bg); font-size: var(--text-sm); }
+.tr .tr-replaced { display: flex; gap: var(--s-2); align-items: flex-start; margin: 0; padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: var(--r-md); background: var(--fill-subtle); color: var(--ink-2); font-size: var(--text-sm); }
 .tr .tr-replaced .icon { flex: none; margin-top: 0.15rem; }
 .tr .tr-end { height: 1px; }
 

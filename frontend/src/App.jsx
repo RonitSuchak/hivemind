@@ -6,10 +6,16 @@ import Check from './pages/Check.jsx'
 import Results from './pages/Results.jsx'
 import Lab from './pages/Lab.jsx'
 import Ratings from './pages/Ratings.jsx'
+import Pilot from './pages/Pilot.jsx'
+import Report from './pages/Report.jsx'
+import Proof from './pages/Proof.jsx'
+import LiveLab from './pages/LiveLab.jsx'
 import About from './pages/About.jsx'
 import Tools from './pages/Tools.jsx'
 import Try from './pages/Try.jsx'
-import { useHeavyScroll, useScrollingFlag } from './scroll.js'
+import { useScrollingFlag } from './scroll.js'
+import { useEngine } from './at/state.js'
+import ScrollStory from './at/ScrollStory.jsx'
 import './styles/theme.css' // theme layer: last, so it wins over page styles
 
 // The Lab heading and sub-nav stay mounted when switching between Class view and Ratings,
@@ -25,21 +31,25 @@ function LabShell() {
 }
 
 export default function App() {
-  useHeavyScroll(0.74) // the page moves about a quarter less per swipe (scroll.js)
+  useEngine(0.8) // one shared state + render loop: smooth scroll, pointer, scroll speed (at/state.js)
   useScrollingFlag() // drives the soft blur at the top and bottom edge while scrolling
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<ScrollStory gem={false}><Home /></ScrollStory>} />
         <Route path="check" element={<Check />} />
         <Route path="results" element={<Results />} />
         <Route path="lab" element={<LabShell />}>
           <Route index element={<Lab />} />
           <Route path="ratings" element={<Ratings />} />
+          <Route path="report/:tutorId?" element={<Report />} />
+          <Route path="real-tools" element={<Pilot />} />
+          <Route path="proof" element={<Proof />} />
+          <Route path="live/:tutorId?" element={<LiveLab />} />
         </Route>
         <Route path="try/:tutorId" element={<Try />} />
-        <Route path="tools" element={<Tools />} />
-        <Route path="about" element={<About />} />
+        <Route path="tools" element={<ScrollStory gem={false}><Tools /></ScrollStory>} />
+        <Route path="about" element={<ScrollStory gem={false}><About /></ScrollStory>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

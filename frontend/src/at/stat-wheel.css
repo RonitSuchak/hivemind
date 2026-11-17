@@ -1,0 +1,25 @@
+/* Stat wheel (components/StatWheel.jsx): a round dial with graded spokes. Colours follow the ground. */
+.wheel { display: block; max-width: 100%; height: auto; overflow: visible; }
+.wheel-band { fill: none; stroke: var(--surface-2); opacity: 0.55; }
+.wheel-edge { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.wheel-mark { stroke: var(--ink); stroke-width: 1.2; opacity: 0.45; }
+.wheel-mark-big { stroke-width: 2.4; opacity: 0.9; }
+.wheel-name { font-family: var(--font-display); font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; fill: var(--ink); }
+.wheel-dial { fill: var(--bg); fill-opacity: 0.6; stroke: var(--ink); stroke-width: 1.4; }
+.wheel-ring { fill: none; stroke: var(--line); stroke-width: 1; }
+.wheel-spoke { stroke: var(--ink); stroke-width: 1; opacity: 0.55; }
+.wheel-tick { stroke: var(--ink); stroke-width: 1; opacity: 0.7; }
+.wheel-fill { fill: var(--pop); fill-opacity: 0.88; stroke: var(--pop-deep); stroke-width: 1.4; stroke-linejoin: round; }
+.wheel-ink .wheel-fill { fill: var(--ink); fill-opacity: 0.82; stroke: var(--ink); }
+.wheel-dot { fill: var(--bg); stroke: var(--ink); stroke-width: 1.2; }
+.wheel-compare { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 4 3; stroke-linejoin: round; }
+.wheel-scale { font-family: var(--font-body); font-size: 9.5px; font-weight: 700; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; stroke-linejoin: round; }
+.wheel-grade { font-family: var(--font-display); font-size: 20px; font-variant-numeric: tabular-nums; font-weight: 800; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.wheel-grade-none { font-size: 10.5px; letter-spacing: 0.08em; fill: var(--ink-3); }
+.wheel-sub { font-family: var(--font-body); font-size: 9.5px; fill: var(--ink-3); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.wheel-hub { fill: var(--ink); }
+
+/* Each time a grade letter changes on the way up, the new letter pops in. */
+@keyframes wheel-pop { from { transform: scale(1.45); opacity: 0.35; } to { transform: scale(1); opacity: 1; } }
+.wheel-grade { transform-box: fill-box; transform-origin: center; animation: wheel-pop 0.22s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (prefers-reduced-motion: reduce) { .wheel-grade { animation: none; } }

@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { animate, motion, useMotionValue, useMotionValueEvent, useSpring, useTransform } from 'motion/react'
 import { tokenMs } from '../hooks.js'
 import { spring, useReduced } from '../motion.js'
-import { OUTCOME, OUTCOME_ORDER, OUTCOME_PHRASE } from '../labels.js'
+import { OUTCOME, OUTCOME_ORDER, OUTCOME_PHRASE, day } from '../labels.js'
 import { useTooltip } from './Tooltip.jsx'
-import { OutcomeShape } from './OutcomeShape.jsx'
+import { FULL_AT, GaveUpFlag, OutcomeShape } from './OutcomeShape.jsx'
 import Icon from './Icon.jsx'
 
 // The class of 30 and its fast-forward replay (Lab only).
@@ -96,13 +96,14 @@ export default function ClassPanel({ run, students, openId, onOpen, busy }) {
     : run.summary
   const byId = useMemo(() => Object.fromEntries(students.map((s) => [s.id, s])), [students])
   const progress = useTransform(clock, (v) => `scaleX(${Math.min(1, v / tl.total)})`)
+  const avg = run.summary.avg_gain
   const label = phase === 'playing' ? 'Replaying' : done ? 'Replay again' : 'Replay lesson'
 
   return (
     <>
       <div className="lx-class-head">
         <div className="lx-class-title">
-          <h3 id="class-h">The class of {results.length}</h3>
+          <h3 id="class-h">Class simulation</h3>
           <p className="lx-note">Simulated students, not real children.</p>
         </div>
         <div className="lx-replay">
@@ -132,6 +133,10 @@ export default function ClassPanel({ run, students, openId, onOpen, busy }) {
         )}
       </div>
 
+      <p className="lx-caption">
+        The star grows with the points a student gained, and it is full at {FULL_AT} or more.{' '}
+        <span className="lx-caption-key"><GaveUpFlag /> gave up</span>
+      </p>
       <ul className="lx-seats" aria-label="Students" data-live={live} aria-busy={busy || undefined}>
         {results.map((r, i) => {
           const s = byId[r.student_id]
@@ -154,7 +159,10 @@ export default function ClassPanel({ run, students, openId, onOpen, busy }) {
             </li>
           ))}
         </ul>
-        <p className="lx-gain">Average gain <b>{run.summary.avg_gain.toFixed(1)}</b> of 10 points · tested {run.tested_on}</p>
+        <div className="lx-tally-meta">
+          <p className="lx-gain">Average gain <b>{avg < 0 ? '-' : '+'}{Math.abs(avg).toFixed(1)}</b> points out of 10</p>
+          <p className="lx-tested">Tested {day(run.tested_on)}</p>
+        </div>
       </div>
       {tip.node}
     </>
@@ -168,16 +176,20 @@ function Seat({ i, r, s, tl, clock, live, on, selected, onOpen, tip }) {
     return `translateY(${((1 - Math.max(0, Math.min(1, k))) * 100).toFixed(2)}%)`
   })
   const state = live && !on ? 'learning' : 'settled'
-  const name = `${s.name} ${OUTCOME_PHRASE[r.outcome]}: score ${r.before} to ${r.after} out of 10`
+  const gu = r.gave_up ? ', gave up' : ''
+  const tipText = `${s.name} ${OUTCOME_PHRASE[r.outcome]}: ${r.before} \u2192 ${r.after} out of 10 (+${r.gain}${gu})`
+  const name = `${s.name} ${OUTCOME_PHRASE[r.outcome]}. Score before ${r.before}, after ${r.after}, out of 10. Gained ${r.gain} ${r.gain === 1 ? 'point' : 'points'}${r.gave_up ? ' and gave up' : ''}.`
   return (
     <li style={{ '--i': i }}>
       <button className="lx-seat" data-state={state} data-selected={selected || undefined}
-        onClick={() => onOpen(r.student_id)} aria-haspopup="dialog" aria-label={name} {...tip.bind(name)}>
+        onClick={() => onOpen(r.student_id)} aria-haspopup="dialog" aria-label={name} {...tip.bind(tipText)}>
         <span className="lx-seat-orb">
           <span className="lx-know" aria-hidden="true"><motion.span className="lx-know-level" style={{ transform: level }} /></span>
-          <OutcomeShape key={r.outcome} outcome={r.outcome} className="lx-seat-shape" />
+          <OutcomeShape key={`${r.outcome}-${r.gain}-${r.gave_up}`} outcome={r.outcome} gain={r.gain} gaveUp={r.gave_up} className="lx-seat-shape" />
+          {r.gave_up && <GaveUpFlag />}
         </span>
         <span className="lx-seat-name">{s.name}</span>
+        <span className="lx-seat-meta" aria-hidden="true"><b>+{r.gain}</b></span>
       </button>
     </li>
   )

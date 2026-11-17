@@ -1,0 +1,40 @@
+/* Lab extras: the class caption, the gave-up flag, the "why 5 tabs" strip, the extra tab, and the
+   "Tested in the lab" tag on the EdTech tools windows. Loaded after lab.css, so it wins where they overlap. */
+
+/* ---------- Class view: caption, the "gave up" flag, and the "+N" under each name ---------- */
+/* (The stars themselves are styled in styles/lab.css.) */
+.lx-caption { font-size: var(--text-sm); color: var(--ink-3); line-height: 1.45; max-width: var(--measure); }
+/* the little key at the end of the caption: flag icon and the words "gave up", kept together on one line */
+.lx-caption-key { display: inline-flex; align-items: center; gap: var(--s-1); white-space: nowrap; vertical-align: middle; }
+.lx-caption-key .gaveup-flag { flex: none; }
+/* The flag sits at the top right of the star, on a small round patch of the ground colour so it stays readable over the star.
+   During a replay it waits until that seat has settled, then fades in. */
+.lx-seat-orb .gaveup-flag { position: absolute; top: -3px; right: -7px; box-sizing: content-box; padding: 2px; border-radius: 50%; background: var(--bg); opacity: 1; pointer-events: none; transition: opacity 200ms var(--ease-out); }
+.lx-seat[data-state="learning"] .gaveup-flag { opacity: 0; transition: none; }
+@media (prefers-reduced-motion: reduce) { .lx-seat-orb .gaveup-flag { transition: none; } }
+.lx-seat-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.35em; max-width: 100%; margin-top: -4px;
+  font-size: var(--text-xs); line-height: 1.2; color: var(--ink-3); transition: opacity var(--dur-ui) var(--ease-out); }
+.lx-seat-meta b { color: var(--ink); font-weight: 600; }
+/* During a replay the points stay hidden until the student settles, like the star */
+.lx-seat[data-state="learning"] .lx-seat-meta { opacity: 0; }
+
+/* ---------- Strip above the lab: why 5 demo tools here and 7 groups on the EdTech tools page ---------- */
+.lx-strip { display: flex; align-items: flex-start; gap: var(--s-2); padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--fill-subtle); color: var(--ink-2); font-size: var(--text-sm); line-height: 1.5; }
+.lx-strip .icon { flex: none; margin-top: 0.2rem; color: var(--ink-3); }
+.lx-strip a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--pop); text-underline-offset: 3px; }
+@media (hover: hover) { .lx-strip a:hover { color: var(--pop-deep); } }
+
+/* ---------- Tabs: the extra demo tool sits apart, behind a thin divider ---------- */
+/* Wide: a thin vertical line. Narrow (the extra tab would wrap): the line becomes a full-width divider that starts a second row. */
+.lx-page { container: lxpage / inline-size; }
+.tab-sep { align-self: stretch; flex: none; width: 1px; margin: 0.45rem var(--s-1); background: var(--line-strong); }
+@container lxpage (max-width: 58rem) {
+  .tab-sep { flex-basis: calc(100% - 1rem); width: auto; height: 1px; margin: var(--s-1) var(--s-2); }
+}
+.tab-extra { padding: 0 0.45rem; border: 1px solid currentColor; border-radius: var(--r-pill); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; text-transform: uppercase; opacity: 0.75; }
+
+/* ---------- EdTech tools windows (ToolsFilm.jsx): is this group tested in the lab? ---------- */
+.tw-lab { display: block; width: fit-content; max-width: 100%; padding: 0.15rem 0.6rem; border: 1px solid var(--card-edge, var(--line)); border-radius: var(--r-pill);
+  font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.tw-lab[data-tested] { color: var(--pop-deep); border-color: var(--pop); }

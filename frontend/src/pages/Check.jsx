@@ -1,17 +1,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { getCheck, postMatch } from '../api.js'
+import { getCheck, isFallback, postMatch } from '../api.js'
 import { useLoad, usePageTitle, useStatus } from '../hooks.js'
 import { useMatch } from '../store.jsx'
 import { LANGUAGES } from '../data/languages.js'
+import { EXAMPLE_STUDENTS } from '../data/exampleStudents.js'
 import { spring } from '../motion.js'
 import { Async } from '../components/States.jsx'
 import StepSwap from '../components/StepSwap.jsx'
 import { SwapText } from '../components/Swap.jsx'
 import Icon from '../components/Icon.jsx'
 import TopicPicker from '../components/TopicPicker.jsx'
+import { buildSteps, estimate, hasChallenge, isTimed, languageQuestions, lengthLine, makeCheck, readingQuestions } from '../at/check-plan.js'
+import { kitFor } from '../data/kit.js'
+import { median } from '../at/pace.js'
 import '../styles/advisor.css'
+import '../at/check-extra.css'
 
 // The five numbers in a learning profile, and what the lab works each one out from (the lab does the sums,
 // not this page; see docs/BACKEND.md 5.7 and 5.8):
@@ -26,26 +31,14 @@ const MEASURES = {
   level: { label: 'What you already know', chip: 'Measures: what you already know', icon: 'chart', how: 'A short quiz before any teaching.' },
   speed: { label: 'How fast you pick up new ideas', chip: 'Measures: how fast you pick up a new idea', icon: 'clock', how: 'A mini-lesson, then a second quiz.' },
   reading: { label: 'Reading', chip: 'Measures: reading', icon: 'book', how: 'Short texts. Every answer is in the text.' },
-  english: { label: 'Language', chip: 'Measures: language', icon: 'chat', how: 'Your own rating of how confident you are reading English.' },
+  english: { label: 'English', chip: 'Measures: reading in English (your own rating)', icon: 'chat', how: 'Your own rating of how confident you are reading English.' },
   persistence: { label: 'Staying power', chip: 'Measures: staying power', icon: 'spark', how: 'How many questions you skip. Skipping lowers this number.' },
 }
 const TRIAL = 'Trial question: not scored yet'
+// Plain words for the points of the 1 to 5 English rating (the question and the scale itself come from the lab).
+const ANCHORS = { 1: 'I need a translator', 3: 'I follow most of it', 5: 'As easy as my first language' }
 
-// v3 check: quiz_1, mini_lesson, quiz_2, reading (a list of passages) and one english_question object.
-// Demo packs may add `english_questions` (a list) and `challenge` (one hard question with hints).
-function buildSteps(c) {
-  const steps = [{ kind: 'intro', part: 'Before you start' }]
-  c.quiz_1.forEach((q, i) => steps.push({ kind: 'q', part: 'Part 1 · What you know', measure: 'level', q, n: i + 1, of: c.quiz_1.length }))
-  steps.push({ kind: 'lesson', part: 'Part 2 · A new idea', measure: 'speed' })
-  c.quiz_2.forEach((q, i) => steps.push({ kind: 'q', part: 'Part 2 · A new idea', measure: 'speed', q, n: i + 1, of: c.quiz_2.length }))
-  const rq = readingQuestions(c)
-  rq.forEach((q, i) => steps.push({ kind: 'q', part: 'Part 3 · Reading', measure: 'reading', q, n: i + 1, of: rq.length, passage: q.passage }))
-  const lq = languageQuestions(c)
-  lq.forEach((q, i) => steps.push({ kind: 'q', part: 'Part 4 · Language', measure: 'english', trial: true, q, n: i + 1, of: lq.length }))
-  if (c.english_question) steps.push({ kind: 'english', part: 'Part 4 · Language', measure: 'english' })
-  if (hasChallenge(c)) steps.push({ kind: 'challenge', part: 'Part 5 · Staying power', measure: 'persistence', trial: true, q: c.challenge })
-  return steps
-}
+// The steps, the plan and the length of the check live in at/check-plan.js.
 
 // How each number is measured in the check that is about to start. A pack's trial parts are named as trials.
 function howFor(id, c, ready) {
@@ -53,16 +46,14 @@ function howFor(id, c, ready) {
   if (ready && id === 'persistence' && hasChallenge(c)) return `${MEASURES.persistence.how} Plus one hard trial question with hints, not scored yet.`
   return MEASURES[id].how
 }
-const languageQuestions = (c) => (Array.isArray(c.english_questions) ? c.english_questions.filter((q) => q?.id && q.options?.length) : [])
-const hasChallenge = (c) => !!(c.challenge?.id && c.challenge.options?.length && Array.isArray(c.challenge.hints))
 
-// Every reading question, each remembering the passage it belongs to.
 const scale = (q) => Array.from({ length: Math.max(2, (q.max ?? 5) - (q.min ?? 1) + 1) }, (_, k) => (q.min ?? 1) + k)
-const readingQuestions = (c) => (c.reading || []).flatMap((p) => (p.questions || []).map((q) => ({ ...q, passage: p.passage })))
 
 export default function Check() {
   usePageTitle('The check')
   const load = useLoad(getCheck, [])
+  const offline = useStatus() === 'demo' && isFallback() // lab unreachable: only the saved example is possible
+  if (offline) return <CheckOff saved />
   return (
     <Async state={load} label="Loading the check" unavailable={<CheckOff />}>
       {(check) => <Flow base={check} />}
@@ -71,7 +62,21 @@ export default function Check() {
 }
 
 // No lab: the same calm card, with empty answer rows where the questions would be.
-function CheckOff() {
+function CheckOff({ saved }) {
+  const nav = useNavigate()
+  const { setMatch } = useMatch()
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState(null)
+  // In this mode the match is one fixed saved example. The results page labels it, so it is stored as returned.
+  async function showSaved() {
+    setBusy(true); setError(null)
+    try {
+      setMatch(await postMatch({}))
+      nav('/results')
+    } catch (e) {
+      setError(e); setBusy(false)
+    }
+  }
   return (
     <div className="ck">
       <div className="ck-top" aria-hidden="true">
@@ -79,9 +84,16 @@ function CheckOff() {
         <div className="ck-progress ck-progress-off" />
       </div>
       <div className="ck-card ck-off glass" role="note">
-        <h1>The check is not available</h1>
-        <p className="ck-sub">The check needs the lab, and the lab is not connected right now. Nothing has been asked or saved.</p>
-        <div className="ck-ghosts" aria-hidden="true">{[0, 1, 2].map((i) => <span key={i} />)}</div>
+        <h1>{saved ? 'The check needs the live lab' : 'The check is not available'}</h1>
+        <p className="ck-sub">{saved ? 'The lab is not connected right now, so answers cannot be matched. Nothing has been asked or saved.' : 'The check needs the lab, and the lab is not connected right now. Nothing has been asked or saved.'}</p>
+        {saved ? (
+          <>
+            {error && <p className="ck-error" role="alert"><Icon name="warn" size={18} /> <span>{error.message}</span></p>}
+            <button type="button" className="btn" onClick={showSaved} disabled={busy} aria-busy={busy}>
+              {busy && <span className="spinner spinner-sm" aria-hidden="true" />}See a saved example result
+            </button>
+          </>
+        ) : <div className="ck-ghosts" aria-hidden="true">{[0, 1, 2].map((i) => <span key={i} />)}</div>}
       </div>
     </div>
   )
@@ -94,6 +106,7 @@ const packUrl = (id) => `${import.meta.env.BASE_URL}demo/topics/${id}.json`
 
 function Flow({ base }) {
   const demo = useStatus() === 'demo'
+  const live = useStatus() === 'live'
   // Topic: chosen on the first step. 'default' is the check the lab serves; other packs exist in demo mode only.
   const [topic, setTopic] = useState(null)
   const [pack, setPack] = useState(null)
@@ -110,27 +123,27 @@ function Flow({ base }) {
     }).catch(() => { if (!off && !extras) setPackError(true) })
     return () => { off = true }
   }, [topic, demo])
-  const check = useMemo(() => {
-    if (!pack) return base
-    const own = {}
-    for (const k of ['quiz_1', 'mini_lesson', 'quiz_2', 'english_questions']) if (Array.isArray(pack[k]) && pack[k].length) own[k] = pack[k]
-    // A pack's reading is one passage with its questions; the lab's is a list of passages.
-    if (pack.reading?.passage && pack.reading.questions?.length) own.reading = [{ id: 'pack', ...pack.reading }]
-    else if (Array.isArray(pack.reading) && pack.reading.length) own.reading = pack.reading
-    if (pack.challenge) own.challenge = pack.challenge
-    return { ...base, ...own }
-  }, [base, pack])
+  // The check that will really run: the lab's check, the pack on top, shortened for one exact topic (at/check-plan.js).
+  const check = useMemo(() => makeCheck(base, pack, topic), [base, pack, topic])
   const topicReady = !!topic && (topic.pack === 'default' || !!pack)
   const steps = useMemo(() => buildSteps(check), [check])
+  const plan = useMemo(() => estimate(steps, check), [steps, check])
+  const kit = topic ? kitFor(topic.pack) : []
   const nav = useNavigate()
-  const { setMatch, languages } = useMatch()
+  const { setMatch, languages, setPace } = useMatch()
   const speaks = languages.map((x) => LANGUAGES.find((l) => l.id === x)?.name).filter(Boolean)
   const [i, setI] = useState(0)
   const [answers, setAnswers] = useState({}) // id -> value | null (skipped)
   const [hints, setHints] = useState(0) // hints opened on the hard question
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
+  const [sendingId, setSendingId] = useState(null) // which example student is being sent
   const startedAt = useRef(null)
+  // Quiet pace timer. No clock on screen. Only the two quizzes are timed: from when a question is shown to when it is
+  // first answered, paused while the tab is hidden. The student can switch it off before starting.
+  const [timeMe, setTimeMe] = useState(true)
+  const timings = useRef({})                          // question id -> seconds to the first answer
+  const clock = useRef({ id: null, spent: 0, since: null }) // the question on screen: time already spent, and when it was last shown
   const head = useRef(null)
   // The leaving copy of a step also renders a heading: only a mounted one may take the ref.
   const setHead = useCallback((el) => { if (el) head.current = el }, [])
@@ -140,7 +153,30 @@ function Flow({ base }) {
 
   useEffect(() => { head.current?.focus({ preventScroll: true }) }, [i])
 
-  const answer = (id, v) => setAnswers((a) => ({ ...a, [id]: v }))
+  useEffect(() => {
+    if (!timeMe || !isTimed(step)) { clock.current = { id: null, spent: 0, since: null }; return }
+    clock.current = { id: step.q.id, spent: 0, since: document.hidden ? null : performance.now() }
+    const onVisible = () => {
+      const c = clock.current
+      if (document.hidden) { if (c.since != null) { c.spent += performance.now() - c.since; c.since = null } }
+      else if (c.since == null) c.since = performance.now()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => document.removeEventListener('visibilitychange', onVisible)
+  }, [step, timeMe])
+
+  const answer = (id, v) => {
+    const c = clock.current
+    // Keep only the FIRST timing of a question: changing an answer or coming back later never replaces it.
+    if (timeMe && v != null && c.id === id && timings.current[id] === undefined) timings.current[id] = (c.spent + (c.since != null ? performance.now() - c.since : 0)) / 1000
+    setAnswers((a) => ({ ...a, [id]: v }))
+  }
+  // Pace = the median seconds per answered quiz question, or null when timing is off or fewer than 3 were timed. Memory only.
+  const paceOf = (final) => {
+    if (!timeMe) return null
+    const t = [...check.quiz_1, ...check.quiz_2].filter((q) => final[q.id] != null && timings.current[q.id] !== undefined).map((q) => timings.current[q.id])
+    return t.length >= 3 ? { median: Math.round(median(t) * 10) / 10, count: t.length } : null
+  }
   const go = (d) => { dir.current = d > 0 ? 1 : -1; setI((x) => Math.max(0, Math.min(steps.length - 1, x + d))) }
 
   async function submit(final) {
@@ -148,22 +184,41 @@ function Flow({ base }) {
     const group = (qs) => Object.fromEntries(qs.map((q) => [q.id, val(q.id)]))
     const eng = val('english')
     // Exactly the v3 request (docs/BACKEND.md 5.8). A skipped question is null; the backend counts skips itself.
-    // The language questions and the hard question (demo packs) are NOT sent: the backend has no field for them yet.
+    // `topic` only narrows the real tools the lab sends back to the chosen subject (it changes no score or match).
+    // The language questions and the hard question (demo packs) are not sent: the lab can store them as `extras`,
+    // but it does not score them, and they stay labelled as trial questions on screen.
+    const advanced = /a level|ib/i.test(topic?.level || '') || !!topic?.beta
     const body = {
+      ...(topic?.subject ? { topic: { subject: String(topic.subject).slice(0, 40), advanced } } : {}),
       quiz_1: group(check.quiz_1),
       quiz_2: group(check.quiz_2),
       reading: group(readingQuestions(check)),
       english_confidence: eng === null ? null : Number(eng),
-      seconds_taken: Math.round((Date.now() - (startedAt.current ?? Date.now())) / 1000),
+      // Total time is sent only when timing is on. Pace is never sent.
+      ...(timeMe ? { seconds_taken: Math.round((Date.now() - (startedAt.current ?? Date.now())) / 1000) } : {}),
     }
     setBusy(true); setError(null)
     try {
       const result = await postMatch(body)
+      setPace(paceOf(final))
       // The chosen topic rides along for the results page only (which websites to suggest). It is not from the lab.
       setMatch({ ...result, topic: { subject: topic?.subject, name: topic?.name, advanced: /a level|ib/i.test(topic?.level || '') || !!topic?.beta } })
       nav('/results')
     } catch (e) {
       setError(e); setBusy(false)
+    }
+  }
+
+  // An example student: preset answers go through the same request as the real check, and the result is marked.
+  async function tryExample(ex) {
+    setBusy(true); setSendingId(ex.id); setError(null)
+    try {
+      const result = await postMatch({ ...ex.answers, seconds_taken: 300 })
+      setPace(null) // preset answers: no pace
+      setMatch({ ...result, example: { id: ex.id, title: ex.title } })
+      nav('/results')
+    } catch (e) {
+      setError(e); setBusy(false); setSendingId(null)
     }
   }
 
@@ -191,7 +246,9 @@ function Flow({ base }) {
 
   const pct = Math.round((i / (steps.length - 1)) * 100)
   const measure = MEASURES[step.measure]
-  const count = step.of ? `Question ${step.n} of ${step.of}` : step.kind === 'intro' ? `${steps.length - 1} steps` : ''
+  const eq = check.english_question
+  const anchored = !!eq && (eq.min ?? 1) === 1 && (eq.max ?? 5) === 5 // the plain anchors below fit a 1 to 5 scale only
+  const count = step.of ? `Question ${step.n} of ${step.of}` : step.kind === 'intro' ? (topicReady ? `${steps.length - 1} steps` : '') : ''
 
   return (
     <form className="ck" onSubmit={(e) => { e.preventDefault(); next() }} onKeyDown={onKeyDown} noValidate>
@@ -217,9 +274,25 @@ function Flow({ base }) {
             {step.kind === 'intro' && (
               <>
                 <h1 ref={setHead} tabIndex={-1}>The check</h1>
-                <p className="ck-sub">Pick a topic, then a few short parts. About {base.minutes ?? 8} minutes.</p>
-                <TopicPicker value={topic} onChange={(t) => { setTopic(t); setAnswers({}); setHints(0) }} canStart={canStart} />
+                <p className="ck-sub">{topicReady ? `${plan.questions} questions · about ${plan.minutes} minutes` : 'Pick a topic, then answer a few short parts. How long it takes depends on the topic.'}</p>
+                <TopicPicker value={topic} onChange={(t) => { setTopic(t); setAnswers({}); setHints(0); timings.current = {} }} canStart={canStart} />
                 {packError && <p className="ck-pack-error" role="alert"><Icon name="warn" size={16} /> That topic did not load. Pick another one.</p>}
+                {topicReady && (
+                  <>
+                    <p className="ck-length"><Icon name="list" size={16} /> {lengthLine(topic, !!check.short)}</p>
+                    <div className="ck-kit" role="group" aria-labelledby="ck-kit-h">
+                      <p className="ck-kit-title" id="ck-kit-h">Have these ready</p>
+                      <ul className="ck-kit-list">
+                        {kit.map((k) => (
+                          <li key={k.id} className={k.off ? 'is-off' : ''}>
+                            {k.off ? <span className="icon-wrap"><Icon name={k.icon} size={18} /></span> : <Icon name={k.icon} size={18} />}
+                            {k.label}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
                 <h2 className="ck-parts-title">The 5 things we measure</h2>
                 <ol className="ck-how" aria-label="The 5 things we measure">
                   {Object.entries(MEASURES).map(([id, m], k) => (
@@ -233,16 +306,39 @@ function Flow({ base }) {
                 {speaks.length > 0 && <p className="ck-speaks"><Icon name="chat" size={16} /> You speak {speaks.join(', ')}.</p>}
                 <ul className="ck-points">
                   <li><Icon name="skipfwd" size={18} /> You can skip any question. Skips count towards staying power.</li>
-                  <li><Icon name="lock" size={18} /> No name or email. Answers are used once to find your match and are not saved.</li>
+                  <li>
+                    <Icon name="info" size={18} />
+                    <div className="ck-timing">
+                      <span>We time the quiz questions quietly to see your pace. There is no time limit.</span>
+                      <label className="ck-timing-check">
+                        <input type="checkbox" checked={!timeMe} onChange={(e) => { setTimeMe(!e.target.checked); timings.current = {} }} /> Don't time me
+                      </label>
+                      <p className="ck-timing-note">Your pace stays on this device. Switching timing off also stops the total time being sent to the lab.</p>
+                    </div>
+                  </li>
                   <li><Icon name="pencil" size={18} /> It is not an exam. Nobody sees a mark. Your answers only shape your profile.</li>
                 </ul>
+                {live && (
+                  <section className="ck-examples" aria-labelledby="ck-examples-h">
+                    <h2 id="ck-examples-h" className="ck-parts-title">Try an example student if you are short on time</h2>
+                    <p className="ck-examples-sub">These are preset answers, not yours, sent to the lab to get a real match.</p>
+                    <div className="ck-examples-list">
+                      {EXAMPLE_STUDENTS.map((ex) => (
+                        <button key={ex.id} type="button" className="ck-example" onClick={() => tryExample(ex)} disabled={busy} aria-busy={sendingId === ex.id}>
+                          <b>{sendingId === ex.id && <span className="spinner spinner-sm" aria-hidden="true" />}{ex.title}</b>
+                          <span>{ex.detail}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                )}
               </>
             )}
 
             {step.kind === 'lesson' && (
               <>
                 <h1 ref={setHead} tabIndex={-1}>A new idea</h1>
-                <p className="ck-sub">Read this. The next questions are only about this idea.</p>
+                <p className="ck-sub">Read this idea first, because the next questions are only about it.</p>
                 <div className="ck-lesson">
                   {check.mini_lesson.map((l, k) => <p key={k}>{l}</p>)}
                 </div>
@@ -273,7 +369,7 @@ function Flow({ base }) {
             {step.kind === 'challenge' && (
               <fieldset className="ck-q ck-hard">
                 <legend ref={setHead} tabIndex={-1} className="ck-legend">{step.q.text}</legend>
-                <p className="ck-hard-note"><Icon name="spark" size={16} /> <span>This one is hard on purpose and is a trial: it does not change your results yet. Take a hint, have a go or skip it.</span></p>
+                <p className="ck-hard-note"><Icon name="spark" size={16} /> <span>This question is hard on purpose and is only a trial, so it does not change your results yet. You can take a hint, try it or skip it.</span></p>
                 <div className="ck-choices">
                   {step.q.options.map((o) => (
                     <label className="ck-choice" key={o}>
@@ -298,17 +394,22 @@ function Flow({ base }) {
 
             {step.kind === 'english' && (
               <fieldset className="ck-q">
-                <legend ref={setHead} tabIndex={-1} className="ck-legend">{check.english_question.text}</legend>
+                <legend ref={setHead} tabIndex={-1} className="ck-legend">{eq.text}</legend>
+                <p className="ck-why"><b>Why we ask.</b> Tools that use dense English worked differently in the lab for students still learning English, so your answer changes which we show first.</p>
                 <div className="ck-choices ck-scale">
-                  {scale(check.english_question).map((n, k, all) => (
+                  {scale(eq).map((n, k, all) => (
                     <label className="ck-choice" key={n}>
                       <input type="radio" name="english" value={n} checked={answers.english === String(n)} onChange={() => answer('english', String(n))}
-                        aria-label={k === 0 ? `${n}, ${check.english_question.min_label || 'lowest'}` : k === all.length - 1 ? `${n}, ${check.english_question.max_label || 'highest'}` : String(n)} />
+                        aria-label={anchored && ANCHORS[n] ? `${n}, ${ANCHORS[n]}` : k === 0 ? `${n}, ${eq.min_label || 'lowest'}` : k === all.length - 1 ? `${n}, ${eq.max_label || 'highest'}` : String(n)} />
                       <span className="ck-text">{n}</span>
                     </label>
                   ))}
                 </div>
-                <p className="ck-scale-ends" aria-hidden="true"><span>{check.english_question.min_label}</span><span>{check.english_question.max_label}</span></p>
+                {anchored ? (
+                  <ul className="ck-anchors" aria-hidden="true">
+                    {Object.entries(ANCHORS).map(([n, text]) => <li key={n}><b>{n}</b><span>{text}</span></li>)}
+                  </ul>
+                ) : <p className="ck-scale-ends" aria-hidden="true"><span>{eq.min_label}</span><span>{eq.max_label}</span></p>}
               </fieldset>
             )}
           </section>

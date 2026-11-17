@@ -1,0 +1,48 @@
+/* Spacing fixes from the site-wide spacing pass. Loaded last. */
+
+/* Home: the dark class band had 144px of empty light space above it (who padding + its own margin) and between it and the finale band. Keep one 72px gap. */
+:root .home-section.klass { margin-top: 0; }
+:root .home-section.finale { margin-top: 0; }
+
+/* Home: finale had 160px of void under its buttons before the footer (112 + 48), twice the space above its heading. */
+:root .home-section.finale { padding-bottom: var(--s-7); }
+
+/* Results: the "Questions you might have" heading sat 8px above its first item (same as the gap between items), so it read as another row. */
+.rs-follow > .rs-h2 { margin-bottom: var(--s-3); }
+
+/* Results: the "Preview data" pill sat 8px under the line above it, cramped. */
+.rs-card .rs-preview { margin-top: var(--s-3); }
+
+/* Tools (narrow): the group legend ran underneath the fixed corner crystal and covered the end of "DEEP LESSONS 19". Keep the legend clear of the crystal. */
+@media (max-width: 52rem) {
+  .tfilm-nav { padding-right: calc(clamp(6rem, 15vw, 12.5rem) + clamp(0.5rem, 2vw, 2rem) + var(--s-2)); }
+}
+
+/* Tools: about 360px of empty space between the intro note and the first group window; pull the pinned scene up by the 72px gap. */
+.tl-page > .tfilm, .story .tfilm { margin-top: calc(var(--s-8) * -1); }
+
+/* Tools: 112px bottom padding plus the footer gap left a 220px void under the last section. */
+.tl-page.tg { padding-bottom: var(--s-8); }
+
+/* Report: "This group / Whole class" rows: the value and "of 10" are two grid items in a two-column grid, so "of 10" dropped under the bar and the row label floated between two lines. Put bar, value and "of 10" on one row. */
+.rp-gains dd { grid-template-columns: minmax(0, 1fr) auto auto; }
+.rp-gains dd strong { margin-right: calc(var(--s-2) * -1); }
+
+/* Real tools: "The same student, each tool" table: one long header made columns uneven (156/205/157px) so "Left behind" wrapped in two columns but not the third. Equal columns, header may wrap. */
+.pl-same { table-layout: fixed; min-width: 34rem; }
+.pl-same thead th { white-space: normal; }
+.pl-same thead th:first-child, .pl-same tbody th { width: 5.5rem; }
+
+/* Home: the three "who" cards sat flush under the section intro (0px gap: a theme rule zeroes sibling margins). Restore a 32px gap. */
+.home-section .who-grid { margin-top: var(--s-6); }
+
+/* Header (phone): the nav row started 6px left of the logo's edge (negative margin sized for wider links). Line the first link's text up with the logo. */
+@media (max-width: 30rem) {
+  .site-nav { margin-inline-start: -0.35rem; }
+}
+
+/* Tools (phone): with the legend kept clear of the 96px crystal it stacked into 7 single-item rows. A slightly smaller crystal on phones lets the legend keep 2 items per row. */
+@media (max-width: 40rem) {
+  .gem { width: 4.5rem; }
+  .tfilm-nav { padding-right: calc(4.5rem + 0.5rem + var(--s-2)); }
+}

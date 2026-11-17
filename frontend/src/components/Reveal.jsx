@@ -15,6 +15,8 @@ import { revealTokens, spring, tokenPx, useReduced } from '../motion.js'
 // item itself (never inside a wrapper that fades). `blur` is kept for callers; it is unused now.
 
 const InGroup = createContext(false)
+// True inside at/ScrollStory.jsx: the story scrubs every chunk itself, so Reveal renders plain elements there.
+export const Plain = createContext(false)
 
 // 'shown' while on screen or above it; 'hidden' while below the screen.
 function useJump(ref, margin) {
@@ -50,7 +52,8 @@ function useReveal(delay) {
 const tagOf = (as) => motion[as] || motion.div
 
 export function Reveal({ as = 'div', blur: _blur, delay = 0, children, ...rest }) {
-  const reduced = useReduced()
+  const plain = useContext(Plain)
+  const reduced = useReduced() || plain
   const grouped = useContext(InGroup)
   const r = useReveal(delay)
   const ref = useRef(null)
@@ -64,7 +67,8 @@ export function Reveal({ as = 'div', blur: _blur, delay = 0, children, ...rest }
 // One trigger for the whole group; each <Reveal> child jumps in `stagger` seconds after the last,
 // and they leave together, quickly. The group element itself does not fade.
 export function RevealGroup({ as = 'div', stagger, delay = 0, children, ...rest }) {
-  const reduced = useReduced()
+  const plain = useContext(Plain)
+  const reduced = useReduced() || plain
   const r = useReveal(0)
   const ref = useRef(null)
   const state = useJump(ref, r.margin)

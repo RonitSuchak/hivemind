@@ -28,6 +28,8 @@ const PATHS = {
   spark: 'M12 4v4M12 16v4M4 12h4M16 12h4M6.5 6.5L9 9M15 15l2.5 2.5M17.5 6.5L15 9M9 15l-2.5 2.5', // a key moment
   clock: 'M12 20.5a8.5 8.5 0 100-17 8.5 8.5 0 000 17zM12 7.5V12l3 2',                            // time / short
   skipfwd: 'M5 5.5l9 6.5-9 6.5zM18 5.5v13',
+  calculator: 'M7 3.5h10a1.5 1.5 0 011.5 1.5v14a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 19V5A1.5 1.5 0 017 3.5zM8.5 7.5h7v2.5h-7zM9 14v.1M12 14v.1M15 14v.1M9 17.5v.1M12 17.5v.1M15 17.5v.1', // calculator
+  paper: 'M7 3.5h7l4 4V19a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 19V5A1.5 1.5 0 017 3.5zM14 3.5V8h4M8.5 12h7M8.5 15.5h5', // a sheet of paper
 }
 export default function Icon({ name, size = 20, className = '', strokeWidth = 1.75 }) {
   return (

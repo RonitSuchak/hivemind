@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Active Theory design test. Loaded last (main.jsx), so it wins over every other sheet.
+   Ground: HiveMind's white by default; <html data-ground="midnight"> flips to the dark set
+   (header switch, at/ground.js). Colours stay HiveMind's: white, midnight, persimmon.
+   Style: "crystal architect" = cut-crystal shapes (chamfered corners, facets, sharp edges)
+   drawn like an architect's sheet (hairlines, corner ticks, a faint drafting grid).
+   ========================================================================== */
+
+/* ---------- Ground: midnight token set (the site's own .on-dark values, promoted) ---------- */
+:root[data-ground="midnight"] {
+  color-scheme: dark;
+  --bg: #04060c; --surface: #0e1321; --surface-2: #1b233b;
+  --ink: #ffffff; --ink-2: #d3d9ea; --ink-3: #9faac9;
+  --line: rgb(255 255 255 / 0.14); --line-strong: rgb(255 255 255 / 0.3);
+  --accent: #ffffff; --accent-strong: #ffffff; --accent-ink: #0f172f; --accent-soft: rgb(255 255 255 / 0.1);
+  --c-learned: #6d8dff; --c-little: #94a1c5; --c-left: #ff6b6b;
+  --c-glyph: #0f172f; --c-glyph-little: #0f172f;
+  --warn-bg: rgb(255 255 255 / 0.05); --warn-ink: #ffffff; --warn-line: rgb(255 255 255 / 0.24); --ok: #ffffff;
+  --heat-lo: #161e36; --heat-hi: #ffffff; --heat-text-hi: #0f172f;
+  --radar-other: #9faac9; --radar-plate: rgb(255 255 255 / 0.03);
+  --glass-blur: 18px; --glass-blur-strong: 30px; --glass-sat: 140%;
+  --glass-fill: rgb(255 255 255 / 0.055); --glass-fill-strong: rgb(11 16 30 / 0.92);
+  --glass-edge: rgb(255 255 255 / 0.14); --glass-highlight: rgb(255 255 255 / 0.10);
+  --fill-subtle: rgb(255 255 255 / 0.04); --fill-hover: rgb(255 255 255 / 0.09); --fill-current: rgb(255 255 255 / 0.12);
+  --line-hover: rgb(255 255 255 / 0.5);
+  --glass-shadow: 0 0 #0000; --glass-shadow-lg: 0 32px 64px -20px rgb(0 0 0 / 0.7);
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4); --shadow-drawer: -24px 0 64px rgb(0 0 0 / 0.6);
+  --shadow-btn: 0 10px 26px -12px rgb(255 255 255 / 0.25);
+  --scrim: rgb(0 0 0 / 0.6);
+  --focus: 0 0 0 2px #04060c, 0 0 0 4px var(--pop-strong);
+  --pop-deep: var(--pop-strong); --pop-soft: rgb(244 81 30 / 0.18);
+  --lab-heat-0: #121a2f; --lab-heat-1: #222d4c; --lab-heat-2: #364877;
+  --lab-heat-3: #a1aed0; --lab-heat-4: #cdd5e9; --lab-heat-5: #ffffff;
+  --lab-heat-ink: #ffffff; --lab-heat-ink-dark: #0f172f; --lab-sticky: rgb(9 13 23 / 0.96);
+  --glyph: rgb(255 255 255 / 0.13); --glyph-near: rgb(255 255 255 / 0.22); --glyph-pop: rgb(255 106 61 / 0.6);
+  --sheen: rgb(255 255 255 / 0.07); --facet: rgb(255 255 255 / 0.04);
+  --card-fill: rgb(15 23 47 / 0.5); --card-edge: rgb(255 255 255 / 0.24);
+}
+:root {
+  --glyph: rgb(15 23 47 / 0.16); --glyph-near: rgb(15 23 47 / 0.26); --glyph-pop: rgb(244 81 30 / 0.6);
+  --sheen: rgb(255 255 255 / 0.7); --facet: rgb(15 23 47 / 0.035);
+  --card-fill: rgb(255 255 255 / 0.66); --card-edge: rgb(15 23 47 / 0.22);
+  /* crystal: cut edges, not pillows */
+  --r-sm: 2px; --r-md: 3px; --r-lg: 5px;
+}
+html { background: var(--bg); overflow-x: clip; }
+body { background: transparent; }
+:root[data-ground="midnight"] .ck .ck-how-n, :root[data-ground="midnight"] .lx-best-num { background: #fff; color: #0f172f; }
+/* Midnight: the old solid bands become glass panes so the stage shows through */
+:root[data-ground="midnight"] .site-footer, :root[data-ground="midnight"] .home-section.klass, :root[data-ground="midnight"] .home-section.finale { background: rgb(7 10 19 / 0.62); }
+:root[data-ground="midnight"] .home-section.klass, :root[data-ground="midnight"] .home-section.finale { box-shadow: 0 0 0 100vmax rgb(7 10 19 / 0.62); }
+:root[data-ground="midnight"] .site-footer { -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border-top: 1px solid var(--line); }
+:root[data-ground="midnight"] .site-header.glass-bar { background: rgb(4 6 12 / 0.45); }
+:root[data-ground="midnight"] :is(.section-title, .lab > h1) { text-shadow: 0 1px 24px rgb(4 6 12 / 0.7); }
+
+/* ---------- Stage ---------- */
+.stage { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: var(--bg); }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+:root[data-ground="midnight"] .stage-trails { mix-blend-mode: screen; }
+.stage-nogl .stage-gl { display: none; }
+.stage-nogl { background:
+  radial-gradient(60vmax 50vmax at 12% 8%, rgb(244 81 30 / 0.14), transparent 70%),
+  radial-gradient(70vmax 60vmax at 92% 40%, rgb(81 104 169 / 0.18), transparent 70%), var(--bg); }
+:root[data-quality="low"] .glass, :root[data-quality="low"] .glass-bar, :root[data-quality="low"] .glass-strong { -webkit-backdrop-filter: none; backdrop-filter: none; }
+/* Equations and quotes: positioned by the loop (Stage.jsx), so they start at the corner */
+.stage-glyphs .glyph { left: 0; top: 0; will-change: transform; }
+
+/* ---------- Header ---------- */
+.site-nav, .site-header .wordmark { will-change: transform; transform-origin: 50% 50%; }
+.site-nav { align-items: center; }
+:root:not([lang="ru"]):not([lang="hi"]) .site-nav a { text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.78rem; }
+@media (max-width: 30rem) { :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { letter-spacing: 0.04em; font-size: 0.7rem; padding-inline: 0.45rem; white-space: nowrap; } }
+/* White / midnight switch: a small cut gem, half ink */
+.ground-toggle { flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; margin-left: 0.25rem; padding: 0; border: 0; background: none; cursor: pointer; }
+.ground-toggle span { width: 14px; height: 14px; rotate: 45deg; border: 1.5px solid var(--ink); background: linear-gradient(135deg, var(--ink) 50%, transparent 50%); transition: rotate 0.4s var(--ease-out); }
+.ground-toggle:hover span { rotate: 225deg; }
+
+/* ---------- Crystal architect: site-wide material ---------- */
+.glass { background-image: linear-gradient(128deg, var(--sheen) 0%, transparent 34%), linear-gradient(308deg, var(--facet) 0%, transparent 42%), linear-gradient(to right, transparent 61.8%, var(--facet) 61.8%, transparent calc(61.8% + 1px)); }
+.btn { border-radius: 3px; }
+.btn-primary { clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); border-radius: 0; }
+.btn-primary:focus-visible { clip-path: none; }
+
+/* ---------- The home film (at/Film.jsx) ---------- */
+.main:has(.film) { padding-top: 0; }
+.film { position: relative; }
+.film-view { position: sticky; top: 0; height: 100svh; width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden; }
+.film-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.film-ring { position: absolute; inset: 0; perspective: 1100px; transform-style: preserve-3d; pointer-events: none; }
+.film-card { position: absolute; left: 40%; top: calc(50% + 1.25rem); width: min(33rem, 86vw); padding: clamp(1.5rem, 3vw, 2.5rem);
+  pointer-events: auto; will-change: transform, opacity; backface-visibility: hidden; transform: translate(-50%, -50%);
+  --glass-fill: var(--card-fill); border: 1px solid var(--card-edge); border-radius: 0; box-shadow: none;
+  clip-path: polygon(26px 0, 100% 0, 100% calc(100% - 26px), calc(100% - 26px) 100%, 0 100%, 0 26px); } /* two cut corners, like a gem */
+.film-card:not(.is-active) { pointer-events: none; }
+/* the cut corners get an orange edge on the card in front */
+.film-card::before, .film-card::after { content: ""; position: absolute; width: 37px; height: 1.5px; background: var(--pop); opacity: 0; transition: opacity 0.3s; }
+.film-card::before { left: -1px; top: 25px; transform-origin: 0 50%; rotate: -45deg; }
+.film-card::after { right: -1px; bottom: 25px; transform-origin: 100% 50%; rotate: -45deg; }
+.film-card.is-active::before, .film-card.is-active::after { opacity: 1; }
+.film-tag, .film-hud button, .film-hint, .gem-count { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.film-tag { color: var(--pop-deep); margin-bottom: var(--s-4); }
+.film-title { font-size: clamp(1.7rem, 2.2vw + 1rem, 2.6rem); line-height: 1.06; letter-spacing: var(--track-display); font-weight: 700; overflow-wrap: anywhere; }
+.film-hero .film-title { font-size: clamp(2rem, 2.8vw + 1rem, 3.2rem); line-height: 1.02; }
+.film-hero .film-title .hero-accent { display: block; margin-top: 0.1em; }
+.film-text { margin-top: var(--s-4); color: var(--ink-2); font-size: var(--text-base); line-height: 1.55; }
+.film-card .muted { margin-top: var(--s-3); }
+.film-card .icon-chip { margin-bottom: var(--s-3); }
+.film-card .actions { margin-top: var(--s-5); }
+.film-hud { position: absolute; left: var(--gutter); bottom: 3.6rem; display: grid; gap: 0.15rem; justify-items: start; max-width: 15rem; }
+.film-hud button { background: none; border: 0; padding: 0.3rem 0; color: var(--ink-3); cursor: pointer; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; transition: color 0.2s, translate 0.25s var(--ease-out); }
+.film-hud button span { color: var(--pop-deep); }
+.film-hud button.is-current { color: var(--ink); translate: 8px 0; }
+@media (hover: hover) { .film-hud button:hover { color: var(--ink); translate: 8px 0; } }
+/* Progress line: drag it to move through the story */
+.film-bar { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 1.2rem; display: flex; align-items: center; gap: var(--s-4); }
+.film-hint { flex: none; color: var(--pop-deep); }
+.film-range { flex: 1; min-width: 0; height: 1.5rem; margin: 0; background: none; -webkit-appearance: none; appearance: none; cursor: grab; --f: 0; }
+.film-range::-webkit-slider-runnable-track { height: 1px; background: linear-gradient(to right, var(--pop) calc(var(--f) * 100%), var(--line-strong) 0); }
+.film-range::-moz-range-track { height: 1px; background: linear-gradient(to right, var(--pop) calc(var(--f) * 100%), var(--line-strong) 0); }
+.film-range::-webkit-slider-thumb { -webkit-appearance: none; width: 9px; height: 9px; margin-top: -4px; rotate: 45deg; background: var(--pop); }
+.film-range::-moz-range-thumb { width: 9px; height: 9px; border: 0; border-radius: 0; rotate: 45deg; background: var(--pop); }
+@media (max-width: 56rem) {
+  .film-card { left: 50%; top: calc(50% + 3rem); }
+  .film-hud, .film-hint { display: none; }
+}
+.film-static { height: auto; }
+.film-static .film-view { position: static; height: auto; width: auto; margin-left: 0; overflow: visible; }
+.film-static .film-canvas, .film-static .film-hud, .film-static .film-bar { display: none; }
+.film-static .film-ring { position: static; perspective: none; display: grid; gap: var(--s-5); padding-block: var(--s-7); pointer-events: auto; }
+.film-static .film-card { position: static; transform: none; width: min(40rem, 100%); pointer-events: auto; opacity: 1; visibility: visible; }
+:root[lang="hi"] .film-tag, :root[lang="hi"] .film-hud button, :root[lang="ru"] .film-hud button { letter-spacing: 0.02em; text-transform: none; }
+
+/* ---------- Scroll story (at/ScrollStory.jsx): --t runs 0 -> 1 as a chunk arrives ---------- */
+[data-scrub] { --t: 0; }
+/* no will-change here: on a long page it gave every waiting block its own GPU layer, which made scrolling heavy */
+[data-scrub="rise"] { opacity: var(--t); transform: translateY(calc((1 - var(--t)) * 36px)); }
+/* paragraphs are "written": a soft edge sweeps down the text */
+[data-scrub="ink"] { transform: translateY(calc((1 - var(--t)) * 16px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--t) * 140% - 40%), rgb(0 0 0 / 0.08) calc(var(--t) * 140%));
+          mask-image: linear-gradient(to bottom, #000 calc(var(--t) * 140% - 40%), rgb(0 0 0 / 0.08) calc(var(--t) * 140%)); }
+/* list items slide out from a hairline on the left */
+[data-scrub="slide"] { opacity: var(--t); transform: translateX(calc((1 - var(--t)) * -56px)); }
+/* headings are cut in from the left, with an orange rule that draws under them */
+[data-scrub="title"] { clip-path: inset(-0.2em calc((1 - var(--t)) * 100%) -0.4em 0); transform: translateX(calc((1 - var(--t)) * -28px)); }
+.story :is(h2)[data-scrub]::after { content: ""; display: block; width: 4.5rem; height: 2px; margin-top: 0.5rem; background: var(--pop); transform-origin: 0 50%; transform: scaleX(var(--t)); }
+/* cards unfold like a facet tipping up into the light */
+[data-scrub="unfold"] { opacity: min(1, calc(var(--t) * 1.7)); transform-origin: 50% 100%;
+  transform: perspective(900px) translateY(calc((1 - var(--t)) * 70px)) rotateX(calc((1 - var(--t)) * 42deg)) scale(calc(0.88 + 0.12 * var(--t))); }
+[data-scrub="unfold-side"] { opacity: min(1, calc(var(--t) * 1.7)); transform-origin: 0 50%;
+  transform: perspective(900px) translateX(calc((1 - var(--t)) * 60px)) rotateY(calc((1 - var(--t)) * -38deg)) scale(calc(0.9 + 0.1 * var(--t))); }
+/* arrived: drop every effect so nothing inside is affected by a leftover transform */
+[data-scrub][data-scrub-done] { opacity: 1; transform: none; clip-path: none; -webkit-mask-image: none; mask-image: none; }
+
+/* The crystal in the corner */
+.gem { position: fixed; right: clamp(0.5rem, 2vw, 2rem); bottom: clamp(0.5rem, 2vw, 1.75rem); z-index: 5; width: clamp(6rem, 15vw, 12.5rem); pointer-events: none; display: grid; justify-items: center; }
+.gem canvas { width: 100%; aspect-ratio: 1; display: block; }
+.gem-count { margin-top: -0.6rem; color: var(--ink-3); }
+@media (max-width: 40rem) { .gem { opacity: 0.75; } .gem-count { display: none; } }
+
+/* ---------- Interactive mark (components/Logo.jsx) ---------- */
+.mark { overflow: visible; will-change: transform; }
+.mark path { transition: fill 0.25s, stroke 0.25s; }
+.mark .mark-pop { filter: drop-shadow(0 0 var(--mark-glow, 2px) rgb(244 81 30 / 0.7)); }
+.site-header .mark { width: 30px; height: 26.25px; }
+
+/* wording that depends on the ground (ratings legend) */
+:root[data-ground="midnight"] .on-white, :root:not([data-ground="midnight"]) .on-midnight { display: none; }
+@media (max-width: 30rem) { .ground-toggle { width: 1.4rem; margin-left: 0; } :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { padding-inline: 0.35rem; } }
+/* strings of letters: above the plasma, below the pointer trail */
+.stage-strings { pointer-events: none; }
+/* pages with a pinned film: the strings step back so diagrams and labels stay readable */
+.stage-strings { transition: opacity 0.6s; }
+:root:has(.film, [data-noscrub]) .stage-strings { opacity: 0.9; }
+
+/* group windows: just the site picture, no fake address bar */
+.tw-prev .tp-bar { display: none; }

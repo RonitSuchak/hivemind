@@ -5,17 +5,19 @@ import { spring, tokenS, useReduced } from '../motion.js'
 import { DigitFade } from './Swap.jsx'
 import Icon from './Icon.jsx'
 
-// Three separate bars, number always printed. Scores are 1.0 to 5.0.
+// Separate bars, number always printed. Scores are 1.0 to 5.0.
+// A demo tool (a type of tool) shows two: usability and learning. Pass `safety` to add the safety bar:
+// only pages about a specific EdTech tool do that (the real-tool pilot).
 // grow: when `play` turns true each bar slides out of the left edge of its track on a spring
 //       (--spring-bar, --stagger-bar) and its number counts up with it, settling on the exact value.
 //       `delay` (seconds) holds the first bar back, e.g. until its card has arrived.
 // explain: each label is a button that opens a short explanation (accordion).
-export default function ScoreBars({ scores, help = false, grow = false, play = true, explain = false, delay = 0 }) {
+export default function ScoreBars({ scores, help = false, grow = false, play = true, explain = false, delay = 0, hide = [], safety = false }) {
   const reduced = useReduced()
   const anim = grow && !reduced
   return (
     <dl className={`scorebars ${help ? 'has-help' : ''} ${explain ? 'has-explain' : ''} ${anim ? 'is-springy' : ''}`}>
-      {['safety', 'usability', 'learning'].map((k, i) => (
+      {['safety', 'usability', 'learning'].filter((k) => (k !== 'safety' || safety) && !hide.includes(k) && typeof scores[k] === 'number').map((k, i) => (
         <Row key={k} k={k} v={scores[k]} i={i} help={help} anim={anim} play={play} explain={explain} delay={delay} />
       ))}
     </dl>

@@ -1,0 +1,33 @@
+/* Loaded last (main.jsx). */
+
+/* Home, "One class. Every tool type.": the band keeps its midnight colour but is see-through, with no blur,
+   so the floating equations stay readable behind it. The page behind is flipped light-for-dark inside the band
+   (white paper becomes dark, dark letters become light), then tinted midnight.
+   The fill sits on a full-width layer behind the section, because this effect needs a real box. */
+:root .home-section.klass { position: relative; isolation: isolate; background: none; box-shadow: none; clip-path: none; }
+.home-section.klass::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; translate: -50% 0;
+  background: rgb(15 23 47 / 0.55); -webkit-backdrop-filter: invert(1) hue-rotate(180deg) contrast(1.15); backdrop-filter: invert(1) hue-rotate(180deg) contrast(1.15); }
+:root[data-ground="midnight"] .home-section.klass { background: none; box-shadow: none; }
+:root[data-ground="midnight"] .home-section.klass::before { background: rgb(7 10 19 / 0.5); -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* Lab tabs: more air round the tabs, and the extra tab gets its own roomy row */
+:root .tabs { padding: 0.5rem; gap: 0.3rem 0.35rem; }
+.tab-extra { margin-left: 0.15rem; }
+@container lxpage (max-width: 58rem) {
+  :root .tab-sep { flex-basis: calc(100% - 1.5rem); margin: 0.45rem 0.75rem; }
+}
+
+/* Midnight ground: equations and student dots get a soft light glow so they stand out from the dark.
+   One GPU filter per canvas (cheap), not a shadow per letter (slow). */
+:root[data-ground="midnight"][data-quality="high"] .stage-strings { filter: drop-shadow(0 0 5px rgb(190 200 255 / 0.55)); }
+:root[data-ground="midnight"][data-quality="high"] .film-canvas { filter: drop-shadow(0 0 5px rgb(255 255 255 / 0.45)); }
+:root[data-ground="midnight"] .afd i:not(.is-hollow) { box-shadow: 0 0 8px 1px rgb(255 255 255 / 0.5); }
+:root[data-ground="midnight"] .afd i.is-near { box-shadow: 0 0 8px 1px rgb(255 122 82 / 0.7); }
+:root[data-ground="midnight"] .oshape, :root[data-ground="midnight"] .wheel-fill { filter: drop-shadow(0 0 4px rgb(255 255 255 / 0.4)); }
+
+/* Nothing may make the page scroll sideways (film cards slide in from the right while they change). */
+body { overflow-x: clip; }
+.film-view { overflow: clip; }
+
+/* Lighter drawing: only the front Tools window blurs what is behind it; the ones waiting in the stack do not. */
+.tw:not(.is-front) { -webkit-backdrop-filter: none; backdrop-filter: none; }

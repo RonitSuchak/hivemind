@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'motion/react'
 import Icon from '../components/Icon.jsx'
-import HeroHive from '../components/HeroHive.jsx'
+import Film from '../at/Film.jsx'
 import LanguagePicker from '../components/LanguagePicker.jsx'
 import ClassDots from '../components/ClassDots.jsx'
 import { Reveal, RevealGroup } from '../components/Reveal.jsx'
@@ -11,18 +11,17 @@ import { SCORE_ICON } from '../labels.js'
 import { revealTokens, spring, tokenS, useReduced } from '../motion.js'
 import { useNoTranslate, useT } from '../i18n/index.js'
 
-// Home is a short scrolling story: hero -> how it works -> the class -> three scores -> start.
+// Home is a short scrolling story: hero -> how it works -> the class -> what we check -> start.
 // The class grid shows the lab's 30 simulated students by name when the lab answers (components/ClassDots.jsx).
 export default function Home() {
   usePageTitle('')
   const noTr = useNoTranslate() // our own dictionary words: keep the browser translator off them
   return (
     <div className="home" {...noTr}>
-      <Hero />
+      <Film />{/* hero, how it works, the class, what we check: one scroll-scrubbed film (at/Film.jsx) */}
       <Languages />
-      <HowItWorks />
+      <Who />
       <TheClass />
-      <Scores />
       <Finale />
     </div>
   )
@@ -53,7 +52,6 @@ function Hero() {
         <Link to="/check" className="btn btn-primary btn-large">{t('cta.check')} <Icon name="arrow" size={18} className="icon-nudge" /></Link>
         <Link to="/lab" className="btn btn-large">{t('cta.lab')}</Link>
       </HeroLine>
-      <div className="hero-art"><HeroHive /></div>
     </section>
   )
 }
@@ -107,8 +105,7 @@ function TheClass() {
       <Reveal className="klass-text">
         <h2 id="class-h" className="section-title">{t('class.title')}</h2>
         <p className="section-lede">{t('class.lede')}</p>
-        <p className="muted small">{t('class.note')}</p>
-      </Reveal>
+      </Reveal>{/* "simulated, not real children" is already said on the film's class card and in the footer */}
       <Reveal className="klass-panel glass" blur={false}>
         <ClassDots />
       </Reveal>
@@ -116,12 +113,45 @@ function TheClass() {
   )
 }
 
-// What we check, in positive, plain words (the three scores are never blended into one number).
+// Who it is for: the three users the challenge brief names, each with one door into the evidence.
+// (Learners have the hero's "Take the check".) Two clicks from here reach a report, the ratings and the method.
+const WHO = [
+  { k: 'maker', icon: 'chart', to: '/lab/report' },
+  { k: 'school', icon: 'users', to: '/lab/ratings' },
+  { k: 'judge', icon: 'shield', to: '/lab', more: '/about#method' },
+]
+function Who() {
+  const t = useT()
+  return (
+    <section className="home-section who" aria-labelledby="who-h">
+      <Reveal>
+        <h2 id="who-h" className="section-title">{t('who.title')}</h2>
+        <p className="section-lede">{t('who.lede')}</p>
+      </Reveal>
+      <RevealGroup as="ul" className="who-grid">
+        {WHO.map((w) => (
+          <Reveal as="li" key={w.k} blur={false} className="who-card glass">
+            <span className="icon-chip"><Icon name={w.icon} size={20} /></span>
+            <h3>{t(`who.${w.k}.title`)}</h3>
+            <p>{t(`who.${w.k}.text`)}</p>
+            <p className="who-links">
+              <Link to={w.to} className="who-link">{t(`who.${w.k}.cta`)} <Icon name="arrow" size={15} className="icon-nudge" /></Link>
+              {w.more && <Link to={w.more} className="who-link who-link-quiet">{t(`who.${w.k}.more`)}</Link>}
+            </p>
+          </Reveal>
+        ))}
+      </RevealGroup>
+    </section>
+  )
+}
+
+// What we check, in plain words. Tool types get two scores (easy to use, helps you learn); safety is checked
+// only for specific EdTech tools, so it comes last and its text says so. (Not on the page now: the film shows these.)
 // (bold words are marked **like this** inside each language's own sentence, so word order can differ)
 const CHECKS = [
-  { k: 'safety', key: 'checks.safe' },
   { k: 'usability', key: 'checks.easy' },
   { k: 'learning', key: 'checks.learn' },
+  { k: 'safety', key: 'checks.safe' },
 ]
 function Scores() {
   const t = useT()
@@ -139,7 +169,7 @@ function Scores() {
         ))}
       </RevealGroup>
       <Reveal as="p" className="scores-note">
-        <Icon name="shield" size={20} />
+        <Icon name="info" size={20} />
         <span>{t.rich('checks.note')}</span>
       </Reveal>
     </section>

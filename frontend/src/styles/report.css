@@ -1,0 +1,52 @@
+/* Tool maker report (/lab/report). Built from lab.css pieces; only the new bits live here. */
+.rp-picker ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.rp-pick { display: grid; gap: 0.1rem; /* a control: solid fill */ padding: var(--s-2) var(--s-4); border-radius: var(--r-md); border: 1px solid var(--line); background: var(--bg); color: var(--ink); text-decoration: none; transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+.rp-pick:hover { background-image: linear-gradient(var(--fill-hover), var(--fill-hover)); } /* a tint on top of the solid fill, so the equations never show through */
+.rp-pick[aria-current="page"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.rp-pick-type { font-weight: 600; font-size: var(--text-sm); }
+
+.rp-head-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+.rp-scores { max-width: 36rem; }
+
+.rp-groups { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-4); }
+.rp-group { display: grid; gap: var(--s-3); padding: var(--s-5); border-radius: var(--r-lg); min-width: 0; }
+.rp-group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-3); }
+.rp-group-head h3 { font-size: var(--text-lg); font-weight: 600; }
+.rp-reason { background: var(--warn-bg); color: var(--warn-ink); border: 1px solid var(--warn-line); }
+.rp-why { color: var(--ink); max-width: var(--measure); }
+
+.rp-gains { display: grid; gap: var(--s-2); margin: 0; }
+.rp-gains > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: var(--s-3); }
+.rp-gains dt { font-size: var(--text-sm); color: var(--ink-2); }
+.rp-gains dd { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--s-3); font-size: var(--text-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.rp-gains dd strong { color: var(--ink); font-weight: 600; }
+.rp-bar { display: block; height: 0.6rem; border-radius: var(--r-pill); background: var(--fill-subtle); border: 1px solid var(--line); overflow: hidden; }
+.rp-bar > span { display: block; height: 100%; background: var(--ink); border-radius: var(--r-pill); }
+.rp-bar-class > span { background: var(--ink-3); }
+
+.rp-start { padding: var(--s-3) var(--s-4); border-radius: var(--r-md); background: var(--fill-subtle); border-left: 3px solid var(--line-strong); color: var(--ink-2); font-size: var(--text-sm); }
+.rp-start strong { color: var(--ink); }
+
+.rp-examples { display: grid; gap: var(--s-2); }
+.rp-ex { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--fill-subtle); }
+.rp-ex > summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); padding: var(--s-3) var(--s-4); cursor: pointer; }
+.rp-ex-name { font-weight: 600; }
+.rp-ex-note { padding-inline: var(--s-4); }
+.rp-ex .lx-chat { padding: var(--s-3) var(--s-4) var(--s-4); }
+
+.rp-calm { display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4) var(--s-5); border-radius: var(--r-lg); max-width: var(--measure); color: var(--ink-2); }
+.rp-calm svg { flex: none; margin-top: 0.15rem; }
+
+.rp-panel { display: grid; gap: var(--s-4); padding: var(--s-5); border-radius: var(--r-lg); align-content: start; min-width: 0; }
+.rp-ev-grid { display: grid; gap: var(--s-4); }
+@media (min-width: 64rem) { .rp-ev-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.rp-ev-title { font-size: var(--text-lg); font-weight: 600; }
+.rp-ev-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-4); }
+.rp-ev { display: grid; gap: var(--s-2); justify-items: start; }
+.rp-ev-reason { display: flex; gap: var(--s-2); align-items: flex-start; font-size: var(--text-sm); color: var(--ink-2); }
+.rp-ev-reason svg { flex: none; margin-top: 0.2rem; }
+.rp-ev[data-effect="negative"] .rp-ev-reason { color: var(--warn-ink); }
+
+.rp-honest { max-width: var(--measure); color: var(--ink-2); }
+
+.rp-room { color: var(--ink-2); font-size: var(--text-sm); padding-left: var(--s-3); border-left: 2px solid var(--line-strong); }

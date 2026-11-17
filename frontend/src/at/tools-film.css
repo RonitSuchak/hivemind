@@ -1,0 +1,138 @@
+/* ==========================================================================
+   EdTech tools page: search bar, the deck of group windows (ToolsFilm.jsx), the group page, and the
+   spec-sheet meters + reviews in the details panel (ToolPanel.jsx). Colours come from the ground tokens.
+   ========================================================================== */
+
+/* ---------- Search (tsr-) ---------- */
+.tsr { display: grid; gap: var(--s-3); max-width: 46rem; }
+.tsr-field { display: flex; align-items: center; gap: var(--s-3); min-height: 3.5rem; padding: 0 var(--s-3) 0 var(--s-5);
+  border: 1px solid var(--card-edge); background: var(--card-fill); color: var(--ink-3);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  transition: border-color var(--dur-fast) var(--ease-out); }
+.tsr-field:focus-within { border-color: var(--pop); }
+.tsr-field input { flex: 1; min-width: 0; min-height: 3.25rem; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: var(--text-lg); }
+.tsr-field input::placeholder { color: var(--ink-3); }
+.tsr-field input::-webkit-search-cancel-button { display: none; }
+.tsr-clear { flex: none; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; background: none; color: var(--ink-2); cursor: pointer; }
+.tsr-clear:hover { color: var(--pop-deep); }
+.tsr-clear:focus-visible { outline: 2px solid var(--pop); outline-offset: -2px; }
+.tsr-count { min-height: 1.5em; font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.tsr-empty { display: grid; justify-items: start; gap: var(--s-3); padding: var(--s-5) 0; color: var(--ink-2); font-size: var(--text-lg); }
+
+/* ---------- The deck of windows (tfilm- / tw-) ---------- */
+.tfilm { position: relative; }
+.tfilm-view { position: sticky; top: 0; height: 100svh; width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden; }
+.tfilm-deck { position: absolute; inset: 0; perspective: 1300px; perspective-origin: 50% 42%; transform-style: preserve-3d; pointer-events: none; }
+
+.tw { position: absolute; left: 50%; top: calc(50% + 2rem); width: min(46rem, 88vw); display: grid; grid-template-rows: auto 1fr;
+  pointer-events: none; will-change: transform, opacity; backface-visibility: hidden; transform: translate(-50%, -50%);
+  background-color: var(--card-fill); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+  background-image: linear-gradient(128deg, var(--sheen) 0%, transparent 34%), linear-gradient(308deg, var(--facet) 0%, transparent 42%);
+  border: 1px solid var(--card-edge); color: var(--ink); text-align: left; outline: 0;
+  clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px); } /* two cut corners, like the home cards */
+.tw.is-front { pointer-events: auto; cursor: pointer; }
+.tw.is-front:hover { border-color: var(--pop); }
+.tw:focus-visible { box-shadow: inset 0 0 0 2px var(--pop); }
+/* the cut corners: a faint edge, orange on the front window */
+.tw::before, .tw::after { content: ""; position: absolute; width: 31px; height: 1.5px; background: var(--card-edge); transition: background-color 0.3s; }
+.tw::before { left: -1px; top: 21px; transform-origin: 0 50%; rotate: -45deg; }
+.tw::after { right: -1px; bottom: 21px; transform-origin: 100% 50%; rotate: -45deg; }
+.tw.is-front::before, .tw.is-front::after { background: var(--pop); }
+
+/* browser-style top bar */
+.tw-bar { display: flex; align-items: center; gap: 5px; height: 2.2rem; padding: 0 var(--s-4) 0 calc(22px + 0.25rem); border-bottom: 1px solid var(--card-edge); }
+.tw-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-strong); }
+.tw-bar i:first-child { background: var(--pop); }
+.tw-bar-t, .tw-count, .tw-go, .tw-cap, .tfilm-nav button, .tfilm-hint, .tfl-kind, .tfl-count, .tfl-pull, .tfl-esc {
+  font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.tw-bar-t { margin-left: var(--s-3); color: var(--ink-3); }
+
+.tw-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 17rem); gap: var(--s-6); align-items: center; padding: clamp(1.25rem, 2.6vw, 2.25rem); }
+.tw-text { display: grid; gap: var(--s-3); align-content: center; min-width: 0; }
+.tw-count { color: var(--pop-deep); }
+.tw-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 2.2vw + 1rem, 2.6rem); line-height: 1.04; letter-spacing: var(--track-display); overflow-wrap: anywhere; }
+.tw-how { color: var(--ink-2); font-size: var(--text-base); line-height: 1.45; }
+.tw-go { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--ink-3); opacity: 0; transition: opacity 0.3s, color 0.3s; }
+.tw.is-front .tw-go { opacity: 1; }
+.tw.is-front:hover .tw-go { color: var(--pop-deep); }
+.tw-prev { display: grid; gap: var(--s-2); min-width: 0; }
+.tw-prev .tp { box-shadow: var(--glass-shadow-lg); }
+.tw-cap { color: var(--ink-3); }
+
+/* list of group names, bottom left (jumps with glideTo) */
+.tfilm-nav { position: absolute; left: var(--gutter); bottom: 2.4rem; display: grid; gap: 0.1rem; justify-items: start; max-width: 15rem; }
+.tfilm-nav button { background: none; border: 0; padding: 0.28rem 0; color: var(--ink-3); cursor: pointer; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; transition: color 0.2s; }
+.tfilm-nav button b { font-weight: 400; opacity: 0.7; }
+.tfilm-nav button:hover, .tfilm-nav button.is-current { color: var(--ink); }
+.tfilm-nav button.is-current { color: var(--pop-deep); }
+.tfilm-nav button:focus-visible { outline: 2px solid var(--pop); outline-offset: 2px; }
+.tfilm-hint { position: absolute; right: var(--gutter); bottom: 2.4rem; color: var(--ink-3); }
+
+@media (max-width: 52rem) {
+  .tw-body { grid-template-columns: 1fr; gap: var(--s-4); }
+  .tw-prev { max-width: 15rem; }
+  .tw-how { font-size: var(--text-sm); }
+  .tfilm-nav { left: 0; right: 0; bottom: 0.6rem; max-width: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 var(--s-4); padding: 0 var(--gutter); }
+  .tfilm-nav button { font-size: 0.62rem; letter-spacing: 0.06em; }
+  .tfilm-hint { display: none; }
+}
+:root[data-quality="low"] .tw, :root[data-quality="low"] .tsr-field { -webkit-backdrop-filter: none; backdrop-filter: none; background-color: color-mix(in srgb, var(--bg) 80%, transparent); }
+
+/* Reduced motion: no pinning. The windows are a plain grid. */
+.tfilm-static .tfilm-view { position: static; height: auto; width: auto; margin-left: 0; overflow: visible; }
+.tfilm-static .tfilm-deck { position: static; perspective: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); gap: var(--s-5); pointer-events: auto; }
+.tfilm-static .tw { position: relative; left: auto; top: auto; width: auto; transform: none; opacity: 1; pointer-events: auto; cursor: pointer; will-change: auto; }
+.tfilm-static .tw-body { grid-template-columns: 1fr; }
+.tfilm-static .tw-go { opacity: 1; }
+
+/* ---------- A group's own page (tfl-) ---------- */
+.tfl { position: fixed; inset: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 94%, transparent);
+  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+  transform-origin: var(--ox, 50%) var(--oy, 50%); transform: scale(0.35); opacity: 0; pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease-out; will-change: transform, opacity; }
+.tfl.is-in { transform: none; opacity: 1; pointer-events: auto; will-change: auto; }
+.tfl-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; outline: 0; }
+.tfl-bar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--gutter);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 92%, transparent), transparent); }
+.tfl-back { display: inline-flex; align-items: center; gap: var(--s-2); }
+.tfl-esc { color: var(--ink-3); }
+.tfl-inner { display: grid; gap: var(--s-7); width: min(100%, 78rem); margin-inline: auto; padding: var(--s-5) var(--gutter) var(--s-9); }
+.tfl-head { display: grid; gap: var(--s-3); max-width: 46rem; }
+.tfl-kind, .tfl-count { color: var(--pop-deep); }
+.tfl-title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-hero); line-height: 0.98; letter-spacing: var(--track-display); overflow-wrap: anywhere; }
+.tfl-how { color: var(--ink-2); font-size: var(--text-lg); }
+.tfl-rule { color: var(--ink-3); font-size: var(--text-sm); max-width: 40rem; }
+/* "Scroll up to go back": appears while you pull past the top, fills, then the page closes */
+.tfl-pull { position: absolute; z-index: 3; top: 4.2rem; left: 50%; translate: -50% 0; display: grid; gap: 6px; justify-items: center; width: 14rem; padding: var(--s-2) var(--s-3);
+  color: var(--ink); background: var(--card-fill); border: 1px solid var(--card-edge); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.tfl-pull[data-on="1"] { opacity: 1; }
+.tfl-pull i { display: block; width: 100%; height: 2px; background: var(--line); }
+.tfl-pull i::after { content: ""; display: block; height: 100%; background: var(--pop); transform-origin: 0 50%; transform: scaleX(var(--pull, 0)); }
+@media (prefers-reduced-motion: reduce) { .tfl { transition: none; transform: none; } .tfl-pull { transition: none; } }
+
+/* ---------- Details panel: spec-sheet meters ("At a glance") ---------- */
+.tpn-spec { list-style: none; margin: var(--s-1) 0 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.tpn-spec-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: var(--s-3) var(--s-4); padding: var(--s-2) 0; border-bottom: 1px solid var(--line); font-size: var(--text-sm); }
+.tpn-spec-label { color: var(--ink); min-width: 0; }
+.tpn-segs { display: grid; grid-template-columns: repeat(10, 0.75rem); gap: 2px; }
+.tpn-segs i { display: block; height: 0.75rem; border: 1px solid var(--line-strong); background: transparent; }
+.tpn-segs i[data-on] { background: var(--pop-deep); border-color: var(--pop-deep); }
+.tpn-spec-num { min-width: 5.2rem; text-align: right; font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tpn-spec-none { grid-column: 2 / 4; text-align: right; color: var(--ink-3); font-size: var(--text-xs); }
+.tpn-foot-note { margin-top: var(--s-2); color: var(--ink-3); font-size: var(--text-sm); }
+@media (max-width: 30rem) {
+  .tpn-spec-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .tpn-spec-label { grid-column: 1 / 3; }
+  .tpn-segs { grid-template-columns: repeat(10, 1fr); width: 100%; }
+  .tpn-segs i { height: 0.65rem; }
+  .tpn-spec-row .tpn-segs { grid-column: 1; }
+}
+
+/* ---------- Details panel: reviews ---------- */
+.tpn-reviews { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.tpn-review { margin: 0; padding: var(--s-3) 0 var(--s-3) var(--s-4); border-left: 2px solid var(--pop); display: grid; gap: var(--s-1); }
+.tpn-review p { color: var(--ink); line-height: 1.5; }
+.tpn-review cite { font-style: normal; font-size: var(--text-sm); color: var(--ink-2); }
+.tpn-empty { color: var(--ink-2); font-size: var(--text-sm); padding: var(--s-3) var(--s-4); border: 1px dashed var(--line-strong); }

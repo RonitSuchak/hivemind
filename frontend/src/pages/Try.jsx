@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getTutors, postChat } from '../api.js'
 import { useLoad, usePageTitle, useStatus } from '../hooks.js'
+import { plainWords, typeName } from '../labels.js'
 import { Async, Empty } from '../components/States.jsx'
 import Icon from '../components/Icon.jsx'
 import '../styles/try.css'
@@ -45,13 +46,13 @@ function TryOff() {
   )
 }
 
-// A demo tool that failed a critical safety check has live chat turned off (403 safety_concern).
+// A demo tool the lab has switched live chat off for. The lab does not say why, so neither does this page.
 function TryBlocked({ tool }) {
   return (
     <div className="tr">
       <div className="tr-card glass" role="note">
-        <h1>{tool.tutor_name}: live chat is off</h1>
-        <p className="tr-sub tr-flag"><Icon name="flag" size={18} /> <span>This demo tool did not pass a safety check in our tests, so you cannot chat with it. You can still read how it did in the lab.</span></p>
+        <h1>Live chat is off for the {typeName(tool.tutor_id, tool.tutor_name)} demo tool</h1>
+        <p className="tr-sub">You cannot chat with this demo tool, but you can still read how it did in the lab.</p>
         <p className="actions"><Link to="/lab" className="btn">See the lab</Link></p>
       </div>
     </div>
@@ -59,9 +60,10 @@ function TryBlocked({ tool }) {
 }
 
 function Chat({ tool }) {
+  const name = typeName(tool.tutor_id, tool.tutor_name)
   const status = useStatus()
   const demo = status === 'demo'
-  const [msgs, setMsgs] = useState([]) // { from: 'you' | 'tool', text, notice? }
+  const [msgs, setMsgs] = useState([]) // { from: 'you' | 'tool', text, replaced? }
   const [session, setSession] = useState(null)
   const [turnsLeft, setTurnsLeft] = useState(MAX_TURNS)
   const [draft, setDraft] = useState('')
@@ -88,7 +90,7 @@ function Chat({ tool }) {
       const r = await postChat({ tutor_id: tool.tutor_id, session_id: session, message: text })
       setSession(r.session_id)
       setTurnsLeft(r.turns_left)
-      setMsgs((m) => [...m, { from: 'tool', text: r.reply, notice: r.replaced ? r.notice : null }])
+      setMsgs((m) => [...m, { from: 'tool', text: r.reply, replaced: !!r.replaced }])
     } catch (e) {
       // Take the message back out of the chat and into the box, so nothing the person wrote is lost.
       setMsgs((m) => m.slice(0, -1))
@@ -114,8 +116,8 @@ function Chat({ tool }) {
   return (
     <div className="tr">
       <header className="tr-head">
-        <h1>Try {tool.tutor_name}</h1>
-        <p className="tr-sub">{tool.style ? `${tool.style}. ` : ''}This demo tool was built by the Hivemind team on an AI model. Its replies can be wrong.</p>
+        <h1>Try the {name} demo tool</h1>
+        <p className="tr-sub">{tool.style ? `${plainWords(tool.style)}. ` : ''}This demo tool was built by the Hivemind team on an AI model. Its replies can be wrong.</p>
         <p className="tr-privacy"><Icon name="lock" size={16} /> <span>Do not type personal details like your name, address, phone number or email. Nothing is saved, and the chat is forgotten after 30 minutes.</span></p>
       </header>
 
@@ -123,7 +125,7 @@ function Chat({ tool }) {
         <p className="tr-note" role="note"><Icon name="info" size={18} /> <span>You are looking at saved results, so live chat is off. Connect the lab to chat with this demo tool.</span></p>
       )}
 
-      <section className="tr-card glass" aria-label={`Chat with ${tool.tutor_name}`}>
+      <section className="tr-card glass" aria-label={`Chat with the ${name} demo tool`}>
         <div className="tr-meta">
           <span>{over ? 'No turns left' : `${turnsLeft} of ${MAX_TURNS} turns left`}</span>
           {msgs.length > 0 && <button type="button" className="btn btn-quiet btn-small" onClick={restart}>Start a new chat</button>}
@@ -133,12 +135,12 @@ function Chat({ tool }) {
           {msgs.length === 0 && <li className="tr-empty">Ask a maths question, like &ldquo;how do I add 1/3 and 1/6?&rdquo;</li>}
           {msgs.map((m, i) => (
             <li key={i} className="tr-msg" data-from={m.from}>
-              <span className="tr-who">{m.from === 'you' ? 'You' : tool.tutor_name}</span>
+              <span className="tr-who">{m.from === 'you' ? 'You' : name}</span>
               <p className="tr-text">{m.text}</p>
-              {m.notice && <p className="tr-replaced" role="note"><Icon name="flag" size={14} /> <span>{m.notice}</span></p>}
+              {m.replaced && <p className="tr-replaced" role="note"><Icon name="info" size={14} /> <span>The lab swapped this reply for another one.</span></p>}
             </li>
           ))}
-          {busy && <li className="tr-msg tr-wait" data-from="tool"><span className="tr-who">{tool.tutor_name}</span><p className="tr-text" role="status">Thinking…</p></li>}
+          {busy && <li className="tr-msg tr-wait" data-from="tool"><span className="tr-who">{name}</span><p className="tr-text" role="status">Thinking…</p></li>}
           <li ref={end} aria-hidden="true" className="tr-end" />
         </ol>
 
@@ -185,6 +187,6 @@ function Chat({ tool }) {
 function errorText(e) {
   if (e.code === 'rate_limited') return e.retryAfter ? `Too many messages. Wait ${e.retryAfter} seconds, then try again.` : 'Too many messages. Wait a moment, then try again.'
   if (e.code === 'ai_unavailable' || e.code === 'store_unavailable') return 'The lab is busy. Try again in a minute.'
-  if (e.code === 'safety_concern') return 'Live chat is off for this demo tool because it did not pass a safety check.'
-  return e.message
+  if (e.code === 'safety_concern') return 'Live chat is off for this demo tool.'
+  return plainWords(e.message)
 }

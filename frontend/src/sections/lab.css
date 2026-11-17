@@ -1,0 +1,12 @@
+/* lab section: its own styles go here. Loaded after every other stylesheet (see main.jsx),
+   so a rule here wins over older rules with the same selector. */
+
+/* Real tools section: one plain heading, no extra sentences */
+.lx-tools .tgp-how { display: none; }
+.lx-tools .tgp-search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* "How it works": every step starts at the top, so the three labels sit on one line even when one text is longer */
+.lx-guide-steps li { align-content: start; }
+
+/* "Try a student": the result panel no longer follows the scroll. It used to slide over the example sites below it. */
+.lx-predict-result { position: static; }

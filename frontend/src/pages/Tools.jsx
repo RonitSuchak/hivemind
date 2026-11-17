@@ -1,22 +1,27 @@
+import SuggestBox from '../components/SuggestBox.jsx'
 import '../styles/tools.css'
 import { useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLoad, usePageTitle } from '../hooks.js'
 import { useMatch } from '../store.jsx'
 import { getCheck, getRealTools } from '../api.js'
+import { plainWords } from '../labels.js'
+import { usePiloted } from '../pilot.js'
 import Icon from '../components/Icon.jsx'
 import ToolPreview from '../components/ToolPreview.jsx'
 import ToolPanel from '../components/ToolPanel.jsx'
 import { Reveal, RevealGroup } from '../components/Reveal.jsx'
-import { TOOLS as LOCAL_TOOLS, GROUPS, REAL_TOOLS_NOTE, fromBackend, searchTools } from '../data/tools.js'
+import { TOOLS as LOCAL_TOOLS, GROUPS, HELPER_KINDS, HELPER_RULE, REAL_TOOLS_NOTE, TEACHES_RULE, fromBackend, helperKind, teaches } from '../data/tools.js'
 import { SHOTS } from '../data/shots.js'
 import { useTilt } from '../tilt.js'
+import ToolsFilm from '../at/ToolsFilm.jsx'
 
-// EdTech tools: a showcase. A moving strip of site previews, then the 12 tools students use most as cards
-// with a preview window. The list, its order and each tool's type come from the lab (GET /api/real-tools);
-// when the lab is not connected the same list bundled with the site is shown. A card opens a small details panel (summary, estimate, who it may suit, safety checks)
-// with the link to the tool's own site inside it (most used first, approximate). "See more..." opens
-// the rest of the catalogue with a search box and tool type filters. Hivemind has not tested any of them.
+// EdTech tools: a showcase. One search bar over every tool. Without a search, a moving strip of site previews
+// and a scroll scene (at/ToolsFilm.jsx) with one frosted window per group: the four tool types and the study
+// helper kinds. A window opens that group's own page with all its tools as cards. A card opens a small details
+// panel (summary, estimate, the safety facts of that one tool) with the link to the tool's own site inside it.
+// The list, its order and each tool's type come from the lab (GET /api/real-tools); when the lab is not
+// connected the same list bundled with the site is shown. Hivemind has not tested any of them.
 // The "About you" sliders that rank these tools are parked until after the check:
 // components/LevelSlider.jsx and rankTools() in data/tools.js are ready to plug back in.
 
@@ -28,8 +33,30 @@ const CHECKS = [
 ]
 
 // Tools with a saved screenshot (public/previews, listed in data/shots.js). The moving strip only uses these.
-const FIRST_FALLBACK = 12 // the tools students use most, shown before "See more..."
 const GROUP_NAME = Object.fromEntries(GROUPS.map((g) => [g.id, g.name]))
+
+// Search over every tool: each word typed must start a word in the tool's name, type, group or description
+// (inside a word is fine from three letters). Name matches come first, then the catalogue order.
+const words = (s) => String(s).toLowerCase().split(/[^a-z0-9]+/).filter(Boolean)
+const hits = (ws, q) => ws.some((w) => w.startsWith(q) || (q.length >= 3 && w.includes(q)))
+function searchAll(query, tools) {
+  const qs = words(query)
+  if (!qs.length) return tools
+  const ranked = []
+  tools.forEach((t, order) => {
+    const nameW = words(t.name)
+    const h = helperKind(t)
+    const groupW = words(h ? `Study helper ${h.name}` : GROUP_NAME[t.group] || '')
+    const allW = [...nameW, ...words(t.kind), ...words(t.blurb), ...groupW]
+    if (!qs.every((q) => hits(allW, q))) return
+    const nameHits = qs.filter((q) => hits(nameW, q)).length
+    ranked.push({ t, order, rank: nameHits === qs.length ? 0 : nameHits > 0 ? 1 : 2 })
+  })
+  return ranked.sort((a, b) => a.rank - b.rank || a.order - b.order).map((r) => r.t)
+}
+
+// The tool shown in a group's window: the first one with a saved screenshot, else the first one.
+const pickRep = (tools) => tools.find((t) => SHOTS.has(t.id)) || tools[0] || null
 
 function ToolCard({ tool, number, onOpen }) {
   return (
@@ -42,7 +69,10 @@ function ToolCard({ tool, number, onOpen }) {
         </span>
         <span className="tg-name">{tool.name}</span>
         <span className="tg-blurb">{tool.blurb}</span>
-        <span className="tg-tag">{GROUP_NAME[tool.group]}</span>
+        <span className="tg-tags">
+          <span className="tg-tag" data-helper={helperKind(tool) ? '' : undefined}>{helperKind(tool)?.name ?? GROUP_NAME[tool.group]}</span>
+          {tool.piloted && <span className="tg-tag tg-tag-pilot">Piloted</span>}
+        </span>
         <span className="tg-visit">See details <Icon name="arrow" size={15} /></span>
       </span>
     </button>
@@ -51,11 +81,8 @@ function ToolCard({ tool, number, onOpen }) {
 
 export default function Tools() {
   usePageTitle('EdTech tools')
-  const [more, setMore] = useState(false)
   const [query, setQuery] = useState('')
-  const [group, setGroup] = useState('all')
-  const gridRef = useRef(null)
-  const toggleRef = useRef(null)
+  const searchRef = useRef(null)
   const pageRef = useRef(null)
   useTilt(pageRef)
   const [active, setActive] = useState(null) // the tool whose panel is open
@@ -65,118 +92,104 @@ export default function Tools() {
   // The lab's list when it answers; the bundled copy until then (and when the lab is off).
   const lab = useLoad(getRealTools, [])
   // After a check, the match carries the same tools in the lab's order for this person (by how each demo tool
-  // type ranked for them, safety concerns last). The page shows that order as sent and never re-ranks it.
+  // type ranked for them). The page shows that order as sent and never re-ranks it.
   const { match } = useMatch()
-  const mine = match?.enough_matches !== false && match?.real_tools?.length ? match.real_tools : null
-  const TOOLS = useMemo(
-    () => (mine ? mine.map(fromBackend) : lab.status === 'ok' && lab.data?.tools?.length ? lab.data.tools.map(fromBackend) : LOCAL_TOOLS),
-    [mine, lab.status, lab.data],
+  const mine = match?.enough_matches !== false && !match?.example && match?.real_tools?.length ? match.real_tools : null
+  // Real products that had the small pilot (GET /api/pilot): real tool id -> the modes that finished all 3 lessons.
+  // Only "Piloted" is shown here, with a link to the pilot. Its scores stay on the pilot page, next to its note.
+  const { map: PILOTED, sample: pilotSample } = usePiloted()
+  const ALL = useMemo(
+    () => (mine ? mine.map(fromBackend) : lab.status === 'ok' && lab.data?.tools?.length ? lab.data.tools.map(fromBackend) : LOCAL_TOOLS)
+      .map((t) => (PILOTED.has(t.id) ? { ...t, piloted: { modes: PILOTED.get(t.id), sample: pilotSample } } : t)),
+    [mine, lab.status, lab.data, PILOTED, pilotSample],
   )
-  const note = mine?.[0]?.note || (lab.status === 'ok' && lab.data?.note) || REAL_TOOLS_NOTE
-  const FIRST = mine ? FIRST_FALLBACK : TOOLS.filter((t) => t.mostUsed).length || FIRST_FALLBACK
-  const STRIP = useMemo(() => TOOLS.filter((t) => SHOTS.has(t.id)), [TOOLS])
+  // Teaching tools make up the tool types (the lab's order applies to them). Study helpers (graphing, answer
+  // finders, writing helpers) are their own kinds: see data/tools.js.
+  const TOOLS = useMemo(() => ALL.filter(teaches), [ALL])
+  const HELPERS = useMemo(() => HELPER_KINDS.map((k) => ({ ...k, tools: ALL.filter((t) => helperKind(t)?.id === k.id) })).filter((k) => k.tools.length), [ALL])
+  // One window per group on the scroll scene: the tool types, then the study helper kinds. Empty ones are left out.
+  const WINDOWS = useMemo(() => {
+    const win = (id, kind, name, how, tools, rule) => ({ id, kind, name, how, tools, rule, rep: pickRep(tools) })
+    const known = new Set(GROUPS.map((g) => g.id))
+    const rest = TOOLS.filter((t) => !known.has(t.group)) // safety net: a tool whose type the lab did not send
+    return [
+      ...GROUPS.map((g) => win(g.id, 'Tool type', g.name, g.how, TOOLS.filter((t) => t.group === g.id), TEACHES_RULE)),
+      ...HELPERS.map((k) => win(`helper-${k.id}`, 'Study helper', k.name, k.how, k.tools, HELPER_RULE)),
+      win('other', 'Tool type', 'Other tools', 'Not yet sorted into a tool type', rest, ''),
+    ].filter((w) => w.tools.length)
+  }, [TOOLS, HELPERS])
+  const note = plainWords(mine?.[0]?.note || (lab.status === 'ok' && lab.data?.note) || REAL_TOOLS_NOTE)
+  const STRIP = useMemo(() => ALL.filter((t) => SHOTS.has(t.id)), [ALL])
   // How long the check takes is the lab's number (GET /api/check), never typed here.
   const check = useLoad(getCheck, [])
   const minutes = check.status === 'ok' ? check.data?.minutes : null
 
-  const filtering = query.trim() !== '' || group !== 'all'
-  const shown = more ? searchTools(query, { group, from: TOOLS }) : TOOLS.slice(0, FIRST)
-  const activeGroup = GROUPS.find((g) => g.id === group)
-
-  const expand = () => {
-    setMore(true)
-    // After the bigger grid is on screen, move focus to the first newly revealed card.
-    requestAnimationFrame(() => gridRef.current?.querySelectorAll('button.tg-card')[FIRST]?.focus())
-  }
-  const collapse = () => {
-    setMore(false)
-    setQuery('')
-    setGroup('all')
-    requestAnimationFrame(() => toggleRef.current?.scrollIntoView({ block: 'nearest' }))
-  }
-  const clearAll = () => { setQuery(''); setGroup('all') }
+  const searching = query.trim() !== ''
+  const found = useMemo(() => (searching ? searchAll(query, ALL) : []), [searching, query, ALL])
+  const clearSearch = () => { setQuery(''); searchRef.current?.focus() }
 
   return (
     <article className="tl-page tg" ref={pageRef}>
       <Reveal as="header" className="tg-head">
-        <p className="tg-eyebrow"><Icon name="spark" size={15} /> {TOOLS.length} tools to explore</p>
+        <p className="tg-eyebrow"><Icon name="spark" size={15} /> {TOOLS.length} tools that teach{ALL.length > TOOLS.length ? `, ${ALL.length - TOOLS.length} study helpers` : ''}</p>
         <h1>EdTech tools</h1>
-        <p className="lede">Take a look around. Open a card to see what a tool is good for and who it may suit.</p>
+        <p className="lede">Open a card to see what a tool is good for and how Hivemind reads it.</p>
       </Reveal>
+
+      {/* One search over every tool, teaching tools and study helpers. */}
+      <div className="tsr" role="search">
+        <label htmlFor="tsr-q" className="sr-only">Search all EdTech tools by name, type or description</label>
+        <div className="tsr-field">
+          <Icon name="target" size={20} />
+          <input id="tsr-q" ref={searchRef} type="search" value={query} autoComplete="off" spellCheck="false"
+            placeholder="Search every tool: a name, a type, or a subject" onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Escape' && query) { e.preventDefault(); setQuery('') } }} />
+          {searching && <button type="button" className="tsr-clear" onClick={clearSearch} aria-label="Clear search"><Icon name="close" size={18} /></button>}
+        </div>
+        <p className="tsr-count" role="status">{searching ? (found.length ? `${found.length} of ${ALL.length} tools match` : 'No tools match') : `${ALL.length} tools`}</p>
+      </div>
 
       {/* One moving strip of previews that never stops. Hover one and it leans toward you; a click opens its
           details. Hidden from assistive tech and the keyboard: the same tools are listed properly below. */}
-      <div className="tg-strips" aria-hidden="true">
-        <div className="tg-strip">
-          <div className="tg-strip-track">
-            {[...STRIP, ...STRIP].map((t, i) => (
-              <span key={i} className="tg-strip-item" data-tilt onClick={(e) => openTool(t, e.currentTarget)}><ToolPreview tool={t} /></span>
-            ))}
+      {!searching && (
+        <div className="tg-strips" aria-hidden="true">
+          <div className="tg-strip">
+            <div className="tg-strip-track">
+              {[...STRIP, ...STRIP].map((t, i) => (
+                <span key={i} className="tg-strip-item" data-tilt onClick={(e) => openTool(t, e.currentTarget)}><ToolPreview tool={t} /></span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <section aria-labelledby="tg-all-h" className="tg-all">
-        <Reveal className="tg-all-head">
-          <h2 id="tg-all-h">All tools</h2>
-          <p className="muted small">{mine ? 'In the lab\u2019s order for students like you, from your check.' : `The first ${FIRST} are the tools students use most, in approximate order.`}</p>
-        </Reveal>
-        <p className="tg-honest"><Icon name="info" size={16} /> <span>{note} The type on each card comes from the tool&rsquo;s public features.</span></p>
-
-        {more && (
-          <div className="tg-tools">
-            <div className="tg-search">
-              <label htmlFor="tg-q">Search all tools</label>
-              <div className="tg-field">
-                <Icon name="target" size={18} />
-                <input id="tg-q" type="search" value={query} autoComplete="off" spellCheck="false"
-                  placeholder="For example maths, languages or flashcards" onChange={(e) => setQuery(e.target.value)} />
-              </div>
-            </div>
-            <div className="tg-chips" role="group" aria-label="Tool type">
-              {[{ id: 'all', name: 'All' }, ...GROUPS].map((g) => (
-                <button key={g.id} type="button" className="tg-chip" aria-pressed={group === g.id} onClick={() => setGroup(g.id)}>{g.name}</button>
-              ))}
-            </div>
-            {activeGroup && <p className="tg-how muted small"><b>{activeGroup.name}</b>: {activeGroup.how}.</p>}
-          </div>
-        )}
-
-        {shown.length > 0 ? (
-          more ? (
-            <ol className="tg-grid" ref={gridRef}>
-              {shown.map((t) => (
-                <li key={t.id} className="tg-item"><ToolCard tool={t} onOpen={openTool} number={!filtering && TOOLS.indexOf(t) < FIRST ? TOOLS.indexOf(t) + 1 : 0} /></li>
-              ))}
-            </ol>
-          ) : (
-            <RevealGroup as="ol" className="tg-grid" stagger={0.06}>
-              {shown.map((t, i) => (
-                <Reveal as="li" key={t.id} className="tg-item"><ToolCard tool={t} onOpen={openTool} number={i + 1} /></Reveal>
-              ))}
-            </RevealGroup>
-          )
+      {searching ? (
+        found.length > 0 ? (
+          <ol className="tg-grid">
+            {found.map((t) => <li key={t.id} className="tg-item"><ToolCard tool={t} onOpen={openTool} number={0} /></li>)}
+          </ol>
         ) : (
-          <div className="tg-empty">
-            <p>No tool matches. Clear the search and filters to see them all.</p>
-            <button type="button" className="btn btn-small" onClick={clearAll}>Clear search</button>
+          <div className="tsr-empty">
+            <p>No tools match &ldquo;{query.trim()}&rdquo;.</p>
+            <button type="button" className="btn btn-small" onClick={clearSearch}>Clear search</button>
           </div>
-        )}
-
-        <div className="tg-more">
-          <p className="tg-status small muted" role="status">
-            {more ? `Showing ${shown.length} of ${TOOLS.length} tools` : `Showing ${FIRST} of ${TOOLS.length} tools`}
-          </p>
-          <button ref={toggleRef} type="button" className="btn" aria-expanded={more} onClick={more ? collapse : expand}>
-            {more ? 'Show fewer' : 'See more\u2026'}
-          </button>
-        </div>
-      </section>
+        )
+      ) : (
+        <>
+          <section aria-label="How the tools are sorted" className="tg-all">
+            <p className="tg-rule">{TEACHES_RULE} {mine ? 'In each tool type, tools follow the lab\u2019s order for students like you.' : 'In each tool type, the most used tools come first, roughly.'}</p>
+            <p className="tg-honest"><Icon name="info" size={16} /> <span>{PILOTED.size > 0
+              ? <>Each card&rsquo;s type is our estimate from the tool&rsquo;s public features. Only tools marked <b>Piloted</b> have been tested, on {pilotSample} simulated students: <Link to="/lab/real-tools">see the pilot</Link>.</>
+              : <>{note} The type on each card comes from the tool&rsquo;s public features.</>}</span></p>
+          </section>
+          <ToolsFilm groups={WINDOWS} renderCard={(t) => <ToolCard tool={t} onOpen={openTool} number={0} />} />
+        </>
+      )}
 
       <Reveal as="section" className="tg-cta on-dark" aria-labelledby="tg-cta-h">
         <div>
-          <h2 id="tg-cta-h">Which one suits <em>you</em>?</h2>
-          <p>{mine ? 'These tools are now in the lab\u2019s order for students like you. Retake the check any time.' : `Take the ${minutes ? `${minutes} minute ` : ''}check. Then these tools are put in order for students like you.`}</p>
+          <h2 id="tg-cta-h">Find the tool type that suits you</h2>
+          <p>{mine ? 'These tools are now in the lab\u2019s order for students like you. Retake the check any time.' : 'Take the short check, and the teaching tools are sorted for students like you.'}</p>
         </div>
         <Link to="/check" className="btn btn-primary btn-large">Take the check <Icon name="arrow" size={18} className="icon-nudge" /></Link>
       </Reveal>
@@ -184,7 +197,7 @@ export default function Tools() {
       <section className="tg-risk" aria-labelledby="tg-risk-h">
         <Reveal>
           <h2 id="tg-risk-h">Safety and risk</h2>
-          <p className="muted">Four things the lab checks in its demo tools. No real tool on this page has been tested.</p>
+          <p className="muted">These are four kinds of risk to watch for in any real tool. {PILOTED.size > 0 ? 'Only the tools marked Piloted have had a small test of them.' : 'Hivemind has not tested any tool on this page.'}</p>
         </Reveal>
         <RevealGroup as="ul" className="tg-risk-list">
           {CHECKS.map((c) => (
@@ -196,6 +209,7 @@ export default function Tools() {
           ))}
         </RevealGroup>
       </section>
+      <Reveal blur={false}><SuggestBox /></Reveal>
       <ToolPanel tool={active} opener={openerRef.current} onClose={() => setActive(null)} />
     </article>
   )

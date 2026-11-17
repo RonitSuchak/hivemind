@@ -23,7 +23,7 @@
 .lx-run-grid { display: grid; gap: var(--s-5); align-items: start; }
 @media (min-width: 60rem) {
   .lx-run-grid { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); }
-  .lx-scores { position: sticky; top: calc(var(--header-h) + var(--s-4)); }  /* stays beside the class while you scan it */
+  .lx-scores { position: sticky; top: calc(var(--header-h) + var(--s-4)); max-height: calc(100vh - var(--header-h) - var(--s-6)); overflow-y: auto; }  /* stays beside the class while you scan it; scrolls if the evidence makes it tall */
 }
 
 /* While the next tutor loads, the old run stays put and dims (never the glass itself). */
@@ -80,8 +80,10 @@
 .lx-counts li { display: flex; align-items: center; gap: var(--s-2); }
 .lx-count-num { display: inline-block; min-width: 2ch; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; text-align: right; }
 .lx-count-label { font-size: var(--text-sm); color: var(--ink-2); }
-.lx-gain { font-size: var(--text-sm); color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.lx-gain b { color: var(--ink-2); font-weight: 600; }
+.lx-tally-meta { display: grid; gap: 2px; }
+.lx-gain { font-size: var(--text-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.lx-gain b { color: var(--ink); font-weight: 600; }
+.lx-tested { font-size: var(--text-xs); color: var(--ink-3); }
 
 /* Scores */
 .lx-scores .scorebars { margin-top: var(--s-1); }
@@ -151,7 +153,22 @@
 .lx-moment { display: flex; align-items: center; gap: var(--s-1); font-size: var(--text-xs); font-weight: 600; color: var(--accent-strong); }
 .lx-msg[data-moment] .lx-msg-text { border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: var(--accent-soft); }
 .lx-msg[data-failed] .lx-msg-text { border-color: var(--warn-line); background: var(--warn-bg); }
+/* The line a score's evidence points to: a quiet edge plus the words "Evidence line". */
+.lx-msg[data-evidence] .lx-msg-text { border-color: var(--ink-3); box-shadow: 0 0 0 1px var(--ink-3); }
+.lx-msg-ev { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); }
 .lx-msg-fail { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-2); font-size: var(--text-xs); font-weight: 600; color: var(--warn-ink); }
+
+/* Why this score: evidence under the score bars. */
+.lx-why { display: grid; gap: var(--s-5); margin-top: var(--s-5); }
+.lx-why-group > :not(summary) { margin-top: var(--s-2); }
+.lx-why-group > .btn { margin-top: var(--s-2); }
+.lx-why-group > summary > .lx-h4 { margin: 0; }
+.lx-why-list { list-style: none; display: grid; width: 100%; }
+.lx-why-item { display: grid; gap: var(--s-2); justify-items: start; padding-block: var(--s-3); border-top: 1px solid var(--line); }
+.lx-why-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+.lx-why-effect { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); }
+.lx-why-reason { font-size: var(--text-sm); color: var(--ink-2); }
+.lx-why-item .btn { gap: 0.35rem; }
 
 /* ---------- Ratings ---------- */
 .lx-ratings { display: grid; gap: var(--s-8); }
@@ -256,21 +273,33 @@
 }
 
 /* ---------- Lab guide: "How to read this page" ---------- */
-.lx-guide { min-width: 0; border-radius: var(--r-lg); }
+/* "How it works": three numbered steps joined by one hairline that runs behind the number circles.
+   Narrow: the steps stack and the line runs down the left. 640px and wider: three columns and the line runs across. */
+.lx-guide { min-width: 0; display: grid; gap: var(--s-5); padding: var(--s-5); border-radius: var(--r-lg); }
 .lx-guide-sum { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); min-height: 3rem; padding: var(--s-2) var(--s-5); list-style: none; cursor: pointer; border-radius: var(--r-lg); font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; color: var(--ink); }
 .lx-guide-sum::-webkit-details-marker { display: none; }
 .lx-guide-sum::marker { content: ""; }
 .lx-guide-chev { flex: none; color: var(--ink-3); transition: transform var(--dur-ui) var(--ease-out); }
 .lx-guide[open] .lx-guide-chev { transform: rotate(180deg); }
-.lx-guide-body { display: grid; gap: var(--s-4); padding: 0 var(--s-5) var(--s-4); }
 .lx-guide-lead { max-width: var(--measure); color: var(--ink-2); font-size: var(--text-sm); line-height: 1.55; }
 .lx-guide-lead strong, .lx-guide-foot strong, .lx-guide-steps strong { color: var(--ink); font-weight: 600; }
 .lx-guide section { display: grid; gap: var(--s-2); }
-.lx-guide-h { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; letter-spacing: var(--track-small); color: var(--ink); }
-.lx-guide-steps { list-style: none; display: grid; gap: var(--s-2) var(--s-3); counter-reset: lxstep; }
-@media (min-width: 48rem) { .lx-guide-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.lx-guide-steps li { counter-increment: lxstep; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--s-3); padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: var(--r-md); background: var(--fill-subtle); color: var(--ink-2); font-size: var(--text-sm); line-height: 1.4; }
-.lx-guide-steps li::before { content: counter(lxstep); display: grid; place-items: center; width: 1.375rem; height: 1.375rem; border-radius: var(--r-pill); background: var(--ink); color: var(--surface); font-size: var(--text-xs); font-weight: 600; }
+.lx-guide-h { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; letter-spacing: var(--track-heading); line-height: 1.2; color: var(--ink); }
+.lx-guide-steps { list-style: none; display: grid; gap: var(--s-5); }
+.lx-guide-steps li { position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr); grid-template-areas: "n label" "n text"; column-gap: var(--s-3); row-gap: 2px; align-items: start; }
+.lx-step-n { grid-area: n; position: relative; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: var(--text-xs); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.lx-step-label { grid-area: label; color: var(--ink); font-size: var(--text-sm); font-weight: 600; line-height: 28px; }
+.lx-step-text { grid-area: text; color: var(--ink-2); font-size: var(--text-sm); line-height: 1.5; }
+/* the hairline: from the middle of this circle down to the next one */
+.lx-guide-steps li:not(:last-child)::after { content: ""; position: absolute; left: 14px; top: 14px; bottom: calc(-1 * var(--s-5)); width: 1px; background: var(--line-strong); }
+@media (min-width: 40rem) {
+  .lx-guide-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--s-5); }
+  .lx-guide-steps li { grid-template-columns: minmax(0, 1fr); grid-template-areas: "n" "label" "text"; row-gap: var(--s-2); }
+  .lx-step-n { justify-self: start; }
+  .lx-step-label { line-height: 1.3; }
+  /* ... or from the middle of this circle across to the next one */
+  .lx-guide-steps li:not(:last-child)::after { left: 14px; right: calc(-1 * var(--s-5)); top: 14px; bottom: auto; width: auto; height: 1px; }
+}
 /* The key: one row of compact chips (symbol + short name) that wraps. */
 .lx-key { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .lx-key-chip { display: inline-flex; align-items: center; gap: var(--s-2); max-width: 100%; min-height: 1.875rem; padding: 0.15rem 0.7rem 0.15rem 0.5rem; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--fill-subtle); color: var(--ink); font-size: var(--text-sm); font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: default; transition: background-color var(--dur-fast), border-color var(--dur-fast); }
@@ -353,15 +382,19 @@
 .rs .rs-warning-ring { display: none; }
 .tab-flag, .tab[aria-selected="true"] .tab-flag { color: var(--pop); }
 
-/* ---------- Outcome stars (override of the old shape rules in app.css and theme.css) ----------
-   One shape family, three fill levels, so the three outcomes are told apart by fill and weight, not colour:
-   Big gain = solid orange star. Small gain = midnight outline, left half filled. No gain = small thin grey outline.
-   The old `.o-fill`, `.o-ring` and `.o-glyph` rules no longer match anything (the markup does not use them). */
+/* ---------- Outcome stars ----------
+   .o-star is the outline: always the whole star, one width, round joins. .o-star-half is a smaller copy of the same
+   star that grows from the middle with the points gained (OutcomeShape.jsx draws and scales it). No dashes anywhere.
+   Big gain = orange. Small gain = ink. Left behind = quiet grey outline (a student who gave up has the same star plus a flag). */
 .oshape .o-star, .oshape .o-star-half { stroke-linejoin: round; stroke-linecap: round; }
-.o-learned .o-star { fill: var(--pop); stroke: var(--pop); stroke-width: 2; }
-.o-a_little .o-star { fill: none; stroke: var(--ink); stroke-width: 3; }
-.o-a_little .o-star-half { fill: var(--ink); stroke: var(--ink); stroke-width: 3; }
-.o-left_behind .o-star { fill: none; stroke: var(--ink-3); stroke-width: 2.2; }
+.oshape .o-star { fill: none; stroke-width: 2.6; }
+.oshape .o-star-half { stroke: none; }
+.o-learned .o-star { stroke: var(--pop); }
+.o-learned .o-star-half { fill: var(--pop); }
+.o-a_little .o-star { stroke: var(--ink); }
+.o-a_little .o-star-half { fill: var(--ink); }
+.o-left_behind .o-star { stroke: var(--ink-3); }
+.o-left_behind .o-star-half { fill: var(--ink-3); }
 
 /* ---------- Try a student (ProfilePredictor) ---------- */
 .lx-predict { display: grid; gap: var(--s-6); padding: clamp(var(--s-4), 3vw, var(--s-6)); border-radius: var(--r-lg); min-width: 0; }
@@ -380,12 +413,12 @@
 @media (prefers-reduced-motion: reduce) { .lx-predict .lx-bar-fill { transition: none; } }
 
 /* Student drawer: the sample lesson, closed until asked for (the best websites above it are in best.css). */
-.lx-lesson { border-top: 1px solid var(--line); padding-top: var(--s-3); }
-.lx-lesson > summary { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); padding: var(--s-2) 0; cursor: pointer; font-weight: 600; list-style: none; border-radius: var(--r-sm); }
-.lx-lesson > summary::-webkit-details-marker { display: none; }
-.lx-lesson > summary > span:first-child::before { content: '+'; display: inline-block; width: 1.1em; color: var(--pop-deep); font-weight: 700; }
-.lx-lesson[open] > summary > span:first-child::before { content: '\2212'; }
-.lx-lesson > summary:focus-visible { outline: none; box-shadow: var(--focus); }
+.lx-lesson, .lx-why-group { border-top: 1px solid var(--line); padding-top: var(--s-3); }
+.lx-lesson > summary, .lx-why-group > summary { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); padding: var(--s-2) 0; cursor: pointer; font-weight: 600; list-style: none; border-radius: var(--r-sm); }
+.lx-lesson > summary::-webkit-details-marker, .lx-why-group > summary::-webkit-details-marker { display: none; }
+.lx-lesson > summary > span:first-child::before, .lx-why-group > summary > .lx-h4::before { content: '+'; display: inline-block; width: 1.1em; color: var(--pop-deep); font-weight: 700; }
+.lx-lesson[open] > summary > span:first-child::before, .lx-why-group[open] > summary > .lx-h4::before { content: '\2212'; }
+.lx-lesson > summary:focus-visible, .lx-why-group > summary:focus-visible { outline: none; box-shadow: var(--focus); }
 .lx-lesson[open] > .lx-chat { margin-top: var(--s-3); }
 
 /* Under a demo tool's name: the type of real tool it stands in for, and a label when its run is a preview. */
@@ -414,4 +447,14 @@
 .lx-toolrow-note .icon { flex: none; margin-top: 0.15rem; }
 
 /* "Try this demo tool" link under the tool name */
-.lx-try { margin-top: var(--s-3); }
+.lx-try { margin-top: var(--s-3); display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.lx-try .btn { display: inline-flex; align-items: center; gap: 0.35rem; }
+.lx-checks li[data-empty] { color: var(--ink-3); }
+.lx-checks li[data-empty] .lx-check-result { color: var(--ink-3); }
+
+/* Evidence quotes say who spoke; a critical fail that no person has confirmed yet says so. */
+.lx-quote { margin: 0; display: grid; gap: var(--s-1); }
+.lx-said { font-size: var(--text-xs); color: var(--ink-3); font-weight: 500; }
+.lx-banner-review { margin-top: var(--s-2); font-size: var(--text-sm); }
+.lx-heat th .lx-n { display: block; font-weight: 400; font-size: var(--text-xs); color: var(--ink-3); }
+.lx-sum-head .lx-preview-tag, .lx-score-card header .lx-preview-tag, .lx-row-name .lx-preview-tag { margin-top: 0; }
