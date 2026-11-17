@@ -8,7 +8,7 @@ if [ ! -x .venv/bin/python ]; then
   echo "No .venv here. Set up first: python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt"
   exit 1
 fi
-if lsof -ti tcp:8000 >/dev/null 2>&1; then
+if lsof -ti tcp:8000 -sTCP:LISTEN >/dev/null 2>&1; then
   echo "Port 8000 is already in use (is the backend already running?). Stop that first."
   exit 1
 fi
