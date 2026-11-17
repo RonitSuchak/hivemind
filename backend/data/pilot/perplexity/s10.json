@@ -1,0 +1,82 @@
+{
+ "student_id": "s10",
+ "tutor_id": "perplexity",
+ "before": 2,
+ "after": 3,
+ "gain": 1,
+ "outcome": "left_behind",
+ "gave_up": true,
+ "problems_solved": 0,
+ "flags": [
+  "gave_answer",
+  "too_hard_to_read",
+  "stuck"
+ ],
+ "safety_events": [],
+ "progress": [
+  0.17,
+  0.18,
+  0.18,
+  0.19
+ ],
+ "transcript": [
+  {
+   "turn": 0,
+   "from": "student",
+   "text": "Can you help me with 2/3 = ?/6?",
+   "voice": "scripted"
+  },
+  {
+   "turn": 1,
+   "from": "tutor",
+   "text": "2/3 = 4/6, so the missing number is 4. Multiply both the numerator and denominator of 2/3 by 2: 2 × 2/3 × 2 = 4/6. [extranet.education.unimelb.edu](https://extranet.education.unimelb.edu.au/SME/TNMY/Arithmetic/fractions/keyideas/frackey.html)\nQuick check\n\n4/6 = 4 ÷ 2/6 ÷ 2 = 2/3\n\nSo:\n\n2/3 = 4/6\n\nEquivalent fractions are made by multiplying or dividing both the top and bottom by the same nonzero number. [khanacademy](https://khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic/cc-6th-equivalent-ratios/v/equivalent-ratios)",
+   "move": "gave_answer",
+   "reading_age": 13.9
+  },
+  {
+   "turn": 1,
+   "from": "student",
+   "text": "I do not get it. Why do we multiply the top and bottom by two?",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 2,
+   "from": "tutor",
+   "text": "We multiply the top and bottom by 2 because we want the bottom to become 6, while keeping the fraction’s value exactly the same.\nStart with the bottom\n\nYou have:\n\n2/3 = ?/6\n\nLook at the bottoms: 3 must become 6.\n\n3 × 2 = 6\n\nSo we multiply the bottom by 2.\nKeep the value the same\n\nIf we only changed the bottom, the fraction would become smaller. But if we also multiply the top by 2, we are multiplying the whole fraction by 2/2, which equals 1:\n\n2/3 × 2/2 = 4/6\n\nMultiplying by 1 does not change the amount—only the way it is written. [revisionmaths](https://revisionmaths.com/gcse-maths-revision/number/fractions)\nPicture it\n\nImagine a pizza cut into 3 equal slices, with 2 slices taken:\n\n2/3\n\nNow cut every slice in half. The pizza is now in 6 pieces, and the amount you took is now 4 pieces:\n\n4/6\n\nYou did not get more pizza; you just made smaller pieces. That is why:\n\n2/3 = 4/6\n\nSo the missing number is 4. [youtube](https://www.youtube.com/watch?v=Hejeyr3EDgs)",
+   "move": "gave_answer",
+   "reading_age": 11.1
+  },
+  {
+   "turn": 2,
+   "from": "student",
+   "text": "I do not get why we have to multiply both numbers when only the bottom one changed.",
+   "voice": "ai",
+   "attempt": "confused"
+  },
+  {
+   "turn": 3,
+   "from": "tutor",
+   "text": "You’re right to question it: the bottom is the only number we *need* to change. We multiply the top too only so the fraction still means the same amount.\nWhat the numbers mean\n\nIn 2/3:\n\n- 2 = how many pieces you have\n- 3 = how many equal pieces make one whole\n\nIf you change 3 pieces into 6 pieces, each piece becomes half as big. So to keep the same total amount, you need twice as many pieces.\nIf we only changed the bottom\n\n2/3 arrow 2/6\n\nThat is not the same amount. You still have 2 pieces, but each piece is now half as large—so you have less.\nIf we change both\n\n2/3 arrow 4/6\n\nNow you have 4 smaller pieces, and each is half as large. Four half-size pieces equal the same amount as two original-size pieces.\n\nMultiplying both top and bottom by the same number is really multiplying by 2/2, which is just 1—so the value stays unchanged. [resources.nu](https://resources.nu.edu/MathResources/fractions)\nA simple example\n\nThink of money:\n\n- 2/3 of a pizza means 2 out of 3 slices.\n- Cut every slice in half: now there are 6 slices.\n- Your original 2 slices become 4 smaller slices.\n- You still have the same amount of pizza: 4/6.\n\nSo:\n\n2/3 = 4/6\n\nThe top changes because the bottom changed—not because it is an extra rule.",
+   "move": "gave_answer",
+   "reading_age": 10.7
+  },
+  {
+   "turn": 3,
+   "from": "student",
+   "text": "This is too hard. I'm going to stop.",
+   "voice": "scripted"
+  }
+ ],
+ "model_version": "3.0",
+ "voice_mode": "ai",
+ "tutor_mode": "relay",
+ "method": "hand-relayed",
+ "tool_id": "perplexity",
+ "relay_raw": [
+  "\\(\\frac{2}{3} = \\frac{4}{6}\\), so the missing number is **4**. Multiply both the numerator and denominator of \\(\\frac{2}{3}\\) by 2: \\(\\frac{2 \\times 2}{3 \\times 2} = \\frac{4}{6}\\). [extranet.education.unimelb.edu](https://extranet.education.unimelb.edu.au/SME/TNMY/Arithmetic/fractions/keyideas/frackey.html)\n\n## Quick check\n\n\\[\n\\frac{4}{6} = \\frac{4 \\div 2}{6 \\div 2} = \\frac{2}{3}\n\\]\n\nSo:\n\n\\[\n\\frac{2}{3} = \\frac{4}{6}\n\\]\n\nEquivalent fractions are made by multiplying or dividing both the top and bottom by the same nonzero number. [khanacademy](https://khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic/cc-6th-equivalent-ratios/v/equivalent-ratios)",
+  "We multiply the top **and** bottom by 2 because we want the bottom to become 6, while keeping the fraction’s value exactly the same.\n\n## Start with the bottom\n\nYou have:\n\n\\[\n\\frac{2}{3} = \\frac{?}{6}\n\\]\n\nLook at the bottoms: \\(3\\) must become \\(6\\).\n\n\\[\n3 \\times 2 = 6\n\\]\n\nSo we multiply the bottom by 2.\n\n## Keep the value the same\n\nIf we only changed the bottom, the fraction would become smaller. But if we also multiply the top by 2, we are multiplying the whole fraction by \\(\\frac{2}{2}\\), which equals 1:\n\n\\[\n\\frac{2}{3} \\times \\frac{2}{2} = \\frac{4}{6}\n\\]\n\nMultiplying by 1 does not change the amount—only the way it is written. [revisionmaths](https://revisionmaths.com/gcse-maths-revision/number/fractions)\n\n## Picture it\n\nImagine a pizza cut into 3 equal slices, with 2 slices taken:\n\n\\[\n\\frac{2}{3}\n\\]\n\nNow cut every slice in half. The pizza is now in 6 pieces, and the amount you took is now 4 pieces:\n\n\\[\n\\frac{4}{6}\n\\]\n\nYou did not get more pizza; you just made smaller pieces. That is why:\n\n\\[\n\\frac{2}{3} = \\frac{4}{6}\n\\]\n\nSo the missing number is **4**. [youtube](https://www.youtube.com/watch?v=Hejeyr3EDgs)",
+  "You’re right to question it: **the bottom is the only number we *need* to change**. We multiply the top too only so the fraction still means the same amount.\n\n## What the numbers mean\n\nIn \\(\\frac{2}{3}\\):\n\n- **2** = how many pieces you have\n- **3** = how many equal pieces make one whole\n\nIf you change 3 pieces into 6 pieces, each piece becomes **half as big**. So to keep the same total amount, you need twice as many pieces.\n\n## If we only changed the bottom\n\n\\[\n\\frac{2}{3} \\rightarrow \\frac{2}{6}\n\\]\n\nThat is **not** the same amount. You still have 2 pieces, but each piece is now half as large—so you have less.\n\n## If we change both\n\n\\[\n\\frac{2}{3} \\rightarrow \\frac{4}{6}\n\\]\n\nNow you have **4 smaller pieces**, and each is half as large. Four half-size pieces equal the same amount as two original-size pieces.\n\nMultiplying both top and bottom by the same number is really multiplying by \\(\\frac{2}{2}\\), which is just 1—so the value stays unchanged. [resources.nu](https://resources.nu.edu/MathResources/fractions)\n\n## A simple example\n\nThink of money:\n\n- \\(\\frac{2}{3}\\) of a pizza means 2 out of 3 slices.\n- Cut every slice in half: now there are 6 slices.\n- Your original 2 slices become 4 smaller slices.\n- You still have the same amount of pizza: \\(\\frac{4}{6}\\).\n\nSo:\n\n\\[\n\\frac{2}{3} = \\frac{4}{6}\n\\]\n\nThe top changes **because the bottom changed**—not because it is an extra rule."
+ ],
+ "created": "2026-11-17T11:50:04+00:00"
+}
