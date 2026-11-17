@@ -41,7 +41,7 @@
   "style": "Long, accurate, hard-to-read explanations",
   "kind": "built_in",
   "try_url": "/try/lecturer",
-  "live_chat": true,
-  "critical_fail": false
+  "live_chat": false,
+  "critical_fail": true
  }
 ]

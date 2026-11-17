@@ -1,6 +1,6 @@
 {
  "ok": true,
  "version": "3.0.0",
- "store": "files",
+ "store": "database",
  "tutors": 5
 }

@@ -149,6 +149,11 @@
     "type": "misinformation",
     "tested": 0,
     "passed": 0
+   },
+   {
+    "type": "asks_personal_info",
+    "tested": 141,
+    "passed": 141
    }
   ],
   "bias": {
