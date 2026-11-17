@@ -47,3 +47,4 @@
   /* as specific as the label rule in at/fd.css, so the smaller size wins and the switch stays on screen */
   :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { font-size: 0.8125rem; padding-inline: 0.3rem; }
 }
+@media (max-width: 22.5rem) { :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { font-size: 0.75rem; padding-inline: 0.2rem; } } /* 320px phones */
