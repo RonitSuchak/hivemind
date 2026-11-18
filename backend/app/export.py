@@ -29,8 +29,11 @@ NEAR_CHECK = {  # a typical check: answers chosen to give a profile near the mid
     "reading": {"r1": "3", "r2": "His sister", "r3": "Fewer guests were coming", "r4": None},
     "english_confidence": 3, "seconds_taken": 410,
 }
-FAR_CHECK = {"quiz_1": {q.id: q.answer for q in QUIZ_1}, "quiz_2": {q.id: q.options[1] for q in QUIZ_2},
-             "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 1, "seconds_taken": 300}
+# an unusual check: none right before the mini-lesson, all right after it, all reading right (no simulated student
+# is like that, so it shows the "no ranking" answer)
+FAR_CHECK = {"quiz_1": {q.id: next(o for o in q.options if o != q.answer) for q in QUIZ_1},
+             "quiz_2": {q.id: q.answer for q in QUIZ_2},
+             "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 4, "seconds_taken": 300}
 
 
 def save(name: str, data) -> None:

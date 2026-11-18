@@ -38,6 +38,20 @@ def attempt(attempt, **kw):
     return Situation("attempt", LINH, ADD_SAME, attempt=attempt, **kw)
 
 
+class NextProblemTests(unittest.TestCase):
+    def test_a_full_stop_goes_before_the_next_problem(self):
+        # Crash test B6 (18 Nov): AI lines often end without a mark, which read "...the same Next one: ...".
+        right = Situation("attempt", VICTOR, ADD_SAME, attempt="right", next_problem=PROBLEMS[2])
+        voice = AIVoice(FakeClient("it is 6/9 because you just add the tops and keep the bottom the same"))
+        text, source = voice.say_line(right)
+        self.assertEqual(source, "ai")
+        self.assertTrue(text.endswith("keep the bottom the same. Next one: 1/4 + 1/8?"), text)
+        ok = AIVoice(FakeClient("Is it 6/9?")).say_line(right)[0]
+        self.assertTrue(ok.endswith("Is it 6/9? Next one: 1/4 + 1/8?"), ok)  # no double mark
+        simple = Situation("attempt", LINH, ADD_SAME, attempt="right", next_problem=PROBLEMS[2])
+        self.assertIn(" next: 1/4 + 1/8?", AIVoice(FakeClient("it 6/9")).say_line(simple)[0])  # simple stays loose
+
+
 class AIVoiceTests(unittest.TestCase):
     def test_a_good_line_is_used_and_marked_ai(self):
         voice = AIVoice(FakeClient("um is it 6/18? not sure"))

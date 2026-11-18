@@ -15,6 +15,7 @@ from __future__ import annotations
 import hmac
 import logging
 import secrets
+import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Literal
@@ -77,14 +78,17 @@ async def api_error(_: Request, exc: ApiError):
 
 @app.exception_handler(StarletteHTTPException)
 async def http_error(_: Request, exc: StarletteHTTPException):
-    code = {404: "not_found", 405: "invalid_input"}.get(exc.status_code, "invalid_input")
-    message = "There is nothing at this address." if exc.status_code == 404 else str(exc.detail)
+    code = {404: "not_found", 405: "method_not_allowed"}.get(exc.status_code, "invalid_input")
+    message = {404: "There is nothing at this address.",
+               405: "This address does not take that kind of request."}.get(exc.status_code, str(exc.detail))
     return error(exc.status_code, code, message)
 
 
 @app.exception_handler(RequestValidationError)
 async def validation_error(_: Request, exc: RequestValidationError):
     first = exc.errors()[0] if exc.errors() else {}
+    if first.get("type") == "json_invalid":  # was "Check '1': JSON decode error." (crash test B9)
+        return error(400, "invalid_input", "The request is not valid JSON.")
     where = ".".join(str(p) for p in first.get("loc", []) if p != "body") or "body"
     return error(400, "invalid_input", f"Check '{where}': {first.get('msg', 'invalid value')}.")
 
@@ -220,10 +224,25 @@ class MatchBody(BaseModel):
     quiz_1: Answers = None
     quiz_2: Answers = None
     reading: Answers = None
-    english_confidence: int | None = None
-    seconds_taken: int | None = None
+    english_confidence: int | None = Field(default=None, ge=1, le=5)  # 1 to 5, or null when skipped
+    seconds_taken: int | None = Field(default=None, ge=0, le=86_400)  # crash test B7: no negative or absurd times
     topic: Topic | None = None
     extras: Extras | None = None
+
+
+_last_clean = 0.0
+
+
+def clean_old_matches() -> None:
+    """Delete saved matches older than MATCHES_KEEP_DAYS, at most once an hour. Nothing else is cleared:
+    classmate results and submissions are kept on purpose."""
+    global _last_clean
+    if time.monotonic() - _last_clean < config.MATCHES_CLEAN_EVERY_SECONDS and _last_clean:
+        return
+    _last_clean = time.monotonic()
+    gone = get_store().delete_older("matches", config.MATCHES_KEEP_DAYS)
+    if gone:
+        log.info("cleared %d saved matches older than %d days", gone, config.MATCHES_KEEP_DAYS)
 
 
 def build_match(profile: dict, topic: dict | None = None, extras: dict | None = None) -> dict:
@@ -239,6 +258,7 @@ def build_match(profile: dict, topic: dict | None = None, extras: dict | None = 
     try:  # the match itself never needs the database; only "ask" by match_id does
         get_store().put("matches", result["match_id"], {"profile": result["profile"], "questions": 0, "created": now(),
                                                          "topic": topic, "extras": extras})
+        clean_old_matches()
     except StoreUnavailable:
         log.warning("match not saved: database unreachable")
     result["real_tools"] = real_tools.for_match(result["ranked"], topic)

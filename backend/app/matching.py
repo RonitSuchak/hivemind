@@ -1,6 +1,9 @@
 """Weighted match: a real person's profile -> the 5 nearest simulated students -> ranked tutors.
 
   1. 5 profile numbers, each 0 to 1 (reading age: (age - 6) / 9, clamped).
+     For matching only, they are put on the class's scale first (on_class_scale): the check can give
+     0 or 1, but the 30 simulated students only span part of that range, so a check result is
+     stretched or squeezed onto the range the class really covers. The profile shown back is unchanged.
   2. Distance = straight-line (Euclidean) distance between the two sets of 5 numbers.
   3. Nearest 5; weight = 1 / (distance + 0.05), scaled to sum to 1.
   4. Predicted gain per tutor = weighted average of those 5 students' gains with it.
@@ -46,6 +49,29 @@ def _vec(r: dict) -> list[float]:
     return [r["start_level"], r["learn_speed"], r["reading"], r["english"], r["persistence"]]
 
 
+# What the check can give for each number (docs/DESIGN.md), and what the simulated class covers.
+# Reading is left alone: the check's reading ages (8 to 15) already land on the class's range.
+CHECK_RANGE = {"start_level": (0.0, 1.0), "learn_speed": (config.LEARN_SPEED_MIN, config.LEARN_SPEED_MAX),
+               "english": (0.0, 1.0), "persistence": (config.PERSISTENCE_MIN, config.PERSISTENCE_MAX)}
+CLASS_RANGE = {k: (min(s.radar[k] for s in STUDENTS), max(s.radar[k] for s in STUDENTS)) for k in CHECK_RANGE}
+
+
+def on_class_scale(r: dict) -> dict:
+    """A check result's radar, moved onto the range the simulated class covers (used to match, never shown).
+
+    Example: a student who skips nothing gets staying power 0.9 from the check, higher than any simulated
+    student (the class tops out at 0.85), so everyone who answers every question looked unlike the whole class.
+    Each number is mapped in a straight line from the check's range onto the class's, so the order of
+    students never changes: the top of the check is the top of the class, the bottom is the bottom.
+    """
+    out = dict(r)
+    for key, (lo, hi) in CHECK_RANGE.items():
+        c_lo, c_hi = CLASS_RANGE[key]
+        share = max(0.0, min(1.0, (r[key] - lo) / (hi - lo)))
+        out[key] = round(c_lo + share * (c_hi - c_lo), 3)
+    return out
+
+
 def _round_to_one(weights: list[float], places: int = 3) -> list[float]:
     """Round so the shown weights still sum to exactly 1 (largest remainder)."""
     scale = 10**places
@@ -58,8 +84,8 @@ def _round_to_one(weights: list[float], places: int = 3) -> list[float]:
 
 
 def nearest(profile: dict) -> list[dict]:
-    me = _vec(radar(profile["start_level"], profile["learn_speed"], profile["reading_age"],
-                    profile["english"], profile["persistence"]))
+    me = _vec(on_class_scale(radar(profile["start_level"], profile["learn_speed"], profile["reading_age"],
+                                   profile["english"], profile["persistence"])))
     ranked = sorted(STUDENTS, key=lambda s: (math.dist(me, _vec(s.radar)), s.id))[: config.MATCH_K]
     distances = [math.dist(me, _vec(s.radar)) for s in ranked]
     raw = [1 / (d + config.MATCH_WEIGHT_OFFSET) for d in distances]

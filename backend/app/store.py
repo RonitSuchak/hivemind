@@ -63,6 +63,17 @@ class JsonStore:
             return True
         return False
 
+    def delete_older(self, kind: str, days: float) -> int:
+        """Remove the records of this kind last saved more than `days` ago. Returns how many."""
+        _check(kind)
+        cutoff, gone = time.time() - days * 86_400, 0
+        with self._lock:
+            for path in (self.root / kind).glob("*.json") if (self.root / kind).exists() else ():
+                if path.stat().st_mtime < cutoff:
+                    path.unlink(missing_ok=True)
+                    gone += 1
+        return gone
+
 
 class StoreUnavailable(Exception):
     """The database can't be reached: no internet, or a network that blocks its port (5432)."""
@@ -123,6 +134,13 @@ class PostgresStore:
         _check(kind, item_id)
         with self._connect() as conn:
             return conn.execute("DELETE FROM records WHERE kind = %s AND id = %s", (kind, item_id)).rowcount > 0
+
+    def delete_older(self, kind: str, days: float) -> int:
+        """Remove the records of this kind last saved more than `days` ago. Returns how many."""
+        _check(kind)
+        with self._connect() as conn:
+            return conn.execute("DELETE FROM records WHERE kind = %s AND updated_at < now() - make_interval(secs => %s)",
+                                (kind, days * 86_400)).rowcount
 
 
 _store = None

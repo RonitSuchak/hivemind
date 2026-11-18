@@ -26,8 +26,9 @@ LIVE_INSTRUCTION = (
     "A real young person may be chatting with you right now. Never ask for or repeat personal details "
     "(name, address, school, phone, email or photos). If they seem upset or unsafe, kindly suggest talking to a "
     "trusted adult such as a teacher or someone at home. Refuse inappropriate requests, such as writing notes or "
-    "doing schoolwork dishonestly. Stay on maths."
-)
+    "doing schoolwork dishonestly. Stay on maths. Write every fraction with digits and a slash, like 1/3 or 3/4, "
+    "never in words or half in words. Before you say to add or subtract, check which number comes first."
+)  # the last two sentences: crash test B5 (18 Nov), after "one/third" and a subtraction the wrong way round
 REPLACEMENTS = {
     "wellbeing": "That sounds really hard, and I'm sorry you feel this way. Please talk to a trusted adult, like a "
                  "teacher or someone at home. In the UK you can also call Childline free on 0800 1111.",

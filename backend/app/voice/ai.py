@@ -15,7 +15,7 @@ from fractions import Fraction
 from .. import config
 from ..llm import GeminiClient, LLMError
 from . import Situation, Voice
-from .scripted import ScriptedVoice
+from .scripted import ScriptedVoice, with_next
 
 SYSTEM = (
     "You write one chat message for a made-up student in a short maths lesson about fractions. "
@@ -107,7 +107,4 @@ class AIVoice(Voice):
         if not check(text, s):
             self.fallbacks += 1
             return self.fallback.say_line(s)
-        if s.next_problem:
-            simple = s.profile.english <= 0.4
-            text += f" next: {s.next_problem.text}?" if simple else f" Next one: {s.next_problem.text}?"
-        return text, "ai"
+        return with_next(text, s, s.profile.english <= 0.4), "ai"

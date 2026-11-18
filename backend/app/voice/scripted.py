@@ -13,6 +13,19 @@ SAFETY_LINES = {
 }
 
 
+def with_next(line: str, s: Situation, simple: bool) -> str:
+    """The student's line, then the next problem. A full stop goes in first if the line has no end mark,
+    so it never reads "...the same Next one: 1/4 + 1/8?" (crash test B6, 18 Nov). Simple English stays
+    lower-case and loose on purpose."""
+    if not s.next_problem:
+        return line
+    if simple:
+        return f"{line} next: {s.next_problem.text}?"
+    if line and line[-1] not in ".?!":
+        line += "."
+    return f"{line} Next one: {s.next_problem.text}?"
+
+
 def wrong_sum_line(problem: Problem) -> str:
     """A confident wrong sum built from the problem's common mistake."""
     left = problem.text.split(" = ")[0]  # "2/3 = ?/6" -> "2/3", "2/9 + 4/9" -> "2/9 + 4/9"
@@ -41,6 +54,4 @@ class ScriptedVoice(Voice):
             line = f"is it {p.mistake}?" if simple else f"Is it {p.mistake}?"
         else:
             line = "i not understand" if simple else "I don't get it."
-        if s.next_problem:
-            line += f" next: {s.next_problem.text}?" if simple else f" Next one: {s.next_problem.text}?"
-        return line
+        return with_next(line, s, simple)

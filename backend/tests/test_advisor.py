@@ -23,7 +23,8 @@ for _tid in config.LAB_ORDER:
     RATED.append((tutor_dict(_tid), class_run(tutor_dict(_tid), [run_lesson(s, _t) for s in STUDENTS],
                                               "2026-11-15", "scripted")))
 NEAR = {"start_level": 0.33, "learn_speed": 0.75, "reading_age": 10, "english": 0.5, "persistence": 0.6}
-FAR = {"start_level": 1.0, "learn_speed": 0.1, "reading_age": 15, "english": 0.0, "persistence": 0.9}
+# Knew none of it before the lesson, then got everything right and read everything: no simulated student is like that.
+FAR = {"start_level": 0.0, "learn_speed": 0.9, "reading_age": 15, "english": 0.75, "persistence": 0.9}
 
 
 class FakeClient:
@@ -93,13 +94,37 @@ class MatchTests(unittest.TestCase):
         m = match(NEAR, RATED)
         self.assertEqual(len(m["matches"]), 5)
         self.assertAlmostEqual(sum(x["weight"] for x in m["matches"]), 1.0, places=9)
-        self.assertEqual([x["student_id"] for x in m["matches"]], ["s22", "s07", "s24", "s12", "s19"])
+        self.assertEqual([x["student_id"] for x in m["matches"]], ["s12", "s22", "s24", "s07", "s30"])
 
     def test_a_far_off_profile_returns_not_enough_matches(self):
         m = match(FAR, RATED)
         self.assertFalse(m["enough_matches"])
         self.assertEqual(m["ranked"], [])
         self.assertTrue(m["message"])
+
+    def test_check_results_are_put_on_the_class_scale_for_matching_only(self):
+        from app.matching import CLASS_RANGE, nearest, on_class_scale
+        from app.students import radar
+        low = on_class_scale(radar(0.0, config.LEARN_SPEED_MIN, 8, 0.0, config.PERSISTENCE_MIN))
+        high = on_class_scale(radar(1.0, config.LEARN_SPEED_MAX, 15, 1.0, config.PERSISTENCE_MAX))
+        for key, (lo, hi) in CLASS_RANGE.items():
+            self.assertAlmostEqual(low[key], lo, places=3)  # the bottom of the check is the bottom of the class
+            self.assertAlmostEqual(high[key], hi, places=3)  # and the top is the top
+        self.assertEqual((low["reading"], high["reading"]), (radar(0, 0, 8, 0, 0)["reading"], 1.0))  # reading untouched
+        mid = on_class_scale(radar(0.4, 0.5, 11, 0.5, 0.5))
+        self.assertTrue(all(low[k] < mid[k] < high[k] for k in CLASS_RANGE))  # order kept
+        m = match(NEAR, RATED)
+        self.assertEqual(m["radar"], {k: round(v, 2) for k, v in radar(0.33, 0.75, 10, 0.5, 0.6).items()})  # shown as is
+        self.assertEqual(m["matches"], nearest(NEAR))
+
+    def test_an_ordinary_check_result_gets_a_ranking(self):
+        # 2 of 5 right, then 3 of 5 after the mini-lesson, 2 of 4 on reading, English 3, nothing skipped:
+        # before the class-scale step (18 Nov) this got "no ranking", like about 3 in 4 check results.
+        def answers(qs, right):
+            return {q.id: (q.answer if i < right else next(o for o in q.options if o != q.answer)) for i, q in enumerate(qs)}
+        p = profile_from({"quiz_1": answers(QUIZ_1, 2), "quiz_2": answers(QUIZ_2, 3),
+                          "reading": answers(READING_QS, 2), "english_confidence": 3})
+        self.assertTrue(match(p, RATED)["enough_matches"])
 
     def test_every_simulated_student_finds_enough_matches(self):
         for s in STUDENTS:
@@ -173,7 +198,6 @@ def row(tid, gain, learning, usability, warning=None, mode="ai"):
 
 class TieBreakAndCeilingTests(unittest.TestCase):
     STRONG = {"start_level": 1.0, "learn_speed": 0.5, "reading_age": 15, "english": 1.0, "persistence": 0.5}
-    TOP = {"start_level": 1.0, "learn_speed": 1.0, "reading_age": 16, "english": 1.0, "persistence": 1.0}
 
     def test_near_ties_go_to_the_better_learning_score_not_the_alphabet(self):
         from app.matching import order
@@ -213,8 +237,11 @@ class TieBreakAndCeilingTests(unittest.TestCase):
         far = follow_ups(match(FAR, RATED), RATED)[0]["answer"]
         self.assertEqual(why_not_enough(nearest(FAR)), "nearest")
         self.assertIn(f"within {config.MATCH_MAX_NEAREST:.2f}", far)
-        top = match(self.TOP, RATED)
-        self.assertFalse(top["enough_matches"])
+        # The average rule: one close student, the rest far. Real check results no longer reach it at 0.55 / 0.70
+        # (checked over every possible set of answers), so it is tested on made-up distances.
+        top = match(NEAR, RATED)
+        top.update(enough_matches=False, ranked=[],
+                   matches=[{**m, "distance": d} for m, d in zip(top["matches"], (0.3, 0.7, 0.9, 0.9, 0.9))])
         self.assertEqual(why_not_enough(top["matches"]), "mean")
         answer = follow_ups(top, RATED)[0]["answer"]
         self.assertIn("close enough", answer)

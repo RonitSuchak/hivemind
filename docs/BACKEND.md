@@ -78,7 +78,7 @@ These are our **demo tools**: AI tutors we built on one free AI model, each stan
 | **Lesson** | One student with one demo tool: a short chat plus the before and after test. |
 | **Score (test)** | Test result out of 10. |
 | **Gain** | `after - before`. 0 or more, never negative. |
-| **Outcome** | `learned` (gain 3 or more), `a_little` (gain 1 to 2), `left_behind` (gain 0 or gave up). Sent by the backend; don't recalculate. |
+| **Outcome** | `learned` (gain 3 or more), `a_little` (gain 1 to 2), `left_behind` (gain 0 or gave up). Sent by the backend; don't recalculate. `left_behind` means "this lesson did not move them", not "they are behind": it includes a student who started high and stayed there (Fatima, 7 → 7) and anyone who gave up, whatever their marks. Show `gave_up` next to it when it is true. |
 | **Group** | A kind of simulated student, used for the heatmap: `starts_high`, `starts_low`, `new_to_english`, `younger_reader`, `stops_sooner`, `learns_fast`. Show the backend's `label`, never the id. Never give a real person a group. |
 | **Scores (demo tool)** | `safety`, `usability`, `learning`: 1.0 to 5.0 stars, one decimal. Always show the number as well as the stars. |
 | **Evidence** | Up to 5 items per score: `{student_id, turn, quote, reason, effect}`. `effect` is `positive` or `negative`. |
@@ -106,13 +106,14 @@ Show `message` to the user and offer a way to try again. The codes:
 
 | Status | `code` | When |
 |---|---|---|
-| 400 | `invalid_input` | A field is missing or wrong (the message says which) |
+| 400 | `invalid_input` | A field is missing or wrong (the message says which), or the body is not valid JSON. On `POST /api/match`, `english_confidence` must be 1 to 5 or null, and `seconds_taken` 0 to 86,400 or left out |
 | 400 | `too_long` | A chat message over 500 characters, a question over 300 |
 | 400 | `turn_limit` | A chat session already has 12 turns |
 | 401 | `unauthorized` | Wrong admin password |
 | 403 | `safety_concern` | Live chat with a demo tool that failed a critical safety check |
 | 404 | `not_found` | Unknown demo tool, submission, match or code |
 | 404 | `session_expired` | A chat session idle for over 30 minutes |
+| 405 | `method_not_allowed` | The address exists but not for that kind of request (for example `DELETE`). The website never sends these |
 | 409 | `wrong_status` | For example, approving a submission that failed its checks |
 | 409 | `busy` | A live lab run is already going (one at a time); use `mode=replay` or wait |
 | 429 | `rate_limited` | Too many requests from this device; the `Retry-After` header says how many seconds to wait |
@@ -489,7 +490,7 @@ Response (the matches, distances and weights are real for this profile; the gain
   "topic": null,
   "follow_ups": [
     { "id": "why_none", "question": "Why is there no ranking?",
-      "answer": "The closest simulated student is 0.84 away on a 0 to 1 scale. We only rank demo tools when at least one is within 0.45, so we won't guess." }
+      "answer": "The closest simulated student is 0.84 away on a 0 to 1 scale. We only rank demo tools when at least one is within 0.55, so we won't guess." }
   ],
   "message": "None of our 30 simulated students are close enough to your profile to give a fair answer, so we won't guess. Your result helps us decide which students to add next.",
   "note": "Advice from simulated students, not real children."

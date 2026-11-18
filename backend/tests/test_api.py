@@ -211,11 +211,42 @@ class ApiTests(unittest.TestCase):
         for params, status in cases:
             self.assertEqual(self.client.get("/api/real-tools", params=params).status_code, status, params)
 
+    def test_old_saved_matches_are_cleared(self):
+        # Crash test B8 (18 Nov): matches older than MATCHES_KEEP_DAYS go; recent ones and other kinds stay.
+        import os
+        import time as clock
+        from app import api, store
+        s = store.get_store()
+        s.put("matches", "m_old", {"profile": {}}), s.put("matches", "m_new", {"profile": {}})
+        s.put("other", "o_old", {"x": 1})
+        long_ago = clock.time() - (config.MATCHES_KEEP_DAYS + 1) * 86_400
+        for kind, item in (("matches", "m_old"), ("other", "o_old")):
+            os.utime(s._path(kind, item), (long_ago, long_ago))
+        api._last_clean = 0.0
+        self.match()  # a new match triggers the clean-up
+        self.assertIsNone(s.get("matches", "m_old"))
+        self.assertIsNotNone(s.get("matches", "m_new"))
+        self.assertIsNotNone(s.get("other", "o_old"))  # other kinds (classmate results, submissions) are kept
+        s.delete("other", "o_old"), s.delete("matches", "m_new")
+
+    def test_out_of_range_check_values_and_bad_requests_get_plain_errors(self):
+        # Crash test B7 and B9 (18 Nov)
+        for extra in ({"english_confidence": 99}, {"english_confidence": 0}, {"seconds_taken": -5},
+                      {"seconds_taken": 10**9}):
+            r = self.client.post("/api/match", json={"quiz_1": {}, "quiz_2": {}, "reading": {}, **extra})
+            self.assertEqual((r.status_code, r.json()["error"]["code"]), (400, "invalid_input"), extra)
+        self.match({"quiz_1": {}, "quiz_2": {}, "reading": {}, "english_confidence": None, "seconds_taken": 0})
+        r = self.client.post("/api/match", content=b"{bad", headers={"Content-Type": "application/json"})
+        self.assertEqual(r.json()["error"], {"code": "invalid_input", "message": "The request is not valid JSON."})
+        r = self.client.delete("/api/tutors")
+        self.assertEqual((r.status_code, r.json()["error"]["code"]), (405, "method_not_allowed"))
+
     def test_far_profile_from_the_check_gets_no_ranking(self):
         from app.check import QUIZ_1, QUIZ_2, READING_QS
-        m = self.match({"quiz_1": {q.id: q.answer for q in QUIZ_1},
-                        "quiz_2": {q.id: q.options[1] for q in QUIZ_2},  # all wrong after the lesson
-                        "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 1})
+        # none right before the mini-lesson, all right after it, all reading right: no simulated student is like that
+        m = self.match({"quiz_1": {q.id: next(o for o in q.options if o != q.answer) for q in QUIZ_1},
+                        "quiz_2": {q.id: q.answer for q in QUIZ_2},
+                        "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 4})
         self.assertFalse(m["enough_matches"])
         self.assertEqual(m["ranked"], [])
         self.assertEqual(m["real_tools"], [])  # no ranking, no guessing

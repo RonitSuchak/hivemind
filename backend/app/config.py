@@ -110,8 +110,13 @@ REPORT_MAX_GROUPS = 6
 # Matching (items 10-11), checked on the real profiles (docs/DESIGN.md)
 MATCH_K = 5  # nearest simulated students
 MATCH_WEIGHT_OFFSET = 0.05  # weight = 1 / (distance + this)
-MATCH_MAX_NEAREST = 0.45  # no ranking if the nearest student is farther than this
-MATCH_MAX_MEAN = 0.60  # ... or if the 5 nearest average farther than this
+# Distances are measured after the check's numbers are put on the class's scale (matching.on_class_scale).
+# 18 Nov: 0.45 / 0.60 left about 3 in 4 check results with no ranking; with the scale step and these limits,
+# about 1 in 17 typical results (the unusual ones) still get none.
+MATCH_MAX_NEAREST = 0.55  # no ranking if the nearest student is farther than this
+MATCH_MAX_MEAN = 0.70  # ... or if the 5 nearest average farther than this
+MATCHES_KEEP_DAYS = 7  # saved matches (5 profile numbers, for ask and the classmate test) are deleted after this
+MATCHES_CLEAN_EVERY_SECONDS = 3600  # look for old ones at most once an hour (crash test B8, 18 Nov)
 MATCH_TIE_GAIN = 0.2  # predicted gains this close count as a tie: Learning score, then Usability, decide
 CEILING_BEFORE = 7.0  # the matched students already scored this much out of 10 before the lesson...
 CEILING_GAIN = 1.5  # ...and no demo tool is predicted to add more than this: say there was little left to learn
