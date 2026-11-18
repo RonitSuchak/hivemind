@@ -153,8 +153,7 @@ function ExtraNote({ count, total }) {
 function RunView({ run, counts, total, students, gains, flagged, names, tool, busy, startWith }) {
   // ?student=<id> (links from the home page class and from Ratings) opens that student's panel straight away.
   const [openId, setOpenId] = useState(() => (run.results.some((r) => r.student_id === startWith) ? startWith : null))
-  const [focusTurn, setFocusTurn] = useState(null) // the chat line to show when the drawer opens from evidence
-  const openAt = (id, turn = null) => { setFocusTurn(turn); setOpenId(id) }
+  const openAt = (id) => setOpenId(id)
   const close = () => openAt(null)
   const byId = Object.fromEntries(students.map((s) => [s.id, s]))
   const openResult = run.results.find((r) => r.student_id === openId)
@@ -170,7 +169,6 @@ function RunView({ run, counts, total, students, gains, flagged, names, tool, bu
           <p className="lx-try">
             <TryLink run={run} tool={tool} />
             <Link to={`/lab/report/${run.tutor_id}`} className="btn btn-small">Maker report</Link>
-            {run.kind === 'built_in' && <Link to={`/lab/live/${run.tutor_id}`} className="btn btn-small"><Icon name="play" size={14} /> Watch 3 lessons</Link>}
           </p>
         </div>
       </Reveal>
@@ -198,8 +196,8 @@ function RunView({ run, counts, total, students, gains, flagged, names, tool, bu
       )}
 
       <Drawer open={!!openResult} onClose={close}
-        title={byId[openId]?.name ?? ''} subtitle={byId[openId] ? `Simulated student, age ${byId[openId].age}. Not a real child.` : ''}>
-        {openResult && <StudentDetail student={byId[openId]} result={openResult} tutorName={`the ${typeName(run.tutor_id)} demo tool`} gains={gains[openId]} flagged={flagged} names={names} focusTurn={focusTurn} />}
+        title={byId[openId]?.name ?? ''} subtitle={byId[openId] ? 'Simulated student' : ''}>
+        {openResult && <StudentDetail student={byId[openId]} result={openResult} />}
       </Drawer>
     </div>
   )
@@ -247,10 +245,10 @@ function ScoreWhy({ evidence, results, byId, onOpen }) {
                     <strong>{byId[x.student_id]?.name ?? 'A student'}</strong>
                     <span className="lx-why-effect" data-effect={x.effect}>{EFFECT[x.effect] ?? x.effect}</span>
                   </p>
-                  <Quote e={x} results={results} name={byId[x.student_id]?.name} />
+                  <Quote e={x} results={results} />
                   <p className="lx-why-reason">{plainWords(x.reason)}</p>
-                  <button type="button" className="btn btn-small" onClick={() => onOpen(x.student_id, x.turn)}>
-                    <Icon name="chat" size={15} /> Read the chat<span className="sr-only"> with {byId[x.student_id]?.name ?? 'this student'}</span>
+                  <button type="button" className="btn btn-small" onClick={() => onOpen(x.student_id)}>
+                    See {byId[x.student_id]?.name ?? 'this student'}&rsquo;s results
                   </button>
                 </li>
               ))}
@@ -268,10 +266,11 @@ function ScoreWhy({ evidence, results, byId, onOpen }) {
   )
 }
 
-// One quoted chat line, with who said it. Most evidence quotes the demo tool, but some quotes the student.
-function Quote({ e, results, name }) {
+// The demo tool's own words behind a score. A line the simulated student wrote is never quoted.
+function Quote({ e, results }) {
   const line = evidenceLine(results, e)
-  const who = line.from === 'student' ? `${name ?? 'The student'} said` : 'The demo tool said'
+  if (!line?.text || line.from === 'student') return null
+  const who = 'The demo tool said'
   return (
     <figure className="lx-quote">
       <figcaption className="lx-said">{who}</figcaption>

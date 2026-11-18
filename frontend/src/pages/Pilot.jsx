@@ -111,7 +111,7 @@ function Body({ pilot, students }) {
         </Reveal>
         {done.length ? (
           <RevealGroup className="lx-score-grid">
-            {done.map((t) => <ToolCard key={t.tool_id} tool={t} names={byId} onOpen={(lesson, turn = null) => setOpen({ tool: t, lesson, turn })} />)}
+            {done.map((t) => <ToolCard key={t.tool_id} tool={t} names={byId} onOpen={(lesson) => setOpen({ tool: t, lesson })} />)}
           </RevealGroup>
         ) : (
           <div className="glass lx-offline-panel"><Unavailable shape="bars">No real tool has finished all three lessons yet.</Unavailable></div>
@@ -141,7 +141,7 @@ function Body({ pilot, students }) {
                       return (
                         <td key={t.tool_id}>
                           {l ? (
-                            <button type="button" className="pl-cell" onClick={() => setOpen({ tool: t, lesson: l, turn: null })}
+                            <button type="button" className="pl-cell" onClick={() => setOpen({ tool: t, lesson: l })}
                               aria-label={`${s.name} with ${t.tool_name}: ${l.before} to ${l.after} out of 10${l.gave_up ? ', gave up' : ''}. Open the lesson`}>
                               <span className="pl-cell-ba">{l.before} <Icon name="arrow" size={12} /> {l.after}</span>
                               <OutcomeTag outcome={l.outcome} />
@@ -179,8 +179,8 @@ function Body({ pilot, students }) {
 
       <Drawer open={!!open && !!student} onClose={() => setOpen(null)}
         title={student?.name ?? ''}
-        subtitle={student ? `Simulated student, age ${student.age}. Not a real child. Lesson with ${open.tool.tool_name}, copied by hand.` : ''}>
-        {open && student && <StudentDetail student={student} result={open.lesson} tutorName={open.tool.tool_name} hideBest safety focusTurn={open.turn} />}
+        subtitle={student ? `Simulated student, lesson with ${open.tool.tool_name}` : ''}>
+        {open && student && <StudentDetail student={student} result={open.lesson} safety />}
       </Drawer>
     </div>
   )
@@ -194,7 +194,9 @@ function ToolCard({ tool, names, onOpen }) {
   // A failed check that only a rule has judged so far (the lesson's safety_events carry needs_review).
   const review = tool.students.some((l) => (l.safety_events || []).some((e) => !e.passed && e.needs_review))
   // A failing reply is shown whole (from the saved lesson), so nothing that softens it is cut off.
-  const whole = ev?.kind === 'fail' ? evidenceLine(tool.students, ev).text : null
+  const line = ev ? evidenceLine(tool.students, ev) : null
+  const whole = ev?.kind === 'fail' ? line?.text : null
+  const quote = line?.from === 'student' ? null : (whole ?? (ev?.quote ? clip(ev.quote) : null)) // never a student's words
   return (
     <Reveal as="article" blur={false} className="glass lx-score-card pl-card" data-fail={tool.safety?.critical_fail ? '' : undefined}>
       <header>
@@ -223,11 +225,11 @@ function ToolCard({ tool, names, onOpen }) {
             <Icon name={ev.kind === 'fail' ? 'warn' : 'check'} size={15} />
             <span>{plainWords(ev.reason)}</span>
           </figcaption>
-          <blockquote className={whole ? 'pl-whole' : undefined}>&ldquo;{whole ?? clip(ev.quote)}&rdquo;</blockquote>
+          {quote && <blockquote className={whole ? 'pl-whole' : undefined}>&ldquo;{quote}&rdquo;</blockquote>}
           {ev.kind === 'fail' && review && <p className="pl-review"><strong>Needs review.</strong> A simple rule flagged this reply, and a person has not confirmed it yet. Read the whole reply and judge for yourself.</p>}
           {lessonFor(ev.student_id) && (
-            <button type="button" className="link-quiet" onClick={() => onOpen(lessonFor(ev.student_id), ev.turn)}>
-              <Icon name="chat" size={15} /> See it in {who}&rsquo;s lesson
+            <button type="button" className="link-quiet" onClick={() => onOpen(lessonFor(ev.student_id))}>
+              See {who}&rsquo;s results
             </button>
           )}
         </figure>
