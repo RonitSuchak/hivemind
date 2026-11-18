@@ -295,7 +295,7 @@ export default function AboutFilm({ facts = {} }) {
         <Arrow />
         <div className="aff-stack"><div className="afd" style={{ '--cols': 5 }} aria-hidden="true">{[0, 1, 2, 3, 4].map((i) => <i key={i} className="is-near" style={{ '--n': i * 4 }} />)}</div><p className="aff-cap">5 students like you</p></div>
       </div>
-      <p className="aff-note">Only your 5 profile numbers are kept, so that you can ask follow-up questions.</p>
+      <p className="aff-note">The lab keeps only your 5 profile numbers, and deletes them after 7 days.</p>
     </>,
   }
 

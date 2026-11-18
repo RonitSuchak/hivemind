@@ -109,7 +109,7 @@ function Body({ ratings: raw }) {
     <div className="lx-ratings">
       <section className="lx-sec" aria-labelledby="sum-h">
         <Reveal>{SUM_HEAD}</Reveal>
-        {raw.note && <p className="lx-note">{plainWords(raw.note)}</p>}
+        {raw.note && <p className="lx-text">{plainWords(raw.note)}</p>}
         <RevealGroup as="ol" className="lx-sum-grid">
           {ranked.map(({ row, overall, best, level }, i) => (
             <Reveal as="li" key={row.tutor_id} blur={false} className={`glass lx-sum ${i === 0 ? 'is-top' : ''}`}>
@@ -143,7 +143,7 @@ function Body({ ratings: raw }) {
               <Icon name="chevron" size={18} className="lx-guide-chev" />
             </summary>
             <div className="lx-fold-body">
-              <p className="lx-note">Each number is the points gained out of 10 by that group. <span className="on-white">Darker</span><span className="on-midnight">Brighter</span> means more.</p>
+              <p className="lx-text">Each number is the points gained out of 10 by that group. <span className="on-white">Darker</span><span className="on-midnight">Brighter</span> means more.</p>
               <div className="lx-heat-panel">
                 <div className="lx-heat-scroll" role="region" aria-label="Average gain by demo tool and group" tabIndex={0} ref={heatRef}>
                   <table className={`lx-heat ${heatClass}`}>

@@ -185,10 +185,10 @@ export default function Tools() {
       ) : (
         <>
           <section aria-label="How the tools are sorted" className="tg-all">
-            <p className="tg-rule">{TEACHES_RULE} {mine ? 'In each tool type, tools follow the lab\u2019s order for students like you.' : 'In each tool type, the most used tools come first, roughly.'}</p>
-            <p className="tg-honest"><Icon name="info" size={16} /> <span>{PILOTED.size > 0
-              ? <>Each card&rsquo;s type is our estimate from the tool&rsquo;s public features. Only tools marked <b>Piloted</b> have been tested, on {pilotSample} simulated students: <Link to="/lab/real-tools">see the pilot</Link>.</>
-              : <>{note} The type on each card comes from the tool&rsquo;s public features.</>}</span></p>
+            <p className="tg-rule">{TEACHES_RULE} {mine ? 'In each tool type, tools follow the lab\u2019s order for students like you.' : 'In each tool type, the most used tools come first, roughly.'}{' '}
+              {PILOTED.size > 0
+                ? <>Each card&rsquo;s type is our estimate from the tool&rsquo;s public features. Only tools marked <b>Piloted</b> have been tested, on {pilotSample} simulated students: <Link to="/lab/real-tools">see the pilot</Link>.</>
+                : <>{note} The type on each card comes from the tool&rsquo;s public features.</>}</p>
           </section>
           <ToolsFilm groups={WINDOWS} renderCard={(t) => <ToolCard tool={t} onOpen={openTool} number={0} />} />
         </>

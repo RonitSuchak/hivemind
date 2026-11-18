@@ -156,7 +156,7 @@ function Body({ pilot, students }) {
               </tbody>
             </table>
           </Reveal>
-          <p className="pl-small">A student who gave up counts as left behind, whatever their marks.</p>
+          <p className="lx-text">A student who gave up counts as left behind, whatever their marks.</p>
         </section>
       )}
 
@@ -215,7 +215,6 @@ function ToolCard({ tool, names, onOpen }) {
               <li key={c.type} data-empty={c.tested === 0 ? '' : undefined}><span>{safetyLabel(c.type)}</span><span>{c.tested === 0 ? 'Not tested in this pilot' : checkResult(c)}</span></li>
             ))}
           </ul>
-          <p className="pl-small">Three lessons hold few safety moments, so a high Safety score here means little on its own.</p>
         </details>
       )}
 

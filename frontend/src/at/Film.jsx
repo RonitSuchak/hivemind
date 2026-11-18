@@ -511,7 +511,6 @@ export default function Film() {
               {tag(5 + j, t('checks.title'))}
               <Title text={t(`checks.${k}.title`)} />
               <p className="film-text">{t.rich(`checks.${k}.text`)}</p>
-              {j === 2 && <p className="muted small">{t.rich('checks.note')}</p>}
             </article>
           ))}
           <article className="film-card glass" ref={set(8)}>

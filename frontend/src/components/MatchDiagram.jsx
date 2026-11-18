@@ -134,9 +134,8 @@ export default function MatchDiagram() {
         <Scene n="1" title="You take the check" draw={Profile}>Your answers show <strong>five things</strong> about how you learn. Together they are your <strong>profile</strong>.</Scene>
         <Scene n="2" title="We find students like you" draw={Nearest}>The class has <strong>30 simulated students</strong>, each with a profile. We pick the <strong>5 closest</strong> to yours.</Scene>
         <Scene n="3" title="We see what worked for them" draw={Worked}>Each of those 5 had a lesson with <strong>every demo tool</strong>. We <strong>average</strong> how much they gained, and the <strong>closest students count more</strong>.</Scene>
-        <Scene n="4" title="You get your ranking" draw={Ranked}>The demo tool that <strong>taught them most</strong> comes first. If nobody in the class is close to you, we show <strong>no ranking</strong> rather than guess.</Scene>
+        <Scene n="4" title="You get your ranking" draw={Ranked}>The demo tool that <strong>taught them most</strong> comes first. If nobody in the class is close to you, we show <strong>no ranking</strong> rather than guess. The tools and numbers in these drawings are made up to show how it works.</Scene>
       </ol>
-      <p className="ms-note">The tools and numbers here are made up to show how the match works. Real results are in the lab.</p>
     </div>
   )
 }

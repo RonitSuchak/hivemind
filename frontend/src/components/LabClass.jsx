@@ -103,8 +103,7 @@ export default function ClassPanel({ run, students, openId, onOpen, busy }) {
     <>
       <div className="lx-class-head">
         <div className="lx-class-title">
-          <h3 id="class-h">Class simulation</h3>
-          <p className="lx-note">Simulated students, not real children.</p>
+          <h3 id="class-h">Simulated class</h3>
         </div>
         <div className="lx-replay">
           {phase === 'stepping' && (

@@ -179,8 +179,7 @@ function RunView({ run, counts, total, students, gains, flagged, names, tool, bu
         </Reveal>
 
         <Reveal as="section" blur={false} delay={0.08} className="glass lx-panel lx-scores" aria-labelledby="scores-h">
-          <h3 id="scores-h">Scores</h3>
-          <p className="lx-note">Usability and Learning are each scored from 1 to 5 and kept separate.</p>
+          <h3 id="scores-h">Scores, each from 1 to 5</h3>
           <div ref={scoresRef}>
             <ScoreBars scores={run.scores} help grow play={scoresIn} />
           </div>
