@@ -53,8 +53,11 @@ echo "Building the website for $API ..."
 "$BACKEND/.venv/bin/python" "$BACKEND/spa_server.py" "$SITE" "$WEB_PORT" & PIDS="$PIDS $!"
 
 # The backend only accepts the website link (and localhost:5173 for local work). caffeinate -i: no idle sleep.
+# PROXY_HOPS=1: every visitor reaches the backend from 127.0.0.1 through the tunnel, so the rate limits would
+# treat everyone as one device. Cloudflare appends the visitor's real address as the LAST X-Forwarded-For
+# entry (checked 18 Nov; cloudflared adds none, and anything a visitor fakes sits earlier), so trust exactly one.
 echo "Starting the backend..."
-(cd "$BACKEND" && HOST=127.0.0.1 PORT="$API_PORT" CORS_ORIGINS="http://localhost:5173,$WEB" \
+(cd "$BACKEND" && HOST=127.0.0.1 PORT="$API_PORT" PROXY_HOPS=1 CORS_ORIGINS="http://localhost:5173,$WEB" \
   exec caffeinate -i .venv/bin/python -m app.serve > "$LOGS/backend.log" 2>&1) & PIDS="$PIDS $!"
 
 OK=""
