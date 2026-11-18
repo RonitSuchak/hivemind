@@ -106,7 +106,7 @@ export default function ClassDots() {
       </motion.ul>
       {tip.node}
 
-      <Drawer open={!!student} onClose={() => setOpen(null)} title={student?.name ?? ''} subtitle={student ? t('class.sim', { age: student.age }) : ''}>
+      <Drawer open={!!student} onClose={() => setOpen(null)} title={student?.name ?? ''} subtitle={student ? t('class.sim') : ''}>
         {student && (
           <div className="lx-student">
             <div className="lx-student-radar"><Radar profile={student} compact staged label={`${student.name}: learning profile`} /></div>

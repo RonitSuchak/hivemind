@@ -11,13 +11,14 @@ const LONG = [['new', 'Under a month'], ['months', '1 to 6 months'], ['long', 'O
 const HELPS = [['yes', 'Yes'], ['unsure', 'Not sure'], ['no', 'No']]
 const MAX = 3
 const byId = new Map(TOOLS.map((t) => [t.id, t]))
+const aTool = (type) => `${/^[aeiou]/i.test(type) ? 'an' : 'a'} ${type} tool` // "an Instant answers tool"
 
 // One sentence per tool, only when there is something useful to say. `top` is the type that ranked first.
 function verdict(u, top) {
   const t = byId.get(u.id)
   if (!t || !top) return null
   const helper = helperKind(t)
-  const kind = helper ? `a study helper (${helper.name.toLowerCase()}): it does a job for you but does not teach on its own` : `a ${typeName(t.group)} tool`
+  const kind = helper ? `a study helper (${helper.name.toLowerCase()}): it does a job for you but does not teach on its own` : aTool(typeName(t.group))
   const best = `${typeName(top)} tools`
   if (u.long === 'long' && u.helps === 'no' && (helper || t.group !== top)) {
     return { tone: 'warn', text: `You have used ${t.name} for over 6 months and say it is not helping. It is ${kind}, and for students like you ${best} worked best in the lab, so that type may suit you better.` }
@@ -26,7 +27,7 @@ function verdict(u, top) {
     return { tone: 'info', text: `${t.name} is ${kind}. If it is not helping, try one of the ${best} above: they worked best for students like you in the lab.` }
   }
   if (!helper && t.group === top) {
-    return { tone: 'ok', text: `${t.name} is a ${typeName(top)} tool, the type that worked best for students like you.` }
+    return { tone: 'ok', text: `${t.name} is ${aTool(typeName(top))}, the type that worked best for students like you.` }
   }
   return null
 }

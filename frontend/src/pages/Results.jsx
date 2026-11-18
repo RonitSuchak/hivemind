@@ -273,7 +273,8 @@ function Settle({ value, play, delay }) {
 function SaveBar({ match }) {
   const { saved, saveMatch, forgetSaved } = useMatch()
   const [failed, setFailed] = useState(false)
-  const isSaved = !!saved && saved.match?.match_id === match.match_id
+  const isSaved = !!saved && !!match.match_id && saved.match?.match_id === match.match_id
+  const older = !!saved && !isSaved // an earlier result is saved: say so, and keep a way to delete it
   const when = isSaved ? day(saved.at) : '' // the site's date style, so Russian and Hindi translate the month
   return (
     <section className="rs-save glass" aria-labelledby="save-h">
@@ -283,11 +284,15 @@ function SaveBar({ match }) {
           ? 'They open again next time you visit on this browser. Nothing was sent anywhere, and Delete removes them for good.'
           : 'Save them in this browser so they are still here next time. Nothing is sent anywhere, and you can delete them at any time.'}{' '}
           <Link to="/privacy">How we handle your data</Link></p>
+        {older && <p>You also have older results saved on this device. Saving these replaces them.</p>}
         {failed && <p role="alert">This browser would not save them (a private window can block it).</p>}
       </div>
       {isSaved
         ? <button type="button" className="btn" onClick={forgetSaved}>Delete saved results</button>
-        : <button type="button" className="btn btn-primary" onClick={() => setFailed(!saveMatch(match))}>Save on this device</button>}
+        : <div className="rs-save-acts">
+            <button type="button" className="btn btn-primary" onClick={() => setFailed(!saveMatch(match))}>Save on this device</button>
+            {older && <button type="button" className="btn btn-quiet" onClick={forgetSaved}>Delete saved results</button>}
+          </div>}
     </section>
   )
 }

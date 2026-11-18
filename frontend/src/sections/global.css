@@ -113,3 +113,4 @@
 .rp-ex-list .rp-ex-name { color: var(--ink); font-weight: 600; }
 /* A note merged into the main text: normal size, the body's own colour */
 .lx-text { color: var(--ink-2); line-height: 1.55; margin: var(--s-3) 0 0; max-width: var(--measure); font-size: var(--text-base); }
+.rs-save-acts { display: flex; flex-wrap: wrap; gap: var(--s-2); }

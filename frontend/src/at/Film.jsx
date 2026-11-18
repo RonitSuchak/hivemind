@@ -379,7 +379,7 @@ export default function Film() {
           ctx.font = '600 13px "Figtree Variable", system-ui, sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'
           const w = ctx.measureText(tag).width + 18, ty = near.y - near.rad * 2.6 - 20
           ctx.fillStyle = light ? 'rgb(255 255 255 / 0.94)' : 'rgb(15 23 47 / 0.94)'
-          ctx.beginPath(); ctx.roundRect(near.x - w / 2, ty - 12, w, 24, 12); ctx.fill()
+          ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(near.x - w / 2, ty - 12, w, 24, 12); else ctx.rect(near.x - w / 2, ty - 12, w, 24); ctx.fill() // older Safari has no roundRect
           ctx.fillStyle = near.i === YOU ? 'rgb(244 81 30)' : `rgb(${ink})`
           ctx.fillText(tag, near.x, ty)
         }

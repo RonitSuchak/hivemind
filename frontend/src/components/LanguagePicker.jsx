@@ -48,7 +48,7 @@ export default function LanguagePicker() {
           aria-activedescendant={open && shown[active] ? optId(active) : undefined}
           placeholder={t('picker.placeholder')} value={query}
           onChange={(e) => { setQuery(e.target.value); setOpen(true); setActive(0) }}
-          onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} onKeyDown={onKey} />
+          onFocus={() => setOpen(true)} onClick={() => setOpen(true)} onBlur={() => setOpen(false)} onKeyDown={onKey} />
         {query && <button type="button" className="lg-clear" aria-label={t('picker.clear')} onMouseDown={(e) => e.preventDefault()} onClick={() => { setQuery(''); input.current?.focus() }}><Icon name="close" size={16} /></button>}
       </div>
       {open && (
