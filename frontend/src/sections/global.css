@@ -90,3 +90,8 @@
 .pv ul { padding-left: 1.2rem; display: grid; gap: var(--s-2); margin: 0 0 var(--s-3); }
 .pv strong { color: var(--ink); }
 .pv a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* EdTech tools: "What do you need help with?" buttons under the search */
+.tsr-needs { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-3); }
+.tsr-needs .sg-kind { background: var(--bg); }
+.tsr-needs .sg-kind[data-on] { background: var(--ink); color: var(--bg); }

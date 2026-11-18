@@ -11,7 +11,7 @@ import Icon from '../components/Icon.jsx'
 import ToolPreview from '../components/ToolPreview.jsx'
 import ToolPanel from '../components/ToolPanel.jsx'
 import { Reveal, RevealGroup } from '../components/Reveal.jsx'
-import { TOOLS as LOCAL_TOOLS, GROUPS, HELPER_KINDS, HELPER_RULE, REAL_TOOLS_NOTE, TEACHES_RULE, fromBackend, helperKind, teaches } from '../data/tools.js'
+import { TOOLS as LOCAL_TOOLS, GROUPS, HELPER_KINDS, HELPER_RULE, REAL_TOOLS_NOTE, TEACHES_RULE, NEEDS, fitsNeed, fromBackend, helperKind, teaches } from '../data/tools.js'
 import { SHOTS } from '../data/shots.js'
 import { useTilt } from '../tilt.js'
 import ToolsFilm from '../at/ToolsFilm.jsx'
@@ -82,6 +82,7 @@ function ToolCard({ tool, number, onOpen }) {
 export default function Tools() {
   usePageTitle('EdTech tools')
   const [query, setQuery] = useState('')
+  const [need, setNeed] = useState(null) // one "What do you need help with?" button at a time (NEEDS in data/tools.js)
   const searchRef = useRef(null)
   const pageRef = useRef(null)
   useTilt(pageRef)
@@ -124,9 +125,10 @@ export default function Tools() {
   const check = useLoad(getCheck, [])
   const minutes = check.status === 'ok' ? check.data?.minutes : null
 
-  const searching = query.trim() !== ''
-  const found = useMemo(() => (searching ? searchAll(query, ALL) : []), [searching, query, ALL])
-  const clearSearch = () => { setQuery(''); searchRef.current?.focus() }
+  const searching = query.trim() !== '' || !!need
+  const found = useMemo(() => (searching ? searchAll(query, need ? ALL.filter(fitsNeed(need)) : ALL) : []), [searching, query, need, ALL])
+  const clearSearch = () => { setQuery(''); setNeed(null); searchRef.current?.focus() }
+  const needName = NEEDS.find((n) => n.id === need)?.label
 
   return (
     <article className="tl-page tg" ref={pageRef}>
@@ -146,7 +148,13 @@ export default function Tools() {
             onKeyDown={(e) => { if (e.key === 'Escape' && query) { e.preventDefault(); setQuery('') } }} />
           {searching && <button type="button" className="tsr-clear" onClick={clearSearch} aria-label="Clear search"><Icon name="close" size={18} /></button>}
         </div>
-        <p className="tsr-count" role="status">{searching ? (found.length ? `${found.length} of ${ALL.length} tools match` : 'No tools match') : `${ALL.length} tools`}</p>
+        <div className="tsr-needs" role="group" aria-label="What do you need help with?">
+          {NEEDS.map((n) => (
+            <button key={n.id} type="button" className="sg-kind" data-on={need === n.id ? '' : undefined} aria-pressed={need === n.id}
+              onClick={() => setNeed((x) => (x === n.id ? null : n.id))}>{n.label}</button>
+          ))}
+        </div>
+        <p className="tsr-count" role="status">{searching ? (found.length ? `${found.length} of ${ALL.length} tools${needName ? ` for ${needName.toLowerCase()}` : ''}` : 'No tools match') : `${ALL.length} tools`}</p>
       </div>
 
       {/* One moving strip of previews that never stops. Hover one and it leans toward you; a click opens its
@@ -170,7 +178,7 @@ export default function Tools() {
           </ol>
         ) : (
           <div className="tsr-empty">
-            <p>No tools match &ldquo;{query.trim()}&rdquo;.</p>
+            <p>No tools match{query.trim() ? <> &ldquo;{query.trim()}&rdquo;</> : ''}{needName ? ` for ${needName.toLowerCase()}` : ''}.</p>
             <button type="button" className="btn btn-small" onClick={clearSearch}>Clear search</button>
           </div>
         )

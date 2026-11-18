@@ -405,3 +405,20 @@ export function mostEffective(gains = {}, { n = 3, fits = fitsMaths, tie = 0.05 
   for (let k = 0; items.length < n && lists.some((l) => l[k]); k++) for (const l of lists) if (l[k] && items.length < n) items.push({ tool: l[k] })
   return { known: true, none: false, groups, gain: top, items }
 }
+
+// "What do you need help with?" on the EdTech tools page. Each need picks tools by their kind (the lab's own
+// words for what a tool is), so a tool can fit more than one need. This sorts nothing and scores nothing.
+export const NEEDS = [
+  { id: 'memorise', label: 'Memorise words', re: /flashcard|spaced repetition|vocabulary|language practice|quiz games/i },
+  { id: 'language', label: 'Learn a language', re: /language/i },
+  { id: 'maths', label: 'Practise maths', re: /math|times tables/i },
+  { id: 'homework', label: 'Homework help', re: /homework|solver|answer|chatbot|learning assistant|ai search|problems/i },
+  { id: 'revise', label: 'Revise for exams', re: /revision|past papers|quiz|practice questions|notes/i },
+  { id: 'code', label: 'Learn to code', re: /coding|computer science/i },
+  { id: 'science', label: 'Science', re: /science|physics/i },
+  { id: 'reading', label: 'Reading and writing', re: /reading|writing/i },
+]
+export const fitsNeed = (id) => {
+  const need = NEEDS.find((n) => n.id === id)
+  return need ? (t) => need.re.test(t?.kind || '') : () => true
+}
