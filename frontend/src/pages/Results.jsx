@@ -15,7 +15,7 @@ import ScoreBars from '../components/ScoreBars.jsx'
 import Icon from '../components/Icon.jsx'
 import ToolsDrawer from '../components/ToolsDrawer.jsx'
 import BestTools, { bestNote, bestTitle, pickSites } from '../components/BestTools.jsx'
-import { plainWords, typeName } from '../labels.js'
+import { day, plainWords, typeName } from '../labels.js'
 import { fitsSubject, fromBackend, teaches, toolsLike } from '../data/tools.js'
 import '../styles/advisor.css'
 import '../styles/lab.css'
@@ -274,7 +274,7 @@ function SaveBar({ match }) {
   const { saved, saveMatch, forgetSaved } = useMatch()
   const [failed, setFailed] = useState(false)
   const isSaved = !!saved && saved.match?.match_id === match.match_id
-  const when = isSaved ? new Date(saved.at).toLocaleDateString(undefined, { day: 'numeric', month: 'long' }) : ''
+  const when = isSaved ? day(saved.at) : '' // the site's date style, so Russian and Hindi translate the month
   return (
     <section className="rs-save glass" aria-labelledby="save-h">
       <div>
