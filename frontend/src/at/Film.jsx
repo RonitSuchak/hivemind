@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import { useT } from '../i18n/index.js'
+import { getStudents } from '../api.js'
+import { useLoad } from '../hooks.js'
 import { glideTo, state, stopScroll, subscribe } from './state.js'
 
 // The home "film": a tall section whose scroll position is the playhead. Scroll down plays it, scroll up
@@ -167,7 +169,10 @@ export default function Film() {
   // words drawn on the canvas, kept in a ref so they follow the site language
   const labels = useRef({})
   // only the two scores a tool type has; safety is for specific EdTech tools, so it is never named over the class
-  labels.current = { klass: t('class.list'), you: t('film.you'), scores: [t('checks.easy.title'), t('checks.learn.title')] }
+  // Dot i of the class is the lab's student i (class order), so hovering a dot can name that simulated student.
+  const roster = useLoad(getStudents, [])
+  const names = roster.status === 'ok' && Array.isArray(roster.data) ? roster.data.map((x) => x.name) : []
+  labels.current = { klass: t('class.list'), you: t('film.you'), scores: [t('checks.easy.title'), t('checks.learn.title')], names, student: (name) => t('class.student', { name }) }
   const reduced = useMemo(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches, [])
 
   const how = [1, 2, 3], checks = ['easy', 'learn', 'safe'] // cards 5, 6, 7: the two tool-type scores, then safety
@@ -328,6 +333,7 @@ export default function Film() {
         })
         ctx.globalCompositeOperation = light ? 'source-over' : 'lighter'
       }
+      const dots = []
       for (let i = 0; i < 30; i++) {
         const pp = p - i * 0.006                                // tiny stagger so they peel off one by one
         const h1 = hash(i + 100), h2 = hash(i + 200)
@@ -335,19 +341,48 @@ export default function Film() {
         const y0 = (h1 - 0.5) * H * 0.8 - Math.sin(lift * 0.004 + i) * 40
         let [x, y, sc] = project(Math.sin(a) * r, y0, -R + Math.cos(a) * r)
         let alpha = 0.35 + 0.3 * (1 + Math.cos(a)), rad = 2.6 * sc
-        const grid = [fx + ((i % 10) - 4.5) * g, fy + (Math.floor(i / 10) - 1) * g * 1.25]
+        // "You" sits in the middle of the grid (slot 15: middle row, column 6) and swaps places with that slot's dot.
+        // Only the grid slot changes: dot YOU still lands in the mark's orange cell at the end (LOGO_POINTS[YOU]).
+        const slot = i === YOU ? 15 : i === 15 ? YOU : i
+        const grid = [fx + ((slot % 10) - 4.5) * g, fy + (Math.floor(slot / 10) - 1) * g * 1.25]
         const logo = [fx + LOGO_POINTS[i][0] * u, fy + LOGO_POINTS[i][1] * u]
         const wGrid = smooth(3.15, 3.75, pp), wLogo = smooth(7.1, 7.75, pp) // all land before the chapter's rest point, stagger included
         x = mix(x, grid[0], wGrid); y = mix(y, grid[1], wGrid)
         x = mix(x, logo[0], wLogo); y = mix(y, logo[1], wLogo)
         rad = mix(rad, 4.2, wGrid); alpha = mix(alpha, 1, wGrid)
-        const dx = x - mx, dy = y - my, dd = Math.hypot(dx, dy)
-        if (dd < 90 && dd > 0.01) { const push = (1 - dd / 90) * 22; x += (dx / dd) * push; y += (dy / dd) * push }
-        const you = i === YOU
+        dots.push({ i, x, y, alpha, rad, wGrid: wGrid * (1 - wLogo) })
+      }
+      // Hover, while the class sits in its grid: the dot under the pointer grows, gets a ring and says who it is.
+      let near = null, best = 40
+      for (const d of dots) {
+        if (d.wGrid < 0.95) continue
+        const dd = Math.hypot(d.x - mx, d.y - my)
+        if (dd < best) { best = dd; near = d }
+      }
+      for (const d of dots) {
+        const { i, x, y, alpha } = d
+        const you = i === YOU, hot = d === near
+        const rad = d.rad * (you ? 1.15 : 1) * (hot ? 1.3 : 1)
         ctx.fillStyle = you ? `rgb(244 81 30 / ${alpha.toFixed(3)})` : `rgb(${ink} / ${alpha.toFixed(3)})`
-        ctx.beginPath(); ctx.arc(x, y, you ? rad * 1.15 : rad, 0, TAU); ctx.fill()
+        ctx.beginPath(); ctx.arc(x, y, rad, 0, TAU); ctx.fill()
         ctx.fillStyle = you ? 'rgb(244 81 30 / 0.18)' : `rgb(${ink} / 0.10)`
-        ctx.beginPath(); ctx.arc(x, y, rad * 2.6, 0, TAU); ctx.fill()
+        ctx.beginPath(); ctx.arc(x, y, d.rad * 2.6, 0, TAU); ctx.fill()
+        if (hot) {
+          ctx.strokeStyle = you ? 'rgb(244 81 30 / 0.9)' : `rgb(${ink} / 0.55)`; ctx.lineWidth = 1.5
+          ctx.beginPath(); ctx.arc(x, y, d.rad * 2.6 + 3, 0, TAU); ctx.stroke()
+        }
+      }
+      if (near) {
+        const tag = near.i === YOU ? lab.you : lab.names[near.i] ? lab.student(lab.names[near.i]) : ''
+        if (tag) {
+          ctx.globalCompositeOperation = 'source-over'
+          ctx.font = '600 13px "Figtree Variable", system-ui, sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'
+          const w = ctx.measureText(tag).width + 18, ty = near.y - near.rad * 2.6 - 20
+          ctx.fillStyle = light ? 'rgb(255 255 255 / 0.94)' : 'rgb(15 23 47 / 0.94)'
+          ctx.beginPath(); ctx.roundRect(near.x - w / 2, ty - 12, w, 24, 12); ctx.fill()
+          ctx.fillStyle = near.i === YOU ? 'rgb(244 81 30)' : `rgb(${ink})`
+          ctx.fillText(tag, near.x, ty)
+        }
       }
       ctx.globalCompositeOperation = 'source-over'
       // Captions, so nobody has to guess what the dots are.
@@ -469,7 +504,6 @@ export default function Film() {
             {tag(4)}
             <Title text={t('class.title')} />
             <p className="film-text">{t('class.lede')}</p>
-            <p className="muted small">{t('class.note')}</p>
           </article>
           {checks.map((k, j) => (
             <article className="film-card glass" key={k} ref={set(5 + j)}>

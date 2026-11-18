@@ -50,3 +50,43 @@
   :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { font-size: 0.8125rem; padding-inline: 0.3rem; }
 }
 @media (max-width: 22.5rem) { :root:not([lang="ru"]):not([lang="hi"]) .site-nav a { font-size: 0.75rem; padding-inline: 0.2rem; } } /* 320px phones */
+
+/* ---------- Results: one lede instead of notes, "tools you use now", save on this device ---------- */
+.rs .rs-lede { max-width: var(--measure); color: var(--ink-2); line-height: 1.55; margin: 0; }
+.lx-best-lede { color: var(--ink-2); line-height: 1.5; margin: 0 0 var(--s-3); max-width: var(--measure); }
+.rs-save, .yu { display: grid; gap: var(--s-4); padding: clamp(var(--s-4), 3vw, var(--s-6)); margin-top: var(--s-8); }
+.rs-save { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.rs-save p { color: var(--ink-2); line-height: 1.55; margin: var(--s-2) 0 0; max-width: var(--measure); }
+.rs-save p a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 34rem) { .rs-save { grid-template-columns: 1fr; } }
+.yu-lede { color: var(--ink-2); line-height: 1.55; margin: 0; max-width: var(--measure); }
+.yu-search { position: relative; max-width: 28rem; }
+.yu-input { width: 100%; min-height: 2.75rem; padding: 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-md); background: transparent; color: var(--ink); font: inherit; }
+.yu-input:focus-visible { outline: 2px solid var(--pop); outline-offset: 1px; border-color: transparent; }
+.yu-found { list-style: none; margin: var(--s-2) 0 0; padding: 0; display: grid; gap: 2px; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+.yu-pick { display: flex; justify-content: space-between; gap: var(--s-3); width: 100%; padding: var(--s-2) var(--s-3); background: var(--bg); color: var(--ink); border: 0; font: inherit; text-align: left; cursor: pointer; }
+.yu-pick span { color: var(--ink-3); font-size: var(--text-sm); }
+.yu-pick:hover, .yu-pick:focus-visible { background: color-mix(in srgb, var(--ink) 6%, var(--bg)); outline: none; }
+.yu-none { color: var(--ink-3); font-size: var(--text-sm); margin: var(--s-2) 0 0; }
+.yu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+.yu-item { display: grid; gap: var(--s-3); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.yu-item-top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
+.yu-q { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); border: 0; padding: 0; margin: 0; }
+.yu-q legend { float: left; margin-right: var(--s-2); color: var(--ink-2); font-size: var(--text-sm); }
+.yu-verdict { display: flex; gap: var(--s-2); align-items: flex-start; margin: 0; line-height: 1.5; color: var(--ink); max-width: var(--measure); }
+.yu-verdict svg { flex: none; margin-top: 0.2rem; }
+.yu-verdict[data-tone="ok"] svg { color: var(--ok); }
+.yu-verdict[data-tone="warn"] svg { color: var(--warn-ink, var(--pop)); }
+
+/* Student drawer: failed checks (real-tool pilot only) */
+.lx-fails { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: var(--s-3); }
+
+/* ---------- Privacy page ---------- */
+.pv { max-width: 44rem; display: grid; gap: var(--s-6); padding-block: var(--s-8); }
+.pv h1 { font-family: var(--font-display); font-size: var(--text-3xl); line-height: 1.06; letter-spacing: var(--track-display); font-weight: 500; margin: 0; }
+.pv h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; margin: 0 0 var(--s-3); }
+.pv-lede { font-size: var(--text-lg); color: var(--ink-2); line-height: 1.5; margin: 0; }
+.pv section p, .pv li { color: var(--ink-2); line-height: 1.6; }
+.pv ul { padding-left: 1.2rem; display: grid; gap: var(--s-2); margin: 0 0 var(--s-3); }
+.pv strong { color: var(--ink); }
+.pv a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }

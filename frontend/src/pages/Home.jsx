@@ -103,9 +103,9 @@ function TheClass() {
   return (
     <section className="home-section klass" aria-labelledby="class-h">
       <Reveal className="klass-text">
-        <h2 id="class-h" className="section-title">{t('class.title')}</h2>
-        <p className="section-lede">{t('class.lede')}</p>
-      </Reveal>{/* "simulated, not real children" is already said on the film's class card and in the footer */}
+        <h2 id="class-h" className="section-title">{t('class.meet')}</h2>
+        <p className="section-lede">{t('class.hint')}</p>
+      </Reveal>{/* the film's class card above already says what the class is, so this only invites a click */}
       <Reveal className="klass-panel glass" blur={false}>
         <ClassDots />
       </Reveal>
@@ -113,12 +113,11 @@ function TheClass() {
   )
 }
 
-// Who it is for: the three users the challenge brief names, each with one door into the evidence.
-// (Learners have the hero's "Take the check".) Two clicks from here reach a report, the ratings and the method.
+// Who it is for: students first (the check), then schools (the ratings and the method) and tool makers (a report).
 const WHO = [
+  { k: 'student', icon: 'target', to: '/check' },
+  { k: 'school', icon: 'users', to: '/lab/ratings', more: '/about#method' },
   { k: 'maker', icon: 'chart', to: '/lab/report' },
-  { k: 'school', icon: 'users', to: '/lab/ratings' },
-  { k: 'judge', icon: 'shield', to: '/lab', more: '/about#method' },
 ]
 function Who() {
   const t = useT()

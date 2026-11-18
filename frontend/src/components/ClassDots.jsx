@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { getStudents } from '../api.js'
+
+const PUSH_AWAY = false
 import { useLoad } from '../hooks.js'
 import { studentTags, tagLabel, tagNote } from '../labels.js'
 import { revealTokens, spring, tokenS, useReduced } from '../motion.js'
@@ -40,7 +42,8 @@ export default function ClassDots() {
 
   useEffect(() => {
     const root = board.current
-    if (!root || reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    // The seats no longer move away from the pointer (Kien, 18 Nov): the hover name and the click are enough.
+    if (PUSH_AWAY === false || !root || reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
     const items = [...root.querySelectorAll('.seat')].map((el) => ({ el, x: 0, y: 0, vx: 0, vy: 0 }))
     let mx = -9999, my = -9999, frame = 0
     const step = () => {
@@ -101,7 +104,6 @@ export default function ClassDots() {
           )
         })}
       </motion.ul>
-      {students.length > 0 && <p className="seats-hint"><Icon name="pointer" size={15} /> {t('class.hint')}</p>}
       {tip.node}
 
       <Drawer open={!!student} onClose={() => setOpen(null)} title={student?.name ?? ''} subtitle={student ? t('class.sim', { age: student.age }) : ''}>
