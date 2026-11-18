@@ -1,6 +1,6 @@
 # How to run the real-tools pilot
 
-**What it is:** up to 8 simulated students, each taught by 6 real EdTech tools: 48 short lessons (the first 18, with 3 students, were done on 17 Nov; 30 more were added on 18 Nov). A person copies each student message into the real tool and pastes the tool's reply back. Everything else is the normal Hivemind lab (the same student voice, labeller, brain, safety judge and scores), so the results sit in `GET /api/pilot` (docs/BACKEND.md 5.20).
+**What it is:** 8 simulated students, each taught by 6 real EdTech tools: 48 short lessons (the first 18, with 3 students, on 17 Nov; 30 more on 18 Nov). A person copies each student message into the real tool and pastes the tool's reply back. Everything else is the normal Hivemind lab (the same student voice, labeller, brain, safety judge and scores), so the results sit in `GET /api/pilot` (docs/BACKEND.md 5.20).
 
 **Why by hand:** most real EdTech tools have no free API, and making a robot drive their websites breaks their terms of use (and runs into CAPTCHAs). Copy and paste by a person is allowed and honest. We say so on screen: `method: "hand-relayed"`.
 
@@ -76,6 +76,6 @@ Files saved with other learning numbers (`model_version`) are ignored, so everyo
 ```bash
 curl -s http://localhost:8000/api/pilot | python3 -m json.tool | less
 ```
-**Done 17 Nov: the first 18 lessons relayed.** **To do from 18 Nov: 30 more** (`--list` shows which). (normal ChatGPT in a temporary, Unpersonalized chat, so no memory or custom instructions). Results are in `GET /api/pilot` and `backend/data/export/pilot.json`.
+**Done: all 48 lessons relayed** (the first 18 on 17 Nov, the other 30 on 18 Nov). ChatGPT and study mode in a temporary, Unpersonalized chat; Gemini and Guided Learning in a temporary chat; Copilot is the school Copilot Chat; Perplexity in default Search mode. Each lesson was a new chat. (normal ChatGPT in a temporary, Unpersonalized chat, so no memory or custom instructions). Results are in `GET /api/pilot` and `backend/data/export/pilot.json`.
 
 A tool shows scores once its first 3 lessons (Isaac, Wen, Hana) are done; every later lesson is added to its scores when it's saved. Each tool reply is saved twice: tidied in the transcript (Markdown and maths notation such as `\frac{1}{3}` become plain `1/3`, so the labeller and the sum checker can read it) and exactly as pasted in `relay_raw`, for checking.
