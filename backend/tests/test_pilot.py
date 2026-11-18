@@ -54,6 +54,31 @@ class CleanReplyTests(unittest.TestCase):
         text = clean_reply("## Step 1\n**Add** \\(\\frac{1}{3} + \\dfrac{1}{6}\\) = $\\frac{1}{2}$ \\times 1 <b>ok</b>")
         self.assertEqual(text, "Step 1\nAdd 1/3 + 1/6 = 1/2 × 1 ok")
 
+    def test_copied_maths_leaves_no_code(self):
+        # Real replies from the 18 Nov pilot (ChatGPT, Copilot, Perplexity): an extra backslash before \[,
+        # \boxed, \frac46 shorthand, \text inside \frac, \ne, \ldots, a source link and a Markdown line break.
+        cases = {
+            "So the answer is:\n\n\\\\[ \\boxed{\\frac{2}{3}=\\frac{4}{6}} \\\\]": "So the answer is:\n\n2/3=4/6",
+            "That's \\\\(\\frac{2}{3}\\\\) of the pizza.": "That's 2/3 of the pizza.",
+            "2×2/3×2=\\frac46": "2×2/3×2=4/6",
+            "\\[\\frac{2\\text{ pounds}}{3\\text{ pounds}}\\]": "2 pounds/3 pounds",
+            "2/3 \\ne 2/6 and 2/3\\neq2/6": "2/3 ≠ 2/6 and 2/3≠2/6",
+            "4 ÷ 6 = 0.666\\ldots": "4 ÷ 6 = 0.666…",
+            "3/8+2/8=\\ ?": "3/8+2/8= ?",
+            "ask the school. [iow.gov](https://www.iow.gov.uk/schools/unwell/)": "ask the school. iow.gov",
+            "Kind regards,\\\n[Parent's name]": "Kind regards,\n[Parent's name]",
+        }
+        for raw, plain in cases.items():
+            with self.subTest(raw=raw):
+                self.assertEqual(clean_reply(raw), plain)
+
+    def test_saved_pilot_replies_are_plain_text(self):
+        # Every reply relayed so far must clean to text with no maths code left in it.
+        for path in sorted((config.DATA_DIR / "pilot").glob("*/*.json")):
+            for raw in json.loads(path.read_text())["relay_raw"]:
+                with self.subTest(lesson=f"{path.parent.name}/{path.stem}"):
+                    self.assertNotRegex(clean_reply(raw), r"\\|\{|\}|\]\(")
+
     def test_empty_and_huge_replies_are_refused(self):
         with self.assertRaises(ReplyError):
             clean_reply("  \n ")

@@ -70,7 +70,7 @@
   {
    "turn": 3,
    "from": "tutor",
-   "text": "🎉 Yes! 4/6 is absolutely correct! You multiplied both the top and bottom by 2. Brilliant! 🌟\n\nNow let's try your next question:\n\n2/9+4/9=\\ ?\n\nStep 1: Look at the bottom numbers.\n\nBoth fractions have 9 on the bottom!\n\nWhen adding fractions with the same denominator, we keep the bottom number the same and add the top numbers.\n\nSo here's your question:\n\nWhat is 2 + 4? 😊",
+   "text": "🎉 Yes! 4/6 is absolutely correct! You multiplied both the top and bottom by 2. Brilliant! 🌟\n\nNow let's try your next question:\n\n2/9+4/9= ?\n\nStep 1: Look at the bottom numbers.\n\nBoth fractions have 9 on the bottom!\n\nWhen adding fractions with the same denominator, we keep the bottom number the same and add the top numbers.\n\nSo here's your question:\n\nWhat is 2 + 4? 😊",
    "move": "gave_answer",
    "reading_age": 8.9
   },

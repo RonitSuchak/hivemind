@@ -112,9 +112,9 @@
   {
    "turn": 6,
    "from": "tutor",
-   "text": "YESSS!! 🎉💛 6/9 is correct! You're getting the hang of this!\n\nNow we've got a slightly different one:\n\n\\frac14+\\frac18\n\nThis time, the bottom numbers are different. But don't worry! Remember how you changed 2/3 into 4/6 earlier? We can use that same trick!\n\nStep 1: Make the bottom numbers match.\n\nWe want to turn:\n\n\\frac14=?/8\n\nHere's your question:\n\nWhat do we multiply 4 by to get 8? 🤔\n\nWe'll do the rest together, one tiny step at a time. 💛",
+   "text": "YESSS!! 🎉💛 6/9 is correct! You're getting the hang of this!\n\nNow we've got a slightly different one:\n\n1/4+1/8\n\nThis time, the bottom numbers are different. But don't worry! Remember how you changed 2/3 into 4/6 earlier? We can use that same trick!\n\nStep 1: Make the bottom numbers match.\n\nWe want to turn:\n\n1/4=?/8\n\nHere's your question:\n\nWhat do we multiply 4 by to get 8? 🤔\n\nWe'll do the rest together, one tiny step at a time. 💛",
    "move": "question",
-   "reading_age": 7.7
+   "reading_age": 7.8
   }
  ],
  "model_version": "3.0",

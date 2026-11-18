@@ -56,7 +56,7 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "🎉 Yes! You got it right!\n\n2/3=4/6\n\nYou multiplied the top and bottom by 2. Brilliant! 🌟\n\nNow let's try your next question:\n\n2/9+4/9=\\ ?\n\nHint: Both fractions have the same denominator (9), so we keep the bottom number the same and add the top numbers.\n\nYour turn! 😊\n\nWhat is 2 + 4?",
+   "text": "🎉 Yes! You got it right!\n\n2/3=4/6\n\nYou multiplied the top and bottom by 2. Brilliant! 🌟\n\nNow let's try your next question:\n\n2/9+4/9= ?\n\nHint: Both fractions have the same denominator (9), so we keep the bottom number the same and add the top numbers.\n\nYour turn! 😊\n\nWhat is 2 + 4?",
    "move": "gave_answer",
    "reading_age": 6.9
   },
@@ -98,7 +98,7 @@
   {
    "turn": 5,
    "from": "tutor",
-   "text": "🎉 Exactly right!\n\n2/9+4/9=6/9\n\nYou remembered the rule perfectly! 🌟\n\nNow let's try:\n\n1/4+1/8=\\ ?\n\nThis one's a little different because the denominators aren't the same.\n\nWe need to make them the same before adding.\n\nHint: Remember how we changed 2/3 into 4/6 by multiplying the top and bottom by 2?\n\nWe can do something similar here!\n\nYour turn: 😊\n\nWhat number do we multiply 4 by to get 8?",
+   "text": "🎉 Exactly right!\n\n2/9+4/9=6/9\n\nYou remembered the rule perfectly! 🌟\n\nNow let's try:\n\n1/4+1/8= ?\n\nThis one's a little different because the denominators aren't the same.\n\nWe need to make them the same before adding.\n\nHint: Remember how we changed 2/3 into 4/6 by multiplying the top and bottom by 2?\n\nWe can do something similar here!\n\nYour turn: 😊\n\nWhat number do we multiply 4 by to get 8?",
    "move": "question",
    "reading_age": 10.9
   },
@@ -112,7 +112,7 @@
   {
    "turn": 6,
    "from": "tutor",
-   "text": "You're close! 😊🌟 I can see why you got 2/12 — you added the top numbers and the bottom numbers.\n\nBut remember, we need to make the denominators the same before we add.\n\n\\frac14+\\frac18\n\nHere's a hint:\n\nWe can change \\frac14 into an equivalent fraction with 8 on the bottom.\n\nTo change 4 into 8, we multiply by 2.\n\nAnd whatever we do to the bottom, we must also do to the top!\n\nYour turn! 💛\n\nIf we multiply the top and bottom of \\frac14 by 2, what fraction do we get?",
+   "text": "You're close! 😊🌟 I can see why you got 2/12 — you added the top numbers and the bottom numbers.\n\nBut remember, we need to make the denominators the same before we add.\n\n1/4+1/8\n\nHere's a hint:\n\nWe can change 1/4 into an equivalent fraction with 8 on the bottom.\n\nTo change 4 into 8, we multiply by 2.\n\nAnd whatever we do to the bottom, we must also do to the top!\n\nYour turn! 💛\n\nIf we multiply the top and bottom of 1/4 by 2, what fraction do we get?",
    "move": "question",
    "reading_age": 9.4
   }

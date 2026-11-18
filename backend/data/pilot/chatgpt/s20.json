@@ -42,9 +42,9 @@
   {
    "turn": 1,
    "from": "tutor",
-   "text": "Of course! 😊\n\nWe have:\n\n\\ 2/3=?/6 \\\n\nStep 1: Look at the denominators (bottom numbers).\n\n3 × 2 = 6\n\nStep 2: Multiply the numerator (top number) by the same number.\n\n2 × 2 = 4\n\nSo the answer is:\n\n\\ \\boxed{2/3=4/6} \\\n\n🎉 The missing number is 4!",
+   "text": "Of course! 😊\n\nWe have:\n\n2/3=?/6\n\nStep 1: Look at the denominators (bottom numbers).\n\n3 × 2 = 6\n\nStep 2: Multiply the numerator (top number) by the same number.\n\n2 × 2 = 4\n\nSo the answer is:\n\n2/3=4/6\n\n🎉 The missing number is 4!",
    "move": "gave_answer",
-   "reading_age": 10.2
+   "reading_age": 10.0
   },
   {
    "turn": 1,
@@ -56,7 +56,7 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "That's a really good question! 😊\n\nThe reason we multiply the top number too is because we want the fraction to stay the same size, even though the numbers change.\n\nImagine you have a pizza. 🍕\n\n2/3 of a pizza\n\n2 out of 3 slices\n\n4/6 of a pizza\n\n4 out of 6 slices\n\nIn the first pizza, you have 2 big slices out of 3.\n\nNow imagine cutting every slice in half.\n\n- The 3 slices become 6 smaller slices.\n- The 2 slices you had become 4 smaller slices.\n\nYou haven't gained or lost any pizza! You just cut it into smaller pieces.\n\nThat's why:\n\n\\ 2/3=2×2/3×2=4/6 \\\n\nThe important rule: Whatever you multiply the bottom by, you must multiply the top by too, so the fraction keeps the same value.\n\nHere's a little question to check your understanding:\n\nIf you have \\1/2=?/4\\, what number do you think goes on top? 😊",
+   "text": "That's a really good question! 😊\n\nThe reason we multiply the top number too is because we want the fraction to stay the same size, even though the numbers change.\n\nImagine you have a pizza. 🍕\n\n2/3 of a pizza\n\n2 out of 3 slices\n\n4/6 of a pizza\n\n4 out of 6 slices\n\nIn the first pizza, you have 2 big slices out of 3.\n\nNow imagine cutting every slice in half.\n\n- The 3 slices become 6 smaller slices.\n- The 2 slices you had become 4 smaller slices.\n\nYou haven't gained or lost any pizza! You just cut it into smaller pieces.\n\nThat's why:\n\n2/3=2×2/3×2=4/6\n\nThe important rule: Whatever you multiply the bottom by, you must multiply the top by too, so the fraction keeps the same value.\n\nHere's a little question to check your understanding:\n\nIf you have 1/2=?/4, what number do you think goes on top? 😊",
    "move": "gave_answer",
    "reading_age": 10.6
   },
@@ -98,9 +98,9 @@
   {
    "turn": 5,
    "from": "tutor",
-   "text": "Exactly right! 🎉 You've understood the equivalent fractions question!\n\nNow let's try:\n\n2/9+4/9\n\nStep 1: Look at the bottom numbers.\n\nThey're both 9, so the denominator stays the same.\n\nStep 2: Add the top numbers.\n\n2 + 4 = 6\n\nStep 3: Put your answer together.\n\n\\boxed{2/9+4/9=6/9}\n\nWell done! 🌟\n\nRemember: When adding fractions with the same denominator, you add the top numbers but keep the bottom number the same.\n\nAnd here's a little challenge for you:\n\n3/8+2/8=\\ ?\n\nWhat do you think the answer is? 😊",
+   "text": "Exactly right! 🎉 You've understood the equivalent fractions question!\n\nNow let's try:\n\n2/9+4/9\n\nStep 1: Look at the bottom numbers.\n\nThey're both 9, so the denominator stays the same.\n\nStep 2: Add the top numbers.\n\n2 + 4 = 6\n\nStep 3: Put your answer together.\n\n2/9+4/9=6/9\n\nWell done! 🌟\n\nRemember: When adding fractions with the same denominator, you add the top numbers but keep the bottom number the same.\n\nAnd here's a little challenge for you:\n\n3/8+2/8= ?\n\nWhat do you think the answer is? 😊",
    "move": "gave_answer",
-   "reading_age": 9.8
+   "reading_age": 9.6
   },
   {
    "turn": 5,
@@ -112,9 +112,9 @@
   {
    "turn": 6,
    "from": "tutor",
-   "text": "That's okay! 😊 Let's try looking at it a different way.\n\nThe bottom number tells you how many equal pieces make one whole.\n\nImagine you have a chocolate bar divided into 9 equal pieces. 🍫\n\nYou eat 2 pieces, and your friend eats 4 pieces.\n\nYour 2 pieces:\n\nYour friend's 4 pieces:\n\nTogether, that's 6 pieces:\n\nYou and your friend have 6 pieces altogether.\n\nBut each piece is still one ninth of a chocolate bar. The pieces haven't changed size!\n\nThat's why:\n\n2/9+4/9=\\boxed{6/9}\n\nThe top number changes because you're counting how many pieces you have altogether.\n\nThe bottom number stays 9 because it tells you the size of each piece.\n\nThink of it like this: 2 apples + 4 apples = 6 apples, not 6 of something different.\n\nNow I have one question for you:\n\nIf you have 3 ninths of a chocolate bar and I give you 2 more ninths, are the pieces still ninths, or have they changed into eighteenths? 😊",
+   "text": "That's okay! 😊 Let's try looking at it a different way.\n\nThe bottom number tells you how many equal pieces make one whole.\n\nImagine you have a chocolate bar divided into 9 equal pieces. 🍫\n\nYou eat 2 pieces, and your friend eats 4 pieces.\n\nYour 2 pieces:\n\nYour friend's 4 pieces:\n\nTogether, that's 6 pieces:\n\nYou and your friend have 6 pieces altogether.\n\nBut each piece is still one ninth of a chocolate bar. The pieces haven't changed size!\n\nThat's why:\n\n2/9+4/9=6/9\n\nThe top number changes because you're counting how many pieces you have altogether.\n\nThe bottom number stays 9 because it tells you the size of each piece.\n\nThink of it like this: 2 apples + 4 apples = 6 apples, not 6 of something different.\n\nNow I have one question for you:\n\nIf you have 3 ninths of a chocolate bar and I give you 2 more ninths, are the pieces still ninths, or have they changed into eighteenths? 😊",
    "move": "gave_answer",
-   "reading_age": 11.0
+   "reading_age": 10.9
   }
  ],
  "model_version": "3.0",

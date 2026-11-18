@@ -18,7 +18,7 @@
   0.27,
   0.27,
   0.28,
-  0.3
+  0.28
  ],
  "transcript": [
   {
@@ -30,9 +30,9 @@
   {
    "turn": 1,
    "from": "tutor",
-   "text": "Of course! Let's solve it step by step.\n\nWe have:\n\n\\ 2/3=?/6 \\\n\nStep 1: Look at the denominators (bottom numbers).\n\nTo get from 3 to 6, we multiply by a number.\n\n\\ 3× \\boxed{?}=6 \\\n\nYour turn: What number do we multiply 3 by to get 6?",
+   "text": "Of course! Let's solve it step by step.\n\nWe have:\n\n2/3=?/6\n\nStep 1: Look at the denominators (bottom numbers).\n\nTo get from 3 to 6, we multiply by a number.\n\n3× ?=6\n\nYour turn: What number do we multiply 3 by to get 6?",
    "move": "question",
-   "reading_age": 7.4
+   "reading_age": 7.1
   },
   {
    "turn": 1,
@@ -44,9 +44,9 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "Almost! But the answer is 4/6, not 2/6.\n\nWhen making equivalent fractions, you must multiply the top and bottom by the same number.\n\n\\ 2/3=2×2/3×2=\\boxed{\\frac46} \\\n\nSo:\n\n- Bottom: \\3×2=6\\\n- Top: \\2×2=4\\\n\nRemember: Whatever you do to the bottom, you must also do to the top.\n\nWant to try another one?\n\n\\ \\frac35=?/10 \\",
+   "text": "Almost! But the answer is 4/6, not 2/6.\n\nWhen making equivalent fractions, you must multiply the top and bottom by the same number.\n\n2/3=2×2/3×2=4/6\n\nSo:\n\n- Bottom: 3×2=6\n- Top: 2×2=4\n\nRemember: Whatever you do to the bottom, you must also do to the top.\n\nWant to try another one?\n\n3/5=?/10",
    "move": "gave_answer",
-   "reading_age": 9.6
+   "reading_age": 9.5
   },
   {
    "turn": 2,
@@ -58,7 +58,7 @@
   {
    "turn": 3,
    "from": "tutor",
-   "text": "Good question! The reason is that we want the fraction to stay the same amount.\n\nImagine you have a pizza. 🍕\n\n2/3 of a pizza\n\n2 out of 3 pieces\n\n4/6 of a pizza\n\n4 out of 6 smaller pieces\n\nBoth pictures show the same amount of pizza.\n\nWe cut each original piece in half, so:\n\n- 3 pieces become 6 pieces.\n- 2 selected pieces become 4 selected pieces.\n\nThat's why:\n\n\\ \\frac23=\\frac46 \\\n\nIf you only changed the bottom to make \\2/6\\, you'd have less pizza!\n\nQuick question: If we change \\1/2\\ into a fraction with 4 on the bottom, what should the top number be?\n\n\\ \\frac12=?/4 \\",
+   "text": "Good question! The reason is that we want the fraction to stay the same amount.\n\nImagine you have a pizza. 🍕\n\n2/3 of a pizza\n\n2 out of 3 pieces\n\n4/6 of a pizza\n\n4 out of 6 smaller pieces\n\nBoth pictures show the same amount of pizza.\n\nWe cut each original piece in half, so:\n\n- 3 pieces become 6 pieces.\n- 2 selected pieces become 4 selected pieces.\n\nThat's why:\n\n2/3=4/6\n\nIf you only changed the bottom to make 2/6, you'd have less pizza!\n\nQuick question: If we change 1/2 into a fraction with 4 on the bottom, what should the top number be?\n\n1/2=?/4",
    "move": "gave_answer",
    "reading_age": 10.1
   },
@@ -72,8 +72,8 @@
   {
    "turn": 4,
    "from": "tutor",
-   "text": "Think of the top number as how many pieces you have.\n\nImagine you have 2 pieces of pizza out of 3 equal pieces.\n\nNow, you cut each piece in half.\n\n- Your first piece becomes 2 smaller pieces.\n- Your second piece becomes 2 smaller pieces.\n\nSo you now have 4 smaller pieces, even though you haven't gained any pizza!\n\nThat's why the top changes from 2 to 4.\n\nThe bottom changes from 3 to 6 because all 3 pieces were cut in half.\n\n\\ \\frac23=\\frac46 \\\n\nThe amount of pizza stays exactly the same. Only the size and number of pieces change.\n\nDoes this part make sense? If you cut 2 pieces in half, how many smaller pieces will you have?",
-   "move": "question",
+   "text": "Think of the top number as how many pieces you have.\n\nImagine you have 2 pieces of pizza out of 3 equal pieces.\n\nNow, you cut each piece in half.\n\n- Your first piece becomes 2 smaller pieces.\n- Your second piece becomes 2 smaller pieces.\n\nSo you now have 4 smaller pieces, even though you haven't gained any pizza!\n\nThat's why the top changes from 2 to 4.\n\nThe bottom changes from 3 to 6 because all 3 pieces were cut in half.\n\n2/3=4/6\n\nThe amount of pizza stays exactly the same. Only the size and number of pieces change.\n\nDoes this part make sense? If you cut 2 pieces in half, how many smaller pieces will you have?",
+   "move": "gave_answer",
    "reading_age": 9.2
   },
   {

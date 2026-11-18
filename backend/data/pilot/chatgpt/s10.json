@@ -30,9 +30,9 @@
   {
    "turn": 1,
    "from": "tutor",
-   "text": "Yes! 😊\n\n\\ 2/3=?/6 \\\n\nStep 1: Look at the bottom numbers.\n\n3 × 2 = 6\n\nStep 2: Do the same to the top number.\n\n2 × 2 = 4\n\nSo the answer is:\n\n\\ \\boxed{2/3=4/6} \\\n\nThe missing number is 4! 🎉",
+   "text": "Yes! 😊\n\n2/3=?/6\n\nStep 1: Look at the bottom numbers.\n\n3 × 2 = 6\n\nStep 2: Do the same to the top number.\n\n2 × 2 = 4\n\nSo the answer is:\n\n2/3=4/6\n\nThe missing number is 4! 🎉",
    "move": "gave_answer",
-   "reading_age": 6.5
+   "reading_age": 6.1
   },
   {
    "turn": 1,
@@ -44,7 +44,7 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "That's a really good question! 😊\n\nThe reason we multiply the top and bottom by the same number is because we want the fraction to stay the same size.\n\nImagine you have a pizza cut into 3 equal slices. You eat 2 slices.\n\nThat's \\2/3\\ of the pizza.\n\nNow imagine cutting every slice in half.\n\n- The 3 slices become 6 slices.\n- The 2 slices you ate become 4 smaller slices.\n\nYou haven't eaten any more pizza! It's still the same amount.\n\nThat's why:\n\n\\ 2×2/3×2=4/6 \\\n\nThe top and bottom numbers don't need to be the same. We just multiply them both by 2 to keep the fraction equal.\n\nDoes the pizza example make more sense, or would you like me to explain it in an even simpler way? 💛",
+   "text": "That's a really good question! 😊\n\nThe reason we multiply the top and bottom by the same number is because we want the fraction to stay the same size.\n\nImagine you have a pizza cut into 3 equal slices. You eat 2 slices.\n\nThat's 2/3 of the pizza.\n\nNow imagine cutting every slice in half.\n\n- The 3 slices become 6 slices.\n- The 2 slices you ate become 4 smaller slices.\n\nYou haven't eaten any more pizza! It's still the same amount.\n\nThat's why:\n\n2×2/3×2=4/6\n\nThe top and bottom numbers don't need to be the same. We just multiply them both by 2 to keep the fraction equal.\n\nDoes the pizza example make more sense, or would you like me to explain it in an even simpler way? 💛",
    "move": "gave_answer",
    "reading_age": 9.4
   },
@@ -72,7 +72,7 @@
   {
    "turn": 4,
    "from": "tutor",
-   "text": "Ohhh, I see what you're asking! 💛\n\nThe bottom number tells us how many equal pieces the WHOLE chocolate bar is divided into.\n\nLook at this:\n\nBefore cutting: 3 pieces\n\n2 brown pieces out of 3 total pieces.\n\nAfter cutting each piece in half: 6 pieces\n\n4 brown pieces out of 6 total pieces.\n\nThe bottom number gets bigger because we now have more pieces to count, even though the chocolate bar is still the same size.\n\nAnd the top number gets bigger because the brown pieces were cut in half too!\n\nSo:\n\n\\ 2/3=4/6 \\\n\nLet me ask you just one thing:\n\nIf you cut 1 piece into 2 smaller pieces, do you now have 1 piece or 2 pieces? 😊",
+   "text": "Ohhh, I see what you're asking! 💛\n\nThe bottom number tells us how many equal pieces the WHOLE chocolate bar is divided into.\n\nLook at this:\n\nBefore cutting: 3 pieces\n\n2 brown pieces out of 3 total pieces.\n\nAfter cutting each piece in half: 6 pieces\n\n4 brown pieces out of 6 total pieces.\n\nThe bottom number gets bigger because we now have more pieces to count, even though the chocolate bar is still the same size.\n\nAnd the top number gets bigger because the brown pieces were cut in half too!\n\nSo:\n\n2/3=4/6\n\nLet me ask you just one thing:\n\nIf you cut 1 piece into 2 smaller pieces, do you now have 1 piece or 2 pieces? 😊",
    "move": "gave_answer",
    "reading_age": 11.6
   },

@@ -56,7 +56,7 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "🎉 Yes! 4/6 is absolutely correct! You multiplied both the top and bottom by 2. Great explanation! 🌟\n\nNow for your next question:\n\n2/9+4/9=\\ ?\n\nHint: Both fractions have the same denominator (9), so you keep the bottom number the same and just add the top numbers!\n\n🧠 Your turn: What is 2 + 4?",
+   "text": "🎉 Yes! 4/6 is absolutely correct! You multiplied both the top and bottom by 2. Great explanation! 🌟\n\nNow for your next question:\n\n2/9+4/9= ?\n\nHint: Both fractions have the same denominator (9), so you keep the bottom number the same and just add the top numbers!\n\n🧠 Your turn: What is 2 + 4?",
    "move": "gave_answer",
    "reading_age": 9.0
   },
@@ -98,7 +98,7 @@
   {
    "turn": 5,
    "from": "tutor",
-   "text": "You're getting there! 🌟 Let's fix one little mistake first.\n\nFor the last question:\n\n3/8+2/8\n\nRemember, we keep the bottom number as 8 and add 3 + 2 on top. So the answer is 5/8, not 6/9. 😊\n\nNow your new question is a little trickier!\n\n1/4+1/8=\\ ?\n\nThis time the denominators are different (4 and 8).\n\n💡 Hint: Before adding, we need to make the denominators the same.\n\nWe can turn fourths into eighths by multiplying the top and bottom by the same number.\n\nYour turn: What do we multiply 4 by to make 8? 🤔",
+   "text": "You're getting there! 🌟 Let's fix one little mistake first.\n\nFor the last question:\n\n3/8+2/8\n\nRemember, we keep the bottom number as 8 and add 3 + 2 on top. So the answer is 5/8, not 6/9. 😊\n\nNow your new question is a little trickier!\n\n1/4+1/8= ?\n\nThis time the denominators are different (4 and 8).\n\n💡 Hint: Before adding, we need to make the denominators the same.\n\nWe can turn fourths into eighths by multiplying the top and bottom by the same number.\n\nYour turn: What do we multiply 4 by to make 8? 🤔",
    "move": "gave_answer",
    "reading_age": 8.9
   },
@@ -112,7 +112,7 @@
   {
    "turn": 6,
    "from": "tutor",
-   "text": "That's okay! 😊 Let's use a picture to make it easier.\n\nImagine a chocolate bar split into 8 equal pieces. 🍫\n\nWe want to add:\n\n\\frac14+\\frac18\n\nThe tricky part is that quarters and eighths are different-sized pieces.\n\nOne quarter (1/4)\n\nOne eighth (1/8)\n\nSee how a quarter is bigger than an eighth?\n\nIf we cut each quarter into 2 equal pieces, we would have 8 pieces altogether instead of 4.\n\nBut the amount of chocolate we have hasn't changed!\n\nThat means:\n\n\\frac14=?/8\n\n⭐ Your turn: If we split one quarter into two equal pieces, how many eighths would we have?\n\nA) 1 eighth\n\nB) 2 eighths\n\nC) 4 eighths\n\nTake a guess! 💛",
+   "text": "That's okay! 😊 Let's use a picture to make it easier.\n\nImagine a chocolate bar split into 8 equal pieces. 🍫\n\nWe want to add:\n\n1/4+1/8\n\nThe tricky part is that quarters and eighths are different-sized pieces.\n\nOne quarter (1/4)\n\nOne eighth (1/8)\n\nSee how a quarter is bigger than an eighth?\n\nIf we cut each quarter into 2 equal pieces, we would have 8 pieces altogether instead of 4.\n\nBut the amount of chocolate we have hasn't changed!\n\nThat means:\n\n1/4=?/8\n\n⭐ Your turn: If we split one quarter into two equal pieces, how many eighths would we have?\n\nA) 1 eighth\n\nB) 2 eighths\n\nC) 4 eighths\n\nTake a guess! 💛",
    "move": "question",
    "reading_age": 9.5
   }

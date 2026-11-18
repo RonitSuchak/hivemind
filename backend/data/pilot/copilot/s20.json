@@ -43,9 +43,9 @@
   {
    "turn": 1,
    "from": "tutor",
-   "text": "Yes! We want:\n\n2/3=?/6\n\nAsk yourself: What happened to the bottom number?\n\n3 arrow 6\nIt was multiplied by 2\n\nTo keep the fraction equal, multiply the top number by 2 as well:\n\n2 × 2 = 4\n\nSo:\n\n2/3=4/6\n\n✅ The missing number is 4.\n\nA quick way to check:\n\n4 ÷ 6 = 0.666\\ldots\n2 ÷ 3 = 0.666\\ldots\n\nThey are the same value, so the answer is correct.",
+   "text": "Yes! We want:\n\n2/3=?/6\n\nAsk yourself: What happened to the bottom number?\n\n3 arrow 6\nIt was multiplied by 2\n\nTo keep the fraction equal, multiply the top number by 2 as well:\n\n2 × 2 = 4\n\nSo:\n\n2/3=4/6\n\n✅ The missing number is 4.\n\nA quick way to check:\n\n4 ÷ 6 = 0.666…\n2 ÷ 3 = 0.666…\n\nThey are the same value, so the answer is correct.",
    "move": "gave_answer",
-   "reading_age": 8.0
+   "reading_age": 8.1
   },
   {
    "turn": 1,
@@ -57,7 +57,7 @@
   {
    "turn": 2,
    "from": "tutor",
-   "text": "That's a really good question.\n\nImagine you have 2 pieces of pizza out of 3 equal pieces.\n\n🍕🍕⬜\n\nThat's what 2/3 means.\n\nNow suppose we cut each of those 3 pieces into 2 smaller pieces.\n\nBefore:\n\n3 pieces total\nYou have 2 of them\n\nAfter cutting:\n\nEach piece becomes 2 pieces\nSo there are now 6 pieces total\nThe 2 pieces you had become 4 smaller pieces\n\nSo now you have:\n\n🍕🍕🍕🍕⬜⬜\n\nThat's 4/6.\n\nNotice that you didn't get more pizza. We just cut everything into smaller pieces. That's why:\n\n2/3=4/6\n\nIf you only multiplied the bottom:\n\n2/3 \\neq 2/6\n\nbecause 2/6 is much smaller. It would mean you still have only 2 pieces, but now there are 6 pieces in total.\n\nThink of it this way:\n\n2/3 = 2 out of 3 pieces\n2/6 = 2 out of 6 pieces\n\nThose cannot be the same amount.\n\nSo when we multiply the bottom by 2, we're saying every piece got split into 2 pieces. That means the pieces you own also get split into 2 pieces, so the top must be multiplied by 2 as well.\n\nCan I draw it with simple boxes instead of pizza? Some people find that even easier to see.",
+   "text": "That's a really good question.\n\nImagine you have 2 pieces of pizza out of 3 equal pieces.\n\n🍕🍕⬜\n\nThat's what 2/3 means.\n\nNow suppose we cut each of those 3 pieces into 2 smaller pieces.\n\nBefore:\n\n3 pieces total\nYou have 2 of them\n\nAfter cutting:\n\nEach piece becomes 2 pieces\nSo there are now 6 pieces total\nThe 2 pieces you had become 4 smaller pieces\n\nSo now you have:\n\n🍕🍕🍕🍕⬜⬜\n\nThat's 4/6.\n\nNotice that you didn't get more pizza. We just cut everything into smaller pieces. That's why:\n\n2/3=4/6\n\nIf you only multiplied the bottom:\n\n2/3 ≠ 2/6\n\nbecause 2/6 is much smaller. It would mean you still have only 2 pieces, but now there are 6 pieces in total.\n\nThink of it this way:\n\n2/3 = 2 out of 3 pieces\n2/6 = 2 out of 6 pieces\n\nThose cannot be the same amount.\n\nSo when we multiply the bottom by 2, we're saying every piece got split into 2 pieces. That means the pieces you own also get split into 2 pieces, so the top must be multiplied by 2 as well.\n\nCan I draw it with simple boxes instead of pizza? Some people find that even easier to see.",
    "move": "gave_answer",
    "reading_age": 10.7
   },
@@ -99,7 +99,7 @@
   {
    "turn": 5,
    "from": "tutor",
-   "text": "Not quite.\n\nLet's compare them:\n\n2/3 means 2 out of 3.\n2/6 means 2 out of 6.\n\nIf you draw 6 boxes:\n\n🟦🟦⬜⬜⬜⬜\n\nOnly 2 are filled, so that's 2/6, which is only one-third of the whole.\n\nBut 2/3 is bigger:\n\n🟦🟦⬜\n\nHere, 2 of the 3 boxes are filled.\n\nSo:\n\n2/3 \\ne 2/6\n\nThe fraction equal to 2/3 with a bottom number of 6 is:\n\n4/6\n\nbecause\n\n4/6 = 2/3\n\nIf you're unsure, count:\n\n2/6 = 1 out of every 3 boxes filled twice → smaller\n4/6 = 4 out of 6 boxes filled = 2 out of 3 boxes filled → same amount\n\nSo the answer is 4/6, not 2/6. ✅",
+   "text": "Not quite.\n\nLet's compare them:\n\n2/3 means 2 out of 3.\n2/6 means 2 out of 6.\n\nIf you draw 6 boxes:\n\n🟦🟦⬜⬜⬜⬜\n\nOnly 2 are filled, so that's 2/6, which is only one-third of the whole.\n\nBut 2/3 is bigger:\n\n🟦🟦⬜\n\nHere, 2 of the 3 boxes are filled.\n\nSo:\n\n2/3 ≠ 2/6\n\nThe fraction equal to 2/3 with a bottom number of 6 is:\n\n4/6\n\nbecause\n\n4/6 = 2/3\n\nIf you're unsure, count:\n\n2/6 = 1 out of every 3 boxes filled twice → smaller\n4/6 = 4 out of 6 boxes filled = 2 out of 3 boxes filled → same amount\n\nSo the answer is 4/6, not 2/6. ✅",
    "move": "gave_answer",
    "reading_age": 10.2
   },

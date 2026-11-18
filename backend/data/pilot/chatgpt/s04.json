@@ -42,9 +42,9 @@
   {
    "turn": 1,
    "from": "tutor",
-   "text": "Yes! 😊\n\nWe have:\n\n2/3=?/6\n\nStep 1: Look at the denominators (bottom numbers).\n\n3 × 2 = 6\n\nStep 2: Multiply the numerator (top number) by the same number.\n\n2 × 2 = 4\n\nSo:\n\n\\boxed{2/3=4/6}\n\nThe answer is 4!",
+   "text": "Yes! 😊\n\nWe have:\n\n2/3=?/6\n\nStep 1: Look at the denominators (bottom numbers).\n\n3 × 2 = 6\n\nStep 2: Multiply the numerator (top number) by the same number.\n\n2 × 2 = 4\n\nSo:\n\n2/3=4/6\n\nThe answer is 4!",
    "move": "gave_answer",
-   "reading_age": 10.2
+   "reading_age": 10.0
   },
   {
    "turn": 1,
@@ -98,9 +98,9 @@
   {
    "turn": 5,
    "from": "tutor",
-   "text": "You're getting the idea! 😊 You're right that you multiply the top and bottom by 2.\n\nFor the first question:\n\n1/2=2/4\n\nNow let's do your next question!\n\n2/9+4/9\n\nBecause the bottom numbers are the same, we keep the 9 and just add the top numbers.\n\n2+4=6\n\nSo:\n\n\\boxed{6/9}\n\n🎉 The answer is 6/9! (You can also simplify it to 2/3.)\n\nWant to try one yourself?\n\n3/8+2/8=?/8\n\nWhat do you think the answer is?",
+   "text": "You're getting the idea! 😊 You're right that you multiply the top and bottom by 2.\n\nFor the first question:\n\n1/2=2/4\n\nNow let's do your next question!\n\n2/9+4/9\n\nBecause the bottom numbers are the same, we keep the 9 and just add the top numbers.\n\n2+4=6\n\nSo:\n\n6/9\n\n🎉 The answer is 6/9! (You can also simplify it to 2/3.)\n\nWant to try one yourself?\n\n3/8+2/8=?/8\n\nWhat do you think the answer is?",
    "move": "gave_answer",
-   "reading_age": 7.3
+   "reading_age": 7.1
   },
   {
    "turn": 5,

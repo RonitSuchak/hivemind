@@ -43,29 +43,43 @@ class ReplyError(ValueError):
 # --- turning a pasted reply into plain text ------------------------------------------
 
 LATEX_FRAC = re.compile(r"\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}")
+LATEX_FRAC_SHORT = re.compile(r"\\[dt]?frac\s*(\d)\s*(\d)")  # \frac46, TeX shorthand for \frac{4}{6}
 LATEX_TEXT = re.compile(r"\\(?:text|mathrm|textbf|mathbf)\s*\{([^{}]*)\}")
+LATEX_BOXED = re.compile(r"\\boxed\s*\{([^{}]*)\}")
 LATEX_SYMBOLS = {r"\times": "×", r"\cdot": "×", r"\div": "÷", r"\quad": " ", r"\qquad": " ", r"\,": " ",
-                 r"\;": " ", r"\left": "", r"\right": "", r"\to": "→", r"\rightarrow": "→", r"\Rightarrow": "→"}
+                 r"\;": " ", r"\left": "", r"\right": "", r"\to": "→", r"\rightarrow": "→", r"\Rightarrow": "→",
+                 r"\neq": "≠", r"\leq": "≤", r"\geq": "≥", r"\approx": "≈", r"\pm": "±",
+                 r"\ldots": "…", r"\cdots": "…", r"\dots": "…", r"\!": "", "\\ ": " "}
+MD_LINK = re.compile(r"\[([^\[\]\n]{1,80})\]\((https?://[^\s)]+)\)")  # [label](https://…): keep the label
 HTML_TAG = re.compile(r"<\s*/?\s*[a-zA-Z][^>]*>")
 
 
 def clean_reply(text: str) -> str:
     """Plain text the labeller can read. Tools often answer in Markdown and LaTeX:
-    \\frac{1}{3} becomes 1/3 (so the sum checker sees it), **bold** and # headings lose
-    their marks, HTML tags are dropped. The words are never changed.
+    \\frac{1}{3} becomes 1/3 (so the sum checker sees it), \\boxed{x} becomes x, **bold**
+    and # headings lose their marks, [label](link) keeps the label, HTML tags are dropped.
+    The words are never changed.
     """
     text = text.replace("\r\n", "\n").strip()
-    for _ in range(3):  # nested fractions
+    text = MD_LINK.sub(r"\1", text)
+    text = re.sub(r"\\+([()\[\]])", r"\\\1", text)  # \\[ (an extra backslash from copying) is still \[
+    for _ in range(3):  # nested pieces, innermost first
+        text = LATEX_TEXT.sub(r"\1", text)
         text = LATEX_FRAC.sub(r"\1/\2", text)
-    text = LATEX_TEXT.sub(r"\1", text)
+        text = LATEX_FRAC_SHORT.sub(r"\1/\2", text)
+        text = LATEX_BOXED.sub(r"\1", text)
     for symbol, plain in LATEX_SYMBOLS.items():
         text = text.replace(symbol, plain)
+    text = re.sub(r"\\(ne|le|ge)(?![a-zA-Z])", lambda m: {"ne": "≠", "le": "≤", "ge": "≥"}[m.group(1)], text)
     text = re.sub(r"\\[()\[\]]|\$\$?", "", text)  # \( \) \[ \] $ $$
+    text = re.sub(r"\\([%&#_{}])", r"\1", text)  # \% \& …
+    text = re.sub(r"(?m)\\[ \t]*$", "", text)  # a Markdown line break (backslash at the end of a line)
     text = HTML_TAG.sub("", text)
     text = re.sub(r"\*\*|__|`", "", text)
     text = re.sub(r"(?m)^\s{0,3}#{1,6}\s*", "", text)  # headings
     text = re.sub(r"(?m)^\s*>\s?", "", text)  # quotes
     text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"(?m)^ | $", "", text)  # spaces left at the start or end of a line
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
     if not text:
         raise ReplyError("The reply was empty.")
