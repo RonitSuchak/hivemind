@@ -1,52 +1,39 @@
 {
- "match_id": "m_ibkMZMBB",
+ "match_id": "m_gGrr-Qnf",
  "enough_matches": false,
  "profile": {
-  "start_level": 1.0,
-  "learn_speed": 0.6,
+  "start_level": 0.0,
+  "learn_speed": 0.9,
   "reading_age": 15,
-  "english": 0.0,
+  "english": 0.75,
   "persistence": 0.9
  },
  "radar": {
-  "start_level": 1.0,
-  "learn_speed": 0.6,
+  "start_level": 0.0,
+  "learn_speed": 0.9,
   "reading": 1.0,
-  "english": 0.0,
+  "english": 0.75,
   "persistence": 0.9
  },
  "matches": [
   {
-   "student_id": "s26",
-   "name": "Yara",
-   "distance": 0.71,
-   "weight": 0.221,
+   "student_id": "s16",
+   "name": "Oscar",
+   "distance": 0.631,
+   "weight": 0.206,
    "radar": {
-    "start_level": 0.7,
-    "learn_speed": 0.55,
-    "reading": 0.78,
-    "english": 0.6,
-    "persistence": 0.85
-   }
-  },
-  {
-   "student_id": "s11",
-   "name": "Jaya",
-   "distance": 0.725,
-   "weight": 0.217,
-   "radar": {
-    "start_level": 0.5,
-    "learn_speed": 0.65,
-    "reading": 0.67,
-    "english": 0.35,
-    "persistence": 0.7
+    "start_level": 0.75,
+    "learn_speed": 0.85,
+    "reading": 0.89,
+    "english": 0.9,
+    "persistence": 0.75
    }
   },
   {
    "student_id": "s03",
    "name": "Chen",
-   "distance": 0.833,
-   "weight": 0.191,
+   "distance": 0.641,
+   "weight": 0.202,
    "radar": {
     "start_level": 0.55,
     "learn_speed": 0.8,
@@ -56,29 +43,42 @@
    }
   },
   {
-   "student_id": "s29",
-   "name": "Bilal",
-   "distance": 0.845,
-   "weight": 0.188,
+   "student_id": "s24",
+   "name": "Wen",
+   "distance": 0.658,
+   "weight": 0.198,
    "radar": {
-    "start_level": 0.5,
-    "learn_speed": 0.45,
-    "reading": 0.78,
-    "english": 0.3,
-    "persistence": 0.35
+    "start_level": 0.4,
+    "learn_speed": 0.75,
+    "reading": 0.56,
+    "english": 0.4,
+    "persistence": 0.7
    }
   },
   {
-   "student_id": "s21",
-   "name": "Tomasz",
-   "distance": 0.868,
-   "weight": 0.183,
+   "student_id": "s17",
+   "name": "Priya",
+   "distance": 0.659,
+   "weight": 0.197,
+   "radar": {
+    "start_level": 0.5,
+    "learn_speed": 0.5,
+    "reading": 0.67,
+    "english": 0.9,
+    "persistence": 0.6
+   }
+  },
+  {
+   "student_id": "s30",
+   "name": "Chloe",
+   "distance": 0.661,
+   "weight": 0.197,
    "radar": {
     "start_level": 0.45,
-    "learn_speed": 0.6,
-    "reading": 0.67,
-    "english": 0.3,
-    "persistence": 0.4
+    "learn_speed": 0.7,
+    "reading": 0.44,
+    "english": 0.85,
+    "persistence": 0.75
    }
   }
  ],
@@ -89,7 +89,7 @@
   {
    "id": "why_none",
    "question": "Why is there no ranking?",
-   "answer": "The closest simulated student is 0.71 away on a 0 to 1 scale. We only rank demo tools when at least one is within 0.45, so we won't guess."
+   "answer": "The closest simulated student is 0.63 away on a 0 to 1 scale. We only rank demo tools when at least one is within 0.55, so we won't guess."
   }
  ],
  "message": "None of our 30 simulated students are close enough to your profile to give a fair answer, so we won't guess. Your result helps us decide which students to add next.",

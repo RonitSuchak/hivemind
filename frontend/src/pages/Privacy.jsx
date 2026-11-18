@@ -27,7 +27,7 @@ export default function Privacy() {
       <section aria-labelledby="pv-lab">
         <h2 id="pv-lab">Sent to the lab</h2>
         <ul>
-          <li><strong>The check:</strong> your answers and the subject you chose. The lab turns them into five profile numbers and keeps only those, with the date.</li>
+          <li><strong>The check:</strong> your answers and the subject you chose. The lab turns them into five profile numbers and keeps only those, with the date, for 7 days.</li>
           <li><strong>Try a tool:</strong> your messages go to the lab and to Google&rsquo;s Gemini AI to write the replies. Personal details are removed first, and the chat is forgotten after 30 minutes.</li>
           <li><strong>The suggestion box:</strong> your suggestion and the date, with personal details removed.</li>
           <li><strong>Check our prediction:</strong> a code you make up, your two test scores and the tool you tried.</li>

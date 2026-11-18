@@ -81,9 +81,9 @@ function Body({ match, pace }) {
   // Dashed line on the wheel: the matched students' average, each counted by its share of the match (weights, scaled to add up to 1).
   const average = useMemo(() => {
     const total = near.reduce((a, m) => a + (m.weight || 0), 0)
-    if (!total) return undefined
+    if (!total || match.enough_matches === false) return undefined // no ranking: no matched-students shape either
     return Object.fromEntries(STAT_LABELS.map(([k]) => [k, near.reduce((a, m) => a + (m.weight || 0) * (m.radar?.[k] ?? 0), 0) / total]))
-  }, [near])
+  }, [near, match.enough_matches])
   // Pace is only the person's own, and only when it was timed. It is not part of the ranking.
   const showPace = !example && pace != null
   const wheel = [...wheelStats(match.radar), ...(showPace ? [{ key: 'pace', label: 'Pace', value: paceValue(pace), display: paceText(pace), note: 'not used in the ranking' }] : [])]
