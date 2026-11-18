@@ -20,7 +20,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | The API for teammates on the same network (demo, crash test) | `sh share.sh` (prints the address to give them) |
 | Public links for the website and the API, from anywhere (crash test, expo) | `sh public-link.sh` (needs `cloudflared` and `frontend/` packages; prints two new links each run) |
 | The same, for a class testing together on one Wi-Fi (the real-classmate test) | `sh public-link.sh --class`: raises the per-device limits for the day, and if the Wi-Fi blocks the database, saves results in files on this laptop instead of failing |
-| Copy results saved on the laptop into the database afterwards (on a hotspot, VPN or at home) | `.venv/bin/python -m app.sync` (`--dry-run` to only count); never overwrites, safe to run twice |
+| Copy results saved on the laptop into the database afterwards (on a hotspot, VPN or at home) | `.venv/bin/python -m app.sync` (`--dry-run` to only count); never overwrites, and each file is copied once (it then moves to `data/store/synced/`), so a record deleted from the database is never brought back. Run it after the class session is over |
 | One lesson, printed | `python3 -m app.run_lesson --student s07 --tutor socratic --offline` |
 | How much each demo tool teaches each group (tuning) | `python3 -m app.tune` |
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |

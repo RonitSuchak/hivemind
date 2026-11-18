@@ -63,6 +63,18 @@ class JsonStore:
             return True
         return False
 
+    def put_new(self, kind: str, item_id: str, data: dict) -> bool:
+        """Save only if no record has this id yet. True if saved."""
+        path = self._path(kind, item_id)
+        with self._lock:
+            if path.exists():
+                return False
+            path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = path.with_suffix(".tmp")
+            tmp.write_text(json.dumps(data, ensure_ascii=False))
+            tmp.replace(path)
+            return True
+
     def delete_older(self, kind: str, days: float) -> int:
         """Remove the records of this kind last saved more than `days` ago. Returns how many."""
         _check(kind)
@@ -134,6 +146,13 @@ class PostgresStore:
         _check(kind, item_id)
         with self._connect() as conn:
             return conn.execute("DELETE FROM records WHERE kind = %s AND id = %s", (kind, item_id)).rowcount > 0
+
+    def put_new(self, kind: str, item_id: str, data: dict) -> bool:
+        """Save only if no record has this id yet, in one statement (never overwrites). True if saved."""
+        _check(kind, item_id)
+        with self._connect() as conn:
+            return conn.execute("""INSERT INTO records (kind, id, data) VALUES (%s, %s, %s)
+                                   ON CONFLICT (kind, id) DO NOTHING""", (kind, item_id, self._jsonb(data))).rowcount > 0
 
     def delete_older(self, kind: str, days: float) -> int:
         """Remove the records of this kind last saved more than `days` ago. Returns how many."""

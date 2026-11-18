@@ -59,8 +59,20 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(self.database.get("validation", "HM_AAAA"), {"real_gain": 2})
         self.assertEqual(self.database.get("validation", "HM_BBBB"), {"real_gain": 5})  # kept, not overwritten
         self.assertIsNone(self.database.get("matches", "m_1"))
-        self.assertEqual(sync(self.files, self.database), {"validation": (0, 2), "suggestions": (0, 1)})  # safe twice
-        self.assertIsNotNone(self.files.get("validation", "HM_AAAA"))  # the laptop files stay
+        self.assertTrue((self.files.root / "synced" / "validation" / "HM_AAAA.json").exists())  # moved, not lost
+
+    def test_a_record_deleted_from_the_database_is_not_brought_back(self):
+        # Security review (18 Nov): an admin removes a classmate entry; running sync again must not restore it.
+        self.files.put("validation", "HM_CCCC", {"real_gain": 3})
+        self.assertEqual(sync(self.files, self.database), {"validation": (1, 0)})
+        self.database.delete("validation", "HM_CCCC")
+        self.assertEqual(sync(self.files, self.database), {"validation": (0, 0)})
+        self.assertIsNone(self.database.get("validation", "HM_CCCC"))
+
+    def test_put_new_never_overwrites(self):
+        self.assertTrue(self.database.put_new("validation", "HM_DDDD", {"real_gain": 1}))
+        self.assertFalse(self.database.put_new("validation", "HM_DDDD", {"real_gain": 9}))
+        self.assertEqual(self.database.get("validation", "HM_DDDD"), {"real_gain": 1})
 
 
 if __name__ == "__main__":
