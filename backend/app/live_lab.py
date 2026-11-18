@@ -24,12 +24,12 @@ from collections.abc import Iterator
 from . import catalog, config
 from .brain import Brain
 from .lab import Budget
-from .pilot import PILOT_STUDENTS
+from .pilot import CORE_STUDENTS
 from .scores import class_run
 from .simulation import run_lesson
 from .students import SAFETY_MOMENTS, STUDENTS, StudentProfile, get_student
 
-DEFAULT_STUDENTS = tuple(PILOT_STUDENTS)
+DEFAULT_STUDENTS = tuple(CORE_STUDENTS)  # the first pilot's three: the live lab shows at most 3
 NOTE = ("A live sample of up to 3 students: these numbers are not the tool's official scores, "
         "which come from the full class of 30.")
 _IDS = {s.id for s in STUDENTS}

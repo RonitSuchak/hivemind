@@ -168,12 +168,48 @@ class PilotListingTests(unittest.TestCase):
         hana = next(s for s in tool["students"] if s["student_id"] == "s09")
         self.assertTrue(any(e["type"] == "inappropriate" for e in hana["safety_events"]))
         self.assertIn("evidence", tool)
+        self.assertEqual((tool["lessons_planned"], tool["complete"]), (len(pilot.PILOT_STUDENTS), False))
+
+    def test_the_bigger_pilot_adds_every_critical_trap_twice(self):
+        from app.students import CRITICAL_MOMENTS, SAFETY_MOMENTS
+        self.assertEqual(len(pilot.PILOT_STUDENTS), 8)
+        self.assertEqual(list(pilot.CORE_STUDENTS), ["s10", "s24", "s09"])
+        traps = [SAFETY_MOMENTS[sid] for sid in pilot.PILOT_STUDENTS if sid in SAFETY_MOMENTS]
+        self.assertEqual({t: traps.count(t) for t in CRITICAL_MOMENTS}, {t: 2 for t in CRITICAL_MOMENTS})
+
+    def test_scores_stay_while_more_lessons_are_added_and_count_them(self):
+        for sid in pilot.CORE_STUDENTS:
+            relay_lesson("copilot", sid, Person("simple_steps"), ScriptedVoice(), "scripted", self.root)
+        first = pilot.tool_result("copilot", self.root)
+        self.assertEqual((first["status"], first["sample"], first["lessons_done"]), ("done", 3, 3))
+        self.assertTrue(first["note"].startswith("Small pilot: 3 simulated students"))
+        for sid in ("s04", "s15"):  # privacy and wellbeing traps, relayed like any lesson
+            relay_lesson("copilot", sid, Person("simple_steps"), ScriptedVoice(), "scripted", self.root)
+        more = pilot.tool_result("copilot", self.root)
+        self.assertEqual((more["status"], more["sample"], more["lessons_done"], more["complete"]), ("done", 5, 5, False))
+        self.assertTrue(more["note"].startswith("Small pilot: 5 simulated students"))
+        tested = {c["type"]: c["tested"] for c in more["safety"]["checks"]}
+        self.assertEqual((tested["privacy"], tested["wellbeing"], tested["inappropriate"]), (1, 1, 1))
+        for sid in pilot.EXTRA_STUDENTS:
+            relay_lesson("copilot", sid, Person("simple_steps"), ScriptedVoice(), "scripted", self.root)
+        full = pilot.tool_result("copilot", self.root)
+        self.assertEqual((full["sample"], full["complete"]), (8, True))
+        tested = {c["type"]: c["tested"] for c in full["safety"]["checks"]}
+        self.assertEqual((tested["privacy"], tested["wellbeing"], tested["inappropriate"]), (2, 2, 2))
+
+    def test_extra_lessons_alone_give_no_scores(self):
+        relay_lesson("gemini", "s04", Person("simple_steps"), ScriptedVoice(), "scripted", self.root)
+        tool = pilot.tool_result("gemini", self.root)
+        self.assertEqual((tool["status"], tool["scores"], tool["sample"]), ("in_progress", None, 8))
 
     def test_every_tool_is_listed_even_before_any_lesson(self):
         data = pilot.listing(self.root)
         self.assertEqual([t["tool_id"] for t in data["tools"]], list(pilot.PILOT_TOOLS))
         self.assertTrue(all(t["status"] == "not_started" and t["scores"] is None for t in data["tools"]))
         self.assertEqual([s["id"] for s in data["students"]], list(pilot.PILOT_STUDENTS))
+        self.assertEqual([s["id"] for s in data["students"] if s["core"]], list(pilot.CORE_STUDENTS))
+        self.assertEqual(data["sample"], 8)
+        self.assertIn("up to 8 simulated students per tool", data["note"])
         linked = {t["tool_id"]: (t["real_tool"] or {}).get("id") for t in data["tools"]}
         self.assertEqual(linked, {"chatgpt": "chatgpt", "chatgpt_study": "chatgpt", "gemini": "gemini",
                                   "gemini_guided": "gemini", "copilot": "copilot", "perplexity": "perplexity"})
