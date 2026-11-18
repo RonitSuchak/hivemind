@@ -9,6 +9,7 @@ import { heroTiming } from '../components/Radar.jsx'
 import StatWheel from '../components/StatWheel.jsx'
 import Drawer from '../components/Drawer.jsx'
 import StudentPanel, { STAT_LABELS, wheelStats } from '../components/StudentPanel.jsx'
+import ToolsYouUse from '../components/ToolsYouUse.jsx'
 import { paceText, paceValue } from '../at/pace.js'
 import ScoreBars from '../components/ScoreBars.jsx'
 import Icon from '../components/Icon.jsx'
@@ -45,6 +46,7 @@ const ordinal = (n) => (n === 1 ? 'first' : n === 2 ? 'second' : n === 3 ? 'thir
 
 function Body({ match, pace }) {
   const reduced = useReduced()
+  const { setMatch } = useMatch()
   // v3: each match already carries its name and radar, so no second request is needed.
   const near = match.matches || []
   const demo = useStatus() === 'demo'
@@ -100,27 +102,26 @@ function Body({ match, pace }) {
     <div className="rs">
       <header className="rs-head">
         <h1>{example ? `Example student: ${example.title}` : demo ? 'Example result' : 'Your results'}</h1>
-        {example && <p className="rs-note" role="note"><Icon name="info" size={18} /> <span>These are preset answers for an example student, not yours. The lab worked out the match just now.</span></p>}
-        {demo && !example && <p className="rs-note" role="note"><Icon name="info" size={18} /> <span>This is one saved example from the lab, so it does not change with your answers.</span></p>}
-        {/* Always visible: never behind a scroll reveal. */}
-        <p className="rs-note"><Icon name="target" size={18} /> <span>{plainWords(match.note || '')}</span></p>
-        <p className="rs-note"><Icon name="info" size={18} /> <span>The simulated class had one lesson, on fractions, so for any other subject treat these results as a starting point.</span></p>
+        {/* One paragraph, always visible (never behind a scroll reveal): what this result is and where it comes from. */}
+        <p className="rs-lede">{[
+          example ? 'These are preset answers for an example student, not yours.' : demo ? 'This is one saved example from the lab, so it does not change with your answers.' : '',
+          plainWords(match.note || ''),
+          'The class had one lesson, on fractions, so for other subjects treat this as a starting point.',
+        ].filter(Boolean).join(' ')}</p>
       </header>
 
       <section className="rs-profile glass" aria-labelledby="profile-h">
         <div className="rs-profile-text">
           <h2 id="profile-h">{sample ? 'Example learning profile' : 'Your learning profile'}</h2>
-          <p>{sample ? 'This example profile makes this shape.' : 'Your answers make this shape.'} The further out a corner is, the higher the number.</p>
+          <p>{sample ? 'This example profile makes this shape.' : 'Your answers make this shape.'} The further out a corner is, the higher the number{average ? ', and the dashed line is your matched students on average' : ''}.{showPace ? ' Pace is timed on this device only and does not change the ranking.' : ''}</p>
         </div>
         <figure className="rs-radar rs-wheel">
           <StatWheel stats={wheel} compare={average} tone="pop" size={300} label={sample ? 'Example learning profile' : 'Your learning profile'} />
-          {average && <figcaption>Dashed line: your matched students, on average.</figcaption>}
-          {showPace && <figcaption>Pace is timed quietly on this device. The simulated class has no pace number yet, so it does not change the ranking.</figcaption>}
         </figure>
         <div className="rs-profile-key">
           {ranks && near.length > 0 && (
             <motion.p className="rs-matched" {...after(t.doneAt)}>
-              Matched to {near.length} simulated students like you
+              Matched to {near.length} simulated students like you. Select a name to see their profile.
               <span>{near.map((s, i) => (
                 <Fragment key={s.student_id}>
                   {i > 0 && ', '}
@@ -129,7 +130,6 @@ function Body({ match, pace }) {
               ))}</span>
             </motion.p>
           )}
-          <p className="rs-fine">Simulated students are not real children.{ranks && near.length > 0 && ' Select a name to see their profile.'}</p>
         </div>
       </section>
 
@@ -144,7 +144,7 @@ function Body({ match, pace }) {
       {match.enough_matches === false || !match.ranked?.length ? (
         <section className="rs-ranked-wrap" aria-labelledby="ranked-h">
           <h2 id="ranked-h" className="rs-h2">No ranking this time</h2>
-          <p className="rs-note" role="note"><Icon name="info" size={18} /> <span>{plainWords(match.message || '') || 'None of our simulated students are close enough to your profile to give a fair answer, so we will not guess.'}</span></p>
+          <p className="rs-lede">{plainWords(match.message || '') || 'None of our simulated students are close enough to your profile to give a fair answer, so we will not guess.'}</p>
         </section>
       ) : (
         <section className="rs-ranked-wrap" aria-labelledby="ranked-h">
@@ -191,11 +191,17 @@ function Body({ match, pace }) {
         </Reveal>
       )}
 
+      {!sample && (
+        <ToolsYouUse using={match.using || []} onChange={(using) => setMatch({ ...match, using })} top={ranks && !noWinner ? top?.tutor_id : null} />
+      )}
+
+      {!sample && <SaveBar match={match} />}
+
       <Reveal className="actions rs-actions">
         <Link to="/lab" className="btn">See the lab</Link>
         <Link to="/check" className="btn btn-quiet">{example ? 'Take the check yourself' : 'Retake the check'}</Link>
       </Reveal>
-      <Drawer open={openAt >= 0} onClose={closePanel} title={near[openAt]?.name ?? ''}>
+      <Drawer open={openAt >= 0} onClose={closePanel} title={near[openAt]?.name ?? ''} subtitle={openAt >= 0 ? 'Simulated student' : ''}>
         {openAt >= 0 && <StudentPanel matches={near} index={openAt} onIndex={(i) => setOpenId(near[i].student_id)} ranked={match.ranked || []} tutorIds={(match.ranked || []).map((x) => x.tutor_id)} />}
       </Drawer>
       <ToolsDrawer tutor={toolsFor} tools={realTools} onClose={() => setToolsFor(null)} />
@@ -261,4 +267,27 @@ function Settle({ value, play, delay }) {
     return () => run.stop()
   }, [play, reduced, value, delay, mv])
   return <motion.span>{text}</motion.span>
+}
+
+// Save this result in this browser only (store.jsx, key hm-saved). Nothing is sent anywhere by saving.
+function SaveBar({ match }) {
+  const { saved, saveMatch, forgetSaved } = useMatch()
+  const [failed, setFailed] = useState(false)
+  const isSaved = !!saved && saved.match?.match_id === match.match_id
+  const when = isSaved ? new Date(saved.at).toLocaleDateString(undefined, { day: 'numeric', month: 'long' }) : ''
+  return (
+    <section className="rs-save glass" aria-labelledby="save-h">
+      <div>
+        <h2 id="save-h" className="rs-h2">{isSaved ? `Saved on this device on ${when}` : 'Keep these results'}</h2>
+        <p>{isSaved
+          ? 'They open again next time you visit on this browser. Nothing was sent anywhere, and Delete removes them for good.'
+          : 'Save them in this browser so they are still here next time. Nothing is sent anywhere, and you can delete them at any time.'}{' '}
+          <Link to="/privacy">How we handle your data</Link></p>
+        {failed && <p role="alert">This browser would not save them (a private window can block it).</p>}
+      </div>
+      {isSaved
+        ? <button type="button" className="btn" onClick={forgetSaved}>Delete saved results</button>
+        : <button type="button" className="btn btn-primary" onClick={() => setFailed(!saveMatch(match))}>Save on this device</button>}
+    </section>
+  )
 }
