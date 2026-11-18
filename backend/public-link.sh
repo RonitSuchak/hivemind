@@ -2,6 +2,7 @@
 # Public links for the website and the backend, from this laptop, through two free Cloudflare quick tunnels.
 # Anyone can open them from anywhere (no same-network rule). Used for Mike's crash test and the expo.
 # Usage (from anywhere):  sh backend/public-link.sh        Stop everything: Ctrl+C
+#                         sh backend/public-link.sh --class   for a class on one Wi-Fi (see CLASS below)
 # Needs: backend/.venv (see backend/README.md), frontend packages (cd frontend && npm ci),
 #        and cloudflared (brew install cloudflared). The laptop must stay on, plugged in and online.
 # Every run gives NEW addresses: send the new website link each time.
@@ -10,6 +11,11 @@ REPO="$(dirname "$BACKEND")"
 WORK="$BACKEND/.public-link"          # logs and the built website (ignored by git)
 LOGS="$WORK/logs"; SITE="$WORK/site"
 API_PORT="${API_PORT:-8000}"; WEB_PORT="${WEB_PORT:-4173}"
+# CLASS: a class on one school Wi-Fi shares one internet address, so the per-device limits are raised for the
+# day (CLASS_SESSION=1), and if the database is out of reach, saved data goes to files on this laptop (STORE=files)
+# instead of failing. Copy it into the database later with:  cd backend && .venv/bin/python -m app.sync
+CLASS=""; [ "${1:-}" = "--class" ] && CLASS=1
+STORE_MODE=""
 mkdir -p "$LOGS"
 
 [ -x "$BACKEND/.venv/bin/python" ] || { echo "No backend/.venv. Set up first (backend/README.md)."; exit 1; }
@@ -27,6 +33,10 @@ else:
     try: s.list('validation'); print('reachable')
     except StoreUnavailable: print('NOT reachable: check results, Proof and submissions will fail. Switch to a phone hotspot and restart.')
 " 2>/dev/null)
+if [ -n "$CLASS" ] && echo "$DB" | grep -q "NOT reachable"; then
+  STORE_MODE=files
+  DB="NOT reachable, so saved data goes to files on this laptop. Later, on a hotspot or VPN: cd backend && .venv/bin/python -m app.sync"
+fi
 
 PIDS=""
 cleanup() { kill $PIDS 2>/dev/null; echo; echo "Stopped. The links no longer work."; exit 0; }
@@ -58,6 +68,7 @@ echo "Building the website for $API ..."
 # entry (checked 18 Nov; cloudflared adds none, and anything a visitor fakes sits earlier), so trust exactly one.
 echo "Starting the backend..."
 (cd "$BACKEND" && HOST=127.0.0.1 PORT="$API_PORT" PROXY_HOPS=1 CORS_ORIGINS="http://localhost:5173,$WEB" \
+  CLASS_SESSION="$CLASS" STORE="$STORE_MODE" \
   exec caffeinate -i .venv/bin/python -m app.serve > "$LOGS/backend.log" 2>&1) & PIDS="$PIDS $!"
 
 OK=""
@@ -74,6 +85,7 @@ echo "   Website:  $WEB"
 echo "   Backend:  $API/api/health"
 echo
 echo " Database: $DB"
+[ -n "$CLASS" ] && echo " Class session: limits raised for a class on one Wi-Fi (restart without --class afterwards)."
 echo " Quick tunnels can drop after some hours (\"Tunnel not found\" in $LOGS): then restart for new links."
 echo " Keep this window open. Ctrl+C stops everything."
 echo " Lid closed overnight? sudo pmset -a disablesleep 1  (undo: ... 0)"

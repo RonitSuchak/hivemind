@@ -11,7 +11,7 @@ from . import config
 
 class RateLimiter:
     def __init__(self, limits: dict | None = None):
-        self.limits = limits or config.RATE_LIMITS
+        self.limits = limits or config.rate_limits()
         self._hits: dict[tuple[str, str], deque] = defaultdict(deque)
         self._lock = threading.Lock()
 

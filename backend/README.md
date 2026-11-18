@@ -19,6 +19,8 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | The API | `RELOAD=1 .venv/bin/python -m app.serve`, then open `http://localhost:8000/docs` |
 | The API for teammates on the same network (demo, crash test) | `sh share.sh` (prints the address to give them) |
 | Public links for the website and the API, from anywhere (crash test, expo) | `sh public-link.sh` (needs `cloudflared` and `frontend/` packages; prints two new links each run) |
+| The same, for a class testing together on one Wi-Fi (the real-classmate test) | `sh public-link.sh --class`: raises the per-device limits for the day, and if the Wi-Fi blocks the database, saves results in files on this laptop instead of failing |
+| Copy results saved on the laptop into the database afterwards (on a hotspot, VPN or at home) | `.venv/bin/python -m app.sync` (`--dry-run` to only count); never overwrites, safe to run twice |
 | One lesson, printed | `python3 -m app.run_lesson --student s07 --tutor socratic --offline` |
 | How much each demo tool teaches each group (tuning) | `python3 -m app.tune` |
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |
@@ -40,6 +42,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | File | What it does |
 |---|---|
 | `public-link.sh`, `spa_server.py` | Public links through Cloudflare quick tunnels; `spa_server.py` serves the built website so pages like `/lab/ratings` work |
+| `app/sync.py` | Copies classmates' results, suggestions and submissions saved on the laptop (`--class` on a Wi-Fi that blocked the database) into the database |
 | `app/config.py` | Every setting, threshold, limit and weight |
 | `app/students.py` | The 30 simulated students, their groups and traps |
 | `app/brain.py` | What a student knows (Bayesian Knowledge Tracing) and when they give up |

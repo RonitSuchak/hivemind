@@ -150,7 +150,10 @@ def get_store():
     global _store
     if _store is None:
         url = (config.setting("DATABASE_URL", "") or "").strip()
-        _store = PostgresStore(url) if url else JsonStore()
+        # STORE=files keeps saved data on this laptop even when DATABASE_URL is set: public-link.sh --class uses it
+        # when the database is out of reach (school Wi-Fi), and `python -m app.sync` copies it across later.
+        files = (config.setting("STORE", "") or "").strip().lower() == "files"
+        _store = PostgresStore(url) if url and not files else JsonStore()
     return _store
 
 

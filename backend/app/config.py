@@ -152,7 +152,22 @@ RATE_LIMITS = {  # bucket: (requests, per seconds), per device (IP address, kept
     "live_lab": (3, 600),  # each live run costs up to 33 AI calls
     "live_lab_replay": (30, 600),
 }
-STORE_DIR = DATA_DIR / "store"  # JSON files when DATABASE_URL is not set
+# Class session (18 Nov): a whole class on one school Wi-Fi shares one internet address, so the per-device limits
+# above would treat them as one device. CLASS_SESSION=1 (public-link.sh --class) raises these for the day.
+# Google's own free limit still applies (and it costs nothing): if a class chats all at once, some see "AI busy".
+CLASS_RATE_LIMITS = {"validation": (200, 3600), "chat": (300, 600), "match": (200, 600), "ask": (100, 600)}
+
+
+def class_session() -> bool:
+    return (setting("CLASS_SESSION", "") or "").strip().lower() in ("1", "true", "yes")
+
+
+def rate_limits() -> dict:
+    """The limits in force: the normal ones, raised for a class session."""
+    return {**RATE_LIMITS, **CLASS_RATE_LIMITS} if class_session() else dict(RATE_LIMITS)
+
+
+STORE_DIR = DATA_DIR / "store"  # JSON files when DATABASE_URL is not set (or STORE=files)
 REAL_TOOLS_FILE = DATA_DIR / "real_tools.json"  # Kien's real EdTech tools list, each with its demo tool type
 STORE_CONNECT_SECONDS = 5  # give up on the database after this long
 STORE_RETRY_SECONDS = 30  # then refuse at once for this long, so pages don't hang
