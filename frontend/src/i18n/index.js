@@ -87,7 +87,7 @@ export const en = {
 
   // languages section
   'langs.title': 'Language',
-  'langs.lede': 'Pick a language and the site switches to it.',
+  'langs.lede': 'Type a language. The ones marked Translated switch the whole site.',
 
   // finale
   'finale.title': 'See which tool types worked for students like you.',
@@ -96,8 +96,11 @@ export const en = {
   'picker.betaLabel': 'Translated by hand',
   'picker.other': "Other languages use your browser's own translator, so they may not work everywhere.",
   'picker.search': 'Search languages',
-  'picker.placeholder': 'Type a language, like Polish or العربية',
+  'picker.placeholder': 'Type a language, like Russian or हिन्दी',
   'picker.clear': 'Clear',
+  'picker.current': 'The site is in {name}.',
+  'picker.notYet': 'Not translated yet',
+  'picker.translated': 'Translated',
   'picker.list': 'Languages',
   'picker.noMatch': 'No language matches. Check the spelling, or type it in English.',
   'picker.count': 'Type to find yours among {n} languages.',
