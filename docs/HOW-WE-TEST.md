@@ -59,7 +59,7 @@ We built the 5 demo tools ourselves, each with a **known** strength or flaw. If 
 Nothing slow runs live. Lessons are recorded once and **replayed** from saved files. Only the 8-minute check, radar and ranked demo tools run live (pure maths, instant).
 
 ## 2. Code tests: does the backend work
-259 automated tests in `backend/tests/`, all passing (19 Nov). They cover the brain and fair dice, scoring, safety traps (including a tool asking for personal details), matching, every API endpoint, the real-tools pilot relay (resume, LaTeX clean-up) the live lab stream (live with a fake AI, and replay), and the real-tool estimates, subject filter and check extras, the security fixes (rate limits, body-size cap, private-address blocking, demo tool timeouts), the check accuracy test with its didn't-try flag, and the real-class import (insert only, never a made-up prediction, the same group averages as the Proof page).
+260 automated tests in `backend/tests/`, all passing (19 Nov). They cover the brain and fair dice, scoring, safety traps (including a tool asking for personal details), matching, every API endpoint, the real-tools pilot relay (resume, LaTeX clean-up) the live lab stream (live with a fake AI, and replay), and the real-tool estimates, subject filter and check extras, the security fixes (rate limits, body-size cap, private-address blocking, demo tool timeouts), the check accuracy test with its didn't-try flag, and the real-class import (insert only, never a made-up prediction, the same group averages as the Proof page).
 
 Run from `backend/`:
 ```bash

@@ -64,7 +64,7 @@ Six real tools, 8 simulated students each, 48 lessons relayed by hand because th
 ### 5. Built to be trusted
 
 - Every score links to the chat lines that produced it.
-- 259 automated backend tests.
+- 260 automated backend tests.
 - No names are stored: every student, real or simulated, is an anonymous code.
 - If no simulated student is close enough, Hivemind gives no ranking instead of guessing.
 - The site works in English, Russian and Hindi.

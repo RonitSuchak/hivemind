@@ -36,7 +36,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 1. Be on a network that allows port 5432 (a phone hotspot works), so saved data works.
 2. Start it for the team: `sh share.sh` (from `backend/`). It checks the database, keeps the Mac awake while it runs, starts the API for the network and prints the `VITE_API_URL=http://<address>:8000` line to send teammates. The first time a teammate connects, macOS may ask to allow incoming connections for Python: click Allow.
 3. Check `curl http://localhost:8000/api/health` answers `{"ok": true, ..., "store": "database", "tutors": 5}`.
-4. Run the tests: `.venv/bin/python -m unittest discover -s tests -t .` (259 pass on 19 Nov).
+4. Run the tests: `.venv/bin/python -m unittest discover -s tests -t .` (260 pass on 19 Nov).
 5. **Or, for people not on your network** (Mike, judges, a phone on mobile data): `sh public-link.sh` (from `backend/`). It opens two free Cloudflare quick tunnels, builds the website for the backend link, starts the backend allowing only that website, and prints the website link to send. Ctrl+C stops it all. The links change every run, and a quick tunnel can drop after some hours (the log says "Tunnel not found"): just run it again and send the new link. Lid closed overnight: `sudo pmset -a disablesleep 1` (undo with `0`).
 6. The live lab on stage: `mode=live` uses Gemini calls; `mode=replay` uses none, so keep replay ready if the Wi-Fi or the daily limit fails.
 

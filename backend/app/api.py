@@ -377,8 +377,10 @@ class ChatBody(BaseModel):
 
 
 def log_live_event(event: dict) -> None:
-    store = get_store()
-    store.put("live_events", f"e_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S%f')}", event)
+    try:
+        get_store().put("live_events", f"e_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S%f')}", event)
+    except StoreUnavailable:  # the person still gets the safe reply; only this log entry is lost
+        log.warning("live event not saved (database unreachable): %s", event.get("rules"))
 
 
 @app.post("/api/chat", dependencies=[Depends(rate_limit("chat"))])

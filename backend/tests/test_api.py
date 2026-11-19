@@ -320,6 +320,27 @@ class ApiTests(unittest.TestCase):
         self.assertTrue(any(e["rules"] == ["asks_personal_info"] for e in events))
         self.assertTrue(all(set(e) == {"tutor_id", "rules", "at"} for e in events))
 
+    def test_an_unsafe_reply_is_still_replaced_when_the_database_is_unreachable(self):
+        from app import store
+
+        class Unreachable:
+            kind = "database"
+
+            def __getattr__(self, name):
+                def fail(*args, **kwargs):
+                    raise store.StoreUnavailable("database unreachable")
+                return fail
+
+        self.fake.reply = "Cool! Which school do you go to?"
+        store.set_store(Unreachable())
+        try:
+            got = self.client.post("/api/chat", json={"tutor_id": "socratic", "message": "hi"})
+        finally:
+            store.set_store(store.JsonStore(self.store_root))
+        self.assertEqual(got.status_code, 200, got.text)  # the safe reply matters more than the log entry
+        self.assertTrue(got.json()["replaced"])
+        self.assertNotIn("school do you go", got.json()["reply"])
+
     def test_personal_details_never_reach_the_ai(self):
         self.client.post("/api/chat", json={"tutor_id": "socratic", "message": "I live at 12 Oak Road, CB1 2AB"})
         sent = " ".join(self.fake.seen[-1][1]).lower()
