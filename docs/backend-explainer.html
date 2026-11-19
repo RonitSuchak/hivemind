@@ -1865,7 +1865,7 @@ curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&amp;mode=repla
     <figcaption><strong>Order matters.</strong> CORS (the browser rule for which websites may call the API) is the outermost layer, so even a "too big" error carries the headers the website needs to read its message.</figcaption>
   </figure>
   <h3>What the security audit found and fixed</h3>
-  <p>The <code>vibe-secure</code> checklist was run on the backend on 15 Nov (<code>backend/SECURITY-AUDIT-2026-11-15.md</code>). Three failures were fixed straight away, and an automated review found two more after the push:</p>
+  <p>The <code>vibe-secure</code> checklist was run on the backend on 15 Nov (<code>docs/archive/SECURITY-AUDIT-2026-11-15.md</code>). Three failures were fixed straight away, and an automated review found two more after the push:</p>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Finding</th><th>Risk</th><th>Fix</th></tr></thead>
     <tbody>
@@ -1982,7 +1982,7 @@ curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&amp;mode=repla
 </section>
 
 <footer class="end">
-  <p><strong>Sources.</strong> <code>backend/app/</code> (the code is the truth wherever docs differ), <code>backend/data/runs/*.json</code> (saved AI runs), <code>backend/data/export/</code>, <code>docs/DESIGN.md</code>, <code>docs/BACKEND.md</code>, <code>docs/HOW-WE-TEST.md</code>, <code>docs/PILOT.md</code>, <code>docs/FRONTEND_PROMPT.md</code>, <code>backend/README.md</code>, <code>backend/SECURITY-AUDIT-2026-11-15.md</code>.</p>
+  <p><strong>Sources.</strong> <code>backend/app/</code> (the code is the truth wherever docs differ), <code>backend/data/runs/*.json</code> (saved AI runs), <code>backend/data/export/</code>, <code>docs/DESIGN.md</code>, <code>docs/BACKEND.md</code>, <code>docs/HOW-WE-TEST.md</code>, <code>docs/PILOT.md</code>, <code>docs/FRONTEND_PROMPT.md</code>, <code>backend/README.md</code>, <code>docs/archive/SECURITY-AUDIT-2026-11-15.md</code>.</p>
   <p>Data as of 18 Nov 2026: all five demo tools taught all 30 students with real AI (150 lessons), and all 48 pilot lessons with real tools are done. Simulated students are not real children.</p>
 </footer>
 </main>

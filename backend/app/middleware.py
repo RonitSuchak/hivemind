@@ -1,4 +1,4 @@
-"""Three small guards for the API, found by the security audit (SECURITY-AUDIT-2026-11-15.md).
+"""Three small guards for the API, found by the security audit (docs/archive/SECURITY-AUDIT-2026-11-15.md).
 
 1. client_ip(): who a request comes from, for rate limits. Only trusts the
    X-Forwarded-For entries our own proxies add (config.PROXY_HOPS), never the

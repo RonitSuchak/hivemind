@@ -423,7 +423,7 @@ class ApiTests(unittest.TestCase):
         self.assertError(r, 429, "rate_limited")
         self.assertTrue(r.headers["retry-after"].isdigit())
 
-    # --- security audit fixes (SECURITY-AUDIT-2026-11-15.md)
+    # --- security audit fixes (docs/archive/SECURITY-AUDIT-2026-11-15.md)
     def test_a_faked_x_forwarded_for_cannot_dodge_the_rate_limit(self):
         limit = config.RATE_LIMITS["chat"][0]
         codes = [self.client.post("/api/chat", headers={"X-Forwarded-For": f"203.0.113.{i}"},

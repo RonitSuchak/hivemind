@@ -25,7 +25,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | How much each demo tool teaches each group (tuning) | `python3 -m app.tune` |
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |
 | The lab, real AI (resumes if stopped) | `python3 -m app.lab` |
-| Check accuracy test (40 made-up students with known answers take the real check) | `.venv/bin/python -m app.check_test`; writes `data/check-test.json`. Tests the check as a measuring tool, never adds to the classmate results |
+| Check accuracy test (40 made-up students with known answers take the real check) | `.venv/bin/python -m app.check_test`; writes `data/export/check-test.json`. Tests the check as a measuring tool, never adds to the classmate results |
 | Demo-mode files | `.venv/bin/python -m app.export` (`--with-ai` adds ask and chat examples) |
 | Relay one real-tools pilot lesson (`docs/PILOT.md`) | `.venv/bin/python -m app.relay --tool chatgpt_study --student s10` (`--voice scripted`: no AI calls; `--list`: what's done) |
 | Live lab stream (try it) | `curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&mode=replay"` (`mode=live` uses real AI) |
@@ -69,6 +69,6 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | `app/middleware.py`, `app/serve.py` | Client address for rate limits, 16 KB body cap, security headers; the safe start command |
 
 ## Deploy (Render, free)
-1. **Backend web service:** root directory `backend`, build `pip install -r requirements.txt`, start `python -m app.serve`, environment `PYTHON_VERSION=3.15.2`, `HOST=0.0.0.0`, `PROXY_HOPS=1`, plus the `.env` keys (`GEMINI_API_KEY`, `SAFE_BROWSING_API_KEY`, `ADMIN_PASSWORD`, `DATABASE_URL`, `CORS_ORIGINS`). Never start it with `--forwarded-allow-ips '*'`: that lets anyone dodge the rate limits (see `SECURITY-AUDIT-2026-11-15.md`). After deploy, confirm `PROXY_HOPS=1` is right for Render with the rate-limit test in that report.
+1. **Backend web service:** root directory `backend`, build `pip install -r requirements.txt`, start `python -m app.serve`, environment `PYTHON_VERSION=3.15.2`, `HOST=0.0.0.0`, `PROXY_HOPS=1`, plus the `.env` keys (`GEMINI_API_KEY`, `SAFE_BROWSING_API_KEY`, `ADMIN_PASSWORD`, `DATABASE_URL`, `CORS_ORIGINS`). Never start it with `--forwarded-allow-ips '*'`: that lets anyone dodge the rate limits (see `docs/archive/SECURITY-AUDIT-2026-11-15.md`). After deploy, confirm `PROXY_HOPS=1` is right for Render with the rate-limit test in that report.
 2. **Demo maker web service:** same repo and root, start `uvicorn app.demo_maker:app --host 0.0.0.0 --port $PORT --no-access-log`, environment `DEMO_MAKER_CODE` (set after submitting it).
 3. Check `https://<backend>/api/health`. Free services sleep after 15 minutes idle: wake it 2 minutes before the pitch.

@@ -1,6 +1,6 @@
 """Check accuracy test: 40 made-up students with known answers take the real check (docs/DESIGN.md).
 
-    cd backend && .venv/bin/python -m app.check_test     # writes data/check-test.json and prints the summary
+    cd backend && .venv/bin/python -m app.check_test     # writes data/export/check-test.json and prints the summary
 
 Why: before real classmates take the check, we test the check itself the way any measuring tool is tested
 (in testing research this is called "parameter recovery"). Each made-up student gets hidden true traits that we
@@ -263,8 +263,8 @@ def findings(summary: dict) -> list[str]:
 
 def main() -> None:
     result = run()
-    path = config.DATA_DIR / "check-test.json"
-    path.write_text(json.dumps(result, indent=1, ensure_ascii=False) + "\n")
+    path = config.DATA_DIR / "export" / "check-test.json"  # the demo-mode copy the website reads
+    path.write_text(json.dumps(result, indent=1, ensure_ascii=False))  # same format as app.export
     print(result["note"])
     for line in result["findings"]:
         print("-", line)
