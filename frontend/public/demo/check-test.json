@@ -1,0 +1,1902 @@
+{
+ "title": "Check accuracy test",
+ "simulated": true,
+ "note": "40 made-up students with known answers took the real check. This tests the check as a measuring tool. It is not evidence about real children, and these students are never added to the classmate results.",
+ "seed": "hivemind-check-test-v1",
+ "mix": {
+  "careful": 25,
+  "rushing": 8,
+  "not_trying": 4,
+  "quit_halfway": 3
+ },
+ "close_means": 0.15,
+ "summary": {
+  "careful": {
+   "students": 25,
+   "trait_error": {
+    "start_level": 0.127,
+    "learn_speed": 0.128,
+    "reading": 0.107,
+    "english": 0.089,
+    "persistence": 0.109
+   },
+   "trait_close_share": {
+    "start_level": 0.6,
+    "learn_speed": 0.64,
+    "reading": 0.8,
+    "english": 0.88,
+    "persistence": 0.76
+   },
+   "avg_same_students": 2.48,
+   "same_best_tool_share": 1.0,
+   "avg_gain_gap": 0.35,
+   "enough_agrees_share": 1.0
+  },
+  "everyone": {
+   "students": 40,
+   "trait_error": {
+    "start_level": 0.128,
+    "learn_speed": 0.127,
+    "reading": 0.147,
+    "english": 0.097,
+    "persistence": 0.13
+   },
+   "trait_close_share": {
+    "start_level": 0.62,
+    "learn_speed": 0.65,
+    "reading": 0.72,
+    "english": 0.82,
+    "persistence": 0.65
+   },
+   "avg_same_students": 2.1,
+   "same_best_tool_share": 1.0,
+   "avg_gain_gap": 0.39,
+   "enough_agrees_share": 1.0
+  },
+  "no_check_careful": {
+   "students": 25,
+   "trait_error": {
+    "start_level": 0.114,
+    "learn_speed": 0.105,
+    "reading": 0.153,
+    "english": 0.147,
+    "persistence": 0.106
+   },
+   "trait_close_share": {
+    "start_level": 0.72,
+    "learn_speed": 0.8,
+    "reading": 0.64,
+    "english": 0.64,
+    "persistence": 0.68
+   },
+   "avg_same_students": 1.72,
+   "same_best_tool_share": 1.0,
+   "avg_gain_gap": 0.55,
+   "enough_agrees_share": 1.0
+  },
+  "by_behaviour": {
+   "careful": {
+    "students": 25,
+    "trait_error": {
+     "start_level": 0.127,
+     "learn_speed": 0.128,
+     "reading": 0.107,
+     "english": 0.089,
+     "persistence": 0.109
+    },
+    "trait_close_share": {
+     "start_level": 0.6,
+     "learn_speed": 0.64,
+     "reading": 0.8,
+     "english": 0.88,
+     "persistence": 0.76
+    },
+    "avg_same_students": 2.48,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.35,
+    "enough_agrees_share": 1.0
+   },
+   "rushing": {
+    "students": 8,
+    "trait_error": {
+     "start_level": 0.129,
+     "learn_speed": 0.097,
+     "reading": 0.125,
+     "english": 0.082,
+     "persistence": 0.152
+    },
+    "trait_close_share": {
+     "start_level": 0.75,
+     "learn_speed": 0.88,
+     "reading": 0.88,
+     "english": 0.88,
+     "persistence": 0.38
+    },
+    "avg_same_students": 2.5,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.36,
+    "enough_agrees_share": 1.0
+   },
+   "not_trying": {
+    "students": 4,
+    "trait_error": {
+     "start_level": 0.159,
+     "learn_speed": 0.184,
+     "reading": 0.223,
+     "english": 0.205,
+     "persistence": 0.092
+    },
+    "trait_close_share": {
+     "start_level": 0.5,
+     "learn_speed": 0.25,
+     "reading": 0.5,
+     "english": 0.25,
+     "persistence": 1.0
+    },
+    "avg_same_students": 0.5,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.59,
+    "enough_agrees_share": 1.0
+   },
+   "quit_halfway": {
+    "students": 3,
+    "trait_error": {
+     "start_level": 0.086,
+     "learn_speed": 0.123,
+     "reading": 0.445,
+     "english": 0.062,
+     "persistence": 0.295
+    },
+    "trait_close_share": {
+     "start_level": 0.67,
+     "learn_speed": 0.67,
+     "reading": 0.0,
+     "english": 1.0,
+     "persistence": 0.0
+    },
+    "avg_same_students": 0.0,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.49,
+    "enough_agrees_share": 1.0
+   }
+  },
+  "fresh_sets_careful": {
+   "unseen-d": {
+    "students": 25,
+    "trait_error": {
+     "start_level": 0.128,
+     "learn_speed": 0.099,
+     "reading": 0.169,
+     "english": 0.103,
+     "persistence": 0.125
+    },
+    "trait_close_share": {
+     "start_level": 0.64,
+     "learn_speed": 0.68,
+     "reading": 0.52,
+     "english": 0.84,
+     "persistence": 0.68
+    },
+    "avg_same_students": 2.28,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.42,
+    "enough_agrees_share": 1.0
+   },
+   "unseen-e": {
+    "students": 25,
+    "trait_error": {
+     "start_level": 0.12,
+     "learn_speed": 0.101,
+     "reading": 0.151,
+     "english": 0.127,
+     "persistence": 0.119
+    },
+    "trait_close_share": {
+     "start_level": 0.76,
+     "learn_speed": 0.8,
+     "reading": 0.48,
+     "english": 0.6,
+     "persistence": 0.72
+    },
+    "avg_same_students": 2.52,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.38,
+    "enough_agrees_share": 1.0
+   },
+   "unseen-f": {
+    "students": 25,
+    "trait_error": {
+     "start_level": 0.123,
+     "learn_speed": 0.113,
+     "reading": 0.133,
+     "english": 0.112,
+     "persistence": 0.116
+    },
+    "trait_close_share": {
+     "start_level": 0.64,
+     "learn_speed": 0.8,
+     "reading": 0.68,
+     "english": 0.8,
+     "persistence": 0.64
+    },
+    "avg_same_students": 2.48,
+    "same_best_tool_share": 1.0,
+    "avg_gain_gap": 0.38,
+    "enough_agrees_share": 1.0
+   }
+  },
+  "flag": {
+   "caught": 7,
+   "of": 7,
+   "rushing_flagged": 0,
+   "rushing": 8,
+   "careful_flagged": 0,
+   "careful": 25
+  }
+ },
+ "findings": [
+  "For the 25 careful students, the check put English within 0.15 of the truth for 88% of them, against 64% if we just assumed every student was average for the class.",
+  "It found on average 2.48 of the same 5 simulated students that their true traits would pick (assuming average gets 1.72).",
+  "Its advice was within 0.35 marks out of 10 of the advice we'd give if we knew the student perfectly, and it picked the same best tool for 100% of them (assuming average: 0.55 marks, 100%).",
+  "The weakest part is learning speed: off by 0.128 on average, against 0.105 for assuming average. It comes from the change between two 5-question quizzes, so one lucky guess moves it a lot.",
+  "The didn't-try flag caught 7 of the 7 students who clicked through or quit, flagged 0 of 8 who rushed, and wrongly flagged 0 of 25 careful students."
+ ],
+ "students": [
+  {
+   "id": "T01",
+   "behaviour": "careful",
+   "seconds_taken": 391,
+   "true": {
+    "start_level": 0.435,
+    "learn_speed": 0.512,
+    "english": 0.575,
+    "persistence": 0.471,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.438,
+    "reading": 1.0,
+    "english": 0.6,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.3,
+    "reading_age": 15,
+    "english": 0.5,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.021,
+    "learn_speed": 0.074,
+    "reading": 0.111,
+    "english": 0.025,
+    "persistence": 0.076
+   },
+   "same_students": 3,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.22,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T02",
+   "behaviour": "rushing",
+   "seconds_taken": 244,
+   "true": {
+    "start_level": 0.415,
+    "learn_speed": 0.457,
+    "english": 0.399,
+    "persistence": 0.351,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.712,
+    "reading": 0.667,
+    "english": 0.425,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.7,
+    "reading_age": 12,
+    "english": 0.25,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.041,
+    "learn_speed": 0.255,
+    "reading": 0.111,
+    "english": 0.026,
+    "persistence": 0.109
+   },
+   "same_students": 2,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.46,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T03",
+   "behaviour": "careful",
+   "seconds_taken": 402,
+   "true": {
+    "start_level": 0.477,
+    "learn_speed": 0.606,
+    "english": 0.431,
+    "persistence": 0.522,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.712,
+    "reading": 0.667,
+    "english": 0.425,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.7,
+    "reading_age": 12,
+    "english": 0.25,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.021,
+    "learn_speed": 0.106,
+    "reading": 0.0,
+    "english": 0.006,
+    "persistence": 0.062
+   },
+   "same_students": 4,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.14,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T04",
+   "behaviour": "careful",
+   "seconds_taken": 360,
+   "true": {
+    "start_level": 0.396,
+    "learn_speed": 0.428,
+    "english": 0.523,
+    "persistence": 0.479,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.644,
+    "reading": 0.667,
+    "english": 0.425,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.6,
+    "reading_age": 12,
+    "english": 0.25,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.116,
+    "learn_speed": 0.216,
+    "reading": 0.0,
+    "english": 0.098,
+    "persistence": 0.019
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.78,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T05",
+   "behaviour": "rushing",
+   "seconds_taken": 201,
+   "true": {
+    "start_level": 0.312,
+    "learn_speed": 0.425,
+    "english": 0.282,
+    "persistence": 0.237,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.486,
+    "reading": 0.667,
+    "english": 0.25,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.37,
+    "reading_age": 12,
+    "english": 0.0,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.312,
+    "learn_speed": 0.061,
+    "reading": 0.0,
+    "english": 0.032,
+    "persistence": 0.223
+   },
+   "same_students": 3,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.22,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T06",
+   "behaviour": "careful",
+   "seconds_taken": 370,
+   "true": {
+    "start_level": 0.64,
+    "learn_speed": 0.485,
+    "english": 0.385,
+    "persistence": 0.372,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.664,
+    "reading": 0.667,
+    "english": 0.25,
+    "persistence": 0.33
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.63,
+    "reading_age": 12,
+    "english": 0.0,
+    "persistence": 0.26
+   },
+   "errors": {
+    "start_level": 0.016,
+    "learn_speed": 0.179,
+    "reading": 0.111,
+    "english": 0.135,
+    "persistence": 0.042
+   },
+   "same_students": 5,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.06,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T07",
+   "behaviour": "careful",
+   "seconds_taken": 478,
+   "true": {
+    "start_level": 0.583,
+    "learn_speed": 0.762,
+    "english": 0.888,
+    "persistence": 0.419,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.575,
+    "reading": 0.667,
+    "english": 0.95,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.5,
+    "reading_age": 12,
+    "english": 1.0,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.127,
+    "learn_speed": 0.187,
+    "reading": 0.0,
+    "english": 0.062,
+    "persistence": 0.041
+   },
+   "same_students": 3,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.26,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T08",
+   "behaviour": "careful",
+   "seconds_taken": 400,
+   "true": {
+    "start_level": 0.314,
+    "learn_speed": 0.62,
+    "english": 0.51,
+    "persistence": 0.622,
+    "reading": 0.444
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.74,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.74,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.034,
+    "learn_speed": 0.12,
+    "reading": 0.223,
+    "english": 0.09,
+    "persistence": 0.162
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.42,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T09",
+   "behaviour": "careful",
+   "seconds_taken": 444,
+   "true": {
+    "start_level": 0.236,
+    "learn_speed": 0.527,
+    "english": 0.255,
+    "persistence": 0.236,
+    "reading": 0.333
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.761,
+    "reading": 0.444,
+    "english": 0.25,
+    "persistence": 0.33
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.77,
+    "reading_age": 10,
+    "english": 0.0,
+    "persistence": 0.26
+   },
+   "errors": {
+    "start_level": 0.086,
+    "learn_speed": 0.234,
+    "reading": 0.111,
+    "english": 0.005,
+    "persistence": 0.094
+   },
+   "same_students": 4,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.18,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T10",
+   "behaviour": "rushing",
+   "seconds_taken": 270,
+   "true": {
+    "start_level": 0.587,
+    "learn_speed": 0.63,
+    "english": 0.739,
+    "persistence": 0.433,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.575,
+    "reading": 0.667,
+    "english": 0.775,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.5,
+    "reading_age": 12,
+    "english": 0.75,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.131,
+    "learn_speed": 0.055,
+    "reading": 0.111,
+    "english": 0.036,
+    "persistence": 0.027
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.08,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T11",
+   "behaviour": "quit_halfway",
+   "seconds_taken": 168,
+   "true": {
+    "start_level": 0.501,
+    "learn_speed": 0.449,
+    "english": 0.617,
+    "persistence": 0.535,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.438,
+    "reading": 0.222,
+    "english": 0.6,
+    "persistence": 0.2
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.3,
+    "reading_age": 8,
+    "english": 0.5,
+    "persistence": 0.1
+   },
+   "errors": {
+    "start_level": 0.045,
+    "learn_speed": 0.011,
+    "reading": 0.334,
+    "english": 0.017,
+    "persistence": 0.335
+   },
+   "same_students": 0,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.5,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "skipped_most"
+   ]
+  },
+  {
+   "id": "T12",
+   "behaviour": "careful",
+   "seconds_taken": 541,
+   "true": {
+    "start_level": 0.295,
+    "learn_speed": 0.45,
+    "english": 0.506,
+    "persistence": 0.622,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.719,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.265
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.71,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.18
+   },
+   "errors": {
+    "start_level": 0.145,
+    "learn_speed": 0.269,
+    "reading": 0.0,
+    "english": 0.094,
+    "persistence": 0.357
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.36,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T13",
+   "behaviour": "careful",
+   "seconds_taken": 432,
+   "true": {
+    "start_level": 0.443,
+    "learn_speed": 0.74,
+    "english": 0.63,
+    "persistence": 0.468,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.74,
+    "reading": 0.667,
+    "english": 0.775,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.74,
+    "reading_age": 12,
+    "english": 0.75,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.163,
+    "learn_speed": 0.0,
+    "reading": 0.111,
+    "english": 0.145,
+    "persistence": 0.008
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.06,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T14",
+   "behaviour": "careful",
+   "seconds_taken": 588,
+   "true": {
+    "start_level": 0.357,
+    "learn_speed": 0.493,
+    "english": 0.634,
+    "persistence": 0.542,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.506,
+    "reading": 0.778,
+    "english": 0.775,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.4,
+    "reading_age": 13,
+    "english": 0.75,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.077,
+    "learn_speed": 0.013,
+    "reading": 0.111,
+    "english": 0.141,
+    "persistence": 0.147
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.22,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T15",
+   "behaviour": "quit_halfway",
+   "seconds_taken": 177,
+   "true": {
+    "start_level": 0.443,
+    "learn_speed": 0.737,
+    "english": 0.506,
+    "persistence": 0.56,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.486,
+    "reading": 0.222,
+    "english": 0.6,
+    "persistence": 0.2
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.37,
+    "reading_age": 8,
+    "english": 0.5,
+    "persistence": 0.1
+   },
+   "errors": {
+    "start_level": 0.181,
+    "learn_speed": 0.251,
+    "reading": 0.556,
+    "english": 0.094,
+    "persistence": 0.36
+   },
+   "same_students": 0,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.56,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "skipped_most"
+   ]
+  },
+  {
+   "id": "T16",
+   "behaviour": "random",
+   "seconds_taken": 81,
+   "true": {
+    "start_level": 0.219,
+    "learn_speed": 0.592,
+    "english": 0.562,
+    "persistence": 0.546,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.41,
+    "reading": 0.444,
+    "english": 0.95,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.26,
+    "reading_age": 10,
+    "english": 1.0,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.061,
+    "learn_speed": 0.182,
+    "reading": 0.112,
+    "english": 0.388,
+    "persistence": 0.021
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.58,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "too_fast"
+   ]
+  },
+  {
+   "id": "T17",
+   "behaviour": "careful",
+   "seconds_taken": 354,
+   "true": {
+    "start_level": 0.457,
+    "learn_speed": 0.425,
+    "english": 0.526,
+    "persistence": 0.277,
+    "reading": 0.444
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.644,
+    "reading": 0.444,
+    "english": 0.425,
+    "persistence": 0.265
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.6,
+    "reading_age": 10,
+    "english": 0.25,
+    "persistence": 0.18
+   },
+   "errors": {
+    "start_level": 0.177,
+    "learn_speed": 0.219,
+    "reading": 0.0,
+    "english": 0.101,
+    "persistence": 0.012
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.96,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T18",
+   "behaviour": "careful",
+   "seconds_taken": 390,
+   "true": {
+    "start_level": 0.45,
+    "learn_speed": 0.636,
+    "english": 0.73,
+    "persistence": 0.742,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.644,
+    "reading": 1.0,
+    "english": 0.775,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.6,
+    "reading_age": 15,
+    "english": 0.75,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.17,
+    "learn_speed": 0.008,
+    "reading": 0.111,
+    "english": 0.045,
+    "persistence": 0.282
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.24,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T19",
+   "behaviour": "rushing",
+   "seconds_taken": 169,
+   "true": {
+    "start_level": 0.573,
+    "learn_speed": 0.57,
+    "english": 0.51,
+    "persistence": 0.711,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.438,
+    "reading": 0.778,
+    "english": 0.425,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.3,
+    "reading_age": 13,
+    "english": 0.25,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.117,
+    "learn_speed": 0.132,
+    "reading": 0.111,
+    "english": 0.085,
+    "persistence": 0.186
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.48,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T20",
+   "behaviour": "careful",
+   "seconds_taken": 330,
+   "true": {
+    "start_level": 0.498,
+    "learn_speed": 0.417,
+    "english": 0.41,
+    "persistence": 0.509,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.575,
+    "reading": 0.778,
+    "english": 0.425,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.5,
+    "reading_age": 13,
+    "english": 0.25,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.042,
+    "learn_speed": 0.158,
+    "reading": 0.0,
+    "english": 0.015,
+    "persistence": 0.049
+   },
+   "same_students": 4,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.08,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T21",
+   "behaviour": "careful",
+   "seconds_taken": 476,
+   "true": {
+    "start_level": 0.282,
+    "learn_speed": 0.655,
+    "english": 0.554,
+    "persistence": 0.529,
+    "reading": 0.444
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.712,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.7,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.174,
+    "learn_speed": 0.057,
+    "reading": 0.223,
+    "english": 0.046,
+    "persistence": 0.004
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.46,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T22",
+   "behaviour": "careful",
+   "seconds_taken": 370,
+   "true": {
+    "start_level": 0.77,
+    "learn_speed": 0.574,
+    "english": 0.507,
+    "persistence": 0.509,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.8,
+    "learn_speed": 0.644,
+    "reading": 0.778,
+    "english": 0.775,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 1.0,
+    "learn_speed": 0.6,
+    "reading_age": 13,
+    "english": 0.75,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.03,
+    "learn_speed": 0.07,
+    "reading": 0.222,
+    "english": 0.268,
+    "persistence": 0.049
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.78,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T23",
+   "behaviour": "rushing",
+   "seconds_taken": 229,
+   "true": {
+    "start_level": 0.56,
+    "learn_speed": 0.564,
+    "english": 0.664,
+    "persistence": 0.487,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.575,
+    "reading": 0.778,
+    "english": 0.775,
+    "persistence": 0.33
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.5,
+    "reading_age": 13,
+    "english": 0.75,
+    "persistence": 0.26
+   },
+   "errors": {
+    "start_level": 0.104,
+    "learn_speed": 0.011,
+    "reading": 0.111,
+    "english": 0.111,
+    "persistence": 0.157
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.16,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T24",
+   "behaviour": "careful",
+   "seconds_taken": 578,
+   "true": {
+    "start_level": 0.739,
+    "learn_speed": 0.515,
+    "english": 0.903,
+    "persistence": 0.68,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.664,
+    "reading": 0.778,
+    "english": 0.95,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.63,
+    "reading_age": 13,
+    "english": 1.0,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.115,
+    "learn_speed": 0.149,
+    "reading": 0.111,
+    "english": 0.047,
+    "persistence": 0.22
+   },
+   "same_students": 4,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.12,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T25",
+   "behaviour": "same_button",
+   "seconds_taken": 115,
+   "true": {
+    "start_level": 0.439,
+    "learn_speed": 0.657,
+    "english": 0.571,
+    "persistence": 0.642,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.41,
+    "reading": 0.444,
+    "english": 0.6,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.26,
+    "reading_age": 10,
+    "english": 0.5,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.159,
+    "learn_speed": 0.247,
+    "reading": 0.334,
+    "english": 0.029,
+    "persistence": 0.117
+   },
+   "same_students": 0,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.42,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "too_fast",
+    "same_button"
+   ]
+  },
+  {
+   "id": "T26",
+   "behaviour": "careful",
+   "seconds_taken": 380,
+   "true": {
+    "start_level": 0.565,
+    "learn_speed": 0.75,
+    "english": 0.805,
+    "persistence": 0.594,
+    "reading": 0.444
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.664,
+    "reading": 0.667,
+    "english": 0.95,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.63,
+    "reading_age": 12,
+    "english": 1.0,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.059,
+    "learn_speed": 0.086,
+    "reading": 0.223,
+    "english": 0.145,
+    "persistence": 0.069
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.4,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T27",
+   "behaviour": "random",
+   "seconds_taken": 102,
+   "true": {
+    "start_level": 0.267,
+    "learn_speed": 0.631,
+    "english": 0.53,
+    "persistence": 0.397,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.458,
+    "reading": 0.222,
+    "english": 0.775,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.33,
+    "reading_age": 8,
+    "english": 0.75,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.117,
+    "learn_speed": 0.173,
+    "reading": 0.334,
+    "english": 0.245,
+    "persistence": 0.128
+   },
+   "same_students": 0,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.54,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "too_fast"
+   ]
+  },
+  {
+   "id": "T28",
+   "behaviour": "careful",
+   "seconds_taken": 479,
+   "true": {
+    "start_level": 0.406,
+    "learn_speed": 0.607,
+    "english": 0.553,
+    "persistence": 0.318,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.74,
+    "reading": 0.667,
+    "english": 0.425,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.74,
+    "reading_age": 12,
+    "english": 0.25,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.126,
+    "learn_speed": 0.133,
+    "reading": 0.111,
+    "english": 0.128,
+    "persistence": 0.077
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.5,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T29",
+   "behaviour": "careful",
+   "seconds_taken": 352,
+   "true": {
+    "start_level": 0.476,
+    "learn_speed": 0.68,
+    "english": 0.887,
+    "persistence": 0.459,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.74,
+    "reading": 0.778,
+    "english": 0.95,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.74,
+    "reading_age": 13,
+    "english": 1.0,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.196,
+    "learn_speed": 0.06,
+    "reading": 0.111,
+    "english": 0.063,
+    "persistence": 0.001
+   },
+   "same_students": 3,
+   "same_closest": true,
+   "same_best_tool": true,
+   "gain_gap": 0.42,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T30",
+   "behaviour": "careful",
+   "seconds_taken": 394,
+   "true": {
+    "start_level": 0.237,
+    "learn_speed": 0.386,
+    "english": 0.581,
+    "persistence": 0.307,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.458,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.2
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.33,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.1
+   },
+   "errors": {
+    "start_level": 0.087,
+    "learn_speed": 0.072,
+    "reading": 0.111,
+    "english": 0.019,
+    "persistence": 0.107
+   },
+   "same_students": 5,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.04,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T31",
+   "behaviour": "rushing",
+   "seconds_taken": 214,
+   "true": {
+    "start_level": 0.613,
+    "learn_speed": 0.604,
+    "english": 0.435,
+    "persistence": 0.309,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.486,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.37,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.011,
+    "learn_speed": 0.118,
+    "reading": 0.111,
+    "english": 0.165,
+    "persistence": 0.216
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.76,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T32",
+   "behaviour": "careful",
+   "seconds_taken": 411,
+   "true": {
+    "start_level": 0.525,
+    "learn_speed": 0.641,
+    "english": 0.603,
+    "persistence": 0.517,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.74,
+    "reading": 0.667,
+    "english": 0.775,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.74,
+    "reading_age": 12,
+    "english": 0.75,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.245,
+    "learn_speed": 0.099,
+    "reading": 0.111,
+    "english": 0.172,
+    "persistence": 0.122
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.12,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T33",
+   "behaviour": "careful",
+   "seconds_taken": 493,
+   "true": {
+    "start_level": 0.481,
+    "learn_speed": 0.709,
+    "english": 0.747,
+    "persistence": 0.325,
+    "reading": 0.556
+   },
+   "measured": {
+    "start_level": 0.8,
+    "learn_speed": 0.644,
+    "reading": 0.667,
+    "english": 0.95,
+    "persistence": 0.33
+   },
+   "profile": {
+    "start_level": 1.0,
+    "learn_speed": 0.6,
+    "reading_age": 12,
+    "english": 1.0,
+    "persistence": 0.26
+   },
+   "errors": {
+    "start_level": 0.319,
+    "learn_speed": 0.065,
+    "reading": 0.111,
+    "english": 0.203,
+    "persistence": 0.005
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.52,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T34",
+   "behaviour": "rushing",
+   "seconds_taken": 206,
+   "true": {
+    "start_level": 0.462,
+    "learn_speed": 0.517,
+    "english": 0.717,
+    "persistence": 0.637,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.458,
+    "reading": 1.0,
+    "english": 0.6,
+    "persistence": 0.46
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.33,
+    "reading_age": 15,
+    "english": 0.5,
+    "persistence": 0.42
+   },
+   "errors": {
+    "start_level": 0.312,
+    "learn_speed": 0.059,
+    "reading": 0.333,
+    "english": 0.117,
+    "persistence": 0.177
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.48,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T35",
+   "behaviour": "same_button",
+   "seconds_taken": 98,
+   "true": {
+    "start_level": 0.448,
+    "learn_speed": 0.591,
+    "english": 0.758,
+    "persistence": 0.627,
+    "reading": 0.778
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.458,
+    "reading": 0.667,
+    "english": 0.6,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.33,
+    "reading_age": 12,
+    "english": 0.5,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.298,
+    "learn_speed": 0.133,
+    "reading": 0.111,
+    "english": 0.158,
+    "persistence": 0.102
+   },
+   "same_students": 1,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.84,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "too_fast",
+    "same_button"
+   ]
+  },
+  {
+   "id": "T36",
+   "behaviour": "rushing",
+   "seconds_taken": 222,
+   "true": {
+    "start_level": 0.287,
+    "learn_speed": 0.424,
+    "english": 0.681,
+    "persistence": 0.27,
+    "reading": 0.333
+   },
+   "measured": {
+    "start_level": 0.28,
+    "learn_speed": 0.506,
+    "reading": 0.444,
+    "english": 0.6,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.2,
+    "learn_speed": 0.4,
+    "reading_age": 10,
+    "english": 0.5,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.007,
+    "learn_speed": 0.082,
+    "reading": 0.111,
+    "english": 0.081,
+    "persistence": 0.125
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.24,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T37",
+   "behaviour": "careful",
+   "seconds_taken": 530,
+   "true": {
+    "start_level": 0.322,
+    "learn_speed": 0.328,
+    "english": 0.372,
+    "persistence": 0.605,
+    "reading": 0.444
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.692,
+    "reading": 0.667,
+    "english": 0.25,
+    "persistence": 0.265
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.67,
+    "reading_age": 12,
+    "english": 0.0,
+    "persistence": 0.18
+   },
+   "errors": {
+    "start_level": 0.172,
+    "learn_speed": 0.364,
+    "reading": 0.223,
+    "english": 0.122,
+    "persistence": 0.34
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.68,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T38",
+   "behaviour": "careful",
+   "seconds_taken": 462,
+   "true": {
+    "start_level": 0.381,
+    "learn_speed": 0.685,
+    "english": 0.58,
+    "persistence": 0.544,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.15,
+    "learn_speed": 0.761,
+    "reading": 0.778,
+    "english": 0.6,
+    "persistence": 0.395
+   },
+   "profile": {
+    "start_level": 0.0,
+    "learn_speed": 0.77,
+    "reading_age": 13,
+    "english": 0.5,
+    "persistence": 0.34
+   },
+   "errors": {
+    "start_level": 0.231,
+    "learn_speed": 0.076,
+    "reading": 0.111,
+    "english": 0.02,
+    "persistence": 0.149
+   },
+   "same_students": 2,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.3,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T39",
+   "behaviour": "careful",
+   "seconds_taken": 453,
+   "true": {
+    "start_level": 0.694,
+    "learn_speed": 0.519,
+    "english": 0.569,
+    "persistence": 0.748,
+    "reading": 0.889
+   },
+   "measured": {
+    "start_level": 0.456,
+    "learn_speed": 0.712,
+    "reading": 1.0,
+    "english": 0.6,
+    "persistence": 0.525
+   },
+   "profile": {
+    "start_level": 0.47,
+    "learn_speed": 0.7,
+    "reading_age": 15,
+    "english": 0.5,
+    "persistence": 0.5
+   },
+   "errors": {
+    "start_level": 0.238,
+    "learn_speed": 0.193,
+    "reading": 0.111,
+    "english": 0.031,
+    "persistence": 0.223
+   },
+   "same_students": 3,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.36,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": false,
+   "flag_reasons": []
+  },
+  {
+   "id": "T40",
+   "behaviour": "quit_halfway",
+   "seconds_taken": 224,
+   "true": {
+    "start_level": 0.593,
+    "learn_speed": 0.594,
+    "english": 0.526,
+    "persistence": 0.391,
+    "reading": 0.667
+   },
+   "measured": {
+    "start_level": 0.624,
+    "learn_speed": 0.486,
+    "reading": 0.222,
+    "english": 0.6,
+    "persistence": 0.2
+   },
+   "profile": {
+    "start_level": 0.73,
+    "learn_speed": 0.37,
+    "reading_age": 8,
+    "english": 0.5,
+    "persistence": 0.1
+   },
+   "errors": {
+    "start_level": 0.031,
+    "learn_speed": 0.108,
+    "reading": 0.445,
+    "english": 0.074,
+    "persistence": 0.191
+   },
+   "same_students": 0,
+   "same_closest": false,
+   "same_best_tool": true,
+   "gain_gap": 0.42,
+   "truth_enough": true,
+   "measured_enough": true,
+   "flagged": true,
+   "flag_reasons": [
+    "skipped_most"
+   ]
+  }
+ ]
+}
