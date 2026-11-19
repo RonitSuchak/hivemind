@@ -107,7 +107,7 @@ a:hover { text-decoration-color: var(--pop); }
   -webkit-mask-image: linear-gradient(90deg, #000, transparent); mask-image: linear-gradient(90deg, #000, transparent); }
 @media (max-width: 48rem) { .pattern-ticks { display: none; } .pattern-stripes { height: 22vh; } }
 
-/* ---------- Glyphs (equations / quotes): bob in place; Ambient.jsx moves them away from the pointer ---------- */
+/* ---------- Glyphs (equations / quotes): bob in place ---------- */
 .glyph { font-family: var(--font-accent); will-change: transform;
   animation: glyph-bob calc(var(--glyph-dur) + var(--i, 0) * 0.9s) ease-in-out calc(var(--i, 0) * -1.9s) infinite alternate; }
 .glyph:nth-child(even) { animation-direction: alternate-reverse; }
@@ -268,7 +268,7 @@ a:hover { text-decoration-color: var(--pop); }
 .wordmark .mark { transition: transform var(--dur-ui) var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .wordmark:hover svg { color: var(--ink); transform: rotate(0deg) scale(1.08); } }
 
-/* ---------- Landing hero picture (components/HeroHive.jsx) ---------- */
+/* ---------- Landing hero picture ---------- */
 .hero { position: relative; }
 .hero-art { display: none; }
 @media (min-width: 68rem) {
