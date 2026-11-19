@@ -160,6 +160,15 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()["tools"]), 78)
 
+    def test_match_says_when_a_check_may_not_be_reliable(self):
+        from app.export import NEAR_CHECK
+        ok = self.client.post("/api/match", json=NEAR_CHECK).json()
+        self.assertEqual(ok["check_quality"], {"reliable": True, "reasons": []})
+        rushed = self.client.post("/api/match", json={**NEAR_CHECK, "seconds_taken": 40}).json()
+        self.assertFalse(rushed["check_quality"]["reliable"])
+        self.assertEqual(rushed["check_quality"]["reasons"][0]["code"], "too_fast")
+        self.assertEqual(rushed["profile"], ok["profile"])  # a warning only: the match is the same
+
     def test_match_topic_filters_real_tools_and_extras_are_stored_not_scored(self):
         from app.export import NEAR_CHECK
         plain = self.match(dict(NEAR_CHECK))

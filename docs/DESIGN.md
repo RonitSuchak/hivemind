@@ -210,10 +210,34 @@ Groups describe simulated students only. A real person is never given a group.
 ### The check (`app/check.py`)
 Quiz 1 (5 questions) → 2-minute mini-lesson → Quiz 2 (5 questions) → reading (2 short passages, 2 questions each) → English confidence (1 to 5). Every question can be skipped. No name, no age, no email. *(Defaults, all in config:)*
 - `start_level` = quiz 1 right ÷ 5, corrected for guessing, clamped 0 to 1.
-- `learn_speed` = (quiz 2 right − quiz 1 right) ÷ (5 − quiz 1 right), clamped 0.1 to 0.9 (0.6 if quiz 1 was perfect).
+- `learn_speed`: raw = (quiz 2 right − quiz 1 right) ÷ room, where room = 5 − quiz 1 right, clamped 0.1 to 0.9; then pulled towards the middle (0.5) by how much room there was: 0.5 + (raw − 0.5) × room ÷ (room + 2). 0.6 if quiz 1 was perfect. *(Shrinkage added 19 Nov: 4 of 5 then 5 of 5 used to mean "fastest possible" from one question; now 0.63.)*
 - `reading_age` = 8 + 1.75 × reading questions right (8 to 15).
 - `english` = (confidence − 1) ÷ 4 (0.5 if skipped).
-- `persistence` = 1 − skipped ÷ questions, clamped 0.1 to 0.9.
+- `persistence` = 0.5 − 0.08 × skipped, clamped 0.1 to 0.9. *(19 Nov: skipping is evidence of giving up, but skipping nothing is no evidence of sticking with it, so it gives the middle. It was 1 − skipped ÷ 14, which gave nearly every careful student the top value.)*
+
+### How we tested the checker (19 Nov, `app/check_test.py`)
+A **known-answer test** (in testing research, "parameter recovery"): 40 made-up students get hidden true traits, spread over the class's range and partly linked as in a real class. A separate answer model decides their clicks: knowing more makes a right answer more likely and a guess is right 1 time in 4; the mini-lesson teaches a share of what they didn't know, set by their learning speed; reading depends on reading age (lower for students new to English) against each passage; the English rating is the truth give or take about a point; students who give up sooner skip more, mostly what they don't know. Mix: 25 careful, 8 rushing (a third of clicks random), 4 not trying (2 random, 2 always the same button, very fast), 3 quitting after quiz 1. The real scoring code and the real match then run on their clicks. Seeded, so every run gives the same result. Run it with `python -m app.check_test` (writes `data/check-test.json`).
+
+What it found, for the 25 careful students, against simply assuming every student is average for the class (errors on the 0-to-1 class scale; "close" = within 0.15):
+
+| Measure | Assume average | Check before the fix | Check after the fix |
+|---|---|---|---|
+| English | 0.15 (64% close) | 0.09 (88%) | 0.09 (88%) |
+| Reading | 0.15 (64%) | 0.11 (80%) | 0.11 (80%) |
+| Starting level | 0.11 (72%) | 0.13 (60%) | 0.13 (60%) |
+| Learning speed | 0.11 (80%) | **0.20 (28%)** | 0.13 (64%) |
+| Staying power | 0.11 (68%) | **0.31 (16%)** | 0.11 (76%) |
+| Same nearest students (of 5) | 1.7 | 1.9 | 2.5 |
+| Advice gap (marks out of 10) | 0.55 | 0.41 | 0.35 |
+
+- **What it showed first:** English and reading are measured well; starting level is about as good as a guess from 5 questions. **Learning speed and staying power were worse than not measuring at all:** learning speed is the change between two 5-question quizzes, so one lucky guess swung it; staying power counted skips, and careful students skip almost nothing, so nearly all got the top value. Both added noise to the match.
+- **The fix (shrinkage, 19 Nov):** when there's little evidence, say "average" instead of an extreme (formulas above). Chosen by trying three options (lower weights in the match, dropping the two numbers from the match, shrinkage) on this set and three more, then **confirmed on three sets of 40 never used to choose it** (`FRESH_SEEDS`, reported in `summary.fresh_sets_careful`): learning speed error 0.16–0.18 → 0.10–0.11, staying power 0.28–0.31 → 0.12–0.13, same nearest students 1.8–2.3 → 2.3–2.5. Honest limit: the advice gap on those sets barely moved (0.34–0.44 → 0.38–0.42), because predicted gains depend mostly on starting level and reading, which were already fine. Checks with no ranking fell from about 4.7% to 1.5% of answer patterns.
+- **Effect people see:** someone who skips nothing now gets staying power in the middle, not the top, and a big jump from one question no longer reads as "fastest possible". The check now says "we can't tell" where it can't. A hard question someone keeps trying (the frontend's optional challenge step) could prove high staying power later; the backend doesn't use it yet.
+- **What it is not:** evidence that simulated students learn like real children. These students never go into the classmate results; only real classmates on the Proof page answer that.
+- **Didn't-try flag** (below): caught 7 of the 7 who clicked through or quit, 0 of 8 rushers, and wrongly flagged 0 of 25 careful students.
+
+### Didn't-try flag (19 Nov, `check.check_quality`)
+`POST /api/match` returns `check_quality: {reliable, reasons}`. Any one sign is enough: finished in under 150 seconds (`too_fast`, only when the website sends a time); 85% or more of at least 8 answers in the same place on screen (`same_button`; options are shuffled, so a reader almost never does this); more than half the questions skipped (`skipped_most`). It never changes the profile or the match, because a careful student can be fast: it only warns that the result may not be reliable.
 
 ### Item 10: weighted match (`app/matching.py`)
 - The 5 profile numbers, each scaled 0 to 1 (reading age: (age − 6) ÷ 9, clamped).
@@ -222,7 +246,7 @@ Quiz 1 (5 questions) → 2-minute mini-lesson → Quiz 2 (5 questions) → readi
 - **Predicted gain** per demo tool = the weighted average of those 5 students' gains with that demo tool.
 - Rank by predicted gain; any demo tool with a critical safety fail goes to the bottom with a warning.
 - **On the class's scale (18 Nov):** before measuring, the check's numbers are mapped in a straight line onto the range the 30 simulated students cover (`matching.on_class_scale`): already knows 0–1 → 0.15–0.80, pick-up speed 0.1–0.9 → 0.30–0.85, English 0–1 → 0.25–0.95, staying power 0.1–0.9 → 0.20–0.85; reading is already on the class's range. Why: the check reached past the class on every measure (a student who skips nothing got staying power 0.9, above every simulated student; one who got 4 of 5 twice got pick-up speed 0.1, below all of them), so about 3 in 4 check results got no ranking. Order is kept (the top of the check is the top of the class), and the profile shown back is unchanged: only the match uses the scaled numbers. Honest limit: a 30-student class can only stand for students in its own range.
-- **Not enough matches:** if the nearest student is more than **0.55** away, or the 5 nearest average more than **0.70** *(defaults; 0.45 / 0.60 until 18 Nov)*, return no ranking and a plain message. Checked over every possible set of check answers (18 Nov): 4% get no ranking (7% of typical ones), down from 78%, and the typical nearest student is 0.38 away (was 0.56). Those left are unusual, such as none right before the mini-lesson and all right after it. Checked on the real profiles (15 Nov): every simulated student's nearest neighbour is 0.09 to 0.30 away (5-nearest average 0.18 to 0.40), while far-off profiles score 0.9 or more.
+- **Not enough matches:** if the nearest student is more than **0.55** away, or the 5 nearest average more than **0.70** *(defaults; 0.45 / 0.60 until 18 Nov)*, return no ranking and a plain message. Checked over every possible set of check answers (18 Nov): 4% get no ranking (7% of typical ones), down from 78%; after the 19 Nov shrinkage of learning speed and staying power, about 1.5%, and the typical nearest student is 0.38 away (was 0.56). Those left are unusual, such as none right before the mini-lesson and all right after it. Checked on the real profiles (15 Nov): every simulated student's nearest neighbour is 0.09 to 0.30 away (5-nearest average 0.18 to 0.40), while far-off profiles score 0.9 or more.
 
 ### Item 11: radar data
 Five 0-to-1 values (`start_level`, `learn_speed`, `reading`, `english`, `persistence`) for the real student and for each match, plus each match's weight and distance.

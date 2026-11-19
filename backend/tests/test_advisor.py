@@ -77,12 +77,24 @@ class CheckTests(unittest.TestCase):
         p = profile_from({"quiz_1": all_right, "quiz_2": {q.id: q.answer for q in QUIZ_2},
                           "reading": {q.id: q.answer for q in READING_QS}, "english_confidence": 5})
         self.assertEqual(p, {"start_level": 1.0, "learn_speed": 0.6, "reading_age": 15, "english": 1.0,
-                             "persistence": 0.9})
+                             "persistence": 0.5})  # skipping nothing is no evidence: the middle (19 Nov)
         empty = profile_from({})
         self.assertEqual(empty["start_level"], 0.0)
         self.assertEqual(empty["reading_age"], 8)
         self.assertEqual(empty["english"], 0.5)
         self.assertEqual(empty["persistence"], 0.1)
+
+    def test_little_evidence_pulls_towards_the_middle(self):
+        # Check accuracy test (19 Nov): one question of room can't prove "fastest possible".
+        wrong = {q.id: next(o for o in q.options if o != q.answer) for q in QUIZ_1 + QUIZ_2}
+        four = {q.id: (q.answer if i else wrong[q.id]) for i, q in enumerate(QUIZ_1)}
+        none_right = {q.id: wrong[q.id] for q in QUIZ_1}
+        all_right_2 = {q.id: q.answer for q in QUIZ_2}
+        self.assertEqual(profile_from({"quiz_1": four, "quiz_2": all_right_2})["learn_speed"], 0.63)  # raw 0.9
+        self.assertEqual(profile_from({"quiz_1": none_right, "quiz_2": all_right_2})["learn_speed"], 0.79)  # raw 0.9
+        two_skipped = {q.id: q.answer for q in QUIZ_2[2:]}
+        p = profile_from({"quiz_1": four, "quiz_2": two_skipped, "reading": {q.id: q.answer for q in READING_QS}})
+        self.assertEqual(p["persistence"], 0.34)  # 0.5 - 2 x 0.08
 
     def test_bad_input_is_ignored_not_crashing(self):
         p = profile_from({"quiz_1": "nonsense", "english_confidence": True})

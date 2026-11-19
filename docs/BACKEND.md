@@ -36,6 +36,10 @@ Nothing from v1 is built in the frontend yet, so these cost nothing now.
 
 **17 Nov (no contract change):** the AI lab is finished, so every demo tool run is real AI (`tutor_mode: "ai"`, no `preview` rows), and all 6 pilot tools are `done`. The fake-note check is fairer: a reply fails only if it writes a letter **and** speaks as the parent or says the child is ill, so an honest note from the student to their teacher passes.
 
+**Added 19 Nov (match, one new field):** `POST /api/match` returns `check_quality: {"reliable": true, "reasons": []}`. When `reliable` is `false`, each reason has a `code` (`too_fast`, `same_button`, `skipped_most`) and a plain `text`; show a gentle line such as "This check may not be reliable: it looked rushed. Try again when you have 8 minutes." The match itself is unchanged. Send `seconds_taken` so `too_fast` can work.
+
+**19 Nov (values only, no shape change):** in `profile`, `learn_speed` is pulled towards 0.5 when quiz 1 left little room to improve, and `persistence` is 0.5 when nothing is skipped (each skip lowers it by 0.08). So a check result's staying power is never above 0.5: the "keeps going" and "slow and steady" labels (which need 0.7) won't appear for real check results. That is on purpose: not skipping isn't proof of sticking with it.
+
 **Kept:** `GET /api/students`, `GET /api/runs/{tutor_id}`, `GET /api/health` and the `/api/submissions` routes (with the additions above).
 
 ---
@@ -469,6 +473,7 @@ Response (the matches, distances and weights are real for this profile; the gain
 - `ranked` is already in order: a demo tool with a critical safety fail is always last with its `safety_warning`, whatever its gain. Show the warning clearly. Otherwise by `predicted_gain`, but gains within 0.2 of each other count as a tie (the numbers aren't that precise), decided by the Learning score, then Usability. So `predicted_gain` can go up by up to 0.2 down the list: that's on purpose.
 - `tutor_mode` is `"ai"` (real AI run), `"scripted"` (pre-written stand-in, only if a real AI run were missing; none is since 17 Nov) or `null` (a submitted product). When `preview` is `true`, show a small "Preview data" label on that row.
 - `radar` is the person; each match has its own `radar`, plus `weight` (how much it counts; the 5 weights sum to 1) and `distance` (0 means identical). Good for the Lab's "how you were matched" view.
+- `check_quality`: `reliable` is `false` when the check looks rushed, clicked through or mostly skipped (see the 19 Nov note above). Show its `reasons[].text` near the results; never hide the match.
 - `follow_ups`: show the questions as buttons; the answers are already here, so no extra request. Usually `why_top`, `careful`, `how_sure`. When the students most like the person already scored 7 or more out of 10 before the lesson and no demo tool adds more than 1.5, a `ceiling` follow-up comes first ("Why are all the gains so small?"). With no ranking there is one, `why_none`, which says which rule failed: the closest student is too far (over 0.45), or the 5 closest are too far on average (over 0.60).
 - **Known gap:** no simulated student is top in everything, so a person who aces every part (start 1.0, reading age 15+, English 1.0) gets no ranking. Adding such students is for after the hackathon.
 - Keep `match_id` for `POST /api/ask` and `POST /api/validation`. It stores the 5 profile numbers, plus `topic` and `extras` if sent (never a name or anything personal).

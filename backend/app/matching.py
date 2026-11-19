@@ -84,8 +84,13 @@ def _round_to_one(weights: list[float], places: int = 3) -> list[float]:
 
 
 def nearest(profile: dict) -> list[dict]:
-    me = _vec(on_class_scale(radar(profile["start_level"], profile["learn_speed"], profile["reading_age"],
-                                   profile["english"], profile["persistence"])))
+    return nearest_radar(on_class_scale(radar(profile["start_level"], profile["learn_speed"], profile["reading_age"],
+                                              profile["english"], profile["persistence"])))
+
+
+def nearest_radar(r: dict) -> list[dict]:
+    """The nearest simulated students to a radar already on the class's scale (check_test.py uses it for truth)."""
+    me = _vec(r)
     ranked = sorted(STUDENTS, key=lambda s: (math.dist(me, _vec(s.radar)), s.id))[: config.MATCH_K]
     distances = [math.dist(me, _vec(s.radar)) for s in ranked]
     raw = [1 / (d + config.MATCH_WEIGHT_OFFSET) for d in distances]

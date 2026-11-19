@@ -108,13 +108,55 @@ def profile_from(body: dict) -> dict:
     if q1 == n:
         speed = config.LEARN_SPEED_IF_PERFECT
     else:
-        speed = _clamp((q2 - q1) / (n - q1), config.LEARN_SPEED_MIN, config.LEARN_SPEED_MAX)
+        # The raw change between the quizzes, pulled towards the middle when there was little room to improve:
+        # 4 of 5 then 5 of 5 is one question, so it can't prove "fastest possible" (check accuracy test, 19 Nov).
+        room = n - q1
+        raw = _clamp((q2 - q1) / room, config.LEARN_SPEED_MIN, config.LEARN_SPEED_MAX)
+        middle = (config.LEARN_SPEED_MIN + config.LEARN_SPEED_MAX) / 2
+        speed = middle + (raw - middle) * room / (room + config.LEARN_SPEED_SHRINK)
     reading_age = int(config.READING_AGE_BASE + config.READING_AGE_PER_RIGHT * rd + 0.5)
     confidence = body.get("english_confidence")
     if isinstance(confidence, (int, float)) and not isinstance(confidence, bool) and 1 <= confidence <= 5:
         english = (confidence - 1) / 4
     else:
         english = config.ENGLISH_IF_SKIPPED
-    persistence = _clamp(1 - (s1 + s2 + s3) / SKIPPABLE, config.PERSISTENCE_MIN, config.PERSISTENCE_MAX)
+    # Skipping is evidence of giving up; not skipping is no evidence of sticking with it, so it gives the middle.
+    persistence = _clamp(config.PERSISTENCE_IF_NO_SKIPS - config.PERSISTENCE_PER_SKIP * (s1 + s2 + s3),
+                         config.PERSISTENCE_MIN, config.PERSISTENCE_MAX)
     return {"start_level": round(start, 2), "learn_speed": round(speed, 2), "reading_age": reading_age,
             "english": round(english, 2), "persistence": round(persistence, 2)}
+
+
+def check_quality(body: dict) -> dict:
+    """Did this look like a real try? {"reliable": bool, "reasons": [{"code", "text"}]}.
+
+    Three signs, each one enough (docs/DESIGN.md, "How we tested the checker"):
+      too_fast     seconds_taken under CHECK_TOO_FAST_SECONDS (only when the website sent a time)
+      same_button  most answers are in the same position on screen. The options are shuffled, so someone
+                   reading the questions almost never does this; someone clicking through does.
+      skipped_most more than half the questions skipped (for example, quit after quiz 1)
+    It never changes the profile or the match: a careful student can be fast, so it only says "may not be reliable".
+    """
+    reasons = []
+    seconds = body.get("seconds_taken")
+    if isinstance(seconds, (int, float)) and not isinstance(seconds, bool) and seconds < config.CHECK_TOO_FAST_SECONDS:
+        reasons.append({"code": "too_fast", "text": f"The check was finished in {int(seconds)} seconds, too fast to "
+                                                    "read the questions and the mini-lesson."})
+    positions = []
+    for questions, key in ((QUIZ_1, "quiz_1"), (QUIZ_2, "quiz_2"), (READING_QS, "reading")):
+        answers = body.get(key) if isinstance(body.get(key), dict) else {}
+        for q in questions:
+            given = answers.get(q.id)
+            options = shuffled(q)
+            if given is not None and str(given).strip() in options:
+                positions.append(options.index(str(given).strip()))
+    if len(positions) >= config.CHECK_SAME_BUTTON_MIN_ANSWERS:
+        most = max(positions.count(i) for i in set(positions))
+        if most / len(positions) >= config.CHECK_SAME_BUTTON_SHARE:
+            reasons.append({"code": "same_button", "text": f"{most} of {len(positions)} answers were in the same "
+                                                           "place on the screen, which looks like clicking through."})
+    skipped = sum(_right(qs, body.get(key))[1] for qs, key in ((QUIZ_1, "quiz_1"), (QUIZ_2, "quiz_2"),
+                                                                (READING_QS, "reading")))
+    if skipped / SKIPPABLE > config.CHECK_MAX_SKIPPED_SHARE:
+        reasons.append({"code": "skipped_most", "text": f"{skipped} of {SKIPPABLE} questions were skipped."})
+    return {"reliable": not reasons, "reasons": reasons}

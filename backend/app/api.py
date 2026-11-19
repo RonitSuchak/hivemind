@@ -28,7 +28,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from . import advisor, catalog, config, live, live_lab, matching, pilot, real_tools
-from .check import profile_from, public_check
+from .check import check_quality, profile_from, public_check
 from .limits import limiter
 from .middleware import BodyLimit, SecurityHeaders, client_ip
 from .llm import GeminiClient, LLMError
@@ -319,7 +319,9 @@ def check():
 @app.post("/api/match", dependencies=[Depends(rate_limit("match"))])
 def post_match(body: MatchBody):
     data = body.model_dump()
-    return build_match(profile_from(data), data.get("topic"), data.get("extras"))
+    result = build_match(profile_from(data), data.get("topic"), data.get("extras"))
+    result["check_quality"] = check_quality(data)
+    return result
 
 
 class AskBody(BaseModel):

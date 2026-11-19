@@ -129,6 +129,14 @@ LEARN_SPEED_MIN, LEARN_SPEED_MAX, LEARN_SPEED_IF_PERFECT = 0.1, 0.9, 0.6
 READING_AGE_BASE, READING_AGE_PER_RIGHT = 8, 1.75  # 0 right -> 8, 4 right -> 15
 ENGLISH_IF_SKIPPED = 0.5
 PERSISTENCE_MIN, PERSISTENCE_MAX = 0.1, 0.9
+# Shrinkage (19 Nov, check accuracy test): with little evidence, say "average" instead of an extreme.
+LEARN_SPEED_SHRINK = 2  # learning speed keeps room / (room + 2) of its distance from the middle; room = 5 - quiz 1 right
+PERSISTENCE_IF_NO_SKIPS, PERSISTENCE_PER_SKIP = 0.5, 0.08  # skipping nothing is no evidence; each skip lowers it
+# Signs a check wasn't really tried (check.check_quality). The flag never changes the match, it only warns.
+CHECK_TOO_FAST_SECONDS = 150  # 14 questions, 2 passages and a 2-minute mini-lesson can't be done properly faster
+CHECK_SAME_BUTTON_SHARE = 0.85  # this share of answers in the same position on screen (options are shuffled)
+CHECK_SAME_BUTTON_MIN_ANSWERS = 8
+CHECK_MAX_SKIPPED_SHARE = 0.5  # skipped more than half the questions
 
 # Advisor: follow-ups and "ask" (item 12)
 ASK_MAX_CHARS = 300

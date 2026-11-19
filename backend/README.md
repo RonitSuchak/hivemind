@@ -25,6 +25,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | How much each demo tool teaches each group (tuning) | `python3 -m app.tune` |
 | The lab, offline (pre-written demo tools) | `python3 -m app.lab --offline` |
 | The lab, real AI (resumes if stopped) | `python3 -m app.lab` |
+| Check accuracy test (40 made-up students with known answers take the real check) | `.venv/bin/python -m app.check_test`; writes `data/check-test.json`. Tests the check as a measuring tool, never adds to the classmate results |
 | Demo-mode files | `.venv/bin/python -m app.export` (`--with-ai` adds ask and chat examples) |
 | Relay one real-tools pilot lesson (`docs/PILOT.md`) | `.venv/bin/python -m app.relay --tool chatgpt_study --student s10` (`--voice scripted`: no AI calls; `--list`: what's done) |
 | Live lab stream (try it) | `curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&mode=replay"` (`mode=live` uses real AI) |
@@ -42,6 +43,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | File | What it does |
 |---|---|
 | `public-link.sh`, `spa_server.py` | Public links through Cloudflare quick tunnels; `spa_server.py` serves the built website so pages like `/lab/ratings` work |
+| `app/check_test.py` | The check accuracy test: made-up students with known traits, an answer model, and how close the check gets |
 | `app/sync.py` | Copies classmates' results, suggestions and submissions saved on the laptop (`--class` on a Wi-Fi that blocked the database) into the database |
 | `app/config.py` | Every setting, threshold, limit and weight |
 | `app/students.py` | The 30 simulated students, their groups and traps |

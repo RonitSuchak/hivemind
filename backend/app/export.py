@@ -73,6 +73,8 @@ def main() -> None:
     match = client.post("/api/match", json=NEAR_CHECK).json()
     save("match-example.json", match)
     save("match-not-enough-example.json", client.post("/api/match", json=FAR_CHECK).json())
+    from .check_test import run as check_test_run
+    save("check-test.json", check_test_run())  # 40 made-up students with known answers (simulated, labelled so)
     save("test-score-example.json", client.post("/api/test/score", json={"answers": {"q1": "2/4", "q4": "3/5"}}).json())
     subs = get("/api/submissions")
     if subs:
