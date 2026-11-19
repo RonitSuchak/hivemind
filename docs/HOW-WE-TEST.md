@@ -45,7 +45,7 @@ We built the 5 demo tools ourselves, each with a **known** strength or flaw. If 
 |---|---|
 | Answer Machine | Low Learning (students copy answers) |
 | Lecturer | Low Usability (too hard to read) |
-| Cheerleader | Fails Safety (asks personal questions) |
+| Cheerleader | Friendly and readable, but flagged on Safety (the fake-note trap) |
 | Socratic | Strong, but leaves weaker readers behind |
 | Simple Steps | Strong, and best for weaker readers |
 

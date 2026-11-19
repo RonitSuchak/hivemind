@@ -74,10 +74,10 @@ Each line is pass or fail, and names the screen that must show it.
 These are real gaps, and they sit outside `frontend/`:
 
 - The brief asks for a **2 to 3 minute video and a pitch deck**. Neither exists in this folder.
-- **Real classmates:** the proof page can collect results, but the count is 0 until people take it against the live backend.
-- **Two demo tools** (Answer Machine, Lecturer) are scripted previews until Ronit's AI runs finish.
+- **Real classmates:** 40 classmates took part on 19 Nov, and the proof page shows their results.
+- **All five demo tools** have full AI runs (30 lessons each, finished 17 Nov).
 - **Hosting:** the backend runs on a laptop, so judges see saved data unless they are on the same Wi-Fi.
-- **Real tools:** 3 of 6 pilot tools are done, with 3 students each. That is a pilot, not a rating.
+- **Real tools:** All 6 pilot tools are done, with 8 students each. That is a pilot, not a rating.
 
 ## Self-check, 17 Nov 2026
 
@@ -86,8 +86,8 @@ The site was graded against this standard twice by a reviewer that did not build
 | Lines | Grade | Why |
 |---|---|---|
 | A1, A2, A3, A4, A6, A8 | Pass | Three separate scores, safety checks with exact words, results by group, before and after gains, a maker report, AI versus maths explained. |
-| A5 | Partial | The proof page works end to end against a live backend (tested on a throwaway copy). No real student has taken part, so there is no real-versus-predicted result yet. |
-| A7 | Partial | 3 real tools piloted with 3 students each, replies copied by hand. There is no "submit your tool" page on the site. |
+| A5 | Partial | The proof page works end to end against a live backend (tested on a throwaway copy). Since this grading, 40 real classmates took part (19 Nov), and 11 of them have a real-versus-predicted result. |
+| A7 | Partial | 6 real tools piloted with 8 students each, replies copied by hand. There is no "submit your tool" page on the site. |
 | B1, B2, B3 | Pass | Each named user reaches their page in one click from the home page. |
 | C1 | Partial | The site invents no score. It does sort the ratings list, pick "worked best for" from the lab's group averages, and mark ties. The backend sends no rank for these. |
 | C2 | Fixed, not re-graded | Pass 2 marked it partial. Samples now shown: 30 simulated students, 3 in the pilot, "Preview data" on scripted runs, group sizes on the heat table. |
@@ -100,7 +100,7 @@ The site was graded against this standard twice by a reviewer that did not build
 
 - **Ronit:** a person must review the two safety fails marked "Needs review" (Cheerleader and Copilot). Both replies partly refuse the fake note, and each one caps a Safety score. Until then every page shows "needs review" beside them.
 - **Ronit:** send a rank and a "best for" group with the ratings, so the site stops sorting them itself (C1). Add a "teaches or study helper" field to the real tools list, so the split is not only on the site.
-- **Team:** get real classmates through the proof page on the live backend (A5). Finish the Answer Machine and Lecturer AI runs, then re-copy the export.
+- **Team:** done on 19 Nov: 40 classmates' results are in, all five AI runs are finished and the export is re-copied.
 - **Team:** the brief's video and pitch deck.
 - **Not tested:** the live lesson page's "Run live with real AI" button has never completed a real run (only a refused start and the saved replay were tested). Ronit should try it once before anyone presses it on stage. A handler that failed to close would re-run and spend the shared AI budget.
 - **Not built:** a "submit your tool" page (the backend supports it), and "ask about your results".

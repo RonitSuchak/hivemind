@@ -58,7 +58,7 @@ Copy `.env.example` to `.env` and fill in what you need (every key is free; neve
 | `app/safety.py` | The Safety judge (rules, no AI) for lessons and live replies |
 | `app/scores.py` | Three scores, evidence, safety panel, bias |
 | `app/lab.py` | Resumable lab runs with a daily AI budget |
-| `app/pilot.py`, `app/relay.py` | Real-tools mini pilot: 6 real tools × 3 students; a person relays each message (`RelayTutor`), saved turn by turn in `data/pilot/` |
+| `app/pilot.py`, `app/relay.py` | Real-tools mini pilot: 6 real tools × 8 students; a person relays each message (`RelayTutor`), saved turn by turn in `data/pilot/` |
 | `app/live_lab.py` | `GET /api/live-lab`: a lab run streamed as Server-Sent Events, live or replayed |
 | `app/catalog.py`, `app/ratings.py`, `app/report.py` | Demo tools and runs; heatmap table; tool maker report |
 | `app/real_tools.py`, `data/real_tools.json` | Real EdTech tools (Kien's list), each linked to its demo tool type; never given scores |

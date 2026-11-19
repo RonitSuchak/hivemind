@@ -378,7 +378,7 @@ footer.end { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--
   <p class="lede">Hivemind tests AI tutors on a class of 30 simulated students, scores each one on Safety, Usability and Learning, and then shows a real student which tutors worked for students like them. This page explains how the backend does all of that, from the maths that decides what a student learns to the checks a product must pass before we test it.</p>
   <p class="small muted">Backend by Ronit. Website by Kien and Nina. Coach: Mike. Written for the team, for anyone learning how the system works, and for the hackathon judges.</p>
   <div class="facts num" aria-label="Key facts">
-    <span>API v3.0.0</span><span>learning model 3.0</span><span>232 tests</span><span>25 routes</span><span>runs on a laptop</span><span>data as of 18 Nov 2026</span>
+    <span>API v3.0.0</span><span>learning model 3.0</span><span>259 tests</span><span>25 routes</span><span>runs on a laptop</span><span>data as of 18 Nov 2026</span>
   </div>
   <div class="status" aria-labelledby="status-h">
     <h2 id="status-h">Lab runs with real AI: finished, 150 of 150 lessons</h2>
@@ -1422,7 +1422,7 @@ for concern in (False, True):
     <li><code>POST /api/validation</code> stores the result under an anonymous code like <code>HM-4XK2</code> (letters that are easy to misread, such as O and 0, are left out), together with what Hivemind predicted for that profile and tool.</li>
     <li><code>GET /api/validation</code> shows every entry, including the wrong ones, with the average error and how many predictions were within 1 mark.</li>
   </ul>
-  <p class="note"><strong>Status:</strong> no classmate entries yet (the export of 17 Nov shows <code>count: 0</code>).</p>
+  <p class="note"><strong>Status:</strong> 40 classmates' results were loaded on 19 Nov (<code>count: 40</code>, 32 counted, 11 with a prediction).</p>
 
   <h3 id="live-lab">The live lab, for the stage</h3>
   <p>The lab normally runs in advance. For the pitch, the <strong>live lab</strong> runs it in front of the audience: one demo tool teaches up to 3 simulated students, and each message appears on screen as it happens, together with what the lab made of it (the kind of move, its reading age, whether it was too hard for that student, and how much their knowledge changed). It uses <strong>Server-Sent Events</strong>: one web request that stays open while the server sends small JSON messages down it.</p>
@@ -1711,7 +1711,7 @@ for concern in (False, True):
 <pre><code># set up once
 python3 -m venv .venv &amp;&amp; .venv/bin/pip install -r requirements-dev.txt
 
-# all 232 tests (free, offline)
+# all 259 tests (free, offline)
 .venv/bin/python -m unittest discover -s tests -t .
 
 # the API, then open http://localhost:8000/docs
@@ -1899,7 +1899,7 @@ curl -N "http://localhost:8000/api/live-lab?tutor_id=simple_steps&amp;mode=repla
 <!-- 15 -->
 <section id="tests" aria-labelledby="h-tests">
   <div class="sec-head"><span class="sec-num">15</span><h2 id="h-tests">Testing</h2></div>
-  <p>"Test" means two things in Hivemind: the <strong>benchmark</strong> that scores demo tools (sections 4 to 8), and the <strong>code tests</strong> that check the backend does what this page says. There are <mark>232</mark> code tests in <code>backend/tests/</code>, in 16 files; all 232 passed at the 18 Nov push. Every AI call is faked in the tests, so they are free and work offline.</p>
+  <p>"Test" means two things in Hivemind: the <strong>benchmark</strong> that scores demo tools (sections 4 to 8), and the <strong>code tests</strong> that check the backend does what this page says. There are <mark>259</mark> code tests in <code>backend/tests/</code>, in 16 files; all 232 passed at the 18 Nov push. Every AI call is faked in the tests, so they are free and work offline.</p>
   <div class="tbl-wrap"><table>
     <thead><tr><th>Test file</th><th class="n">Tests</th><th>What they prove (examples, by test name)</th></tr></thead>
     <tbody>

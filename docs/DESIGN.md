@@ -94,7 +94,7 @@ Demo maker tutor (separate tiny service) <-- submitted like any outside product
 ### Item 1: move on only when right
 1. **Profile:** starting level, learning speed, reading age, English level, persistence.
 2. **Brain:** Bayesian Knowledge Tracing (a standard maths model of whether a student has mastered a skill) on 3 fraction skills. Each demo tool message is labelled by rules (gave the answer, hint, question, explanation, encouragement, off topic) and its reading age is measured.
-3. **The student's attempt** after each demo tool message comes from the brain's mastery of the current problem's skill: below 0.4 *confused*, 0.4 to 0.7 *partly right* (says the problem's common mistake), 0.7 or more *right* (says the correct answer).
+3. **The student's attempt** after each demo tool message comes from the brain's mastery of the current problem's skill: below 0.4 *confused*, 0.4 to 0.8 *partly right* (says the problem's common mistake), 0.8 or more *right* (says the correct answer).
 4. **New rule:** the student moves to the next problem only after a *right* attempt. A student who stays wrong stays on the same problem. The old "every 2 turns" clock is removed.
 5. A lesson ends after **6 demo tool messages**, when all 3 problems are solved, or when the student gives up (persistence).
 6. **Turn numbers:** every transcript line gets `turn`: the student's opening line is turn 0, demo tool message *n* is turn *n*, and the student's reply to it is also turn *n*. Evidence points at these turns.
