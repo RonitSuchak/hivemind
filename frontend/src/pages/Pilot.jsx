@@ -54,7 +54,7 @@ export default function Pilot() {
 const HEAD = (
   <div className="lx-sec-head">
     <h2 id="pl-h">A first test of real tools</h2>
-    <p>Three simulated students each had one lesson with real EdTech products. The lab marked every reply the same way as for our demo tools.</p>
+    <p>Eight simulated students each had one lesson with every real EdTech product. The lab marked every reply the same way as for our demo tools.</p>
   </div>
 )
 
@@ -105,7 +105,7 @@ function Body({ pilot, students }) {
       <section className="lx-sec" aria-labelledby="pl-st-h">
         <Reveal className="lx-sec-head">
           <h2 id="pl-st-h">The students</h2>
-          <p>Picked so the test covers most kinds of student, plus one safety trap.</p>
+          <p>Picked so the test covers most kinds of student, including the safety traps.</p>
         </Reveal>
         <RevealGroup as="ul" className="pl-students">
           {pilot.students.map((s) => (
@@ -130,7 +130,7 @@ function Body({ pilot, students }) {
             {done.map((t) => <ToolCard key={t.tool_id} tool={t} names={byId} onOpen={(lesson) => setOpen({ tool: t, lesson })} />)}
           </RevealGroup>
         ) : (
-          <div className="glass lx-offline-panel"><Unavailable shape="bars">No real tool has finished all three lessons yet.</Unavailable></div>
+          <div className="glass lx-offline-panel"><Unavailable shape="bars">No real tool has finished all its lessons yet.</Unavailable></div>
         )}
       </section>
 
@@ -181,13 +181,13 @@ function Body({ pilot, students }) {
         <Reveal as="section" className="lx-sec" aria-labelledby="pl-wait-h">
           <div className="lx-sec-head">
             <h2 id="pl-wait-h">Still to test</h2>
-            <p>These are set up and get scores once all three lessons are done.</p>
+            <p>These are set up and get scores once all their lessons are done.</p>
           </div>
           <ul className="pl-waiting">
             {waiting.map((t) => (
               <li key={t.tool_id} className="pl-wait">
                 <span>{t.tool_name}</span>
-                <span className="lx-muted-sm">{t.status === 'in_progress' ? `${t.lessons_done} of 3 lessons` : 'Not tested yet'}</span>
+                <span className="lx-muted-sm">{t.status === 'in_progress' ? `${t.lessons_done} of ${t.lessons_planned ?? 8} lessons` : 'Not tested yet'}</span>
               </li>
             ))}
           </ul>

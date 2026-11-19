@@ -94,7 +94,7 @@ export default function About() {
             <ul className="lx-list">
               <li>Each has a <strong>known strength or flaw</strong>, so we can show the test catches it.</li>
               <li>Each stands in for a <strong>type</strong> of real EdTech tool, such as <strong>Guided hints</strong> or <strong>Bite-size practice</strong>.</li>
-              <li>Real products are <strong>not in these class tests</strong>. A few have had a small <Link to="/lab/real-tools">pilot</Link> with 3 simulated students each.</li>
+              <li>Real products are <strong>not in these class tests</strong>. A few have had a small <Link to="/lab/real-tools">pilot</Link> with 8 simulated students each.</li>
             </ul>
             <p><strong>What counts as teaching.</strong> A tool <strong>teaches</strong> if it explains an idea, or gives you practice and tells you how you did. <strong>Study helpers</strong> only draw a graph, work out an answer or tidy your writing, so we list them but never rank or recommend them.</p>
             <p>We teach a <strong>simulated class of {facts.students ?? 30}</strong> with each demo tool. They sit a <strong>10 question fractions test</strong>, have a <strong>lesson</strong>, then sit the <strong>same test again</strong>.</p>

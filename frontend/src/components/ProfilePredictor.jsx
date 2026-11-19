@@ -173,7 +173,7 @@ function Panel({ rows, students, runs }) {
             ? <>Worked out from all {students.length} simulated students.</>
             : <>The plain average of the {K} simulated students closest to these sliders:{' '}
                 {near.map((s, k) => (
-                  <span key={s.id}><Link to={`/lab?student=${encodeURIComponent(s.id)}`}>{s.name}</Link>{k < near.length - 1 ? ', ' : '.'}</span>
+                  <span key={s.id}><Link to={`/lab?${ranked[0] ? `tutor=${encodeURIComponent(ranked[0].row.tutor_id)}&` : ''}student=${encodeURIComponent(s.id)}`}>{s.name}</Link>{k < near.length - 1 ? ', ' : '.'}</span>
                 ))}</>}
           {' '}It is a rough explorer: the check&rsquo;s match counts the closest students more and will not guess when nobody is close, so its ranking can differ.
         </p>

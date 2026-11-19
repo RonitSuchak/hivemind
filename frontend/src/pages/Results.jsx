@@ -108,6 +108,10 @@ function Body({ match, pace }) {
           plainWords(match.note || ''),
           'The class had one lesson, on fractions, so for other subjects treat this as a starting point.',
         ].filter(Boolean).join(' ')}</p>
+        {/* The lab's didn't-try flag (check_quality): say so gently, and never hide the match. */}
+        {!example && match.check_quality?.reliable === false && (
+          <p className="rs-lede" role="note">{['This result may not be reliable.', plainWords(match.check_quality.reasons?.[0]?.text || ''), 'You can take the check again whenever you like.'].filter(Boolean).join(' ')}</p>
+        )}
       </header>
 
       <section className="rs-profile glass" aria-labelledby="profile-h">

@@ -102,7 +102,8 @@ const dash = (v) => (v == null ? 'n/a' : v)
 function ResultsBody({ data }) {
   const entries = Array.isArray(data?.entries) ? data.entries : []
   const sum = data?.summary || {}
-  const share = Number.isFinite(sum.within_1_share) ? `${Math.round(sum.within_1_share * 100)}% of them` : ''
+  // the share is of the students who have a prediction, not of everyone who took part
+  const share = Number.isFinite(sum.with_prediction) ? `of ${sum.with_prediction} predictions` : Number.isFinite(sum.within_1_share) ? `${Math.round(sum.within_1_share * 100)}% of them` : ''
   return (
     <div className="pf-res-body">
       <dl className="pf-stats">

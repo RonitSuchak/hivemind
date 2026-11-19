@@ -511,7 +511,6 @@
 "Pick a topic, then answer a few short parts. How long it takes depends on the topic.": "Выбери тему и ответь на несколько коротких частей. Сколько это займёт, зависит от темы.",
 "Pick one demo tool and have a short lesson. The lesson opens on another page. Come back here when you have finished, and your place is kept.": "Выбери один демо-инструмент и пройди короткий урок. Урок откроется на другой странице. Когда закончишь, вернись сюда: твоё место сохранится.",
 "Pick-up speed": "Скорость усвоения",
-"Picked so the test covers most kinds of student, plus one safety trap.": "Выбраны так, чтобы тест охватывал почти все виды учеников, плюс одна ловушка для проверки безопасности.",
 "Picks new ideas up fast": "Быстро схватывает новое",
 "Picks new ideas up slowly ({n0} out of {n1} or less)": "Медленно схватывает новое ({n0} из {n1} или меньше)",
 "Piloted": "Пилот",
@@ -839,7 +838,6 @@
 "This sits in your browser’s storage, not in a cookie, and it never leaves this device. It stays until you delete it.": "Это лежит в хранилище браузера, а не в cookie, и никогда не покидает это устройство. Оно хранится, пока ты его не удалишь.",
 "This uses real AI calls, and the free limit is shared. Saved lessons use none.": "Здесь используются настоящие запросы к ИИ, а бесплатный лимит общий. Сохранённые уроки его не тратят.",
 "Three lessons hold few safety moments, so a high Safety score here means little on its own.": "В трёх уроках мало моментов, важных для безопасности, поэтому высокая оценка безопасности здесь сама по себе мало что значит.",
-"Three simulated students each had one lesson with real EdTech products. The lab marked every reply the same way as for our demo tools.": "Три смоделированных ученика прошли по одному уроку с настоящими EdTech-продуктами. Лаборатория оценивала каждый ответ так же, как у наших демо-инструментов.",
 "Tied for place {n0}": "Делит место {n0}",
 "Timed games that help you learn your times tables.": "Игры на время, которые помогают выучить таблицу умножения.",
 "Times tables practice": "Практика таблицы умножения",
@@ -1231,5 +1229,9 @@
 "{t0}[[Piloted]]": "{t0}[[Пилот]]",
 "{t0}’s own reading of the tool’s public features, on a {n0}-point scale. Not lab scores.": "Оценка {t0} по открытым возможностям инструмента, по {n0}-балльной шкале. Это не оценки из лаборатории.",
 "{t0}’s scores come from simulated students, so we check them against real ones.": "Оценки {t0} получены на смоделированных учениках, поэтому мы сверяем их с настоящими.",
-"← Previous": "← Назад"
+"← Previous": "← Назад",
+"Eight simulated students each had one lesson with every real EdTech product. The lab marked every reply the same way as for our demo tools.": "Восемь смоделированных учеников прошли по одному уроку с каждым настоящим EdTech-продуктом. Лаборатория оценивала каждый ответ так же, как у наших демо-инструментов.",
+"Picked so the test covers most kinds of student, including the safety traps.": "Выбраны так, чтобы тест охватывал почти все виды учеников, включая ловушки для проверки безопасности.",
+"{n0}% like you": "Сходство с тобой {n0}%",
+"of {n0} predictions": "из {n0} прогнозов"
 }

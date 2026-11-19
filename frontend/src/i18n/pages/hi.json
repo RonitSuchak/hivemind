@@ -511,7 +511,6 @@
 "Pick a topic, then answer a few short parts. How long it takes depends on the topic.": "एक टॉपिक चुनो, फिर कुछ छोटे हिस्सों के जवाब दो। कितना टाइम लगेगा, यह टॉपिक पर निर्भर करता है।",
 "Pick one demo tool and have a short lesson. The lesson opens on another page. Come back here when you have finished, and your place is kept.": "कोई एक डेमो टूल चुनो और एक छोटा लेसन लो। लेसन दूसरे पेज पर खुलता है। खत्म होने पर यहीं वापस आ जाना, तुम्हारी जगह सेव रहेगी।",
 "Pick-up speed": "सीखने की रफ़्तार",
-"Picked so the test covers most kinds of student, plus one safety trap.": "इन्हें इसलिए चुना गया कि टेस्ट में ज़्यादातर तरह के स्टूडेंट्स आ जाएँ, और साथ में एक सेफ़्टी ट्रैप भी हो।",
 "Picks new ideas up fast": "नए आइडिया जल्दी पकड़ते हैं",
 "Picks new ideas up slowly ({n0} out of {n1} or less)": "नए आइडिया धीरे पकड़ते हैं ({n1} में से {n0} या कम)",
 "Piloted": "पायलट किया गया",
@@ -842,7 +841,6 @@
 "This sits in your browser’s storage, not in a cookie, and it never leaves this device. It stays until you delete it.": "यह तुम्हारे ब्राउज़र के स्टोरेज में रहता है, कुकी में नहीं, और कभी इस डिवाइस से बाहर नहीं जाता। यह तब तक रहता है जब तक तुम इसे डिलीट न करो।",
 "This uses real AI calls, and the free limit is shared. Saved lessons use none.": "इसमें असली AI कॉल लगती हैं, और फ़्री लिमिट सबके बीच शेयर होती है। सेव किए हुए लेसन में ऐसा कुछ नहीं लगता।",
 "Three lessons hold few safety moments, so a high Safety score here means little on its own.": "तीन लेसन में सेफ़्टी वाले पल बहुत कम आते हैं, इसलिए यहाँ का ऊँचा सेफ़्टी स्कोर अकेले ज़्यादा कुछ नहीं बताता।",
-"Three simulated students each had one lesson with real EdTech products. The lab marked every reply the same way as for our demo tools.": "तीन सिमुलेटेड स्टूडेंट्स में से हर एक ने असली EdTech प्रोडक्ट के साथ एक लेसन लिया। लैब ने हर जवाब को वैसे ही जाँचा जैसे हमारे डेमो टूल के जवाबों को।",
 "Tied for place {n0}": "जगह {n0} पर बराबरी",
 "Timed games that help you learn your times tables.": "टाइम वाले गेम जो पहाड़े सीखने में मदद करते हैं।",
 "Times tables practice": "पहाड़ों का अभ्यास",
@@ -1234,5 +1232,9 @@
 "{t0}[[Piloted]]": "{t0}[[पायलट हुआ]]",
 "{t0}’s own reading of the tool’s public features, on a {n0}-point scale. Not lab scores.": "टूल के पब्लिक फ़ीचर्स के बारे में {t0} की अपनी राय, {n0} पॉइंट के स्केल पर। लैब स्कोर नहीं।",
 "{t0}’s scores come from simulated students, so we check them against real ones.": "{t0} के स्कोर सिमुलेटेड स्टूडेंट्स से आते हैं, इसलिए हम उन्हें असली स्टूडेंट्स से मिलाकर जाँचते हैं।",
-"← Previous": "← पिछला"
+"← Previous": "← पिछला",
+"Eight simulated students each had one lesson with every real EdTech product. The lab marked every reply the same way as for our demo tools.": "आठ सिमुलेटेड स्टूडेंट्स में से हर एक ने हर असली EdTech प्रोडक्ट के साथ एक लेसन लिया। लैब ने हर जवाब को वैसे ही जाँचा जैसे हमारे डेमो टूल के जवाबों को।",
+"Picked so the test covers most kinds of student, including the safety traps.": "इन्हें इसलिए चुना गया कि टेस्ट में ज़्यादातर तरह के स्टूडेंट्स आ जाएँ, और साथ में सेफ़्टी ट्रैप भी हों।",
+"{n0}% like you": "तुमसे {n0}% मिलता है",
+"of {n0} predictions": "{n0} अनुमानों में से"
 }

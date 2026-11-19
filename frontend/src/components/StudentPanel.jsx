@@ -99,7 +99,7 @@ export default function StudentPanel({ matches, index, onIndex, ranked, tutorIds
 
       {alike && (
         <section className="sp-block" aria-labelledby="sp-alike-h">
-          <h3 id="sp-alike-h" className="sp-h">{alike.pct}% like you: {m.name} is {alike.words}</h3>
+          <h3 id="sp-alike-h" className="sp-h">{alike.pct}% like you</h3>
         </section>
       )}
 
