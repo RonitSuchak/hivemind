@@ -9,7 +9,7 @@ Owned by **Kien and Nina**. All website code goes in this folder, and nothing ou
 4. Keep demo-mode files (saved backend responses) in this folder, e.g. `public/demo/`.
 
 ## Run the backend locally (optional, read-only)
-The backend API isn't built yet (planned Tue 17 Nov). Until then, use the examples in `docs/BACKEND.md`.
+See `../backend/README.md`. Without a backend, `VITE_DEMO=1 npm run dev` uses the saved backend exports in `public/demo/`.
 
 ## Notes
 Vite + React (plain JavaScript) + react-router. Plain CSS; every colour, size and spacing value lives in `src/styles/tokens.css`, so you can restyle the whole site from that one file. Charts are hand-made SVG; there is no UI or chart library.
@@ -27,10 +27,10 @@ npm run build    # production build into dist/
 
 **Motion:** every duration, easing, stagger, distance and spring is a token in `src/styles/tokens.css`. UI motion uses springs from `motion` (Motion for React) via `src/motion.js` (`spring('ui')`); scroll reveals use `components/Reveal.jsx`. `prefers-reduced-motion` makes everything instant and replaces the replay with step-by-step buttons.
 
-**Look:** one dark theme. A quiet ambient background (`components/Ambient.jsx`) sits behind frosted glass (`.glass`, `.glass-strong`, `.glass-bar` in `app.css`), used only for the nav, notices, tooltips, the drawer and main cards. `prefers-reduced-transparency` makes glass solid.
+**Look:** a white and a midnight ground (the toggle in the top bar). A quiet ambient background (`components/Ambient.jsx`) sits behind frosted glass (`.glass`, `.glass-strong`, `.glass-bar` in `app.css`), used only for the nav, notices, tooltips, the drawer and main cards. `prefers-reduced-transparency` makes glass solid.
 
 **Layout:** `src/api.js` (the only file that talks to the backend), `src/pages/`, `src/components/`, `public/demo/` (the backend's saved exports).
 
-**Pages:** Home, Check, Results, Tools (teaching tools and study helpers), About, Try (live chat with a demo tool), and the Simulation Lab: Class view (`/lab`), Ratings, Reports (`/lab/report/:id`, the tool maker report), Real tools (`/lab/real-tools`, the hand-relayed pilot), Proof (`/lab/proof`, real classmates: real gain next to predicted gain) and the live lesson replay (`/lab/live/:id`, opened from Class view).
+**Pages:** Home, Check, Results, Tools (teaching tools and study helpers), About, Try (live chat with a demo tool), and the Simulation Lab: Class view (`/lab`), Ratings, Reports (`/lab/report/:id`, the tool maker report), Real tools (`/lab/real-tools`, the hand-relayed pilot), Proof (`/lab/proof`, real classmates: real gain next to predicted gain). The live lesson replay page was removed on 18 Nov; `/lab/live/*` now goes to Class view.
 
 **What the site is held to:** `STANDARD.md` in this folder (the vision, and pass or fail rules taken from the challenge brief).

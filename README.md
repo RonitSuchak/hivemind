@@ -1,8 +1,28 @@
 # Hivemind
 
-*EduX Hackathon UK 2026 (Cambridge EdTech Society × InCubed), Challenge 2: Setting the Standard: What Should We Expect from EdTech? Team: Ronit, Mike, Kien, Nina. Submit by Thu 19 Nov 2026, 11:59pm; expo Fri 20 Nov.*
+*EduX Hackathon UK 2026 (Cambridge EdTech Society × InCubed), Challenge 2: Setting the Standard: What Should We Expect from EdTech? Team: Ronit Suchak (backend), Nguyen Canh Kien and Yun Ning (Nina) Kao (frontend), Mike (coach, demo and pitch).*
 
-**Repo:** `backend/` (Ronit) · `frontend/` (Kien and Nina) · `docs/` (design in [`docs/DESIGN.md`](docs/DESIGN.md), API contract in [`docs/BACKEND.md`](docs/BACKEND.md)). Latest state: [`HANDOFF.md`](HANDOFF.md). Folder rules: [`AGENTS.md`](AGENTS.md).
+**Ratings tell you whether an AI tutor is good on average. Hivemind tells you who it is good for, who it fails, and whether it is safe.**
+
+## Try it
+
+- **Live site:** the current address is at the top of [`HANDOFF.md`](HANDOFF.md) (it runs from a laptop through a free tunnel, so the address changes when it restarts).
+- **Without the live backend:** the website runs on saved results from the real backend.
+  ```bash
+  cd frontend && npm install && VITE_DEMO=1 npm run dev   # http://localhost:5173
+  ```
+- **The full backend:** see [`backend/README.md`](backend/README.md) (Python + FastAPI; the tests run offline and need no keys).
+
+## Results so far (19 Nov)
+
+| What we tested | What we found |
+|---|---|
+| **5 demo tools × 30 simulated students** (150 lessons with real AI) | Safety / Usability / Learning out of 5. Simple Steps 5.0 / 4.8 / 4.2. Socratic 5.0 / 3.6 / 3.5. Cheerleader 2.0 / 4.1 / 3.8 (asks children personal questions). Answer Machine 5.0 / 1.7 / 1.9. Lecturer 2.0 / 1.3 / 2.5 (failed a critical safety trap). |
+| **6 real tools, 48 hand-copied lessons** (pilot, up to 8 simulated students each) | Safety / Usability / Learning: ChatGPT 5.0 / 3.8 / 1.7, ChatGPT study mode 2.0 / 3.9 / 2.9, Gemini 2.0 / 2.3 / 1.8, Gemini Guided Learning 5.0 / 2.5 / 2.9, Copilot 2.0 / 3.7 / 1.6, Perplexity 2.0 / 1.9 / 1.3. Copilot wrote a fake parent's note both times it was asked; Perplexity failed both privacy traps. A small pilot, not comparable with the class of 30. |
+| **40 real classmates** (before test, one real tool, same test after) | 32 counted. Tools of the Simple Steps type ("bite-size practice") came top both in the simulation (average gain 2.2 of 10) and with real students (2.25). Socratic-type tools ("guided hints") were second in the simulation but last with real students (0.56, 9 students). Only 11 classmates were close enough to simulated students to get a prediction; 4 of the 11 were within 1 mark (average error 1.61 marks). A first check with a small sample, shown on the site's Proof page as it is. |
+| **The 8-minute check itself** (40 made-up students with known traits) | English and reading level measured well (88% and 80% close to the truth). Two weak measures found and fixed; a "didn't try" flag catches rushed checks. Made-up students, never mixed with the classmate results. |
+
+**Repo:** `backend/` (Ronit) · `frontend/` (Kien and Nina) · `docs/` (design in [`docs/DESIGN.md`](docs/DESIGN.md), API contract in [`docs/BACKEND.md`](docs/BACKEND.md), how we test in [`docs/HOW-WE-TEST.md`](docs/HOW-WE-TEST.md)). Latest state: [`HANDOFF.md`](HANDOFF.md). Folder rules: [`AGENTS.md`](AGENTS.md).
 
 ---
 
@@ -34,21 +54,11 @@ The website has two views. The AI Advisor is the simple one: take the 8-minute c
 
 ## Why you can trust it
 
-The obvious question is whether simulated students really learn like real ones. Hivemind answers it directly. A group of real classmates take the 8-minute check, try one tutor, and sit the same tests, and we compare their real results with what Hivemind predicted for students like them. That comparison is shown openly, including where the predictions are wrong. It is a first check, not a final verdict, and it brings genuine student feedback into the evaluation, as the challenge asks.
+The obvious question is whether simulated students really learn like real ones. Hivemind answers it openly. 40 real classmates sat the 10-question test, used one real EdTech tool, and sat the same test again, and the Proof page puts their real gains next to what Hivemind predicted for students like them, including where the predictions are wrong (see "Results so far" above). We also tested the 8-minute check itself as a measuring tool, on made-up students whose true traits we knew. It is a first check with a small sample, not a final verdict, and it brings genuine student results into the evaluation, as the challenge asks.
 
-## What we will show on demo day
+## What we show at the expo
 
-The presentation is eight minutes, so nothing slow runs live. The lab is run in advance and the real saved lessons are replayed in fast-forward; only the phone check and the match, which are instant, run live. A judge takes a short check on their phone, sees their profile appear, is matched to similar simulated students, and gets their own ranked list. We then replay the class being taught by two tutors, watch different students fall behind, see a safety trap get caught, and click a score to show its evidence. We finish with the simulation's predictions next to real results from our classmates. We will have tested four or five chat-based AI tutors this week, and we say so.
-
-| Time | What we show |
-|---|---|
-| 0:00–1:00 | The problem: one average score hides the students a product fails |
-| 1:00–2:00 | Hivemind in one picture: the lab, then the match |
-| 2:00–4:00 | Demo, AI Advisor: a judge's check, radar, match and ranked list |
-| 4:00–5:30 | Demo, Simulation Lab: class replay on two tutors, a safety trap caught, evidence behind a score |
-| 5:30–6:30 | Predictions next to real results from our classmates |
-| 6:30–7:30 | Who uses it (schools, tool makers) and how it grows |
-| 7:30–8:00 | Close |
+Judging is expo style, with a 4-minute pitch and a 2 to 3 minute video of the working prototype. Nothing slow runs live: the lab was run in advance and its saved lessons are replayed. A judge takes the check on their phone, sees their profile appear, is matched to similar simulated students and gets their own ranked list. We then show the class taught by two demo tools, a safety trap being caught, the chat behind a score, the real-tool findings, and the simulation's predictions next to our classmates' real results.
 
 ## How it fits the judging criteria
 

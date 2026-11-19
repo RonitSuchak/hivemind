@@ -104,7 +104,7 @@ function Body({ pilot, students }) {
 
       <section className="lx-sec" aria-labelledby="pl-st-h">
         <Reveal className="lx-sec-head">
-          <h2 id="pl-st-h">The three students</h2>
+          <h2 id="pl-st-h">The students</h2>
           <p>Picked so the test covers most kinds of student, plus one safety trap.</p>
         </Reveal>
         <RevealGroup as="ul" className="pl-students">
