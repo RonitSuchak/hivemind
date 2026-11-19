@@ -22,11 +22,13 @@ export const en = {
   'nav.lab': 'Simulation Lab',
   'nav.about': 'About',
   'nav.suggest': 'Suggest an idea',
+  'nav.privacy': 'Privacy',
   'notice.offline': 'The lab is not connected, so there are no numbers or charts yet.',
   'notice.fallback': 'The lab is not connected, so these are saved results.',
   'notice.retry': 'Retry',
   'footer.tagline': 'Find the EdTech tool that works for students like you.',
   'footer.note': 'Students are simulated, not real children.',
+  'footer.storage': 'No cookies: we only keep what you choose, on this device.',
 
   // buttons used in more than one place
   'cta.check': 'Take the check',
@@ -40,17 +42,17 @@ export const en = {
 
   // who it is for (the three users the challenge names)
   'who.title': 'Who the lab is for',
-  'who.lede': 'In the lab, every score links to the words behind it, so anyone can check it.',
+  'who.lede': 'Every score in the lab shows the reasons behind it, so anyone can check it.',
+  'who.student.title': 'Students',
+  'who.student.text': 'Take the 8-minute check and see which type of tool worked for students like you.',
+  'who.student.cta': 'Take the check',
   'who.maker.title': 'Tool makers',
-  'who.maker.text': 'See which learners your tool leaves behind, and why, with the chats that show it.',
+  'who.maker.text': 'See which learners your tool leaves behind, and why.',
   'who.maker.cta': 'Open a report',
   'who.school.title': 'Schools and teachers',
   'who.school.text': 'Compare tool types for each kind of student in your class.',
   'who.school.cta': 'Compare by student group',
-  'who.judge.title': 'Judges and reviewers',
-  'who.judge.text': 'Open any score to read the evidence behind it.',
-  'who.judge.cta': 'See the evidence',
-  'who.judge.more': 'Read the method',
+  'who.school.more': 'Read the method',
 
   // how it works
   'how.title': 'How it works',
@@ -63,14 +65,14 @@ export const en = {
   'how.3.text': 'Each tool type gets a score for how easy it is to use and a score for how much students learn.',
 
   // the class
-  'class.title': 'Every tool type teaches the same class',
-  'class.lede': 'The same 30 simulated students take every lesson, so a difference in results comes from the tool. The students differ in level, speed, reading, language and staying power.',
-  'class.note': 'The students are simulated, not real children.',
+  'class.title': 'Every tool type teaches the same 30 students',
+  'class.meet': 'Meet the class',
+  'class.lede': 'They are simulated by AI and differ in level, speed, reading, English and staying power, so any difference in results comes from the tool.',
   'class.list': 'The simulated class of 30',
   'film.you': 'a student like you', // the orange dot's legend in the home film
   'class.student': '{name}, simulated student',
-  'class.hint': 'Move over the class and select a student to see their profile.',
-  'class.sim': 'Simulated student, age {age}. Not a real child.',
+  'class.hint': 'Select a student to see their profile.',
+  'class.sim': 'Simulated student',
   'class.seeLab': 'See {name} in the lab',
 
   // what we check: two scores for tool types, safety only for specific EdTech tools
@@ -78,14 +80,14 @@ export const en = {
   'checks.safe.title': 'Safe',
   'checks.safe.text': 'For specific EdTech tools we also check safety: sums are **right**, personal details stay **private**, and an upset student gets **care**.',
   'checks.easy.title': 'Easy to use',
-  'checks.easy.text': 'You can **follow it** and **keep going**.',
+  'checks.easy.text': 'Students could **read every reply** and **finish the lesson**.',
   'checks.learn.title': 'Helps you learn',
-  'checks.learn.text': 'You **improve**, and it makes you **think**.',
+  'checks.learn.text': 'We test students **before and after** the lesson and measure **how much they improved**.',
   'checks.note': 'Tool types get a score for **easy to use** and for **helps you learn**. Safety is scored only for **specific EdTech tools**.',
 
   // languages section
   'langs.title': 'Language',
-  'langs.lede': 'Pick a language and the site switches to it.',
+  'langs.lede': 'Type a language. The ones marked Translated switch the whole site.',
 
   // finale
   'finale.title': 'See which tool types worked for students like you.',
@@ -94,8 +96,11 @@ export const en = {
   'picker.betaLabel': 'Translated by hand',
   'picker.other': "Other languages use your browser's own translator, so they may not work everywhere.",
   'picker.search': 'Search languages',
-  'picker.placeholder': 'Type a language, like Polish or العربية',
+  'picker.placeholder': 'Type a language, like Russian or हिन्दी',
   'picker.clear': 'Clear',
+  'picker.current': 'The site is in {name}.',
+  'picker.notYet': 'Not translated yet',
+  'picker.translated': 'Translated',
   'picker.list': 'Languages',
   'picker.noMatch': 'No language matches. Check the spelling, or type it in English.',
   'picker.count': 'Type to find yours among {n} languages.',

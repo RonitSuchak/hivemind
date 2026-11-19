@@ -101,9 +101,9 @@ export default function ToolGroupPicker({ tutorId, tutorName, tools, note = REAL
       )}
 
       <p className="sr-only" aria-live="polite">{said}</p>
-      <p className="tgp-note"><Icon name="info" size={16} /> <span>{anyPiloted
+      <p className="lx-text">{anyPiloted
         ? <>None of these tools has had the class test, so a demo tool&rsquo;s scores do not apply to them. A tool marked Piloted had a small test of its own.</>
-        : <>{plainWords(note)} A demo tool&rsquo;s scores do not apply to it.</>}</span></p>
+        : <>{plainWords(note)} A demo tool&rsquo;s scores do not apply to it.</>}</p>
     </div>
   )
 }

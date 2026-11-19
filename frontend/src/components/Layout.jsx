@@ -81,9 +81,10 @@ export default function Layout() {
               <Link to="/lab">{t('nav.lab')}</Link>
               <Link to="/about">{t('nav.about')}</Link>
               <Link to="/about#suggest">{t('nav.suggest')}</Link>
+              <Link to="/privacy">{t('nav.privacy')}</Link>
             </nav>
           </div>
-          <p className="footer-note">{t('footer.note')}</p>
+          <p className="footer-note">{t('footer.note')} {t('footer.storage')} <Link to="/privacy">{t('nav.privacy')}</Link></p>
         </div>
       </footer>
       {/* Soft blur along the top and bottom edge while the page is scrolling (scroll.js sets data-scrolling). */}

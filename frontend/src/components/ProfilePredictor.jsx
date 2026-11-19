@@ -165,22 +165,15 @@ function Panel({ rows, students, runs }) {
           </ol>
         </LayoutGroup>
 
-        <div className="lx-predict-notes">
+        <p className="lx-text lx-closest">
           {isClass
-            ? <p className="lx-note">Worked out from all {students.length} simulated students.</p>
-            : (
-              <>
-                <p className="lx-note">This is the plain average of the {K} simulated students closest to these sliders.</p>
-                <p className="lx-note lx-closest">Closest:{' '}
-                  {near.map((s, k) => (
-                    <span key={s.id}><Link to={`/lab?student=${encodeURIComponent(s.id)}`}>{s.name}</Link>{k < near.length - 1 ? ', ' : '.'}</span>
-                  ))}
-                  {' '}Select a name to open their profile.
-                </p>
-              </>
-            )}
-          <p className="lx-note"><b>This is a rough explorer.</b> The Advisor&rsquo;s match weighs the closest students more and will not guess when nobody is close, so its ranking can differ.</p>
-        </div>
+            ? <>Worked out from all {students.length} simulated students.</>
+            : <>The plain average of the {K} simulated students closest to these sliders:{' '}
+                {near.map((s, k) => (
+                  <span key={s.id}><Link to={`/lab?student=${encodeURIComponent(s.id)}`}>{s.name}</Link>{k < near.length - 1 ? ', ' : '.'}</span>
+                ))}</>}
+          {' '}It is a rough explorer: the check&rsquo;s match counts the closest students more and will not guess when nobody is close, so its ranking can differ.
+        </p>
       </div>
 
       {best.known && !best.none && (

@@ -1,5 +1,5 @@
 {
- "match_id": "m_EH0rtT2j",
+ "match_id": "m_PhKDWue4",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -19,8 +19,8 @@
   {
    "student_id": "s20",
    "name": "Sofia",
-   "distance": 0.417,
-   "weight": 0.229,
+   "distance": 0.342,
+   "weight": 0.222,
    "radar": {
     "start_level": 0.55,
     "learn_speed": 0.4,
@@ -30,23 +30,10 @@
    }
   },
   {
-   "student_id": "s11",
-   "name": "Jaya",
-   "distance": 0.477,
-   "weight": 0.203,
-   "radar": {
-    "start_level": 0.5,
-    "learn_speed": 0.65,
-    "reading": 0.67,
-    "english": 0.35,
-    "persistence": 0.7
-   }
-  },
-  {
    "student_id": "s09",
    "name": "Hana",
-   "distance": 0.495,
-   "weight": 0.196,
+   "distance": 0.359,
+   "weight": 0.213,
    "radar": {
     "start_level": 0.6,
     "learn_speed": 0.5,
@@ -56,23 +43,36 @@
    }
   },
   {
-   "student_id": "s29",
-   "name": "Bilal",
-   "distance": 0.523,
-   "weight": 0.186,
+   "student_id": "s11",
+   "name": "Jaya",
+   "distance": 0.4,
+   "weight": 0.193,
    "radar": {
     "start_level": 0.5,
-    "learn_speed": 0.45,
-    "reading": 0.78,
-    "english": 0.3,
-    "persistence": 0.35
+    "learn_speed": 0.65,
+    "reading": 0.67,
+    "english": 0.35,
+    "persistence": 0.7
+   }
+  },
+  {
+   "student_id": "s17",
+   "name": "Priya",
+   "distance": 0.402,
+   "weight": 0.192,
+   "radar": {
+    "start_level": 0.5,
+    "learn_speed": 0.5,
+    "reading": 0.67,
+    "english": 0.9,
+    "persistence": 0.6
    }
   },
   {
    "student_id": "s24",
    "name": "Wen",
-   "distance": 0.525,
-   "weight": 0.186,
+   "distance": 0.435,
+   "weight": 0.18,
    "radar": {
     "start_level": 0.4,
     "learn_speed": 0.75,
@@ -88,14 +88,14 @@
    "tutor_id": "simple_steps",
    "tutor_name": "Simple Steps",
    "kind": "built_in",
-   "predicted_gain": 2.6,
+   "predicted_gain": 2.0,
    "scores": {
     "safety": 5.0,
     "usability": 4.8,
     "learning": 4.2
    },
    "safety_warning": null,
-   "why": "Clear replies and questions that made students like you think.",
+   "why": "Students like you learned a little with it.",
    "try_url": "/try/simple_steps",
    "tutor_mode": "ai",
    "preview": false
@@ -105,7 +105,7 @@
    "tutor_id": "socratic",
    "tutor_name": "Socratic",
    "kind": "built_in",
-   "predicted_gain": 2.4,
+   "predicted_gain": 1.8,
    "scores": {
     "safety": 5.0,
     "usability": 3.6,
@@ -122,7 +122,7 @@
    "tutor_id": "answer_machine",
    "tutor_name": "Answer Machine",
    "kind": "built_in",
-   "predicted_gain": 0.2,
+   "predicted_gain": 0.0,
    "scores": {
     "safety": 5.0,
     "usability": 1.7,
@@ -139,7 +139,7 @@
    "tutor_id": "cheerleader",
    "tutor_name": "Cheerleader",
    "kind": "built_in",
-   "predicted_gain": 2.4,
+   "predicted_gain": 1.7,
    "scores": {
     "safety": 2.0,
     "usability": 4.1,
@@ -2551,7 +2551,7 @@
   {
    "id": "why_top",
    "question": "Why is Simple Steps first for me?",
-   "answer": "The 5 simulated students most like you gained 2.6 out of 10 on average with Simple Steps. Also, its replies were easy to read for them and none of them gave up."
+   "answer": "The 5 simulated students most like you gained 2.0 out of 10 on average with Simple Steps. Also, its replies were easy to read for them and none of them gave up."
   },
   {
    "id": "careful",
@@ -2561,7 +2561,7 @@
   {
    "id": "how_sure",
    "question": "How sure is this?",
-   "answer": "It is based on 5 simulated students, the closest 0.42 away on a 0 to 1 scale, so they are only partly like you. They are simulated, not real children. We are still checking the predictions against real classmates."
+   "answer": "It is based on 5 simulated students, the closest 0.34 away on a 0 to 1 scale, so they are quite like you. They are simulated, not real children. We are still checking the predictions against real classmates."
   }
  ],
  "message": null,

@@ -53,7 +53,8 @@ export function useSiteTranslation() {
       touched.current = new Set(); texts.current = new WeakMap(); attrs.current = new WeakMap()
       document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'
     }
-    if ((!siteLang || siteLang === 'en') && !collect) { restore(); setStatus({ state: 'idle', lang: 'en' }); return }
+    // Only the hand-translated languages change the site (LanguagePicker lists the rest as not translated yet).
+    if ((!siteLang || siteLang === 'en' || !BETA.includes(siteLang)) && !collect) { restore(); setStatus({ state: 'idle', lang: 'en' }); return }
     const lang = siteLang || 'en'
     document.documentElement.lang = lang
     document.documentElement.dir = RTL.has(lang) ? 'rtl' : 'ltr'

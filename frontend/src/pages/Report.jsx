@@ -1,7 +1,7 @@
 import { Link, NavLink, useParams } from 'react-router-dom'
 import { getReport, getStudents, getTutors } from '../api.js'
 import { useInView, useLoad, usePageTitle } from '../hooks.js'
-import { day, groupPeople, moveLabel, plainWords, typeName } from '../labels.js'
+import { day, groupPeople, plainWords, typeName } from '../labels.js'
 import { Async, SkeletonRatings, Unavailable } from '../components/States.jsx'
 import ScoreBars from '../components/ScoreBars.jsx'
 import Reveal, { RevealGroup } from '../components/Reveal.jsx'
@@ -85,8 +85,7 @@ function Body({ tutors, id, report, students }) {
       <Reveal as="section" className="lx-sec" aria-labelledby="rp-h">
         <div className="lx-sec-head">
           <h2 id="rp-h">{`Report for the ${name} demo tool`}</h2>
-          <p>This page is for the people who make a tool. It shows which students the tool left behind and why.</p>
-          <p className="lx-muted-sm">Tested {day(report.tested_on)} on {count ? `${count} simulated students` : 'simulated students'}, not real children.</p>
+          <p>This page is for the people who make a tool. It shows which of the {count ? `${count} simulated students` : 'simulated students'} it left behind and why, from the lab test on {day(report.tested_on)}.</p>
         </div>
         <div className="rp-head-row">
           <Link to={`/lab?tutor=${id}`} className="link-quiet"><Icon name="users" size={15} /> See the class</Link>
@@ -151,37 +150,21 @@ function GroupCard({ g, classGain, count }) {
       </dl>
 
       {g.main_reason && START[g.main_reason] && (
-        <p className="rp-start"><strong>A place to start:</strong> {START[g.main_reason]} <span className="lx-muted-sm">This is a general suggestion and not a result.</span></p>
+        <p className="rp-start"><strong>A place to start (a general suggestion, not a lab result):</strong> {START[g.main_reason]}</p>
       )}
 
       {examples.length > 0 && (
         <div className="rp-examples">
-          <h4 className="lx-h4">Example chats</h4>
-          {examples.map((ex) => (
-            <details key={ex.student_id} className="rp-ex">
-              <summary>
+          <h4 className="lx-h4">Students in this group</h4>
+          <ul className="rp-ex-list">
+            {examples.map((ex) => (
+              <li key={ex.student_id} className="rp-ex">
                 <span className="rp-ex-name">{ex.name}</span>
                 <OutcomeTag outcome={ex.outcome} />
-                <span className="lx-muted-sm">Gained {pts(ex.gain)}</span>
-              </summary>
-              {ex.gave_up && <p className="lx-muted-sm rp-ex-note">Gave up before the lesson ended.</p>}
-              <ol className="lx-chat">
-                {(ex.transcript || []).map((m, i) => {
-                  const isTool = m.from === 'tutor'
-                  return (
-                    <li key={i} className="lx-msg" data-from={isTool ? 'tutor' : 'student'}>
-                      <p className="lx-msg-meta">
-                        <span className="lx-msg-who">{isTool ? 'Tool' : ex.name}</span>
-                        {isTool && m.move && <span className="lx-move">{moveLabel(m.move)}</span>}
-                        {isTool && m.reading_age != null && <span className="lx-reading">Reading age {m.reading_age}</span>}
-                      </p>
-                      <p className="lx-msg-text">{m.text}</p>
-                    </li>
-                  )
-                })}
-              </ol>
-            </details>
-          ))}
+                <span>Gained {pts(ex.gain)}{ex.gave_up ? ', gave up before the end' : ''}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </>

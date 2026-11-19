@@ -9,7 +9,7 @@ import Ratings from './pages/Ratings.jsx'
 import Pilot from './pages/Pilot.jsx'
 import Report from './pages/Report.jsx'
 import Proof from './pages/Proof.jsx'
-import LiveLab from './pages/LiveLab.jsx'
+import Privacy from './pages/Privacy.jsx'
 import About from './pages/About.jsx'
 import Tools from './pages/Tools.jsx'
 import Try from './pages/Try.jsx'
@@ -45,11 +45,12 @@ export default function App() {
           <Route path="report/:tutorId?" element={<Report />} />
           <Route path="real-tools" element={<Pilot />} />
           <Route path="proof" element={<Proof />} />
-          <Route path="live/:tutorId?" element={<LiveLab />} />
+          <Route path="live/*" element={<Navigate to="/lab" replace />} /> {/* the lesson replay page was removed */}
         </Route>
         <Route path="try/:tutorId" element={<Try />} />
         <Route path="tools" element={<ScrollStory gem={false}><Tools /></ScrollStory>} />
         <Route path="about" element={<ScrollStory gem={false}><About /></ScrollStory>} />
+        <Route path="privacy" element={<Privacy />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

@@ -176,7 +176,7 @@ function Panel({ panel, tool, onClose }) {
                 )
               })}
             </ul>
-            <p className="tpn-foot-note">Hivemind&rsquo;s own reading of the tool&rsquo;s public features, on a 10-point scale. Not lab scores.</p>
+            <p className="lx-text">Hivemind&rsquo;s own reading of the tool&rsquo;s public features, on a 10-point scale. Not lab scores.</p>
           </section>
 
           <section className="tpn-sec" aria-labelledby={`${hid}-rev`}>

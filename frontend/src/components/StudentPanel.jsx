@@ -52,6 +52,15 @@ function useClassData(ids) {
 const num = (x) => +(+x).toFixed(1) // 7 stays 7, 7.25 shows as 7.3
 const fmtGain = (g) => `${g < 0 ? '−' : '+'}${Math.abs(num(g))}`
 
+// How alike two profiles are: 100% minus the average gap on the five measures (each 0 to 1), so distance / √5.
+// The words use the same bands as the lab's own answers (backend/app/advisor.py _closeness).
+export function alikeness(distance) {
+  if (typeof distance !== 'number' || !Number.isFinite(distance)) return null
+  const pct = Math.max(0, Math.round((1 - distance / Math.sqrt(5)) * 100))
+  const words = distance <= 0.2 ? 'very like you' : distance <= 0.35 ? 'quite like you' : 'only partly like you'
+  return { pct, words }
+}
+
 // What the side drawer shows for one matched student. `matches` is match.matches, `index` the one open.
 export default function StudentPanel({ matches, index, onIndex, ranked, tutorIds }) {
   const m = matches[index]
@@ -65,8 +74,8 @@ export default function StudentPanel({ matches, index, onIndex, ranked, tutorIds
   useEffect(() => { body.current?.closest('.drawer-body')?.scrollTo({ top: 0 }) }, [m.student_id])
 
   const radar = m.radar || s?.radar
-  const stats = wheelStats(radar, s?.reading_age != null ? { reading: `age ${s.reading_age}` } : {})
-  const share = Math.round((m.weight ?? 0) * 100)
+  const stats = wheelStats(radar, s?.reading_age != null ? { reading: `level ${s.reading_age}` } : {})
+  const alike = alikeness(m.distance)
 
   return (
     <div className="sp" ref={body}>
@@ -78,9 +87,6 @@ export default function StudentPanel({ matches, index, onIndex, ranked, tutorIds
         </nav>
       )}
 
-      <p className="sp-sub">
-        {s ? `Simulated student, age ${s.age}. Not a real child.` : 'Simulated student. Not a real child.'}
-      </p>
       {studentTags(s).length > 0 && (
         <ul className="sp-tags" aria-label="Tags">
           {studentTags(s).map((t) => <li key={t} title={tagNote(t)}>{tagLabel(t)}</li>)}
@@ -91,10 +97,11 @@ export default function StudentPanel({ matches, index, onIndex, ranked, tutorIds
         <StatWheel stats={stats} tone="ink" showValues size={260} label={`${m.name}'s profile`} />
       </figure>
 
-      <section className="sp-block" aria-labelledby="sp-share-h">
-        <h3 id="sp-share-h" className="sp-h">Share of your match: {share}%</h3>
-        <p className="muted">Closer students count for more.</p>
-      </section>
+      {alike && (
+        <section className="sp-block" aria-labelledby="sp-alike-h">
+          <h3 id="sp-alike-h" className="sp-h">{alike.pct}% like you: {m.name} is {alike.words}</h3>
+        </section>
+      )}
 
       <section className="sp-block" aria-labelledby="sp-tools-h">
         <h3 id="sp-tools-h" className="sp-h">How each tool type worked for {m.name}</h3>
