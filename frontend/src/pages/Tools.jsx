@@ -1,8 +1,8 @@
 import SuggestBox from '../components/SuggestBox.jsx'
 import '../styles/tools.css'
-import { useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useLoad, usePageTitle } from '../hooks.js'
+import { useMemo, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { useLoad, useOpenParam, usePageTitle } from '../hooks.js'
 import { useMatch } from '../store.jsx'
 import { getCheck, getRealTools } from '../api.js'
 import { plainWords } from '../labels.js'
@@ -81,14 +81,20 @@ function ToolCard({ tool, number, onOpen }) {
 
 export default function Tools() {
   usePageTitle('EdTech tools')
-  const [query, setQuery] = useState('')
-  const [need, setNeed] = useState(null) // one "What do you need help with?" button at a time (NEEDS in data/tools.js)
+  // The search, the need button and the open tool panel live in the address (?q=, ?need=, ?tool=) so they can be linked.
+  // Typing and need buttons replace the entry; opening a panel adds one, so Back closes it.
+  const [sp, setSp] = useSearchParams()
+  const query = sp.get('q') ?? ''
+  const need = NEEDS.some((n) => n.id === sp.get('need')) ? sp.get('need') : null // one "What do you need help with?" button at a time (NEEDS in data/tools.js)
+  const setParam = (k, v) => setSp((p) => { const n = new URLSearchParams(p); if (v) n.set(k, v); else n.delete(k); return n }, { replace: true })
+  const setQuery = (v) => setParam('q', v)
+  const setNeed = (v) => setParam('need', v)
+  const [toolId, openToolId, closeToolId] = useOpenParam('tool')
   const searchRef = useRef(null)
   const pageRef = useRef(null)
   useTilt(pageRef)
-  const [active, setActive] = useState(null) // the tool whose panel is open
   const openerRef = useRef(null) // the card that opened it, so focus can go back there
-  const openTool = (tool, el) => { openerRef.current = el; setActive(tool) }
+  const openTool = (tool, el) => { openerRef.current = el; openToolId(tool.id) }
 
   // The lab's list when it answers; the bundled copy until then (and when the lab is off).
   const lab = useLoad(getRealTools, [])
@@ -125,6 +131,7 @@ export default function Tools() {
   const check = useLoad(getCheck, [])
   const minutes = check.status === 'ok' ? check.data?.minutes : null
 
+  const active = useMemo(() => (toolId ? ALL.find((t) => t.id === toolId) ?? null : null), [toolId, ALL]) // the tool whose panel is open
   const searching = query.trim() !== '' || !!need
   const found = useMemo(() => (searching ? searchAll(query, need ? ALL.filter(fitsNeed(need)) : ALL) : []), [searching, query, need, ALL])
   const clearSearch = () => { setQuery(''); setNeed(null); searchRef.current?.focus() }
@@ -151,7 +158,7 @@ export default function Tools() {
         <div className="tsr-needs" role="group" aria-label="What do you need help with?">
           {NEEDS.map((n) => (
             <button key={n.id} type="button" className="sg-kind" data-on={need === n.id ? '' : undefined} aria-pressed={need === n.id}
-              onClick={() => setNeed((x) => (x === n.id ? null : n.id))}>{n.label}</button>
+              onClick={() => setNeed(need === n.id ? null : n.id)}>{n.label}</button>
           ))}
         </div>
         <p className="tsr-count" role="status">{searching ? (found.length ? `${found.length} of ${ALL.length} tools${needName ? ` for ${needName.toLowerCase()}` : ''}` : 'No tools match') : `${ALL.length} tools`}</p>
@@ -218,7 +225,7 @@ export default function Tools() {
         </RevealGroup>
       </section>
       <Reveal blur={false}><SuggestBox /></Reveal>
-      <ToolPanel tool={active} opener={openerRef.current} onClose={() => setActive(null)} />
+      <ToolPanel tool={active} opener={openerRef.current} onClose={closeToolId} />
     </article>
   )
 }

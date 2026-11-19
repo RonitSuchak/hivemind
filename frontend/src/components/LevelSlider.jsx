@@ -61,7 +61,7 @@ export default function LevelSlider({ id, label, icon, levels, value, onChange }
           <span className="ls-fill" />
           {levels.map((_, i) => <i key={i} className={i + 1 <= level ? 'on' : ''} style={{ '--t': i / (max - 1) }} />)}
         </span>
-        <input id={id} className="ls-input" type="range" min="1" max={max} step="0.01" value={raw}
+        <input id={id} className="ls-input" type="range" min="1" max={max} step={dragging ? 0.01 : 1} value={raw}
           aria-valuemin={1} aria-valuemax={max} aria-valuenow={level} aria-valuetext={`${level} of ${max}: ${text}`}
           onPointerDown={() => setDragging(true)} onChange={(e) => move(Number(e.target.value))} onKeyDown={onKey}
           onBlur={() => { setDragging(false); setRaw((r) => Math.round(r)) }} />

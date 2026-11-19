@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getEpoch, getStatus, subscribe } from './api.js'
 
 export const useStatus = () => useSyncExternalStore(subscribe, getStatus)
@@ -64,4 +65,18 @@ export function useInView({ margin = '0px 0px -6% 0px' } = {}) {
     return () => io.disconnect()
   }, [margin])
   return [ref, s.inView, s.early]
+}
+
+// One address parameter that opens something (a panel). Opening adds a history entry, so Back closes it and the
+// address can be shared. Closing steps back when this page opened it, otherwise it just removes the parameter.
+export function useOpenParam(name) {
+  const [sp, setSp] = useSearchParams()
+  const nav = useNavigate()
+  const pushed = useRef(false)
+  const value = sp.get(name)
+  useEffect(() => { if (value == null) pushed.current = false }, [value])
+  const put = (v, push) => setSp((prev) => { const n = new URLSearchParams(prev); if (v == null) n.delete(name); else n.set(name, v); return n }, { replace: !push })
+  const open = (v) => { pushed.current = value == null; put(v, true) }
+  const close = () => { if (pushed.current) { pushed.current = false; nav(-1) } else put(null, false) }
+  return [value, open, close]
 }

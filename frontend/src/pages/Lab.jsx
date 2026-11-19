@@ -1,7 +1,7 @@
 import { Fragment, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { getRatings, getRealTools, getRun, getStudents, getTutors } from '../api.js'
-import { useInView, useLoad, usePageTitle } from '../hooks.js'
+import { useInView, useLoad, useOpenParam, usePageTitle } from '../hooks.js'
 import { DEMO_SCORES, SCORE_LABEL, TYPE, plainWords, typeLabel, typeName } from '../labels.js'
 import { Async, SkeletonLab, Unavailable } from '../components/States.jsx'
 import { SwapText } from '../components/Swap.jsx'
@@ -62,6 +62,7 @@ function useTypeCounts(tutors) {
 // outcomes. Scroll reveals therefore play once per visit, not on every switch.
 function ClassView({ tutors, students, ratings }) {
   const [sp, setSp] = useSearchParams()
+  const [openId, openAt, closeStudent] = useOpenParam('student') // ?student=<id> keeps the panel in the address
   const wanted = sp.get('tutor')
   const tutorId = tutors.some((t) => t.tutor_id === wanted) ? wanted : tutors[0].tutor_id
   const critical = Object.fromEntries(ratings.rows.map((r) => [r.tutor_id, r.critical_fail]))
@@ -111,7 +112,7 @@ function ClassView({ tutors, students, ratings }) {
       </div>
       <div id="tutor-panel" role="tabpanel" aria-labelledby={`tab-${tutorId}`} tabIndex={-1} aria-busy={busy || undefined}>
         {data
-          ? <RunView run={data} counts={counts} total={total} students={students} gains={gains} startWith={sp.get('student')} flagged={Object.keys(critical).filter((id) => critical[id])} names={Object.fromEntries(tutors.map((t) => [t.tutor_id, typeName(t.tutor_id, t.tutor_name)]))} style={tutors.find((t) => t.tutor_id === data.tutor_id)?.style} tool={tutors.find((t) => t.tutor_id === data.tutor_id)} busy={busy} />
+          ? <RunView run={data} counts={counts} total={total} students={students} gains={gains} openId={openId} openAt={openAt} close={closeStudent} flagged={Object.keys(critical).filter((id) => critical[id])} names={Object.fromEntries(tutors.map((t) => [t.tutor_id, typeName(t.tutor_id, t.tutor_name)]))} style={tutors.find((t) => t.tutor_id === data.tutor_id)?.style} tool={tutors.find((t) => t.tutor_id === data.tutor_id)} busy={busy} />
           : <Async state={run} label="Loading the class" skeleton={<SkeletonLab />}>{() => null}</Async>}
       </div>
     </div>
@@ -150,11 +151,8 @@ function ExtraNote({ count, total }) {
   )
 }
 
-function RunView({ run, counts, total, students, gains, flagged, names, tool, busy, startWith }) {
-  // ?student=<id> (links from the home page class and from Ratings) opens that student's panel straight away.
-  const [openId, setOpenId] = useState(() => (run.results.some((r) => r.student_id === startWith) ? startWith : null))
-  const openAt = (id) => setOpenId(id)
-  const close = () => openAt(null)
+function RunView({ run, counts, total, students, gains, flagged, names, tool, busy, openId, openAt, close }) {
+  // The open student comes from ?student=<id> (links from the home page class and from Ratings), so Back closes the panel.
   const byId = Object.fromEntries(students.map((s) => [s.id, s]))
   const openResult = run.results.find((r) => r.student_id === openId)
   const [scoresRef, scoresIn] = useInView()

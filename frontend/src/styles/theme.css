@@ -352,3 +352,11 @@ a:hover { text-decoration-color: var(--pop); }
 /* "via Socratic": the demo tool that was tested for a tool type, small and quiet beside the type's name. */
 .type-via { margin-left: 0.4em; font-family: var(--font-body); font-size: 0.6em; font-weight: 500; letter-spacing: 0; color: var(--ink-3); white-space: nowrap; }
 .lx-bar-name .type-via, .lx-heat .type-via { font-size: 0.8em; }
+
+/* Phones and touch screens: tap targets of at least 44 px (menu, footer links, text links, quiet buttons). */
+@media (max-width: 40rem), (pointer: coarse) {
+  .site-nav a, .footer-nav a, .wordmark, .ground-toggle { display: inline-flex; align-items: center; min-height: 44px; }
+  .ground-toggle { min-width: 44px; justify-content: center; }
+  .link-quiet, .pl-basis summary { display: inline-flex; align-items: center; min-height: 44px; }
+  .main p a:not(.btn), .main li a:not(.btn), .main td a:not(.btn) { padding-block: 0.8rem; margin-block: -0.8rem; }
+}

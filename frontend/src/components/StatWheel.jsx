@@ -78,10 +78,14 @@ export default function StatWheel({ stats, compare, tone = 'pop', size = 300, la
       })}
       {stats.map((s, i) => {
         const flip = Math.sin(rad(ang(i))) > 0.3
+        const span = Math.min(step / 2 - 3, 50)
+        // shrink the type when the name is longer than its arc (about 9 units a capital at 12.5px, with spacing)
+        const arcLen = ((BAND_IN + BAND_OUT) / 2) * rad(span * 2), want = s.label.length * 9.4
+        const fs = want > arcLen * 0.94 ? Math.max(8, 12.5 * (arcLen * 0.94) / want) : null
         return (
           <g key={s.key}>
-            <path id={`${uid}-${i}`} d={labelArc(ang(i), Math.min(step / 2 - 6, 44), flip)} fill="none" />
-            <text className="wheel-name"><textPath href={`#${uid}-${i}`} startOffset="50%" textAnchor="middle">{s.label.toUpperCase()}</textPath></text>
+            <path id={`${uid}-${i}`} d={labelArc(ang(i), span, flip)} fill="none" />
+            <text className="wheel-name" style={fs ? { fontSize: fs.toFixed(1) } : undefined}><textPath href={`#${uid}-${i}`} startOffset="50%" textAnchor="middle">{s.label.toUpperCase()}</textPath></text>
           </g>
         )
       })}

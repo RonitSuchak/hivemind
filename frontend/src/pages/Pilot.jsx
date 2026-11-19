@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getPilot, getStudents } from '../api.js'
 import { useInView, useLoad, usePageTitle } from '../hooks.js'
 import { checkResult, day, plainWords, safetyLabel, tagLabel } from '../labels.js'
@@ -73,7 +74,22 @@ function Body({ pilot, students }) {
   // The lab's own order, as sent: the site never ranks pilot tools (docs/BACKEND.md 5.20).
   const done = useMemo(() => pilot.tools.filter((t) => t.status === 'done' && t.scores), [pilot])
   const waiting = pilot.tools.filter((t) => !(t.status === 'done' && t.scores))
-  const [open, setOpen] = useState(null) // { tool, lesson, turn }
+  // The open lesson is in the address (?tool=<id>&student=<id>), so Back closes it and it can be linked.
+  const [sp, setSp] = useSearchParams()
+  const nav = useNavigate()
+  const pushed = useRef(false)
+  const wantTool = sp.get('tool'), wantStudent = sp.get('student')
+  const open = useMemo(() => {
+    const tool = done.find((t) => t.tool_id === wantTool)
+    const lesson = tool?.students.find((x) => x.student_id === wantStudent)
+    return tool && lesson ? { tool, lesson } : null
+  }, [done, wantTool, wantStudent])
+  useEffect(() => { if (!open) pushed.current = false }, [open])
+  const setOpen = (v) => {
+    if (v) { pushed.current = !open; setSp((p) => { const n = new URLSearchParams(p); n.set('tool', v.tool.tool_id); n.set('student', v.lesson.student_id); return n }) }
+    else if (pushed.current) { pushed.current = false; nav(-1) }
+    else setSp((p) => { const n = new URLSearchParams(p); n.delete('tool'); n.delete('student'); return n }, { replace: true })
+  }
 
   const student = open ? byId[open.lesson.student_id] : null
   return (
@@ -124,6 +140,7 @@ function Body({ pilot, students }) {
             <h2 id="pl-same-h">The same student, each tool</h2>
             <p>Test scores out of 10, before and after one lesson. Each row is one student. Open a cell to read that lesson.</p>
           </Reveal>
+          <p className="pl-swipe" aria-hidden="true">Swipe sideways to see every tool.</p>
           <Reveal blur={false} className="glass pl-same-wrap" role="region" aria-labelledby="pl-same-h" tabIndex={0}>
             <table className="pl-same">
               <thead>
@@ -189,6 +206,8 @@ function Body({ pilot, students }) {
 function ToolCard({ tool, names, onOpen }) {
   const [ref, inView] = useInView()
   const ev = keyEvidence(tool)
+  // every safety reply the lab sent (up to 5), failed ones first
+  const safetyEv = [...(tool.evidence?.safety || [])].sort((x, y) => (x.effect === 'negative' ? 0 : 1) - (y.effect === 'negative' ? 0 : 1))
   const lessonFor = (id) => tool.students.find((l) => l.student_id === id)
   const who = ev ? (names[ev.student_id]?.name ?? 'the student') : ''
   // A failed check that only a rule has judged so far (the lesson's safety_events carry needs_review).
@@ -215,6 +234,28 @@ function ToolCard({ tool, names, onOpen }) {
               <li key={c.type} data-empty={c.tested === 0 ? '' : undefined}><span>{safetyLabel(c.type)}</span><span>{c.tested === 0 ? 'Not tested in this pilot' : checkResult(c)}</span></li>
             ))}
           </ul>
+          {safetyEv.length > 0 && (
+            <>
+              <p className="pl-basis-h">Replies this score rests on</p>
+              <ul className="pl-basis-ev">
+                {safetyEv.map((e, i) => {
+                  const l = evidenceLine(tool.students, e)
+                  const text = l.from === 'student' ? null : (e.effect === 'negative' ? l.text : clip(l.text || e.quote || ''))
+                  return (
+                    <li key={`${e.student_id}-${e.turn}-${i}`} data-kind={e.effect === 'negative' ? 'fail' : 'pass'}>
+                      <span className="pl-basis-why"><Icon name={e.effect === 'negative' ? 'warn' : 'check'} size={14} /> {plainWords(e.reason)}</span>
+                      {text && <q>{text}</q>}
+                      {lessonFor(e.student_id) && (
+                        <button type="button" className="link-quiet" onClick={() => onOpen(lessonFor(e.student_id))}>
+                          See {names[e.student_id]?.name ?? 'the student'}&rsquo;s results
+                        </button>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </>
+          )}
         </details>
       )}
 

@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import { Link, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import LabNav from './components/LabNav.jsx'
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
@@ -13,6 +13,7 @@ import Privacy from './pages/Privacy.jsx'
 import About from './pages/About.jsx'
 import Tools from './pages/Tools.jsx'
 import Try from './pages/Try.jsx'
+import { usePageTitle } from './hooks.js'
 import { useScrollingFlag } from './scroll.js'
 import { useEngine } from './at/state.js'
 import ScrollStory from './at/ScrollStory.jsx'
@@ -27,6 +28,17 @@ function LabShell() {
       <LabNav />
       <Outlet />
     </div>
+  )
+}
+
+function NotFound() {
+  usePageTitle('Page not found')
+  return (
+    <article className="pv">
+      <h1>Page not found</h1>
+      <p className="pv-lede">There is nothing at this address. It may have moved, or the link may have a typo.</p>
+      <p><Link to="/" className="btn btn-primary">Go to the home page</Link></p>
+    </article>
   )
 }
 
@@ -51,7 +63,7 @@ export default function App() {
         <Route path="tools" element={<ScrollStory gem={false}><Tools /></ScrollStory>} />
         <Route path="about" element={<ScrollStory gem={false}><About /></ScrollStory>} />
         <Route path="privacy" element={<Privacy />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

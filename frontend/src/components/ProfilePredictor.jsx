@@ -141,7 +141,10 @@ function Panel({ rows, students, runs }) {
         <p className="lx-predict-say" aria-live="polite">
           {isClass
             ? <>Move a slider to describe a student. Until then, this is the <strong>class average</strong>.</>
-            : <>For a student like this, <strong>{typeLabel(top.row)}</strong> tools taught most.</>}
+            : best.known && !best.none && best.groups.length > 1
+              // same tie rule as the example sites below (mostEffective: within 0.05 points)
+              ? <>For a student like this, the best tools taught about the same.</>
+              : <>For a student like this, <strong>{typeLabel(top.row)}</strong> tools taught most.</>}
         </p>
 
         <LayoutGroup>

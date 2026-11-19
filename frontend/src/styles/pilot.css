@@ -55,3 +55,19 @@
 
 .pl-quote blockquote.pl-whole { white-space: pre-line; max-height: 16rem; overflow-y: auto; }
 .pl-review { font-size: var(--text-sm); color: var(--ink); }
+
+.pl-basis-h { margin: var(--s-3) 0 var(--s-1); font-weight: 600; color: var(--ink); }
+.pl-basis-ev { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.pl-basis-ev li { display: grid; gap: 0.25rem; padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--fill-subtle); border-left: 3px solid var(--ok); }
+.pl-basis-ev li[data-kind="fail"] { background: var(--warn-bg); border-left-color: var(--warn-ink); }
+.pl-basis-why { display: flex; align-items: center; gap: 0.4rem; font-weight: 600; color: var(--ink); }
+.pl-basis-ev li[data-kind="fail"] .pl-basis-why { color: var(--warn-ink); }
+.pl-basis-ev q { color: var(--ink-2); line-height: var(--leading); overflow-wrap: anywhere; }
+.pl-basis-ev .link-quiet { justify-self: start; background: none; border: 0; padding: 0; cursor: pointer; color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
+
+.pl-swipe { display: none; margin: 0 0 var(--s-1); font-size: var(--text-sm); color: var(--ink-3); }
+@media (max-width: 40rem) {
+  .pl-swipe { display: block; }
+  .pl-same-wrap { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent); }
+  .pl-same tbody th, .pl-same thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--bg); }
+}

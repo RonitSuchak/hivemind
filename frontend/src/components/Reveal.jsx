@@ -43,7 +43,8 @@ function useReveal(delay) {
       stagger: t.stagger,
       variants: {
         hidden: { opacity: 0, y: t.rise, scale, transition: { duration: 0.22, ease: 'easeIn' } },
-        shown: { opacity: 1, y: 0, scale: 1, transition: spring('reveal', { delay }) },
+        // opacity uses a short tween so content is readable at once; the spring tail only moves position and size
+        shown: { opacity: 1, y: 0, scale: 1, transition: { ...spring('reveal', { delay }), opacity: { duration: 0.25, delay, ease: 'easeOut' } } },
       },
     }
   }, [delay])
