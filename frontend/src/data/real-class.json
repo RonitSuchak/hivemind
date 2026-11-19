@@ -1,0 +1,406 @@
+{
+ "collected": "2026-11-19",
+ "topic": "Adding and simplifying fractions",
+ "students": [
+  {
+   "code": "S01",
+   "type": "lecturer",
+   "tool": "BBC Bitesize",
+   "before": 5,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S02",
+   "type": "answer_machine",
+   "tool": "Perplexity",
+   "before": null,
+   "after": 8,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "missing"
+  },
+  {
+   "code": "S03",
+   "type": "lecturer",
+   "tool": "Save My Exams",
+   "before": 7,
+   "after": 6,
+   "predicted": 0.6,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S04",
+   "type": "simple_steps",
+   "tool": "Prodigy",
+   "before": 10,
+   "after": 10,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S05",
+   "type": "simple_steps",
+   "tool": "Times Tables Rock Stars",
+   "before": 5,
+   "after": 9,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S06",
+   "type": "answer_machine",
+   "tool": "Microsoft Copilot",
+   "before": 2,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S07",
+   "type": "simple_steps",
+   "tool": "Code.org",
+   "before": 1,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "off_topic"
+  },
+  {
+   "code": "S08",
+   "type": "socratic",
+   "tool": "NRICH",
+   "before": 8,
+   "after": 6,
+   "predicted": 1.8,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S09",
+   "type": "lecturer",
+   "tool": "3Blue1Brown",
+   "before": 5,
+   "after": null,
+   "predicted": 0.3,
+   "site_pick": "simple_steps",
+   "left_out": "missing"
+  },
+  {
+   "code": "S10",
+   "type": "answer_machine",
+   "tool": "Claude",
+   "before": 6,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S11",
+   "type": "answer_machine",
+   "tool": "Photomath",
+   "before": 5,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S12",
+   "type": "socratic",
+   "tool": "Underground Mathematics",
+   "before": 5,
+   "after": 10,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S13",
+   "type": "answer_machine",
+   "tool": "Chegg",
+   "before": 5,
+   "after": 6,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S14",
+   "type": "lecturer",
+   "tool": "ExamSolutions",
+   "before": 2,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S15",
+   "type": "socratic",
+   "tool": "Isaac Physics",
+   "before": 5,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "off_topic"
+  },
+  {
+   "code": "S16",
+   "type": "socratic",
+   "tool": "Brilliant",
+   "before": 1,
+   "after": 0,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S17",
+   "type": "simple_steps",
+   "tool": "Times Tables Rock Stars",
+   "before": 7,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S18",
+   "type": "socratic",
+   "tool": "Khanmigo",
+   "before": 10,
+   "after": 10,
+   "predicted": 0.8,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S19",
+   "type": "socratic",
+   "tool": "Khanmigo",
+   "before": 7,
+   "after": 8,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S20",
+   "type": "socratic",
+   "tool": "NRICH",
+   "before": 3,
+   "after": 2,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S21",
+   "type": "simple_steps",
+   "tool": "NoRedInk",
+   "before": 2,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S22",
+   "type": "lecturer",
+   "tool": "3Blue1Brown",
+   "before": 6,
+   "after": 9,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S23",
+   "type": "lecturer",
+   "tool": "Isaac Computer Science",
+   "before": 0,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "off_topic"
+  },
+  {
+   "code": "S24",
+   "type": "lecturer",
+   "tool": "CK-12",
+   "before": 6,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S25",
+   "type": "answer_machine",
+   "tool": "Physics & Maths Tutor",
+   "before": 3,
+   "after": 2,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S26",
+   "type": "lecturer",
+   "tool": "TED-Ed",
+   "before": 4,
+   "after": 3,
+   "predicted": 0.6,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S27",
+   "type": "simple_steps",
+   "tool": "Century",
+   "before": 3,
+   "after": null,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "missing"
+  },
+  {
+   "code": "S28",
+   "type": "simple_steps",
+   "tool": "Prodigy",
+   "before": 2,
+   "after": 6,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S29",
+   "type": "socratic",
+   "tool": "Scratch",
+   "before": 10,
+   "after": 10,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "off_topic"
+  },
+  {
+   "code": "S30",
+   "type": "simple_steps",
+   "tool": "Brainscape",
+   "before": 6,
+   "after": 9,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S31",
+   "type": "lecturer",
+   "tool": "BBC Bitesize",
+   "before": 5,
+   "after": 7,
+   "predicted": 0.6,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S32",
+   "type": "simple_steps",
+   "tool": "Tassomai",
+   "before": 2,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S33",
+   "type": "socratic",
+   "tool": "Underground Mathematics",
+   "before": 10,
+   "after": 10,
+   "predicted": 1.0,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S34",
+   "type": "answer_machine",
+   "tool": "Gemini",
+   "before": 7,
+   "after": 6,
+   "predicted": 0.0,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S35",
+   "type": "answer_machine",
+   "tool": "ChatGPT",
+   "before": 4,
+   "after": 7,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": null
+  },
+  {
+   "code": "S36",
+   "type": "socratic",
+   "tool": "GeoGebra",
+   "before": 3,
+   "after": 6,
+   "predicted": 1.2,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S37",
+   "type": "simple_steps",
+   "tool": "Century",
+   "before": 4,
+   "after": 5,
+   "predicted": 4.0,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S38",
+   "type": "lecturer",
+   "tool": "Corbettmaths",
+   "before": 6,
+   "after": 7,
+   "predicted": 0.5,
+   "site_pick": "simple_steps",
+   "left_out": null
+  },
+  {
+   "code": "S39",
+   "type": "lecturer",
+   "tool": "Isaac Computer Science",
+   "before": 6,
+   "after": 5,
+   "predicted": null,
+   "site_pick": null,
+   "left_out": "off_topic"
+  },
+  {
+   "code": "S40",
+   "type": "socratic",
+   "tool": "NRICH",
+   "before": 9,
+   "after": 9,
+   "predicted": 1.2,
+   "site_pick": "simple_steps",
+   "left_out": null
+  }
+ ]
+}

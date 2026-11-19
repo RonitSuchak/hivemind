@@ -7,6 +7,7 @@ import { useMatch } from '../store.jsx'
 import { Async, Unavailable } from '../components/States.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
+import RealClass from '../components/RealClass.jsx'
 import '../styles/lab.css'
 import '../styles/proof.css'
 
@@ -62,6 +63,7 @@ export default function Proof() {
         </Reveal>
       </section>
 
+      <RealClass />
       <Results rev={s.result?.code ?? ''} />
       <TakePart />
 

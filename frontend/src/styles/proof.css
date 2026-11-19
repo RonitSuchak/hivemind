@@ -88,3 +88,21 @@
   .pf-step { gap: var(--s-2) var(--s-3); }
   .pf-card { padding: var(--s-4); }
 }
+
+/* One real class (components/RealClass.jsx) */
+.rc { display: grid; gap: var(--s-4); }
+.rc-bars { padding: var(--s-4) var(--s-5); border-radius: var(--r-lg); display: grid; gap: var(--s-3); }
+.rc-bars-title { margin: 0; color: var(--ink-2); font-size: var(--text-sm); }
+.rc-bars ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.rc-bars li { display: grid; grid-template-columns: minmax(8rem, 12rem) 1fr 3rem; align-items: center; gap: var(--s-3); }
+.rc-name small { display: block; color: var(--ink-3); font-size: var(--text-xs); }
+.rc-track { height: 0.6rem; border-radius: 99px; background: color-mix(in srgb, var(--ink) 10%, transparent); overflow: hidden; }
+.rc-fill { display: block; height: 100%; border-radius: inherit; background: var(--ink); }
+.rc-bars b { text-align: right; font-variant-numeric: tabular-nums; }
+.rc-all { padding: var(--s-3) var(--s-5); border-radius: var(--r-lg); }
+.rc-all summary { cursor: pointer; font-weight: 500; }
+.rc-scroll { overflow-x: auto; margin-top: var(--s-3); }
+.rc-all table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.rc-all th, .rc-all td { text-align: left; padding: 0.35rem 0.6rem; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); white-space: nowrap; }
+.rc-all tr[data-out] td { color: var(--ink-3); }
+@media (max-width: 560px) { .rc-bars li { grid-template-columns: 1fr 3rem; } .rc-track { grid-column: 1 / -1; grid-row: 2; } }

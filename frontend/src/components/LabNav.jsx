@@ -1,3 +1,4 @@
+import { realClassCount } from './RealClass.jsx'
 import { useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'motion/react'
@@ -12,7 +13,7 @@ export default function LabNav() {
   const nav = useRef(null)
   // The Proof tab shows only once at least one real student has taken part. With no results there is nothing to prove yet.
   const proof = useLoad(() => getValidation().catch(() => null), [])
-  const hasProof = proof.status === 'ok' && (proof.data?.summary?.count ?? 0) > 0
+  const hasProof = realClassCount > 0 || (proof.status === 'ok' && (proof.data?.summary?.count ?? 0) > 0)
   const { pathname } = useLocation()
   useEffect(() => {
     const el = nav.current, cur = el?.querySelector('a.active')
