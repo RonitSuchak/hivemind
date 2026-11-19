@@ -168,7 +168,7 @@ class MatchTests(unittest.TestCase):
 
 class FollowUpAndAskTests(unittest.TestCase):
     def test_three_follow_ups_answered_from_data(self):
-        f = follow_ups(match(NEAR, RATED), RATED, {"count": 5, "within_1": 4})
+        f = follow_ups(match(NEAR, RATED), RATED, {"count": 9, "with_prediction": 5, "within_1": 4})
         self.assertEqual([x["id"] for x in f], ["why_top", "careful", "how_sure"])
         self.assertIn("4 of 5", f[2]["answer"])
         self.assertIn("Cheerleader", f[1]["answer"])

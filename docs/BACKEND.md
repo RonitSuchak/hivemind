@@ -607,6 +607,26 @@ Store one classmate's real result: their profile (or `match_id`), the demo tool 
 - `avg_error` is the average size of the difference, ignoring sign. `within_1` counts predictions within 1 mark.
 - Show the entries openly, including the wrong ones. With no entries yet: `entries: []` and `summary.count: 0`; design that state.
 
+**19 Nov: the real class (40 classmates) is in.** `python -m app.import_class` loaded `frontend/src/data/real-class.json` once (insert only, codes `HM-C1S01` to `HM-C1S40`). Class entries add three fields and may have `null`s:
+```json
+{ "code": "HM-C1S03", "tutor_id": "lecturer", "tool": "Save My Exams", "before": 7, "after": 6,
+  "real_gain": -1, "predicted_gain": 0.6, "difference": -1.6, "left_out": null,
+  "source": "class-2026-11-19", "created": "2026-11-19T14:00:00Z" }
+```
+- `tutor_id` is the tool group (same ids as the demo tools); `tool` is the real tool the classmate used.
+- `real_gain` is after minus before and can be negative; `null` when a score is missing. (Results sent one at a time with `POST /api/validation` still never go below 0.)
+- `predicted_gain` and `difference` are `null` when Hivemind gave no prediction (no similar simulated students). Never a made-up number.
+- `left_out`: `null`, `"missing"` (a test score is missing) or `"off_topic"` (the tool does not teach fractions). Left-out entries stay in the list but not in the averages.
+
+The summary now has:
+```json
+{ "count": 40, "counted": 32, "with_prediction": 11, "avg_error": 1.61, "within_1": 4, "within_1_share": 0.36,
+  "by_group": [ { "tutor_id": "simple_steps", "n": 8, "avg_gain": 2.25 }, ... ] }
+```
+- `count` everyone who took part; `counted` not left out; `with_prediction` counted and had a prediction.
+- `avg_error`, `within_1` and `within_1_share` use the `with_prediction` entries only.
+- `by_group`: average real gain per tool group over the counted entries, best first (the numbers the Proof page's real-class bars show).
+
 ### 5.15 `POST /api/submissions`
 ```json
 {

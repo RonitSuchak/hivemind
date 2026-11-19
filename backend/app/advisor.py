@@ -81,8 +81,8 @@ def follow_ups(result: dict, rated: list[tuple[dict, dict]], validation: dict | 
 
     sure = (f"It is based on {len(matches)} simulated students, the closest {closest:.2f} away on a 0 to 1 scale, "
             f"so they are {_closeness(closest)}. They are simulated, not real children.")
-    if validation and validation.get("count"):
-        sure += (f" In our check with real classmates, {validation['within_1']} of {validation['count']} "
+    if validation and validation.get("with_prediction"):
+        sure += (f" In our check with real classmates, {validation['within_1']} of {validation['with_prediction']} "
                  f"predictions were within 1 mark.")
     else:
         sure += " We are still checking the predictions against real classmates."

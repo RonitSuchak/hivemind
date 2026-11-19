@@ -160,10 +160,21 @@ def score_test(answers: dict) -> dict:
 
 
 def validation_summary(entries: list[dict]) -> dict:
-    errors = [abs(e["difference"]) for e in entries]
+    """count: everyone who took part. counted: not left out (a missing score, or a tool that does not teach the topic).
+    with_prediction: counted and Hivemind made a prediction; the error numbers use these only, never a guess.
+    by_group: average real gain per tool group over the counted entries, best first."""
+    counted = [e for e in entries if not e.get("left_out") and e.get("real_gain") is not None]
+    errors = [abs(e["difference"]) for e in counted if e.get("difference") is not None]
     within = sum(err <= 1 for err in errors)
-    return {"count": len(entries), "avg_error": round(sum(errors) / len(errors), 2) if errors else None,
-            "within_1": within, "within_1_share": round(within / len(errors), 2) if errors else None}
+    groups: dict[str, list[float]] = {}
+    for e in counted:
+        groups.setdefault(e["tutor_id"], []).append(e["real_gain"])
+    by_group = sorted(({"tutor_id": t, "n": len(g), "avg_gain": round(sum(g) / len(g), 2)} for t, g in groups.items()),
+                      key=lambda g: (-g["avg_gain"], g["tutor_id"]))
+    return {"count": len(entries), "counted": len(counted), "with_prediction": len(errors),
+            "avg_error": round(sum(errors) / len(errors), 2) if errors else None,
+            "within_1": within, "within_1_share": round(within / len(errors), 2) if errors else None,
+            "by_group": by_group}
 
 
 __all__ = ["chat", "ChatError", "sessions", "public_test", "score_test", "validation_summary", "new_code",

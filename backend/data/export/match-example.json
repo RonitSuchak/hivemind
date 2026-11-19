@@ -1,5 +1,5 @@
 {
- "match_id": "m_Ecp74Q-d",
+ "match_id": "m_u1r6la6k",
  "enough_matches": true,
  "profile": {
   "start_level": 0.2,
@@ -2561,7 +2561,7 @@
   {
    "id": "how_sure",
    "question": "How sure is this?",
-   "answer": "It is based on 5 simulated students, the closest 0.30 away on a 0 to 1 scale, so they are quite like you. They are simulated, not real children. We are still checking the predictions against real classmates."
+   "answer": "It is based on 5 simulated students, the closest 0.30 away on a 0 to 1 scale, so they are quite like you. They are simulated, not real children. In our check with real classmates, 4 of 11 predictions were within 1 mark."
   }
  ],
  "message": null,
