@@ -6,7 +6,7 @@ Hivemind is a crash test for EdTech tools that teach. A simulated class of 30 st
 
 Built in one week for **EduX Hackathon UK 2026** (Cambridge EdTech Society × InCubed), Challenge 2: *Setting the Standard: What Should We Expect from EdTech?*
 
-**Try it live: [hivemind website](https://discovery-buffalo-origin-full.trycloudflare.com)** · [backend status](https://recommend-telescope-alberta-modification.trycloudflare.com/api/health) · [API docs](https://recommend-telescope-alberta-modification.trycloudflare.com/docs)
+**Try it live: [hivemind website](https://undergraduate-colorado-elimination-download.trycloudflare.com)** · [backend status](https://happening-spoken-mainstream-language.trycloudflare.com/api/health) · [API docs](https://happening-spoken-mainstream-language.trycloudflare.com/docs)
 
 > The live site runs from a team laptop for the EduX expo (20 Nov 2026), so it may be offline afterwards. You can always [run it yourself](#run-it-yourself) on saved results, with no backend or keys needed.
 
