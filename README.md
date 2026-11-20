@@ -150,12 +150,18 @@ More commands (running the lab, relaying a real-tool lesson, exporting demo file
 backend/    Python + FastAPI: simulation, scoring, matching, safety, API, tests   → backend/README.md
 frontend/   React + Vite website                                                  → frontend/README.md
 docs/       How it is designed and tested
-  DESIGN.md         every design decision and why
-  BACKEND.md        the API contract between website and backend
-  HOW-WE-TEST.md    what the 260 tests cover
-  PILOT.md          how the real-tools pilot was run
-  screenshots/      the images in this README
+  DESIGN.md              every design decision and why
+  BACKEND.md             the API contract between website and backend
+  HOW-WE-TEST.md         what the 260 tests cover
+  PILOT.md               how the real-tools pilot was run
+  backend-explainer.html a visual guide to how the backend works
+  CRASH-TEST-REPORT.md   our own end-to-end test of the site, and the fixes
+  FRONTEND_PROMPT.md     the brief the frontend team built the website from
+  archive/               the security audit and other retired notes
+  screenshots/           the images in this README
 ```
+
+The docs were written during the hackathon week (15 to 20 Nov 2026), so some describe how we worked then: for example, the backend running on a team laptop and notes addressed to teammates. They are kept as a record of how Hivemind was built.
 
 ## Team
 
