@@ -157,7 +157,7 @@ docs/       How it is designed and tested
   backend-explainer.html a visual guide to how the backend works
   CRASH-TEST-REPORT.md   our own end-to-end test of the site, and the fixes
   FRONTEND_PROMPT.md     the brief the frontend team built the website from
-  archive/               the security audit and other retired notes
+  archive/               older notes, such as the security audit
   screenshots/           the images in this README
 ```
 
