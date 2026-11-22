@@ -1,0 +1,23 @@
+{
+  "name": "hivemind-v2-website",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Hivemind v2: a crash test for AI tutors. Website.",
+  "author": "Ronit Suchak",
+  "type": "module",
+  "scripts": {
+    "sync-data": "node scripts/sync-data.mjs",
+    "dev": "node scripts/sync-data.mjs && vite",
+    "build": "node scripts/sync-data.mjs && vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}

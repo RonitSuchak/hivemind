@@ -2,6 +2,8 @@
 
 **Ratings tell you whether an AI tutor is good on average. Hivemind tells you who it is good for, who it fails, and whether it is safe.**
 
+> **Hivemind v2 (November 2026).** An updated version with a rebuilt website is in [`v2/`](v2/README.md). Everything else in this repository is the original hackathon version, kept as it was.
+
 Hivemind is a crash test for EdTech tools that teach. A simulated class of 30 students has a lesson with each tool. Every tool gets three separate scores (Safety, Usability and Learning), each linked to the chat lines behind it. A real student then takes an 8-minute check and gets the tools that worked best for students like them.
 
 Built in one week for **EduX Hackathon UK 2026** (Cambridge EdTech Society × InCubed), Challenge 2: *Setting the Standard: What Should We Expect from EdTech?*
@@ -149,6 +151,7 @@ More commands (running the lab, relaying a real-tool lesson, exporting demo file
 ```
 backend/    Python + FastAPI: simulation, scoring, matching, safety, API, tests   → backend/README.md
 frontend/   React + Vite website                                                  → frontend/README.md
+v2/         Hivemind v2: the updated version, with a rebuilt website             → v2/README.md
 docs/       How it is designed and tested
   DESIGN.md              every design decision and why
   BACKEND.md             the API contract between website and backend
